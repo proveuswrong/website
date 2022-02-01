@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+}
+
+.h1 {
+  margin: 0;
+}
+
+.nav > ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav > ul > li {
+  width: 100%;
+  margin-left: 32px;
+}

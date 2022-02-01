@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+header,
+main,
+footer {
+  div:first-of-type {
+    max-width: 960px;
+    min-width: auto;
+    margin: 0 auto;
+    background-color: springgreen;
+  }
+}
+
+footer {
+  margin-top: auto;
+}
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
