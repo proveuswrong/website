@@ -1,22 +1,56 @@
+@use "./base.scss";
+@use "./theme.scss";
+
+svg {
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
 body {
   margin: 0;
+  // background: url("/subtle-prism.svg") repeat;
+  height: 100vh;
+}
+
+body > div:first-child {
+  height: inherit;
 }
 
 header,
 main,
 footer {
-  div:first-of-type {
-    max-width: 960px;
+  > div:first-child {
     min-width: auto;
-    margin: 0 auto;
-    background-color: springgreen;
+    margin: 0 32px;
+    margin-bottom: 0px;
+  }
+}
+
+main {
+  height: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+main {
+  div:first-of-type {
+    flex-direction: column;
+    // height: 80vh;
   }
 }
 
 footer {
+  align-self: center;
   margin-top: auto;
+
+  svg {
+    max-width: 24px;
+  }
 }
+
 #gatsby-focus-wrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;

@@ -1,0 +1,16 @@
+.centeredText {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portraits {
+  display: flex;
+  flex-direction: row !important;
+  text-align: center;
+  width: 100%;
+  justify-content: space-evenly;
+  max-width: 1300px;
+  margin-top: 32px;
+}

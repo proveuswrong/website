@@ -7,20 +7,22 @@ const Header = ({ siteTitle }) => (
   <header>
     <div className={styles.container}>
       <h1 className={styles.h1}>
-        <Link to="/">{siteTitle}</Link>
+        <Link to="/">
+          PROVE <br /> US <br /> WRONG
+        </Link>
       </h1>
 
       <nav className={styles.nav}>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="/">HOME</a>
           </li>
           <li>
-            <a href="#">Products</a>
+            <a href="/products">PRODUCTS</a>
           </li>
 
           <li>
-            <a href="#">About</a>
+            <a href="/about">ABOUT</a>
           </li>
         </ul>
       </nav>

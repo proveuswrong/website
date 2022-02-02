@@ -2,8 +2,11 @@
   display: flex;
 }
 
-.h1 {
+h1 {
   margin: 0;
+  a {
+    color: red;
+  }
 }
 
 .nav > ul {
@@ -13,5 +16,19 @@
 
 .nav > ul > li {
   width: 100%;
-  margin-left: 32px;
+  margin-left: 48px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+
+  li {
+    list-style: none;
+  }
+  a {
+    color: black;
+  }
 }
