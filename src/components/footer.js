@@ -6,12 +6,12 @@ import Github from "../images/github.svg";
 
 const Footer = () => (
   <footer>
-    <div className={styles.container}>
+    <div>
       <small>
         <a
           href="https://github.com/proveuswrong"
           target="_blank"
-          rel="noopener no referrer"
+          rel="noopener noreferrer"
         >
           GitHub
         </a>

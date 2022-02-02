@@ -29,7 +29,7 @@ const About = () => (
           <p className="m-0">Ferit Tunçer</p>
           <p className="m-0">Software Engineer</p>
         </div>
-        <div>
+        <div style={{ display: "none" }}>
           <StaticImage
             src="../images/ferit.jpg"
             width={300}
