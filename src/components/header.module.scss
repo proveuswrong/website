@@ -8,8 +8,11 @@ $breakpoint-tablet: 768px;
   font-family: "monotonregular";
   text-align: left;
   margin: 0;
-  a {
-    color: red;
+
+  color: red;
+
+  &:hover {
+    color: white;
   }
 }
 
@@ -23,6 +26,10 @@ $breakpoint-tablet: 768px;
   width: 100%;
   a {
     color: black;
+  }
+
+  a:hover {
+    color: white;
   }
 }
 

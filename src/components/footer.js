@@ -12,8 +12,21 @@ const Footer = () => (
           href="https://github.com/proveuswrong"
           target="_blank"
           rel="noopener nodereferrer"
+          onMouseEnter={(e) => {
+            document.bgColor = "black";
+            if (document.getElementById("slogan"))
+              document.getElementById("slogan").style.color = "white";
+            document.getElementById("github").lastChild.style.fill = "white";
+          }}
+          onMouseLeave={(e) => {
+            document.bgColor = "white";
+            if (document.getElementById("slogan"))
+              document.getElementById("slogan").style.color = "black";
+            document.getElementById("github").lastChild.style.fill = "black";
+            console.log(document.getElementById("github").firstChild);
+          }}
         >
-          <Github />
+          <Github id="github" />
         </a>
       </small>
     </div>

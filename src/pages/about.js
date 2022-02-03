@@ -18,7 +18,7 @@ const About = () => (
       <div className={styles.portraits}>
         <div>
           <StaticImage
-            src="../images/ferit.jpg"
+            src="../images/ferit.png"
             objectFit="contain"
             width={300}
             quality={100}
@@ -31,7 +31,7 @@ const About = () => (
         </div>
         <div>
           <StaticImage
-            src="../images/munevver.jpg"
+            src="../images/munevver.png"
             width={300}
             objectFit="contain"
             quality={100}

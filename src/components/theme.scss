@@ -24,4 +24,8 @@ $palette: (
 
 a {
   color: #2904bd;
+
+  &:hover {
+    color: white;
+  }
 }

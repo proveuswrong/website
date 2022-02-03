@@ -6,22 +6,66 @@ import * as styles from "./header.module.scss";
 const Header = ({ siteTitle }) => (
   <header>
     <div className={styles.container}>
-      <h1 className={styles.h1}>
-        <Link to="/">
+      <Link to="/">
+        <h1
+          id="brand"
+          onMouseEnter={(e) => {
+            document.bgColor = "black";
+            document.getElementById("brand").style.color = "white";
+          }}
+          onMouseLeave={(e) => {
+            document.bgColor = "white";
+            document.getElementById("brand").style.color = "red";
+          }}
+          className={styles.h1}
+        >
           PROVE <br /> US <br /> WRONG
-        </Link>
-      </h1>
+        </h1>
+      </Link>
 
       <nav className={styles.nav}>
         <ul>
-          <li>
+          <li
+            onMouseEnter={(e) => {
+              document.bgColor = "black";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              document.bgColor = "white";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "black";
+            }}
+          >
             <a href="/">HOME</a>
           </li>
-          <li>
+          <li
+            onMouseEnter={(e) => {
+              document.bgColor = "black";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              document.bgColor = "white";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "black";
+            }}
+          >
             <a href="/projects">PROJECTS</a>
           </li>
 
-          <li>
+          <li
+            onMouseEnter={(e) => {
+              document.bgColor = "black";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              document.bgColor = "white";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "black";
+            }}
+          >
             <a href="/about">ABOUT</a>
           </li>
         </ul>
