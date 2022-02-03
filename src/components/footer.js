@@ -4,6 +4,28 @@ import { Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 import Github from "../images/github.svg";
 
+const handleMouseEnter = (e) => {
+  if (matchMedia("(pointer:fine)").matches) {
+    document.bgColor = "black";
+    if (document.getElementById("slogan"))
+      document.getElementById("slogan").style.color = "white";
+    if (window.location.pathname != "/")
+      document.getElementById("main").style.opacity = "0";
+    document.getElementById("github").lastChild.style.fill = "white";
+  }
+};
+
+const handleMouseLeave = (e) => {
+  if (matchMedia("(pointer:fine)").matches) {
+    document.bgColor = "white";
+    if (document.getElementById("slogan"))
+      document.getElementById("slogan").style.color = "black";
+    if (window.location.pathname != "/")
+      document.getElementById("main").style.opacity = "100";
+    document.getElementById("github").lastChild.style.fill = "black";
+  }
+};
+
 const Footer = () => (
   <footer>
     <div>
@@ -12,23 +34,8 @@ const Footer = () => (
           href="https://github.com/proveuswrong"
           target="_blank"
           rel="noopener nodereferrer"
-          onMouseEnter={(e) => {
-            document.bgColor = "black";
-            if (document.getElementById("slogan"))
-              document.getElementById("slogan").style.color = "white";
-            if (window.location.pathname != "/")
-              document.getElementById("main").style.opacity = "0";
-            document.getElementById("github").lastChild.style.fill = "white";
-          }}
-          onMouseLeave={(e) => {
-            document.bgColor = "white";
-            if (document.getElementById("slogan"))
-              document.getElementById("slogan").style.color = "black";
-            if (window.location.pathname != "/")
-              document.getElementById("main").style.opacity = "100";
-            document.getElementById("github").lastChild.style.fill = "black";
-            console.log(document.getElementById("github").firstChild);
-          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <Github id="github" />
         </a>

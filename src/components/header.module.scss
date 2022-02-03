@@ -30,9 +30,10 @@ $breakpoint-tablet: 768px;
   a {
     color: black;
   }
-
-  a:hover {
-    color: white;
+  @media (pointer: fine) {
+    a:hover {
+      color: white;
+    }
   }
 }
 
