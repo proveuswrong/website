@@ -18,7 +18,7 @@ const Header = ({ siteTitle }) => (
             <a href="/">HOME</a>
           </li>
           <li>
-            <a href="/products">PRODUCTS</a>
+            <a href="/products">PROJECTS</a>
           </li>
 
           <li>

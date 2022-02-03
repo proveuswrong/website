@@ -13,7 +13,7 @@ const Footer = () => (
           target="_blank"
           rel="noopener nodereferrer"
         >
-          GitHub
+          <Github />
         </a>
       </small>
     </div>
