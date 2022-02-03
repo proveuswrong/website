@@ -1,6 +1,8 @@
 @use "./base.scss";
 @use "./theme.scss";
 
+$breakpoint-tablet: 768px;
+
 svg {
   max-height: 100%;
   max-width: 100%;
@@ -54,4 +56,62 @@ footer {
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+p {
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+small {
+  font-size: 21px;
+}
+
+nav {
+  font-size: 21px;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  h1 {
+    font-size: 50px;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 46px;
+    font-weight: normal;
+  }
+
+  p {
+    font-family: "Space Mono", monospace;
+    font-size: 22px;
+    font-weight: 100;
+  }
+
+  small {
+    font-size: 28px;
+  }
+
+  nav {
+    font-size: 28px;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }

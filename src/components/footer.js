@@ -11,7 +11,7 @@ const Footer = () => (
         <a
           href="https://github.com/proveuswrong"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener nodereferrer"
         >
           GitHub
         </a>

@@ -1,3 +1,5 @@
+$breakpoint-tablet: 768px;
+
 .container {
   display: flex;
 }
@@ -11,7 +13,7 @@
 
 .nav > ul {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .nav > ul > li {
@@ -30,5 +32,11 @@
   }
   a {
     color: black;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .nav > ul {
+    flex-direction: row;
   }
 }

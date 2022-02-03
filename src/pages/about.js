@@ -27,7 +27,7 @@ const About = () => (
             style={{ marginBottom: `0.45rem` }}
           />
           <p className="m-0">Ferit Tunçer</p>
-          <p className="m-0">Software Engineer</p>
+          <p className="m-0">Founder - Software Engineer</p>
         </div>
         <div style={{ display: "none" }}>
           <StaticImage
