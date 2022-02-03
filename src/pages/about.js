@@ -29,9 +29,9 @@ const About = () => (
           <p className="m-0">Ferit Tunçer</p>
           <p className="m-0">Founder - Software Engineer</p>
         </div>
-        <div style={{ display: "none" }}>
+        <div>
           <StaticImage
-            src="../images/ferit.jpg"
+            src="../images/munevver.jpg"
             width={300}
             objectFit="contain"
             quality={100}
@@ -39,8 +39,8 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem` }}
           />
-          <p className="m-0">Ferit Tunçer</p>
-          <p className="m-0">Software Engineer</p>
+          <p className="m-0">Münevver Aslan</p>
+          <p className="m-0">Product Designer</p>
         </div>
       </div>
     </div>

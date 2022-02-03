@@ -9,8 +9,20 @@ import * as styles from "./projects.module.scss";
 const Projects = () => (
   <Layout>
     <Seo title="Home" />
-    <div className={styles.centeredText}>
-      <h1>Under Construction.</h1>
+    <div>
+      <h1>
+        <a
+          href="https://provemewrong.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Prove Me Wrong
+        </a>
+      </h1>
+      <p>
+        Claim something. <br />
+        Put a bounty. <br /> Invite others to prove you wrong.
+      </p>
     </div>
   </Layout>
 );
