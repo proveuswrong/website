@@ -16,12 +16,14 @@ const Footer = () => (
             document.bgColor = "black";
             if (document.getElementById("slogan"))
               document.getElementById("slogan").style.color = "white";
+            document.getElementById("main").style.display = "none";
             document.getElementById("github").lastChild.style.fill = "white";
           }}
           onMouseLeave={(e) => {
             document.bgColor = "white";
             if (document.getElementById("slogan"))
               document.getElementById("slogan").style.color = "black";
+            document.getElementById("main").style.display = "block";
             document.getElementById("github").lastChild.style.fill = "black";
             console.log(document.getElementById("github").firstChild);
           }}
