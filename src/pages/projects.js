@@ -4,9 +4,9 @@ import { Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Brand from "../images/proveuswrong.svg";
-import * as styles from "./products.module.scss";
+import * as styles from "./projects.module.scss";
 
-const Products = () => (
+const Projects = () => (
   <Layout>
     <Seo title="Home" />
     <div className={styles.centeredText}>
@@ -15,4 +15,4 @@ const Products = () => (
   </Layout>
 );
 
-export default Products;
+export default Projects;
