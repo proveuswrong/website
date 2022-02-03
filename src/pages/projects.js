@@ -10,17 +10,29 @@ const Projects = () => (
   <Layout>
     <Seo title="Home" />
     <div className={styles.container}>
-      <h1>
-        <a
-          href="https://provemewrong.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Prove Me Wrong
-        </a>
-      </h1>
+      <a
+        onMouseEnter={(e) => {
+          // console.log(e);
+          // document.bgColor = "black";
+          // document.getElementById("brand").style.color = "white";
+          // Array.from(document.getElementsByTagName("A"))
+          //   .filter((el) => el != e.target)
+          //   .map((e) => (e.style.display = "none"));
+        }}
+        onMouseLeave={(e) => {
+          // document.bgColor = "white";
+          // document.getElementById("brand").style.color = "red";
+          // Array.from(document.getElementsByTagName("A")).map(
+          //   (e) => (e.style.display = "block")
+          // );
+        }}
+        href="https://provemewrong.io"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <h1>Prove Me Wrong</h1>
+      </a>
       <h2>
-        {" "}
         A curated list of truth with decentralized fact checking powered by{" "}
         <a href="https://kleros.io" rel="noopener noreferrer">
           Kleros

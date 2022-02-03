@@ -12,10 +12,19 @@ const Header = ({ siteTitle }) => (
           onMouseEnter={(e) => {
             document.bgColor = "black";
             document.getElementById("brand").style.color = "white";
+            if (document.getElementById("slogan"))
+              document.getElementById("slogan").style.color = "white";
+            if (window.location.pathname != "/")
+              document.getElementById("main").style.opacity = "0";
           }}
           onMouseLeave={(e) => {
             document.bgColor = "white";
+            document.bgColor = "white";
+            if (document.getElementById("slogan"))
+              document.getElementById("slogan").style.color = "black";
             document.getElementById("brand").style.color = "red";
+            if (window.location.pathname != "/")
+              document.getElementById("main").style.opacity = "100";
           }}
           className={styles.h1}
         >
@@ -30,13 +39,15 @@ const Header = ({ siteTitle }) => (
               document.bgColor = "black";
               if (document.getElementById("slogan"))
                 document.getElementById("slogan").style.color = "white";
-              document.getElementById("main").style.display = "none";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "0";
             }}
             onMouseLeave={(e) => {
               document.bgColor = "white";
               if (document.getElementById("slogan"))
                 document.getElementById("slogan").style.color = "black";
-              document.getElementById("main").style.display = "block";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "100";
             }}
           >
             <a href="/">HOME</a>
@@ -46,13 +57,15 @@ const Header = ({ siteTitle }) => (
               document.bgColor = "black";
               if (document.getElementById("slogan"))
                 document.getElementById("slogan").style.color = "white";
-              document.getElementById("main").style.display = "none";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "0";
             }}
             onMouseLeave={(e) => {
               document.bgColor = "white";
               if (document.getElementById("slogan"))
                 document.getElementById("slogan").style.color = "black";
-              document.getElementById("main").style.display = "block";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "100";
             }}
           >
             <a href="/projects">PROJECTS</a>
@@ -63,13 +76,15 @@ const Header = ({ siteTitle }) => (
               document.bgColor = "black";
               if (document.getElementById("slogan"))
                 document.getElementById("slogan").style.color = "white";
-              document.getElementById("main").style.display = "none";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "0";
             }}
             onMouseLeave={(e) => {
               document.bgColor = "white";
               if (document.getElementById("slogan"))
                 document.getElementById("slogan").style.color = "black";
-              document.getElementById("main").style.display = "block";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "100";
             }}
           >
             <a href="/about">ABOUT</a>

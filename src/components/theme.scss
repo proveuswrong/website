@@ -29,3 +29,14 @@ a {
     color: pink;
   }
 }
+
+* {
+  transition-property: color background-color opacity;
+  transition-duration: 0.5s;
+}
+
+main h1,
+h2,
+a {
+  transition-duration: 0.05s;
+}
