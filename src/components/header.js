@@ -9,19 +9,15 @@ const Header = ({ siteTitle }) => (
       <Link to="/">
         <h1
           id="brand"
-          onTouchStart={(e) => {
-            console.log("touchstart");
-          }}
-          onTouchLeave={(e) => {
-            console.log("touchleave");
-          }}
           onMouseEnter={(e) => {
-            document.bgColor = "black";
-            document.getElementById("brand").style.color = "white";
-            if (document.getElementById("slogan"))
-              document.getElementById("slogan").style.color = "white";
-            if (window.location.pathname != "/")
-              document.getElementById("main").style.opacity = "0";
+            if (matchMedia("(pointer:fine)").matches) {
+              document.bgColor = "black";
+              document.getElementById("brand").style.color = "white";
+              if (document.getElementById("slogan"))
+                document.getElementById("slogan").style.color = "white";
+              if (window.location.pathname != "/")
+                document.getElementById("main").style.opacity = "0";
+            }
           }}
           onMouseLeave={(e) => {
             document.bgColor = "white";
