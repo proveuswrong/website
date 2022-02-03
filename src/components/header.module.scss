@@ -11,8 +11,11 @@ $breakpoint-tablet: 768px;
 
   color: red;
 
-  &:hover {
-    color: white;
+  @media (pointer: fine) {
+    /* Rules for devices with mouse here */
+    &:hover {
+      color: white;
+    }
   }
 }
 
