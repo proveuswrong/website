@@ -9,6 +9,12 @@ const Header = ({ siteTitle }) => (
       <Link to="/">
         <h1
           id="brand"
+          onTouchStart={(e) => {
+            console.log("touchstart");
+          }}
+          onTouchLeave={(e) => {
+            console.log("touchleave");
+          }}
           onMouseEnter={(e) => {
             document.bgColor = "black";
             document.getElementById("brand").style.color = "white";
