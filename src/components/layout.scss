@@ -75,10 +75,14 @@ p {
 }
 
 small {
-  font-size: 21px;
+  font-family: "Space Mono", monospace;
+
+  font-size: 13px;
 }
 
 nav {
+  font-family: "Space Mono", monospace;
+
   font-size: 21px;
 }
 
@@ -107,13 +111,12 @@ a {
   }
 
   p {
-    font-family: "Space Mono", monospace;
     font-size: 22px;
     font-weight: 100;
   }
 
   small {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   nav {
