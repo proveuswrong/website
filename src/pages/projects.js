@@ -9,7 +9,7 @@ import * as styles from "./projects.module.scss";
 const Projects = () => (
   <Layout>
     <Seo title="Home" />
-    <div>
+    <div className={styles.container}>
       <h1>
         <a
           href="https://provemewrong.io"
@@ -19,10 +19,15 @@ const Projects = () => (
           Prove Me Wrong
         </a>
       </h1>
-      <p>
-        Claim something. <br />
-        Put a bounty. <br /> Invite others to prove you wrong.
-      </p>
+      <h2>
+        {" "}
+        A curated list of truth with decentralized fact checking powered by{" "}
+        <a href="https://kleros.io" rel="noopener noreferrer">
+          Kleros
+        </a>
+        .
+      </h2>
+      <p>Claim something. Put a bounty. Invite others to prove you wrong.</p>
     </div>
   </Layout>
 );

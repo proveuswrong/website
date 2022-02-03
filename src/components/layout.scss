@@ -59,6 +59,10 @@ footer {
   flex: 1;
 }
 
+li {
+  font-family: "Space Mono", monospace;
+}
+
 h1 {
   font-family: "Space Mono", monospace;
   font-size: 28px;
@@ -66,7 +70,8 @@ h1 {
 }
 
 h2 {
-  font-size: 30px;
+  font-family: "Space Mono", monospace;
+  font-size: 24px;
   font-weight: normal;
 }
 
@@ -90,10 +95,6 @@ nav {
   font-family: "Space Mono", monospace;
 }
 
-a {
-  text-decoration: none;
-}
-
 @media (min-width: $breakpoint-tablet) {
   header,
   main,
@@ -105,12 +106,12 @@ a {
     }
   }
   h1 {
-    font-size: 50px;
+    font-size: 44px;
     font-weight: normal;
   }
 
   h2 {
-    font-size: 46px;
+    font-size: 28px;
     font-weight: normal;
   }
 
@@ -125,10 +126,6 @@ a {
 
   header * {
     font-size: 28px;
-  }
-
-  a {
-    text-decoration: none;
   }
 
   footer {
