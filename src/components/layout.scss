@@ -82,7 +82,8 @@ body > div:first-child {
 }
 
 main {
-  height: 100%;
+  height: auto;
+  margin: auto;
   padding-top: 32px;
   padding-bottom: 32px;
 }
@@ -108,7 +109,6 @@ footer {
 
 footer {
   align-self: center;
-  margin-top: auto;
   margin-bottom: 16px;
 
   svg {
