@@ -8,6 +8,7 @@
 .portraits {
   display: flex;
   flex-direction: row !important;
+  flex-wrap: wrap;
   text-align: center;
   width: 100%;
   justify-content: space-evenly;

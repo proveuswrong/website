@@ -21,10 +21,11 @@ const About = () => (
             src="../images/ferit.png"
             objectFit="contain"
             width={300}
+            minWidth={200}
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="A Gatsby astronaut"
-            style={{ marginBottom: `0.45rem` }}
+            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <p className="m-0">Ferit Tunçer</p>
           <p className="m-0">Founder - Software Engineer</p>
@@ -33,11 +34,12 @@ const About = () => (
           <StaticImage
             src="../images/munevver.png"
             width={300}
+            minWidth={200}
             objectFit="contain"
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="A Gatsby astronaut"
-            style={{ marginBottom: `0.45rem` }}
+            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <p className="m-0">Münevver Aslan</p>
           <p className="m-0">Product Designer</p>
