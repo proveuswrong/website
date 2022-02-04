@@ -21,7 +21,6 @@ const About = () => (
             src="../images/ferit.png"
             objectFit="contain"
             width={300}
-            minWidth={200}
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="A Gatsby astronaut"
@@ -34,7 +33,6 @@ const About = () => (
           <StaticImage
             src="../images/munevver.png"
             width={300}
-            minWidth={200}
             objectFit="contain"
             quality={100}
             formats={["auto", "webp", "avif"]}
