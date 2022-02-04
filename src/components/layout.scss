@@ -9,11 +9,16 @@ svg {
   width: 100%;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   // background: url("/subtle-prism.svg") repeat;
   height: 100vh;
   height: -webkit-fill-available;
+  height: 100%;
 }
 
 body > div:first-child {
