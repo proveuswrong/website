@@ -21,8 +21,8 @@ body > div:first-child {
 
 main {
   height: 100%;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 header,
@@ -36,9 +36,10 @@ footer {
   }
 }
 
-main {
-  div:first-of-type {
+#main {
+  > div:first-child {
     flex-direction: column;
+    margin: 0 calc(8px + 10vw);
     // height: 80vh;
   }
 }
@@ -97,6 +98,11 @@ nav {
 }
 
 @media (min-width: $breakpoint-tablet) {
+  main {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
   header,
   main,
   footer {
