@@ -12,7 +12,7 @@ const About = () => (
     <Seo title="Home" />
     <div className={styles.centeredText}>
       <p>
-        We are a small passionate team that develops decentralized applications just
+        We are a small, passionate team that develops decentralized applications
         for fun.
       </p>
       <div className={styles.portraits}>
