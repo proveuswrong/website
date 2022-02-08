@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://proveuswrong.io/`,
   },
   plugins: [
+    "gatsby-plugin-robots-txt",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
