@@ -36,9 +36,7 @@ const handleTwitterMouseEnter = (e) => {
       document.getElementById("slogan").style.color = "white";
     if (window.location.pathname != "/")
       document.getElementById("main").style.opacity = "0";
-    document.getElementById("twitter").lastChild.firstChild.style.fill =
-      "black";
-    document.getElementById("Dark_Blue").firstChild.style.fill = "white";
+    document.getElementById("twitter").lastChild.style.fill = "white";
     document.getElementById("github").style.opacity = "0";
   }
 };
@@ -50,9 +48,7 @@ const handleTwitterMouseLeave = (e) => {
       document.getElementById("slogan").style.color = "black";
     if (window.location.pathname != "/")
       document.getElementById("main").style.opacity = "100";
-    document.getElementById("twitter").lastChild.firstChild.style.fill =
-      "white";
-    document.getElementById("Dark_Blue").firstChild.style.fill = "black";
+    document.getElementById("twitter").lastChild.style.fill = "black";
     document.getElementById("github").style.opacity = "100";
   }
 };
