@@ -109,7 +109,7 @@ footer {
 
 footer {
   align-self: center;
-  margin-bottom: 16px;
+  padding-bottom: 8px;
   width: 100%;
 
   svg {
@@ -210,6 +210,8 @@ nav {
   }
 
   footer {
+    padding-bottom: 16px;
+
     svg {
       max-width: 53px;
       height: 32px;
