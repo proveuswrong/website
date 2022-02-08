@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import Brand from "../images/proveuswrong.svg";
 import { StaticImage } from "gatsby-plugin-image";
 import * as styles from "./about.module.scss";
 

@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import Brand from "../images/proveuswrong.svg";
 import * as styles from "./index.module.scss";
 
 const IndexPage = () => (

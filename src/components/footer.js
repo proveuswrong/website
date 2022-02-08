@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 import Github from "../images/github.svg";
+import Twitter from "../images/twitter.svg";
 
-const handleMouseEnter = (e) => {
+const handleGithubMouseEnter = (e) => {
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "black";
     if (document.getElementById("slogan"))
@@ -12,10 +13,11 @@ const handleMouseEnter = (e) => {
     if (window.location.pathname != "/")
       document.getElementById("main").style.opacity = "0";
     document.getElementById("github").lastChild.style.fill = "white";
+    document.getElementById("twitter").style.opacity = "0";
   }
 };
 
-const handleMouseLeave = (e) => {
+const handleGithubMouseLeave = (e) => {
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "white";
     if (document.getElementById("slogan"))
@@ -23,6 +25,35 @@ const handleMouseLeave = (e) => {
     if (window.location.pathname != "/")
       document.getElementById("main").style.opacity = "100";
     document.getElementById("github").lastChild.style.fill = "black";
+    document.getElementById("twitter").style.opacity = "100";
+  }
+};
+
+const handleTwitterMouseEnter = (e) => {
+  if (matchMedia("(pointer:fine)").matches) {
+    document.bgColor = "black";
+    if (document.getElementById("slogan"))
+      document.getElementById("slogan").style.color = "white";
+    if (window.location.pathname != "/")
+      document.getElementById("main").style.opacity = "0";
+    document.getElementById("twitter").lastChild.firstChild.style.fill =
+      "black";
+    document.getElementById("Dark_Blue").firstChild.style.fill = "white";
+    document.getElementById("github").style.opacity = "0";
+  }
+};
+
+const handleTwitterMouseLeave = (e) => {
+  if (matchMedia("(pointer:fine)").matches) {
+    document.bgColor = "white";
+    if (document.getElementById("slogan"))
+      document.getElementById("slogan").style.color = "black";
+    if (window.location.pathname != "/")
+      document.getElementById("main").style.opacity = "100";
+    document.getElementById("twitter").lastChild.firstChild.style.fill =
+      "white";
+    document.getElementById("Dark_Blue").firstChild.style.fill = "black";
+    document.getElementById("github").style.opacity = "100";
   }
 };
 
@@ -34,10 +65,19 @@ const Footer = () => (
           href="https://github.com/proveuswrong"
           target="_blank"
           rel="noopener nodereferrer"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleGithubMouseEnter}
+          onMouseLeave={handleGithubMouseLeave}
         >
           <Github id="github" />
+        </a>
+        <a
+          href="https://twitter.com/ProveUsWrongIO"
+          target="_blank"
+          rel="noopener nodereferrer"
+          onMouseEnter={handleTwitterMouseEnter}
+          onMouseLeave={handleTwitterMouseLeave}
+        >
+          <Twitter id="twitter" />
         </a>
       </small>
     </div>
