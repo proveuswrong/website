@@ -8,7 +8,7 @@ import * as styles from "./projects.module.scss";
 
 const Projects = () => (
   <Layout>
-    <Seo title="Home" />
+    <Seo title="Projects" />
     <div className={styles.container}>
       <a
         onMouseEnter={(e) => {
