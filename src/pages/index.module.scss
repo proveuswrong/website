@@ -9,11 +9,12 @@ $breakpoint-tablet: 768px;
 .h1 {
   font-family: "monotonregular";
   white-space: break-spaces;
+  text-transform: uppercase;
 }
 
 @media (max-width: $breakpoint-tablet) {
   .h1 {
-    width: 240px;
+    width: 300px;
     align-self: center;
   }
 }

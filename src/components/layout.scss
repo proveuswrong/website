@@ -102,8 +102,7 @@ footer {
 #main {
   > div:first-child {
     flex-direction: column;
-    margin: 0 calc(8px + 10vw);
-    // height: 80vh;
+    padding: 0 calc(8px + 3vw);
   }
 }
 
