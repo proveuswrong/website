@@ -10,10 +10,10 @@ const About = () => (
   <Layout>
     <Seo title="About" />
     <div className={styles.centeredText}>
-      <p>
+      <h2>
         We are a small, passionate team that develops decentralized applications
         for fun.
-      </p>
+      </h2>
       <div className={styles.portraits}>
         <div>
           <StaticImage
