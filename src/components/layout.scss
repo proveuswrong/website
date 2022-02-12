@@ -82,6 +82,7 @@ body > div:first-child {
 }
 
 main {
+  text-align: center;
   height: auto;
   margin: auto;
   padding-top: 32px;
@@ -89,7 +90,6 @@ main {
 }
 
 header,
-main,
 footer {
   > div:first-child {
     min-width: auto;
@@ -101,8 +101,9 @@ footer {
 
 #main {
   > div:first-child {
+    padding: 0 16px;
+
     flex-direction: column;
-    padding: 0 calc(8px + 3vw);
   }
 }
 
@@ -169,6 +170,10 @@ nav {
   main {
     padding-top: 32px;
     padding-bottom: 32px;
+
+    > div:first-child {
+      padding: 0 calc(8px + 3vw);
+    }
   }
 
   header,
