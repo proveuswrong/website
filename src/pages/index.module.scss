@@ -1,9 +1,10 @@
 $breakpoint-tablet: 768px;
 
 .centeredText {
-  height: 100%;
   display: flex;
   justify-content: center;
+  height: 100%;
+  margin-top: 0 !important;
 }
 
 .h1 {

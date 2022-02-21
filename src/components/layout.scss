@@ -1,3 +1,5 @@
+@use "base";
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 
@@ -32,7 +34,7 @@ a {
 
 * {
   transition-property: color background-color opacity;
-  transition-duration: 0.2s;
+  transition-duration: 0.1s;
 }
 
 main h1,
@@ -81,36 +83,39 @@ body > div:first-child {
   height: inherit;
 }
 
+header,
+main,
+footer {
+  padding: 16px;
+}
+
 main {
-  text-align: center;
-  height: auto;
-  margin: auto;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  height: 100%;
 }
 
 header,
 footer {
   > div:first-child {
+    height: 100%;
     min-width: auto;
-    margin: 16px 16px;
-    margin-bottom: 0px;
     text-align: center;
   }
 }
 
-#main {
+main {
   > div:first-child {
-    padding: 0 16px;
-
+    max-width: 1000px;
+    margin-top: calc(32px + 5vw);
+    margin-left: auto;
+    margin-right: auto;
     flex-direction: column;
   }
 }
 
 footer {
+  height: 132px; // To match header height
   align-self: center;
-  padding-bottom: 8px;
-  width: 100%;
+  width: -webkit-fill-available;
 
   svg {
     max-width: 35px;
@@ -136,13 +141,13 @@ li {
 
 h1 {
   font-family: "Space Mono", monospace;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: normal;
 }
 
 h2 {
   font-family: "Space Mono", monospace;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: normal;
 }
 
@@ -167,23 +172,30 @@ nav {
 }
 
 @media (min-width: $breakpoint-tablet) {
-  main {
-    padding-top: 32px;
-    padding-bottom: 32px;
-
-    > div:first-child {
-      padding: 0 calc(8px + 3vw);
-    }
-  }
-
   header,
   main,
   footer {
+    padding: 16px 32px;
+
     > div:first-child {
       min-width: auto;
-      margin: 16px 32px;
       margin-bottom: 0px;
     }
+  }
+
+  header * {
+    font-size: 28px;
+  }
+
+  footer {
+    svg {
+      max-width: 53px;
+      height: 32px;
+    }
+  }
+
+  nav * {
+    font-size: 21px;
   }
 
   .hero {
@@ -201,24 +213,11 @@ nav {
   }
 
   p {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 100;
   }
 
   small {
     font-size: 22px;
-  }
-
-  header * {
-    font-size: 28px;
-  }
-
-  footer {
-    padding-bottom: 16px;
-
-    svg {
-      max-width: 53px;
-      height: 32px;
-    }
   }
 }

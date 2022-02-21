@@ -23,6 +23,8 @@ const handleMouseLeave = (e) => {
     document.getElementById("main").style.opacity = "100";
 };
 
+const isCurrentPage = (url) => window.location.href == url;
+
 const Header = ({ siteTitle }) => (
   <header>
     <div className={styles.container}>
@@ -39,15 +41,30 @@ const Header = ({ siteTitle }) => (
 
       <nav className={styles.nav}>
         <ul>
-          <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <li
+            className={window.location.pathname == "/" ? "grayed-out" : ""}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <a href="/">HOME</a>
           </li>
-          <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+
+          <li
+            className={
+              window.location.pathname == "/projects" ? "grayed-out" : ""
+            }
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <a href="/projects">PROJECTS</a>
           </li>
 
-          <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <a href="/about">ABOUT</a>
+          <li
+            className={window.location.pathname == "/about" ? "grayed-out" : ""}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <a href="/about">ABOUT </a>
           </li>
         </ul>
       </nav>

@@ -55,7 +55,7 @@ const handleTwitterMouseLeave = (e) => {
 
 const Footer = () => (
   <footer>
-    <div>
+    <div className={styles.container}>
       <small>
         <a
           href="https://github.com/proveuswrong"
