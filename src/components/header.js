@@ -23,7 +23,10 @@ const handleMouseLeave = (e) => {
     document.getElementById("main").style.opacity = "100";
 };
 
-const isCurrentPage = (url) => window.location.href == url;
+const doesPathEqualsToCurrentPathname = (pathname) => {
+  if (typeof window === "undefined") return false;
+  else return window.location.pathname == pathname;
+};
 
 const Header = ({ siteTitle }) => (
   <header>
@@ -42,7 +45,7 @@ const Header = ({ siteTitle }) => (
       <nav className={styles.nav}>
         <ul>
           <li
-            className={window.location.pathname == "/" ? "grayed-out" : ""}
+            className={doesPathEqualsToCurrentPathname("/") && `grayed-out`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -51,7 +54,7 @@ const Header = ({ siteTitle }) => (
 
           <li
             className={
-              window.location.pathname == "/projects" ? "grayed-out" : ""
+              doesPathEqualsToCurrentPathname("/projects") && `grayed-out`
             }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -60,7 +63,9 @@ const Header = ({ siteTitle }) => (
           </li>
 
           <li
-            className={window.location.pathname == "/about" ? "grayed-out" : ""}
+            className={
+              doesPathEqualsToCurrentPathname("/about") && `grayed-out`
+            }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
