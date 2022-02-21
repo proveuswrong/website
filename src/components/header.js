@@ -54,7 +54,7 @@ const Header = ({ siteTitle }) => (
 
           <li
             className={
-              doesPathEqualsToCurrentPathname("/projects") && `grayed-out`
+              doesPathEqualsToCurrentPathname("/projects/") && `grayed-out`
             }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -64,7 +64,7 @@ const Header = ({ siteTitle }) => (
 
           <li
             className={
-              doesPathEqualsToCurrentPathname("/about") && `grayed-out`
+              doesPathEqualsToCurrentPathname("/about/") && `grayed-out`
             }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
