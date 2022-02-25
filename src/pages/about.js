@@ -19,6 +19,7 @@ const About = () => (
           <StaticImage
             src="../images/ferit.png"
             objectFit="contain"
+            minWidth={50}
             width={300}
             quality={100}
             formats={["auto", "webp", "avif"]}
@@ -31,6 +32,7 @@ const About = () => (
         <div>
           <StaticImage
             src="../images/munevver.png"
+            minWidth={50}
             width={300}
             objectFit="contain"
             quality={100}

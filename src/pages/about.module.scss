@@ -20,4 +20,8 @@
   div {
     margin-top: 16px;
   }
+
+  & > div:first-child {
+    margin-right: 16px;
+  }
 }

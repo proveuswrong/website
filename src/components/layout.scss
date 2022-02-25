@@ -114,7 +114,7 @@ main {
 }
 
 footer {
-  height: 132px; // To match header height
+  min-height: 132px; // To match header height
   align-self: center;
   width: -webkit-fill-available;
   width: -moz-available;
