@@ -91,6 +91,7 @@ footer {
 
 main {
   height: 100%;
+  padding-bottom: 0; // Footer has excess space on top anyway.
 }
 
 header,
@@ -182,6 +183,10 @@ nav {
       min-width: auto;
       margin-bottom: 0px;
     }
+  }
+
+  main {
+    padding-bottom: 0; // Footer has excess space on top anyway.
   }
 
   header * {
