@@ -9,7 +9,7 @@ import * as styles from "./about.module.scss";
 const About = () => (
   <Layout>
     <Seo title="About" />
-    <div className={styles.centeredText}>
+    <div className={styles.about}>
       <h2>
         We are a small, passionate team that develops decentralized applications
         for fun.

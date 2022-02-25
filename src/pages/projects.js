@@ -22,8 +22,9 @@ const Projects = () => (
         <a href="https://kleros.io" rel="noopener noreferrer">
           Kleros
         </a>{" "}
-        provides an effective way to prove anything to public. Claim something.
-        Put a bounty. Invite others to prove you wrong.
+        provides an effective way to prove anything to public. Fully
+        decentralized: no need to trust anyone. Claim something. Put a bounty.
+        Invite others to prove you wrong.
       </p>
     </div>
   </Layout>

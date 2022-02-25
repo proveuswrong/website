@@ -1,6 +1,10 @@
-.centeredText {
+.about {
   display: flex;
   align-items: center;
+
+  & :global(h2) {
+    text-align: center;
+  }
 }
 
 .portraits {

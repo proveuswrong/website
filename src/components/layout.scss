@@ -86,7 +86,7 @@ body > div:first-child {
 header,
 main,
 footer {
-  padding: 16px;
+  padding: 20px;
 }
 
 main {
@@ -105,7 +105,7 @@ footer {
 main {
   > div:first-child {
     max-width: 1000px;
-    margin-top: calc(32px + 5vw);
+    margin-top: calc(1vw);
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
@@ -116,6 +116,7 @@ footer {
   height: 132px; // To match header height
   align-self: center;
   width: -webkit-fill-available;
+  width: -moz-available;
 
   svg {
     max-width: 35px;
