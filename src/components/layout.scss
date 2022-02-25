@@ -90,7 +90,8 @@ footer {
 }
 
 main {
-  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
   padding-bottom: 0; // Footer has excess space on top anyway.
 }
 
@@ -114,6 +115,7 @@ main {
 }
 
 footer {
+  // margin-top: auto;
   min-height: 132px; // To match header height
   align-self: center;
   width: -webkit-fill-available;
