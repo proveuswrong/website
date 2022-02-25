@@ -3,10 +3,14 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import * as styles from "./header.module.scss";
 
+const sleep = (ms, r) => new Promise((r) => setTimeout(r, ms));
+
 const handleMouseEnter = (e) => {
+  // setTimeout(() => {
+  //   e.target.click();
+  // }, 3000);
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "black";
-    document.getElementById("brand").style.color = "white";
     if (document.getElementById("slogan"))
       document.getElementById("slogan").style.color = "white";
     if (window.location.pathname != "/")
@@ -18,7 +22,6 @@ const handleMouseLeave = (e) => {
   document.bgColor = "white";
   if (document.getElementById("slogan"))
     document.getElementById("slogan").style.color = "black";
-  document.getElementById("brand").style.color = "red";
   if (window.location.pathname != "/")
     document.getElementById("main").style.opacity = "100";
 };
@@ -53,8 +56,9 @@ const Header = ({ siteTitle }) => (
       <nav className={styles.nav}>
         <ul>
           <li
-            className={`
-               ${doesPathEqualsToCurrentPathname("/") ? "grayed-out" : ""}`}
+            className={` ${
+              doesPathEqualsToCurrentPathname("/") ? "grayed-out" : ""
+            }`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -62,10 +66,9 @@ const Header = ({ siteTitle }) => (
           </li>
 
           <li
-            className={`
-             ${
-               doesPathEqualsToCurrentPathname("/projects/") ? "grayed-out" : ""
-             }`}
+            className={` ${
+              doesPathEqualsToCurrentPathname("/projects/") ? "grayed-out" : ""
+            }`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -73,8 +76,9 @@ const Header = ({ siteTitle }) => (
           </li>
 
           <li
-            className={`
-             ${doesPathEqualsToCurrentPathname("/about/") ? "grayed-out" : ""}`}
+            className={` ${
+              doesPathEqualsToCurrentPathname("/about/") ? "grayed-out" : ""
+            }`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
