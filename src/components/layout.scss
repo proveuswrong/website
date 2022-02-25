@@ -89,12 +89,6 @@ footer {
   padding: 20px;
 }
 
-main {
-  margin-top: auto;
-  margin-bottom: auto;
-  padding-bottom: 0; // Footer has excess space on top anyway.
-}
-
 header,
 footer {
   > div:first-child {
@@ -105,6 +99,8 @@ footer {
 }
 
 main {
+  padding-bottom: 0;
+  height: 100%; // Problematic in screens with long text. To be fixed later.
   > div:first-child {
     max-width: 1000px;
     margin-top: calc(1vw);
@@ -115,7 +111,7 @@ main {
 }
 
 footer {
-  // margin-top: auto;
+  margin-top: auto;
   min-height: 132px; // To match header height
   align-self: center;
   width: -webkit-fill-available;
@@ -179,7 +175,7 @@ nav {
   header,
   main,
   footer {
-    padding: 16px 32px;
+    padding: 20px 32px;
 
     > div:first-child {
       min-width: auto;

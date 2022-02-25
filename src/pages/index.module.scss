@@ -1,10 +1,9 @@
 $breakpoint-tablet: 768px;
 
-.centeredText {
+.container {
   display: flex;
   justify-content: center;
   height: 100%;
-  margin-top: 0 !important;
   text-align: center;
 }
 
@@ -16,7 +15,7 @@ $breakpoint-tablet: 768px;
 
 @media (max-width: $breakpoint-tablet) {
   .h1 {
-    width: 300px;
+    width: min(100%, 340px);
     align-self: center;
   }
 }
