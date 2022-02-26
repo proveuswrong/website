@@ -36,7 +36,9 @@ a {
   transition-property: color background-color opacity;
   transition-duration: 0.1s;
 }
-
+#brand {
+  font-size: 21px;
+}
 main h1,
 h2,
 a {
@@ -141,13 +143,13 @@ li {
 
 h1 {
   font-family: "Space Mono", monospace;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: normal;
 }
 
 h2 {
   font-family: "Space Mono", monospace;
-  font-size: 17px;
+  font-size: 22px;
   font-weight: normal;
 }
 
@@ -207,12 +209,16 @@ nav {
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 37px;
     font-weight: normal;
   }
 
+  #brand {
+    font-size: 30px;
+  }
+
   h2 {
-    font-size: 26px;
+    font-size: 29px;
     font-weight: normal;
   }
 
