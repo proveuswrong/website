@@ -17,6 +17,7 @@ const Projects = () => (
         <h1>Prove Me Wrong</h1>
       </a>
       <h2>A Curated List of Truth With Decentralized Fact Checking</h2>
+
       <p>
         Using probabilistic truthfulness, this application of{" "}
         <a href="https://kleros.io" rel="noopener noreferrer">

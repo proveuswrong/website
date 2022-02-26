@@ -1,18 +1,17 @@
 @use "base";
+@use "sass:math";
 
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-@font-face {
-  font-family: "monotonregular";
-  src: url("monoton-regular-webfont.woff2") format("woff2"),
-    url("monoton-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+$breakpoint-large: 1200px;
+$breakpoint-tablet: 768px;
+$breakpoint-small: 480px;
+
+$golden-ratio: 1.618033;
+$font-size-base: 12px; // Golden ditonic scale with base font sizes of 12px, 14px, 16px and 18px for different viewport width sizes.
 
 body {
-  font-family: "monotonregular";
+  font-family: "Space Mono", monospace;
   color: black;
 }
 
@@ -36,18 +35,14 @@ a {
   transition-property: color background-color opacity;
   transition-duration: 0.1s;
 }
-
+#brand {
+  font-family: "Monoton", cursive;
+  font-size: 21px;
+}
 main h1,
 h2,
 a {
   transition-duration: 0.05s;
-}
-:root {
-  font-size: 20px;
-}
-
-.m-0 {
-  margin: 0;
 }
 
 ul {
@@ -58,8 +53,6 @@ ul {
 header a {
   text-decoration: none;
 }
-
-$breakpoint-tablet: 768px;
 
 svg {
   max-height: 100%;
@@ -131,36 +124,37 @@ footer {
   flex: 1;
 }
 
-li {
-  font-family: "Space Mono", monospace;
-}
-
 .hero {
+  font-family: "Monoton", cursive;
   font-size: 28px;
 }
 
 h1 {
-  font-family: "Space Mono", monospace;
-  font-size: 20px;
+  font-size: $font-size-base * math.pow($golden-ratio, math.div(3, 2));
+
   font-weight: normal;
 }
 
 h2 {
-  font-family: "Space Mono", monospace;
-  font-size: 17px;
+  font-size: $font-size-base * math.pow($golden-ratio, math.div(2, 2));
+
+  font-weight: normal;
+}
+
+h3 {
+  font-size: $font-size-base * math.pow($golden-ratio, math.div(1, 2));
+
   font-weight: normal;
 }
 
 p {
-  font-family: "Space Mono", monospace;
-  font-size: 14px;
+  font-size: $font-size-base * math.pow($golden-ratio, math.div(0, 2));
+
   font-weight: 100;
 }
 
 small {
-  font-family: "Space Mono", monospace;
-
-  font-size: 13px;
+  font-size: $font-size-base * math.pow($golden-ratio, math.div(-1, 2));
 }
 
 header * {
@@ -168,10 +162,55 @@ header * {
 }
 
 nav {
-  font-family: "Space Mono", monospace;
+}
+
+@media (min-width: $breakpoint-small) {
+  $font-size-base: 14px;
+
+  h1 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(3, 2));
+  }
+
+  h2 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(2, 2));
+  }
+
+  h3 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(1, 2));
+  }
+
+  p {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(0, 2));
+  }
+
+  small {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(-1, 2));
+  }
 }
 
 @media (min-width: $breakpoint-tablet) {
+  $font-size-base: 16px;
+
+  h1 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(3, 2));
+  }
+
+  h2 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(2, 2));
+  }
+
+  h3 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(1, 2));
+  }
+
+  p {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(0, 2));
+  }
+
+  small {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(-1, 2));
+  }
+
   header,
   main,
   footer {
@@ -206,22 +245,31 @@ nav {
     font-size: 44px;
   }
 
-  h1 {
+  #brand {
     font-size: 30px;
-    font-weight: normal;
+  }
+}
+
+@media (min-width: $breakpoint-large) {
+  $font-size-base: 18px;
+
+  h1 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(3, 2));
   }
 
   h2 {
-    font-size: 26px;
-    font-weight: normal;
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(2, 2));
+  }
+
+  h3 {
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(1, 2));
   }
 
   p {
-    font-size: 18px;
-    font-weight: 100;
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(0, 2));
   }
 
   small {
-    font-size: 22px;
+    font-size: $font-size-base * math.pow($golden-ratio, math.div(-1, 2));
   }
 }

@@ -52,7 +52,7 @@ const Header = ({ siteTitle }) => {
             onMouseLeave={handleMouseLeave}
             className={styles.h1}
           >
-            PROVE <br /> US <br /> WRONG
+            prove <br /> us <br /> wrong
           </h1>
         </Link>
 
