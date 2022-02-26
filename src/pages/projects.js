@@ -17,7 +17,6 @@ const Projects = () => (
         <h1>Prove Me Wrong</h1>
       </a>
       <h2>A Curated List of Truth With Decentralized Fact Checking</h2>
-      <h3>h3 for testing</h3>
 
       <p>
         Using probabilistic truthfulness, this application of{" "}
