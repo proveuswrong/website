@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
 
-  & :global(h1) {
+  & :global(h1),
+  & :global(h2) {
     text-align: center;
   }
 }

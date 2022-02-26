@@ -10,10 +10,11 @@ const About = () => (
   <Layout>
     <Seo title="About" />
     <div className={styles.about}>
-      <h1>
+      <h1> Meet the Team </h1>
+      <h2>
         We are a small, passionate team that develops decentralized applications
         for fun.
-      </h1>
+      </h2>
       <div className={styles.portraits}>
         <div>
           <StaticImage

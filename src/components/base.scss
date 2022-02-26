@@ -14,3 +14,14 @@ body {
 .m-0 {
   margin: 0;
 }
+
+* {
+  transition-property: color background-color opacity;
+  transition-duration: 0.1s;
+}
+
+main h1,
+h2,
+a {
+  transition-duration: 0.05s;
+}
