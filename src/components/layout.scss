@@ -45,7 +45,7 @@ a {
   transition-duration: 0.05s;
 }
 :root {
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .m-0 {
@@ -150,6 +150,12 @@ h1 {
 h2 {
   font-family: "Space Mono", monospace;
   font-size: 22px;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: "Space Mono", monospace;
+  font-size: 18px;
   font-weight: normal;
 }
 

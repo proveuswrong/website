@@ -26,7 +26,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <p className="m-0">Ferit Tunçer</p>
+          <h3 className="m-0">Ferit Tunçer</h3>
           <p className="m-0">Founder - Software Engineer</p>
         </div>
         <div>
@@ -40,7 +40,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <p className="m-0">Münevver Aslan</p>
+          <h3 className="m-0">Münevver Aslan</h3>
           <p className="m-0">Product Designer</p>
         </div>
       </div>
