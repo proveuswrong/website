@@ -14,9 +14,9 @@ const Projects = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <h1>Prove Me Wrong</h1>
+        <h2>Prove Me Wrong</h2>
       </a>
-      <h2>A Curated List of Truth With Decentralized Fact Checking</h2>
+      <h3>A Curated List of Truth With Decentralized Fact Checking</h3>
 
       <p>
         Using probabilistic truthfulness, this application of{" "}

@@ -52,11 +52,12 @@ const Header = ({ siteTitle }) => {
             onMouseLeave={handleMouseLeave}
             className={styles.h1}
           >
-            prove <br /> us <br /> wrong
+            Prove <br /> Us <br /> Wrong
           </h1>
         </Link>
 
         <nav className={styles.nav}>
+          <h1 style={{ display: "none" }}>Navigation</h1>
           <ul>
             <li
               ref={home}

@@ -9,9 +9,9 @@ const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
     <div className={styles.container}>
-      <h1 id="slogan" className={`hero ` + styles.h1}>
+      <h2 id="slogan" className={`hero ` + styles.h1}>
         We {"  "} build {"  "} the {"  "} next {"  "} cool {"  "} thing.
-      </h1>
+      </h2>
     </div>
   </Layout>
 );
