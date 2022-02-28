@@ -76,7 +76,7 @@ const Footer = () => (
           <Twitter id="twitter" />
         </a>
       </div>
-      <small>Copyright {new Date().getFullYear()} </small>
+      <small>Copyright {new Date().getFullYear()} Prove Us Wrong</small>
     </div>
   </footer>
 );
