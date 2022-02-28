@@ -56,7 +56,7 @@ const handleTwitterMouseLeave = (e) => {
 const Footer = () => (
   <footer>
     <div className={styles.container}>
-      <small>
+      <div className={styles.social}>
         <a
           href="https://github.com/proveuswrong"
           target="_blank"
@@ -75,7 +75,8 @@ const Footer = () => (
         >
           <Twitter id="twitter" />
         </a>
-      </small>
+      </div>
+      <small>Copyright {new Date().getFullYear()} </small>
     </div>
   </footer>
 );

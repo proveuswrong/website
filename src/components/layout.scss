@@ -46,7 +46,7 @@ $h2: 1rem * math.pow($ratio, math.div(3, 4));
 $h3: 1rem * math.pow($ratio, math.div(2, 4));
 $h4: 1rem * math.pow($ratio, math.div(1, 4));
 $p: 1rem * math.pow($ratio, math.div(0, 4));
-$small: math.pow($ratio, math.div(-1, 4));
+$small: 1rem * math.pow($ratio, math.div(-1, 4));
 
 $breakpoint-large: 1200px;
 $breakpoint-tablet: 768px;
@@ -199,8 +199,7 @@ p {
 }
 
 small {
-  font-size: $font-size-base * math.pow($golden-ratio, math.div(-1, 2));
-  font-size: $p;
+  font-size: $small;
 }
 
 header * {
