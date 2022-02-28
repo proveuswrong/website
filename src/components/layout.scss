@@ -122,8 +122,8 @@ footer {
 }
 
 main {
+  flex: auto;
   padding-bottom: 0;
-  height: 100%; // Problematic in screens with long text. To be fixed later.
   > div:first-child {
     max-width: 1000px;
     margin-top: calc(1vw);
