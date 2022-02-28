@@ -16,16 +16,35 @@ const Projects = () => (
       >
         <h2>Prove Me Wrong</h2>
       </a>
-      <h3>A Curated List of Truth With Decentralized Fact Checking</h3>
-
+      <h3>
+        Better Advertising with Curated Lists of Facts with Decentralized
+        Fact-Checking
+      </h3>
       <p>
-        Using probabilistic truthfulness, this application of{" "}
+        Since, most of the time, there is no trustworthy way to prove claims to
+        the public, advertisers follow the "louder is righter" approach. This is
+        wasteful because it drives advertisers to compete and use more and more
+        resources. Actually, advertising is the most wasteful industry: it
+        produces no goods yet consumes an enormous amount of resources.
+        Convincing people to facts should not be that expensive. And with Prove
+        Me Wrong, it does not have to be that expensive anymore.
+      </p>
+      <p>
+        Using probabilistic truthfulness to gain trust of consumers, this
+        application of{" "}
         <a href="https://kleros.io" rel="noopener noreferrer">
           Kleros
         </a>{" "}
-        provides an effective way to prove anything to public. Fully
-        decentralized: no need to trust anyone. Claim something. Put a bounty.
-        Invite others to prove you wrong.
+        provides an effective way to prove (advertise) anything to public.
+        Advertisers pay only if they are proven wrong. And thanks to
+        decentralized fact-checking, neither consumers nor advertisers need to
+        trust anyone.
+        <p>
+          <strong>Claim anything.</strong>
+          <br />
+          <strong>Put a bounty.</strong> <br />
+          <strong>Invite others to prove you wrong.</strong>
+        </p>
       </p>
     </div>
   </Layout>
