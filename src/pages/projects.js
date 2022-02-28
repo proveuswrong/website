@@ -30,12 +30,12 @@ const Projects = () => (
         Me Wrong, it does not have to be that expensive anymore.
       </p>
       <p>
-        Using probabilistic truthfulness to gain trust of consumers, this
+        Using probabilistic truthfulness to gain consumers' trust, this
         application of{" "}
         <a href="https://kleros.io" rel="noopener noreferrer">
           Kleros
         </a>{" "}
-        provides an effective way to prove (advertise) anything to public.
+        provides an effective way to prove (advertise) anything to the public.
         Advertisers pay only if they are proven wrong. And thanks to
         decentralized fact-checking, neither consumers nor advertisers need to
         trust anyone.
