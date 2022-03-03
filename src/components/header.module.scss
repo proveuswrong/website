@@ -29,7 +29,8 @@ $breakpoint-tablet: 768px;
   }
   @media (pointer: fine) {
     a:hover {
-      color: white;
+      // color: white; Animations disabled.
+      text-decoration: underline;
     }
   }
 }

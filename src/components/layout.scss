@@ -55,8 +55,29 @@ $breakpoint-small: 480px;
 $font-size-base: 14px; // Golden ditonic scale with base font sizes of 12px, 14px, 16px and 18px for different viewport width sizes.
 
 body {
-  font-family: "Space Mono", monospace;
-  color: black;
+  margin: 0;
+  // background: url("/subtle-prism.svg") repeat;
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100%;
+
+  & > div:first-child {
+    height: inherit;
+  }
+
+  nav,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  small,
+  button,
+  a {
+    font-family: "Space Mono", monospace;
+    color: black;
+  }
 }
 
 $palette: (
@@ -84,18 +105,6 @@ svg {
 
 html {
   height: 100%;
-}
-
-body {
-  margin: 0;
-  // background: url("/subtle-prism.svg") repeat;
-  height: 100vh;
-  height: -webkit-fill-available;
-  height: 100%;
-}
-
-body > div:first-child {
-  height: inherit;
 }
 
 header,
@@ -146,9 +155,14 @@ footer {
   flex: 1;
 }
 
-.hero {
+h1.hero,
+h2.hero {
   font-family: "Monoton", cursive;
   font-size: $h1;
+}
+
+button.hero {
+  font-size: $p;
 }
 
 h1 {

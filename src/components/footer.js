@@ -6,7 +6,11 @@ import Github from "../images/github.svg";
 import Twitter from "../images/twitter.svg";
 import LinkedIn from "../images/linkedin.svg";
 
+const ANIMATIONS_ENABLED = false;
+
 const handleGithubMouseEnter = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "black";
     if (document.getElementById("slogan"))
@@ -19,6 +23,8 @@ const handleGithubMouseEnter = (e) => {
 };
 
 const handleGithubMouseLeave = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "white";
     if (document.getElementById("slogan"))
@@ -31,6 +37,8 @@ const handleGithubMouseLeave = (e) => {
 };
 
 const handleTwitterMouseEnter = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "black";
     if (document.getElementById("slogan"))
@@ -43,6 +51,8 @@ const handleTwitterMouseEnter = (e) => {
 };
 
 const handleTwitterMouseLeave = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "white";
     if (document.getElementById("slogan"))
@@ -55,6 +65,8 @@ const handleTwitterMouseLeave = (e) => {
 };
 
 const handleLinkedInMouseEnter = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "black";
     if (document.getElementById("slogan"))
@@ -67,6 +79,8 @@ const handleLinkedInMouseEnter = (e) => {
 };
 
 const handleLinkedInMouseLeave = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "white";
     if (document.getElementById("slogan"))

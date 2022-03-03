@@ -8,10 +8,13 @@ import * as styles from "./header.module.scss";
 
 const sleep = (ms, r) => new Promise((r) => setTimeout(r, ms));
 
+const ANIMATIONS_ENABLED = false;
 const handleMouseEnter = (e) => {
   // setTimeout(() => {
   //   e.target.click();
   // }, 3000);
+
+  if (!ANIMATIONS_ENABLED) return;
   if (matchMedia("(pointer:fine)").matches) {
     document.bgColor = "black";
     if (document.getElementById("slogan"))
@@ -22,6 +25,8 @@ const handleMouseEnter = (e) => {
 };
 
 const handleMouseLeave = (e) => {
+  if (!ANIMATIONS_ENABLED) return;
+
   document.bgColor = "white";
   if (document.getElementById("slogan"))
     document.getElementById("slogan").style.color = "black";
@@ -64,7 +69,7 @@ const Header = ({ siteTitle }) => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <a href="/">HOME</a>
+              <Link to="/">HOME</Link>
             </li>
 
             <li
@@ -72,7 +77,7 @@ const Header = ({ siteTitle }) => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <a href="/projects">PROJECTS</a>
+              <Link to="/projects/">PROJECTS</Link>
             </li>
 
             <li
@@ -80,7 +85,7 @@ const Header = ({ siteTitle }) => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <a href="/about">ABOUT</a>
+              <Link to="/about/">ABOUT</Link>
             </li>
           </ul>
         </nav>

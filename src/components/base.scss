@@ -29,7 +29,7 @@ a {
 a {
   text-decoration: none;
   color: inherit;
-  &:hover {
+  main > &:hover {
     text-decoration: underline;
   }
 }
@@ -43,20 +43,16 @@ main {
   h6,
   p {
     a[href]:not(:where(
-  /* exclude hash only links */
   [href^="#"],
-  /* exclude relative but not double slash only links */
   [href^="/"]:not([href^="//"]),
-  /* domains to exclude */
   [href*="//stackoverflow.com"],
-  /* subdomains to exclude */
-  [href*="//meta.stackoverflow.com"],
-))::after {
+  [href*="//meta.stackoverflow.com"],))::after
+    {
       display: inline-block;
       content: url(/link.svg);
       height: 0.75em;
       width: 0.75em;
-      margin-left: 0.5em;
+      margin-left: 0.4em;
 
       &:hover {
         color: green;
@@ -65,7 +61,33 @@ main {
   }
 }
 
-svg {
-  height: auto;
-  width: auto;
+a.hero {
+  width: min-content;
+  white-space: nowrap;
+  align-self: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem !important;
+  border: 2px solid black;
+  border-radius: 4px;
+
+  padding: 0.6em 2.2em;
+
+  background-image: linear-gradient(90deg, #ff0000, #ff0000, #827bd3, #90eed0);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: -1;
+  }
 }
