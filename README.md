@@ -7,4 +7,6 @@
   Prove Us Wrong
 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a791a4e1-44b5-4ba5-8703-ce89505a170f/deploy-status)](https://app.netlify.com/sites/proveuswrong/deploys)
+
 Website of the organization built with Gatsby.
