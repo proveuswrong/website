@@ -67,14 +67,6 @@ $palette: (
   lightYellow: #eda2fc,
 );
 
-a {
-  color: #2904bd;
-
-  &:hover {
-    color: pink;
-  }
-}
-
 ul {
   padding: 0;
   margin-top: 0;
@@ -156,7 +148,6 @@ footer {
 
 .hero {
   font-family: "Monoton", cursive;
-  font-size: 28px;
   font-size: $h1;
 }
 

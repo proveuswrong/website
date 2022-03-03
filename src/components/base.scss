@@ -25,3 +25,38 @@ h2,
 a {
   transition-duration: 0.05s;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+main {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    a::after {
+      display: inline-block;
+      content: url(/link.svg);
+      height: 0.75em;
+      width: 0.75em;
+      margin-left: 0.5em;
+
+      &:hover {
+        color: green;
+      }
+    }
+  }
+}
+
+svg {
+  height: auto;
+  width: auto;
+}

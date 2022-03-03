@@ -9,13 +9,15 @@ const Projects = () => (
   <Layout>
     <Seo title="Projects" />
     <div className={styles.container}>
-      <a
-        href="https://provemewrong.io"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h2>Prove Me Wrong</h2>
-      </a>
+      <h2>
+        <a
+          href="https://provemewrong.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Prove Me Wrong
+        </a>
+      </h2>
       <h3>
         Better Advertising with Curated Lists of Facts with Decentralized
         Fact-Checking
