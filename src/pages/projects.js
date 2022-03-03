@@ -34,7 +34,7 @@ const Projects = () => (
       <p>
         Using probabilistic truthfulness to gain consumers' trust, this
         application of{" "}
-        <a href="https://kleros.io" rel="noopener noreferrer">
+        <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">
           Kleros
         </a>{" "}
         provides an effective way to prove (advertise) anything to the public.
