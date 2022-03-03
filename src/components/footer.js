@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 import Github from "../images/github.svg";
 import Twitter from "../images/twitter.svg";
+import LinkedIn from "../images/linkedin.svg";
 
 const handleGithubMouseEnter = (e) => {
   if (matchMedia("(pointer:fine)").matches) {
@@ -53,6 +54,30 @@ const handleTwitterMouseLeave = (e) => {
   }
 };
 
+const handleLinkedInMouseEnter = (e) => {
+  if (matchMedia("(pointer:fine)").matches) {
+    document.bgColor = "black";
+    if (document.getElementById("slogan"))
+      document.getElementById("slogan").style.color = "white";
+    if (window.location.pathname != "/")
+      document.getElementById("main").style.opacity = "0";
+    document.getElementById("linkedin").lastChild.style.fill = "white";
+    document.getElementById("github").style.opacity = "0";
+  }
+};
+
+const handleLinkedInMouseLeave = (e) => {
+  if (matchMedia("(pointer:fine)").matches) {
+    document.bgColor = "white";
+    if (document.getElementById("slogan"))
+      document.getElementById("slogan").style.color = "black";
+    if (window.location.pathname != "/")
+      document.getElementById("main").style.opacity = "100";
+    document.getElementById("linkedin").lastChild.style.fill = "black";
+    document.getElementById("github").style.opacity = "100";
+  }
+};
+
 const Footer = () => (
   <footer>
     <div className={styles.container}>
@@ -74,6 +99,15 @@ const Footer = () => (
           onMouseLeave={handleTwitterMouseLeave}
         >
           <Twitter id="twitter" />
+        </a>
+        <a
+          href="https://www.linkedin.com/company/prove-us-wrong/"
+          target="_blank"
+          rel="noopener nodereferrer"
+          onMouseEnter={handleLinkedInMouseEnter}
+          onMouseLeave={handleLinkedInMouseLeave}
+        >
+          <LinkedIn id="linkedin" />
         </a>
       </div>
       <small>Copyright {new Date().getFullYear()} Prove Us Wrong</small>
