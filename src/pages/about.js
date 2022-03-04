@@ -10,11 +10,11 @@ const About = () => (
   <Layout>
     <Seo title="About" />
     <div className={styles.about}>
-      <h2> Meet the Team </h2>
-      <h3>
+      <h1> Meet the Team </h1>
+      <h2>
         We are a small, passionate team that develops decentralized applications
         for fun.
-      </h3>
+      </h2>
       <div className={styles.portraits}>
         <div>
           <StaticImage
@@ -27,7 +27,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h4 className="m-0">Ferit Tunçer</h4>
+          <h3 className="m-0">Ferit Tunçer</h3>
           <p className="m-0">Founder - Software Engineer</p>
         </div>
         <div>
@@ -41,7 +41,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h4 className="m-0">Münevver Aslan</h4>
+          <h3 className="m-0">Münevver Aslan</h3>
           <p className="m-0">Product Designer</p>
         </div>
       </div>
