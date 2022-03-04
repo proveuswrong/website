@@ -41,7 +41,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h4 className="m-0">Münevver Aslan</h4>
+          <h3 className="m-0">Münevver Aslan</h3>
           <p className="m-0">Product Designer</p>
         </div>
       </div>
