@@ -9,7 +9,7 @@ const Projects = () => (
   <Layout>
     <Seo title="Projects" />
     <div className={styles.container}>
-      <h2>
+      <h1>
         <a
           href="https://provemewrong.io"
           target="_blank"
@@ -17,11 +17,11 @@ const Projects = () => (
         >
           Prove Me Wrong
         </a>
-      </h2>
-      <h3>
+      </h1>
+      <h2>
         Better Advertising with Curated Lists of Facts with Decentralized
         Fact-Checking
-      </h3>
+      </h2>
       <p>
         Since, most of the time, there is no trustworthy way to prove claims to
         the public, advertisers follow the "louder is righter" approach. This is

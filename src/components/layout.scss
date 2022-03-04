@@ -46,7 +46,7 @@ $h2: 1rem * math.pow($ratio, math.div(3, 4));
 $h3: 1rem * math.pow($ratio, math.div(2, 4));
 $h4: 1rem * math.pow($ratio, math.div(1, 4));
 $p: 1rem * math.pow($ratio, math.div(0, 4));
-$small: 1rem * math.pow($ratio, math.div(-1, 4));
+$small: 1rem * math.pow($ratio, math.div(-2, 4));
 
 $breakpoint-large: 1200px;
 $breakpoint-tablet: 768px;
@@ -66,6 +66,7 @@ body {
   }
 
   nav,
+  h1,
   h2,
   h3,
   h4,
@@ -165,24 +166,26 @@ button.hero {
   font-size: $p;
 }
 
-h1 {
+#brand {
   font-weight: normal;
   font-family: "Monoton", cursive;
   font-size: 21px;
 }
 
+h1 {
+  font-size: $h1;
+
+  font-weight: normal;
+}
+
 h2 {
   font-size: $h2;
-  margin-block-start: 0.67em;
-  margin-block-end: 0.67em;
 
   font-weight: normal;
 }
 
 h3 {
   font-size: $h3;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
 
   font-weight: normal;
 }
