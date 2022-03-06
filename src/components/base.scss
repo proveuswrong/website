@@ -45,17 +45,20 @@ main {
     a[href]:not(:where(
   [href^="#"],
   [href^="/"]:not([href^="//"]),
-  [href*="//stackoverflow.com"],
-  [href*="//meta.stackoverflow.com"],))::after
-    {
-      display: inline-block;
-      content: url(/link.svg);
-      height: 0.75em;
-      width: 0.75em;
-      margin-left: 0.4em;
-
-      &:hover {
-        color: green;
+)) {
+      &::after,
+      &:hover::after {
+        display: inline-table;
+        vertical-align: text-bottom;
+        width: 0.7em;
+        height: auto;
+        margin-left: 0.4em;
+      }
+      &:after {
+        content: url(/link.svg);
+      }
+      &:hover::after {
+        content: url(/linkRed.svg);
       }
     }
   }
