@@ -1,3 +1,5 @@
+@use "base";
+
 $breakpoint-tablet: 768px;
 
 .container {
@@ -9,7 +11,7 @@ $breakpoint-tablet: 768px;
   margin: 0;
   text-transform: lowercase;
 
-  color: red;
+  color: map-get(base.$palette, red);
 
   @media (pointer: fine) {
     /* Rules for devices with mouse here */
@@ -25,7 +27,7 @@ $breakpoint-tablet: 768px;
 .nav > ul > li {
   width: 100%;
   a {
-    color: black;
+    color: map-get(base.$palette, white);
   }
   @media (pointer: fine) {
     a:hover {
