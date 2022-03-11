@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 $golden-ratio: 1.618033;
-$ratio: 2;
+$ratio: 2.3;
 
 @function strip-unit($value) {
   @return math.div($value, ($value * 0 + 1));
