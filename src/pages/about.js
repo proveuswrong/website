@@ -12,8 +12,8 @@ const About = () => (
     <div className={styles.about}>
       <h1> Meet the Team </h1>
       <h2>
-        We are a small, passionate team that develops decentralized
-        applications.
+        We are a small, passionate team that develops decentralized applications
+        with love.
       </h2>
       <div className={styles.portraits}>
         <div>
