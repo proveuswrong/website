@@ -136,7 +136,7 @@ main {
 
 footer {
   margin-top: auto;
-  min-height: 132px; // To match header height
+  min-height: 180px; // To match header height
   align-self: center;
   width: -webkit-fill-available;
   width: -moz-available;
@@ -157,7 +157,6 @@ footer {
 
 h1.hero,
 h2.hero {
-  font-family: "Monoton", cursive;
   font-size: $h1;
 }
 

@@ -12,7 +12,6 @@ $breakpoint-tablet: 768px;
 
 .h1 {
   white-space: break-spaces;
-  font-size: math.div(layout.$h1, math.div(10, 9)) !important;
 }
 
 @media (max-width: $breakpoint-tablet) {
