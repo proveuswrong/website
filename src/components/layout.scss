@@ -55,7 +55,7 @@ $font-size-base: 14px; // Golden ditonic scale with base font sizes of 12px, 14p
 
 body {
   margin: 0;
-  // background: url("/subtle-prism.svg") repeat;
+  background-color: map-get(base.$palette, black);
   height: 100vh;
   height: -webkit-fill-available;
   height: 100%;
@@ -76,17 +76,9 @@ body {
   button,
   a {
     font-family: "Space Mono", monospace;
-    color: black;
+    color: map-get(base.$palette, white);
   }
 }
-
-$palette: (
-  blue: #22678c,
-  lightBlue: #23778c,
-  lighterBlue: #48525c,
-  yellow: #ffa949,
-  lightYellow: #eda2fc,
-);
 
 ul {
   padding: 0;
