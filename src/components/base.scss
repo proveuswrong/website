@@ -46,6 +46,10 @@ main {
   [href^="#"],
   [href^="/"]:not([href^="//"]),
 )) {
+      &:hover {
+        color: red;
+      }
+
       &::after,
       &:hover::after {
         display: inline-table;
