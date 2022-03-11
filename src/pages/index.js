@@ -10,7 +10,7 @@ const IndexPage = () => (
     <Seo title="Home" />
     <div className={styles.container}>
       <h1 id="slogan" className={`hero ` + styles.h1}>
-        We build the next cool thing.
+        We build the next cool thing
       </h1>
 
       <Link to="/projects/" className="hero mt-3">
