@@ -11,10 +11,10 @@ const About = () => (
     <Seo title="About" />
     <div className={styles.about}>
       <h1> Meet the Team </h1>
-      <h2>
+      <p>
         We are a small, passionate team that develops decentralized applications
         with love.
-      </h2>
+      </p>
       <div className={styles.portraits}>
         <div>
           <StaticImage
@@ -27,7 +27,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h3 className="m-0">
+          <h2 className="m-0">
             <a
               href="https://ferittuncer.github.io/"
               target="_blank"
@@ -35,7 +35,7 @@ const About = () => (
             >
               Ferit Tunçer
             </a>
-          </h3>
+          </h2>
           <p className="m-0">Founder - Software Engineer</p>
         </div>
         <div>
@@ -49,7 +49,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h3 className="m-0">
+          <h2 className="m-0">
             <a
               href="https://dribbble.com/munevver/"
               target="_blank"
@@ -57,7 +57,7 @@ const About = () => (
             >
               Münevver Aslan
             </a>
-          </h3>
+          </h2>
           <p className="m-0">Product Designer</p>
         </div>
       </div>

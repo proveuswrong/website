@@ -9,15 +9,7 @@ const Projects = () => (
   <Layout>
     <Seo title="Projects" />
     <div className={styles.container}>
-      <h1>
-        <a
-          href="https://provemewrong.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Prove Me Wrong
-        </a>
-      </h1>
+      <h1>Prove Me Wrong</h1>
       <h2>
         Better Advertising with Curated Lists of Facts with Decentralized
         Fact-Checking
@@ -28,8 +20,16 @@ const Projects = () => (
         wasteful because it drives advertisers to compete and use more and more
         resources. Actually, advertising is the most wasteful industry: it
         produces no goods yet consumes an enormous amount of resources.
-        Convincing people to facts should not be that expensive. And with Prove
-        Me Wrong, it does not have to be that expensive anymore.
+        Convincing people to facts should not be that expensive. And with
+        <a
+          href="https://provemewrong.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          Prove Me Wrong
+        </a>
+        , it does not have to be that expensive anymore.
       </p>
       <p>
         Using probabilistic truthfulness to gain consumers' trust, this
