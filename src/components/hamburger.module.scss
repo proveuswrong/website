@@ -1,6 +1,6 @@
 .hamburger {
-  width: 50px;
-  height: 60px;
+  width: 40px;
+  height: 25px;
   position: relative;
   left: 20px;
   margin: 0 20px;
@@ -20,18 +20,24 @@
   }
   &::after {
     bottom: 0;
+    left: 0;
     box-shadow: 0 -50px currentColor;
   }
+
+  transform: scale(3);
+  position: absolute;
+  left: 300px;
+  top: 300px;
 }
 
 /*
 * Hamburger three on hover
 */
 .hamburger {
-  transition: transform 0.55s 1s ease-in-out;
+  transition: transform all 0.55s ease-in-out;
   &:before,
   &:after {
-    transition: all 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   &:before {
     width: unset;
@@ -39,7 +45,7 @@
     left: 0;
     right: 0;
     top: 10px;
-    bottom: 45px;
+    bottom: 10px;
   }
   &:after {
     top: 0;
@@ -47,14 +53,15 @@
     bottom: unset;
     box-shadow: 0 20px currentColor;
   }
-  &:hover,
-  &:active {
-    transform: rotate(45deg);
-    &:before {
+  &:hover {
+    transform: scale(3) rotate(45deg);
+
+    &:before,
+    &:active {
       left: calc(50% - 2.5px);
       right: calc(50% - 2.5px);
-      top: -17.5px;
-      bottom: 27.5px;
+      top: -12.5px;
+      bottom: -2.5px;
       color: #ececec;
     }
     &:after {
