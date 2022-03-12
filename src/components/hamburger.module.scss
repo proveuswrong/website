@@ -23,11 +23,6 @@
     left: 0;
     box-shadow: 0 -50px currentColor;
   }
-
-  transform: scale(3);
-  position: absolute;
-  left: 300px;
-  top: 300px;
 }
 
 /*
@@ -37,7 +32,7 @@
   transition: transform all 0.55s ease-in-out;
   &:before,
   &:after {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
   &:before {
     width: unset;
@@ -54,18 +49,19 @@
     box-shadow: 0 20px currentColor;
   }
   &:hover {
-    transform: scale(3) rotate(45deg);
+    height: 40px;
+    transform: rotate(45deg);
 
     &:before,
     &:active {
       left: calc(50% - 2.5px);
       right: calc(50% - 2.5px);
-      top: -12.5px;
-      bottom: -2.5px;
+      top: -0px;
+      bottom: -0px;
       color: #ececec;
     }
     &:after {
-      top: 5px;
+      top: 17.5px;
       color: #ff355e;
       box-shadow: 0 30px transparent;
     }
