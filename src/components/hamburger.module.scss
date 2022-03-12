@@ -1,6 +1,6 @@
 .hamburger {
-  width: 40px;
-  height: 25px;
+  width: 24px;
+  height: 14px;
   position: relative;
   left: 20px;
   margin: 0 20px;
@@ -9,10 +9,11 @@
     content: "";
     position: absolute;
     width: 100%;
-    height: 5px;
-    color: #333;
+    height: 2px;
+    color: #727272;
     background-color: currentColor;
     transition: all 0.45s ease-in-out;
+    border-radius: 0.6px;
   }
   &::before {
     top: 0;
@@ -39,31 +40,31 @@
     height: unset;
     left: 0;
     right: 0;
-    top: 10px;
-    bottom: 10px;
+    top: 6px;
+    bottom: 6px;
   }
   &:after {
     top: 0;
     left: 0;
     bottom: unset;
-    box-shadow: 0 20px currentColor;
+    box-shadow: 0 12px currentColor;
   }
   &:hover {
-    height: 40px;
+    height: 24px;
     transform: rotate(45deg);
 
     &:before,
     &:active {
-      left: calc(50% - 2.5px);
-      right: calc(50% - 2.5px);
-      top: -0px;
-      bottom: -0px;
+      left: calc(50% - 1px);
+      right: calc(50% - 1px);
+      top: 0px;
+      bottom: 0px;
       color: #ececec;
     }
     &:after {
-      top: 17.5px;
+      top: 11px;
       color: #ff355e;
-      box-shadow: 0 30px transparent;
+      box-shadow: 0 0px transparent;
     }
   }
 }
