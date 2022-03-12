@@ -1,8 +1,8 @@
 @use "sass:math";
 
-$thickness: 4px;
+$thickness: 0.25rem;
 $height: 7 * $thickness;
-$width: $height * 1.6;
+$width: $height * 1.61;
 
 .hamburger {
   width: $width;
@@ -30,11 +30,6 @@ $width: $height * 1.6;
     left: 0;
     box-shadow: 0 -50px currentColor;
   }
-
-  // transform: scale(6);
-  // position: absolute;
-  // top: 300px;
-  // left: 300px;
 }
 
 /*
