@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const constructUrl = (baseUrl, path) =>
   !baseUrl || !path ? null : `${baseUrl}${path}`;
 
-function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
+function Seo({ description, lang, meta, title, customImageUrl, imageAlt }) {
   const { ogImageDefault, site } = useStaticQuery(
     graphql`
       query {
@@ -64,8 +64,17 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: `og:url`,
+          content: actualURL || site.siteMetadata.siteUrl,
+        },
+        {
+          name: `og:image`,
+          content:
+            customImageUrl ||
+            constructUrl(
+              actualURL || site.siteMetadata.siteUrl,
+              ogImageDefault?.childImageSharp?.fixed?.src
+            ),
         },
         {
           name: `twitter:creator`,
@@ -75,18 +84,10 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-        {
-          name: `og:image`,
-          content:
-            imageUrl ||
-            constructUrl(
-              actualURL || site.siteMetadata.siteUrl,
-              ogImageDefault?.childImageSharp?.fixed?.src
-            ),
-        },
+
         {
           name: `twitter:card`,
-          content: imageUrl ? `summary_large_image` : `summary`,
+          content: customImageUrl ? `summary_large_image` : `summary`,
         },
         {
           name: `twitter:image:alt`,
