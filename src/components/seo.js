@@ -9,6 +9,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import { useEffect } from "react";
 
 // import logo from "../images/icon.png";
 
@@ -38,8 +39,15 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
     `
   );
 
+  let newSiteUrl;
+  useEffect(() => {
+    newSiteUrl = window.location.href;
+  }, []);
+
+  const siteUrl = newSiteUrl || site.siteMetadata.siteUrl;
+
   const defaultImageUrl = constructUrl(
-    site.siteMetadata.siteUrl,
+    siteUrl,
     ogImageDefault?.childImageSharp?.fixed?.src
   );
   const ogImageUrl = imageUrl || defaultImageUrl;
@@ -61,7 +69,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           property: `og:description`,

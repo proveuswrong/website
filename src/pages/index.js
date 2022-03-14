@@ -7,7 +7,7 @@ import * as styles from "./index.module.scss";
 
 const IndexPage = () => (
   <Layout>
-    <Seo />
+    <Seo title="Home" />
     <div className={styles.container}>
       <h1 id="slogan" className={`hero ` + styles.h1}>
         We build the next cool thing
