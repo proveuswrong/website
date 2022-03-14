@@ -34,7 +34,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
 
   useEffect(() => {
     setActualURL(window.location.href);
-  }, []);
+  }, []); // Not working
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
@@ -77,7 +77,12 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
         },
         {
           name: `og:image`,
-          content: imageUrl || defaultImageUrl,
+          content:
+            imageUrl ||
+            constructUrl(
+              actualURL || site.siteMetadata.siteUrl,
+              ogImageDefault?.childImageSharp?.fixed?.src
+            ),
         },
         {
           name: `twitter:card`,
@@ -85,12 +90,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
         },
         {
           name: `twitter:image:alt`,
-          content:
-            imageAlt ||
-            constructUrl(
-              actualURL || site.siteMetadata.siteUrl,
-              ogImageDefault?.childImageSharp?.fixed?.src
-            ),
+          content: imageAlt || defaultTitle,
         },
       ].concat(meta)}
     />
