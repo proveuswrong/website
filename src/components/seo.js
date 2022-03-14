@@ -88,10 +88,6 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
           content: site.siteMetadata?.author || ``,
         },
         {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
           name: `twitter:description`,
           content: metaDescription,
         },
