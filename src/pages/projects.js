@@ -41,12 +41,12 @@ const Projects = () => (
         Advertisers pay only if they are proven wrong. And thanks to
         decentralized fact-checking, neither consumers nor advertisers need to
         trust anyone.
-        <p>
-          <strong>Claim anything.</strong>
-          <br />
-          <strong>Put a bounty.</strong> <br />
-          <strong>Invite others to prove you wrong.</strong>
-        </p>
+      </p>
+      <p>
+        <strong>Claim anything.</strong>
+        <br />
+        <strong>Put a bounty.</strong> <br />
+        <strong>Invite others to prove you wrong.</strong>
       </p>
     </div>
   </Layout>

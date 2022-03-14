@@ -55,12 +55,12 @@ $width: $height * 1.61;
     bottom: unset;
     box-shadow: 0 ($height - (4 * $thickness)) currentColor;
   }
-  &:hover {
+  &:hover,
+  &:active {
     height: $width;
     transform: rotate(45deg);
 
-    &:before,
-    &:active {
+    &:before {
       left: calc(50% - math.div($thickness, 2));
       right: calc(50% - math.div($thickness, 2));
       top: 0px;
