@@ -72,10 +72,10 @@ $breakpoint-tablet: 768px;
     overflow: hidden;
 
     &:global(.open) {
-      opacity: 0.9;
+      opacity: 0.93;
       z-index: 9;
       visibility: visible;
-      height: 100%;
+      height: 100vh;
     }
     .nav {
       position: relative;

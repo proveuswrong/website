@@ -31,6 +31,16 @@ html {
   text-align: center;
 }
 
+/* Focusing with a keyboard.*/
+*:focus-visible {
+  outline: 2px dashed map-get($palette, white);
+}
+
+/* Focusing the button with a mouse, touch, or stylus.*/
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .grayed-out {
   text-decoration: underline;
   pointer-events: none;

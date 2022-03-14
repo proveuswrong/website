@@ -1,76 +1,60 @@
-@use "sass:math";
+@use "base";
 
-$thickness: 0.19rem;
-$height: 7 * $thickness;
-$width: $height * 1.61;
+$button-height: 27px;
+$button-width: 35px;
 
-.hamburger {
-  width: $width;
+$thickness: 3px;
+$gap: 6px;
+
+$height: 3 * $thickness + 2 * $gap;
+
+.button_container {
+  position: absolute;
+  top: 28px; // Because of padding and line-heign of brands
+  right: 20px; // Because of padding of header
   height: $height;
-  position: relative;
-  left: 20px;
-  margin: 0 20px;
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: $thickness;
-    color: #727272;
-    background-color: currentColor;
-    transition: all 0.45s ease-in-out;
-    border-radius: 0.6px;
-  }
-  &::before {
-    top: 0;
-    transform: rotate(0);
-  }
-  &::after {
-    bottom: 0;
-    left: 0;
-    box-shadow: 0 -50px currentColor;
-  }
-}
+  width: 1.61 * $height;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.25s ease;
 
-/*
-* Hamburger three on hover
-*/
-.hamburger {
-  transition: transform all 0.55s ease-in-out;
-  &:before,
-  &:after {
-    transition: all 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.7;
   }
-  &:before {
-    width: unset;
-    height: unset;
-    left: 0;
-    right: 0;
-    top: $height -$thickness;
-    bottom: 0;
-  }
-  &:after {
-    top: 0;
-    left: 0;
-    bottom: unset;
-    box-shadow: 0 ($height - (4 * $thickness)) currentColor;
-  }
-  &:hover,
-  &:active {
-    height: $width;
-    transform: rotate(45deg);
 
-    &:before {
-      left: calc(50% - math.div($thickness, 2));
-      right: calc(50% - math.div($thickness, 2));
-      top: 0px;
-      bottom: 0px;
-      color: #ececec;
+  &.active {
+    .top {
+      transform: translateY($thickness + $gap) translateX(0) rotate(45deg);
+      background: map-get(base.$palette, white);
     }
-    &:after {
-      top: math.div($width -$thickness, 2);
-      color: #ff355e;
-      box-shadow: 0 0px transparent;
+    .middle {
+      opacity: 0;
+      background: map-get(base.$palette, white);
+    }
+
+    .bottom {
+      transform: translateY(-$thickness - $gap) translateX(0) rotate(-45deg);
+      background: map-get(base.$palette, white);
+    }
+  }
+
+  span {
+    background: map-get(base.$palette, gray);
+    border: none;
+    height: $thickness;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.35s ease;
+    cursor: pointer;
+
+    &:nth-of-type(2) {
+      top: $thickness + $gap;
+    }
+
+    &:nth-of-type(3) {
+      top: 2 * ($thickness + $gap);
     }
   }
 }
