@@ -16,7 +16,7 @@ const constructUrl = (baseUrl, path) =>
   !baseUrl || !path ? null : `${baseUrl}${path}`;
 
 function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
-  const { query, site } = useStaticQuery(
+  const { ogImageDefault, site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -40,7 +40,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
 
   const defaultImageUrl = constructUrl(
     site.siteMetadata.siteUrl,
-    query.ogImageDefault?.childImageSharp?.fixed?.src
+    ogImageDefault?.childImageSharp?.fixed?.src
   );
   const ogImageUrl = imageUrl || defaultImageUrl;
 
