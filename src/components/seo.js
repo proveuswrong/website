@@ -9,7 +9,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // import logo from "../images/icon.png";
 
@@ -39,12 +39,14 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
     `
   );
 
-  let newSiteUrl;
+  const [actualURL, setActualURL] = useState({});
+
   useEffect(() => {
-    newSiteUrl = window.location.href;
+    setActualURL(window.location.href);
   }, []);
 
-  const siteUrl = newSiteUrl || site.siteMetadata.siteUrl;
+  const siteUrl = actualURL || site.siteMetadata.siteUrl;
+  console.log(siteUrl);
 
   const defaultImageUrl = constructUrl(
     siteUrl,
