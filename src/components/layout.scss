@@ -112,7 +112,10 @@ footer {
   > div:first-child {
     height: 100%;
     min-width: auto;
+    max-width: 1200px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -120,7 +123,7 @@ main {
   flex: auto;
   padding-bottom: 0;
   > div:first-child {
-    max-width: 1000px;
+    max-width: 1200px;
     margin-top: calc(1vw);
     margin-left: auto;
     margin-right: auto;
