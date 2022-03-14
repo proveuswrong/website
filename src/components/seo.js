@@ -46,6 +46,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
   }, []);
 
   const siteUrl = actualURL || site.siteMetadata.siteUrl;
+  console.log(actualURL);
   console.log(siteUrl);
 
   const defaultImageUrl = constructUrl(
