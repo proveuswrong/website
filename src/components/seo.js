@@ -5,13 +5,19 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import * as React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import { useEffect } from "react";
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+// import logo from "../images/icon.png";
+
+const constructUrl = (baseUrl, path) =>
+  !baseUrl || !path ? null : `${baseUrl}${path}`;
+
+function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
+  const { ogImageDefault, site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -19,14 +25,35 @@ function Seo({ description, lang, meta, title }) {
             title
             description
             author
+            siteUrl
+          }
+        }
+        ogImageDefault: file(relativePath: { eq: "icon.png" }) {
+          childImageSharp {
+            fixed(height: 260, width: 260) {
+              src
+            }
           }
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  let newSiteUrl;
+  useEffect(() => {
+    newSiteUrl = window.location.href;
+  }, []);
+
+  const siteUrl = newSiteUrl || site.siteMetadata.siteUrl;
+
+  const defaultImageUrl = constructUrl(
+    siteUrl,
+    ogImageDefault?.childImageSharp?.fixed?.src
+  );
+  const ogImageUrl = imageUrl || defaultImageUrl;
+
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
 
   return (
     <Helmet
@@ -42,7 +69,7 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           property: `og:description`,
@@ -68,22 +95,34 @@ function Seo({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `og:image`,
+          content: ogImageUrl,
+        },
+        {
+          name: `twitter:card`,
+          content: imageUrl ? `summary_large_image` : `summary`,
+        },
+        {
+          name: `twitter:image:alt`,
+          content: imageAlt || defaultTitle,
+        },
       ].concat(meta)}
     />
-  )
+  );
 }
 
 Seo.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default Seo
+export default Seo;

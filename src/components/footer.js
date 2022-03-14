@@ -103,7 +103,8 @@ const Footer = () => (
           onMouseEnter={handleGithubMouseEnter}
           onMouseLeave={handleGithubMouseLeave}
         >
-          <Github id="github" />
+          <span style={{ display: "none" }}>Link to GitHub profile</span>
+          <Github aria-hidden="true" id="github" />
         </a>
         <a
           href="https://twitter.com/ProveUsWrongIO"
@@ -112,7 +113,8 @@ const Footer = () => (
           onMouseEnter={handleTwitterMouseEnter}
           onMouseLeave={handleTwitterMouseLeave}
         >
-          <Twitter id="twitter" />
+          <span style={{ display: "none" }}>Link to Twitter profile</span>
+          <Twitter aria-hidden="true" id="twitter" />
         </a>
         <a
           href="https://www.linkedin.com/company/prove-us-wrong/"
@@ -121,7 +123,8 @@ const Footer = () => (
           onMouseEnter={handleLinkedInMouseEnter}
           onMouseLeave={handleLinkedInMouseLeave}
         >
-          <LinkedIn id="linkedin" />
+          <span style={{ display: "none" }}>Link to LinkedIn profile</span>
+          <LinkedIn aria-hidden="true" id="linkedin" />
         </a>
       </div>
       <small>Copyright {new Date().getFullYear()} Prove Us Wrong</small>

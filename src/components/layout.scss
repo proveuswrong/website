@@ -32,6 +32,8 @@ $ratio: 2.3;
   }
 }
 
+$brandFontSize: 21px;
+
 $min_width: 320px;
 $max_width: 1200px;
 $min_font: 15px;
@@ -155,7 +157,7 @@ h2.hero {
 #brand {
   font-weight: normal;
   font-family: "Monoton", cursive;
-  font-size: 21px;
+  font-size: $brandFontSize;
 }
 
 h1 {
@@ -201,9 +203,11 @@ header * {
 }
 
 nav {
+  margin-top: 0.4 * $brandFontSize;
 }
 
 @media (min-width: $breakpoint-tablet) {
+  $brandFontSize: 30px;
   header,
   main,
   footer {
@@ -228,6 +232,6 @@ nav {
   }
 
   #brand {
-    font-size: 30px;
+    font-size: $brandFontSize;
   }
 }
