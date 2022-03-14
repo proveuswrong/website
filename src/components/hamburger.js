@@ -16,7 +16,6 @@ const Hamburger = ({ children }) => {
       onClick={handleHamburgerClick}
       onKeyDown={handleHamburgerClick}
       role="button"
-      tabIndex={0}
     >
       <span className={styles.top}></span>
       <span className={styles.middle}></span>

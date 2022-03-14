@@ -15,7 +15,7 @@ $height: 3 * $thickness + 2 * $gap;
   height: $height;
   width: 1.61 * $height;
   cursor: pointer;
-  z-index: 10;
+  z-index: 12;
   transition: opacity 0.25s ease;
 
   &:hover {
