@@ -1,22 +1,13 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import { useEffect } from "react";
-
-// import logo from "../images/icon.png";
+import { useEffect, useState } from "react";
 
 const constructUrl = (baseUrl, path) =>
   !baseUrl || !path ? null : `${baseUrl}${path}`;
 
-function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
+function Seo({ description, lang, meta, title, customImageUrl, imageAlt }) {
   const { ogImageDefault, site } = useStaticQuery(
     graphql`
       query {
@@ -39,18 +30,11 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
     `
   );
 
-  let newSiteUrl;
+  const [actualURL, setActualURL] = useState();
+
   useEffect(() => {
-    newSiteUrl = window.location.href;
-  }, []);
-
-  const siteUrl = newSiteUrl || site.siteMetadata.siteUrl;
-
-  const defaultImageUrl = constructUrl(
-    siteUrl,
-    ogImageDefault?.childImageSharp?.fixed?.src
-  );
-  const ogImageUrl = imageUrl || defaultImageUrl;
+    setActualURL(window.location.href);
+  }, []); // Not working
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
@@ -80,8 +64,17 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: `og:url`,
+          content: actualURL || site.siteMetadata.siteUrl,
+        },
+        {
+          name: `og:image`,
+          content:
+            customImageUrl ||
+            constructUrl(
+              actualURL || site.siteMetadata.siteUrl,
+              ogImageDefault?.childImageSharp?.fixed?.src
+            ),
         },
         {
           name: `twitter:creator`,
@@ -91,13 +84,10 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-        {
-          name: `og:image`,
-          content: ogImageUrl,
-        },
+
         {
           name: `twitter:card`,
-          content: imageUrl ? `summary_large_image` : `summary`,
+          content: customImageUrl ? `summary_large_image` : `summary`,
         },
         {
           name: `twitter:image:alt`,
