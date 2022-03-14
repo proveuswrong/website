@@ -1,6 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 import Github from "../images/github.svg";
 import Twitter from "../images/twitter.svg";
@@ -99,7 +97,7 @@ const Footer = () => (
         <a
           href="https://github.com/proveuswrong"
           target="_blank"
-          rel="noopener nodereferrer"
+          rel="noopener noreferrer"
           onMouseEnter={handleGithubMouseEnter}
           onMouseLeave={handleGithubMouseLeave}
         >
@@ -109,7 +107,7 @@ const Footer = () => (
         <a
           href="https://twitter.com/ProveUsWrongIO"
           target="_blank"
-          rel="noopener nodereferrer"
+          rel="noopener noreferrer"
           onMouseEnter={handleTwitterMouseEnter}
           onMouseLeave={handleTwitterMouseLeave}
         >
@@ -119,7 +117,7 @@ const Footer = () => (
         <a
           href="https://www.linkedin.com/company/prove-us-wrong/"
           target="_blank"
-          rel="noopener nodereferrer"
+          rel="noopener noreferrer"
           onMouseEnter={handleLinkedInMouseEnter}
           onMouseLeave={handleLinkedInMouseLeave}
         >

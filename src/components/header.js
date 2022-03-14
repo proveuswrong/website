@@ -10,45 +10,7 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import { Link } from "gatsby";
 import * as styles from "./header.module.scss";
 
-const sleep = (ms, r) => new Promise((r) => setTimeout(r, ms));
-
 const breakpointTablet = 768;
-
-const ANIMATIONS_ENABLED = false;
-const handleMouseEnter = (e) => {
-  // setTimeout(() => {
-  //   e.target.click();
-  // }, 3000);
-
-  if (!ANIMATIONS_ENABLED) return;
-  if (matchMedia("(pointer:fine)").matches) {
-    document.bgColor = "black";
-    if (document.getElementById("slogan"))
-      document.getElementById("slogan").style.color = "white";
-    if (window.location.pathname != "/")
-      document.getElementById("main").style.opacity = "0";
-  }
-};
-
-const handleMouseLeave = (e) => {
-  if (!ANIMATIONS_ENABLED) return;
-
-  document.bgColor = "white";
-  if (document.getElementById("slogan"))
-    document.getElementById("slogan").style.color = "black";
-  if (window.location.pathname != "/")
-    document.getElementById("main").style.opacity = "100";
-};
-
-const handleHamburgerClick = (e) => {
-  console.log("onHamburgerClick");
-  e.target.toggleClass("active");
-  document.getElementById("#overlay").toggleClass("open");
-};
-
-const handleHamburger = (e) => {
-  console.log("onHamburgerClick");
-};
 
 const Header = ({ siteTitle }) => {
   const home = useRef(null);
@@ -70,12 +32,7 @@ const Header = ({ siteTitle }) => {
       <header>
         <div className={styles.container}>
           <Link to="/">
-            <h1
-              id="brand"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className={styles.h1}
-            >
+            <h1 id="brand" className={styles.h1}>
               Prove <br /> Us <br /> Wrong
             </h1>
           </Link>
@@ -84,27 +41,15 @@ const Header = ({ siteTitle }) => {
             <nav className={`${styles.nav} overlay-menu`}>
               <h1 style={{ display: "none" }}>Navigation</h1>
               <ul>
-                <li
-                  ref={home}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
+                <li ref={home}>
                   <Link to="/">HOME</Link>
                 </li>
 
-                <li
-                  ref={projects}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
+                <li ref={projects}>
                   <Link to="/projects/">PROJECTS</Link>
                 </li>
 
-                <li
-                  ref={about}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
+                <li ref={about}>
                   <Link to="/about/">ABOUT</Link>
                 </li>
               </ul>

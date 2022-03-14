@@ -1,6 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 
 import * as styles from "./hamburger2.module.scss";
 
@@ -16,6 +14,9 @@ const Hamburger = ({ children }) => {
       className={styles.button_container}
       id="toggle"
       onClick={handleHamburgerClick}
+      onKeyDown={handleHamburgerClick}
+      role="button"
+      tabIndex={0}
     >
       <span className={styles.top}></span>
       <span className={styles.middle}></span>
