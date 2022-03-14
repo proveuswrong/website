@@ -96,10 +96,7 @@ $breakpoint-tablet: 768px;
           display: block;
 
           position: relative;
-
-          & + li {
-            margin-top: 40px;
-          }
+          min-height: 60px;
 
           a {
             display: block;
