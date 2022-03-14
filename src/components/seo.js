@@ -39,7 +39,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
     `
   );
 
-  const [actualURL, setActualURL] = useState({});
+  const [actualURL, setActualURL] = useState();
 
   useEffect(() => {
     setActualURL(window.location.href);
