@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import PropTypes from "prop-types";
 
-import Hamburger from "./hamburger2";
+import Hamburger from "./hamburger";
 import useMediaQuery from "./hooks/useMediaQuery";
 
 import { Link } from "gatsby";
