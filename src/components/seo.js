@@ -1,17 +1,8 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import { useEffect, useState } from "react";
-
-// import logo from "../images/icon.png";
 
 const constructUrl = (baseUrl, path) =>
   !baseUrl || !path ? null : `${baseUrl}${path}`;
@@ -44,16 +35,6 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
   useEffect(() => {
     setActualURL(window.location.href);
   }, []);
-
-  const siteUrl = actualURL || site.siteMetadata.siteUrl;
-  console.log(actualURL);
-  console.log(siteUrl);
-
-  const defaultImageUrl = constructUrl(
-    siteUrl,
-    ogImageDefault?.childImageSharp?.fixed?.src
-  );
-  const ogImageUrl = imageUrl || defaultImageUrl;
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
@@ -96,7 +77,7 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
         },
         {
           name: `og:image`,
-          content: ogImageUrl,
+          content: imageUrl || defaultImageUrl,
         },
         {
           name: `twitter:card`,
@@ -104,7 +85,12 @@ function Seo({ description, lang, meta, title, imageUrl, imageAlt }) {
         },
         {
           name: `twitter:image:alt`,
-          content: imageAlt || defaultTitle,
+          content:
+            imageAlt ||
+            constructUrl(
+              actualURL || site.siteMetadata.siteUrl,
+              ogImageDefault?.childImageSharp?.fixed?.src
+            ),
         },
       ].concat(meta)}
     />
