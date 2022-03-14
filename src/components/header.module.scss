@@ -95,8 +95,11 @@ $breakpoint-tablet: 768px;
         li {
           display: block;
 
-          min-height: 50px;
           position: relative;
+
+          & + li {
+            margin-top: 40px;
+          }
 
           a {
             display: block;
