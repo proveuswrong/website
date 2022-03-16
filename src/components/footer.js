@@ -17,20 +17,20 @@ const Footer = () => (
           <Github aria-hidden="true" id="github" />
         </a>
         <a
-          href="https://twitter.com/ProveUsWrongIO"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span style={{ display: "none" }}>Link to Twitter profile</span>
-          <Twitter aria-hidden="true" id="twitter" />
-        </a>
-        <a
           href="https://www.linkedin.com/company/prove-us-wrong/"
           target="_blank"
           rel="noopener noreferrer"
         >
           <span style={{ display: "none" }}>Link to LinkedIn profile</span>
           <LinkedIn aria-hidden="true" id="linkedin" />
+        </a>
+        <a
+          href="https://twitter.com/ProveUsWrongIO"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style={{ display: "none" }}>Link to Twitter profile</span>
+          <Twitter aria-hidden="true" id="twitter" />
         </a>
       </div>
       <small>Copyright {new Date().getFullYear()} Prove Us Wrong</small>
