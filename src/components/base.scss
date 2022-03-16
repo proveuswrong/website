@@ -68,8 +68,16 @@ a {
 a {
   text-decoration: none;
   color: inherit;
-  main > &:hover {
-    text-decoration: underline;
+  &:hover {
+    color: map-get($palette, red) !important;
+  }
+
+  &:hover svg {
+    path,
+    circle,
+    rect {
+      fill: map-get($palette, red) !important;
+    }
   }
 }
 
