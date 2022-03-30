@@ -28,7 +28,7 @@ const About = () => (
           />
           <h2 className="m-0">
             <a
-              href="https://ferittuncer.github.io/"
+              href="https://www.linkedin.com/in/ferit-tuncer"
               target="_blank"
               rel="noopener noreferrer"
             >
