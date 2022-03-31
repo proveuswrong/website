@@ -28,11 +28,11 @@ const About = () => (
           />
           <h2 className="m-0">
             <a
-              href="https://www.linkedin.com/in/ferit-tuncer"
+              href="https://github.com/0xferit"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ferit Tunçer
+              Ferit
             </a>
           </h2>
           <p className="m-0">Founder - Software Engineer</p>
@@ -54,7 +54,7 @@ const About = () => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              Münevver Aslan
+              Münevver
             </a>
           </h2>
           <p className="m-0">Product Designer</p>
