@@ -7,6 +7,6 @@
   Prove Us Wrong
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a791a4e1-44b5-4ba5-8703-ce89505a170f/deploy-status)](https://app.netlify.com/sites/proveuswrong/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a791a4e1-44b5-4ba5-8703-ce89505a170f/deploy-status)](https://app.netlify.com/sites/proveuswrong/deploys) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=proveuswrong_website&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=proveuswrong_website)
 
 Website of the organization built with Gatsby.
