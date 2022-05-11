@@ -17,9 +17,9 @@ const About = () => (
         We believe that coordinating for the public interest is the biggest obstacle to a better world. Governing people to coordinate is hard and historically inefficient to solve this problem but creating clever incentivization mechanisms for public interest can overcome this obstacle with ease. We build software to incentivize public interest to fight against "the tragedy of commons".
       </p>
       <p>
-        Some of us identify ourselves as cypherpunks, others as libertarians. We are activists, but we don't segregate ourselves from the realities of everyday life. We welcome donations but we don't resort to them. Instead, we turn public good projects into business ideas to build self-sustaining products.
+        Some of us identify themselves as cypherpunks, others as libertarians. We are activists, but we don't segregate ourselves from the realities of everyday life. We welcome donations but we don't resort to them. Instead, we turn public good projects into business ideas to build self-sustaining products.
       </p>
-      <p>We do what we do best: creating software for a better world. Contributing to the public interest is cool and we build the next cool thing. Prove us wrong.</p>
+      <p>We contribute to public interest with what we do best: creating software. Contributing to the public interest is cool and we build the next cool thing. Prove us wrong.</p>
       <h2> Members </h2>
       <div className={styles.portraits}>
 
