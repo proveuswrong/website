@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Prove Us Wrong`,
     description: `Decentralized software products for public interest. We build the next cool thing. Prove us wrong.`,
-    author: `@ferittuncer`,
+    author: `@0xferit`,
     siteUrl: `https://proveuswrong.io/`,
   },
   plugins: [
