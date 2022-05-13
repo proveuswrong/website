@@ -69,7 +69,7 @@ a {
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: map-get($palette, red) !important;
+    color: map-get($palette, red);
   }
 
   &:hover svg {
