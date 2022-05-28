@@ -103,7 +103,9 @@ $breakpoint-tablet: 768px;
             position: relative;
             text-decoration: none;
             overflow: hidden;
-
+            &:hover{
+              color: map-get(base.$palette, black);
+            }
             &:hover:after,
             &:focus:after,
             &:active:after {
