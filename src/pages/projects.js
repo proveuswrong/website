@@ -40,8 +40,11 @@ const Projects = () => (
       </p>
       <h3>How</h3>
       <p>
-        A just-right mix of decentralized dispute resolution via Kleros and
-        clever crypto-economic incentives. Details later.
+        A just-right mix of decentralized dispute resolution via{" "}
+        <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">
+          Kleros
+        </a>{" "}
+        and clever crypto-economic incentives. Details later.
       </p>
     </div>
   </Layout>
