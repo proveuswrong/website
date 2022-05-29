@@ -47,7 +47,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h2 className="m-0">
+          <h3 className="m-0">
             <a
               href="https://github.com/0xferit"
               target="_blank"
@@ -55,7 +55,7 @@ const About = () => (
             >
               Ferit
             </a>
-          </h2>
+          </h3>
           <p className="m-0">Founder - Software Engineer</p>
         </div>
         <div>
@@ -69,7 +69,7 @@ const About = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
-          <h2 className="m-0">
+          <h3 className="m-0">
             <a
               href="https://dribbble.com/munevver/"
               target="_blank"
@@ -77,7 +77,7 @@ const About = () => (
             >
               Münevver
             </a>
-          </h2>
+          </h3>
           <p className="m-0">Product Designer</p>
         </div>
       </div>

@@ -83,13 +83,11 @@ body {
     color: map-get(base.$palette, white);
   }
 
-  h1,
   h2,
   h3,
   h4,
   h4,
   h6 {
-    color: map-get(base.$palette, white);
   }
 
   h1 > p {
