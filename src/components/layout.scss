@@ -1,5 +1,6 @@
 @use "base";
 @use "sass:math";
+@use "theme";
 
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
@@ -80,6 +81,19 @@ body {
   a {
     font-family: "Space Mono", monospace;
     color: map-get(base.$palette, white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h4,
+  h6 {
+    color: map-get(base.$palette, white);
+  }
+
+  h1 > p {
+    font-size: $p * 1.2;
   }
 }
 
