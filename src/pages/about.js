@@ -11,7 +11,7 @@ const About = () => (
     <div className={styles.about}>
       <h1> About Us </h1>
       <p>
-        We believe that this world would be better with more liberty, thus
+        We believe that this world would be better with more freedom, thus
         justice, free speech, and privacy. We build to create more freedom.
       </p>
       <p>
