@@ -91,7 +91,7 @@ main {
   p {
     a[href]:not(:where(
   [href^="#"],
-  [href^="/"]:not([href^="//"]),
+  [href^="/"]:not([href^="//"])
 )) {
       &:hover {
         color: map-get($palette, red) !important;

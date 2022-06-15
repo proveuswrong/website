@@ -1,0 +1,38 @@
+Scientists should use deduction not induction, and aim to falsify – not prove –
+their theories. Okay, to start with, let’s go back to those swans. On your walk
+back from your riverside stroll, you get to thinking. How are you going to
+explain your new findings that all swans are white to the world? It shouldn’t be
+too hard. The evidence is on your side. You took a limited and specific data set
+– four swans, in fact, practically a flock – and you drew a reasonable theory
+from it. Every swan you’ve seen has been white. So, therefore, it’s only
+natural, to theorize that all swans are white. It’s airtight, surely even Popper
+would be on your side. This is an example of inductive reasoning, or simply
+induction, and Popper opposes it strongly. The problem is that we’re using
+singular statements, like “This swan is white,” to prove universal statements,
+like “All swans are white.” Logically speaking, Popper argues this approach
+simply isn’t valid. It’s always possible that a black swan – or a pink one, or a
+yellow one – might have come swimming around that corner. That applies if you’ve
+seen four swans, or 40, or all the swans you can imagine. A black swan could
+always appear. Here’s a question, though: What would happen if a black swan
+actually did turn up? Well, that would disprove the theory that all swans were
+white. So there’s an asymmetry to the logic here: specific statements can’t
+prove universal ones, but they can disprove them. That’s an important point when
+it comes to Popper’s preferred scientific method – known as deduction. Rather
+than starting with specifics, deduction starts with universals and examines the
+relationships between them to see what other logical conclusions can be drawn.
+You might say, for instance, that all birds can fly, and also that swans are
+birds – and hence, you can deduce that swans can also fly. That’s logically
+valid, Popper says, but that doesn’t mean it’s necessarily true. Rather, a good
+scientist would be constantly on the lookout for anything that goes against
+their hypothesis. They’d be looking to falsify their own theories. For instance,
+if they found out about a nonflying bird like a penguin. That specific case
+falsifies the general statement that all birds can fly. That shouldn’t be a
+disappointing result for a scientist: in fact, it should be exciting. It’s an
+intriguing new piece of information that will cause them to formulate a better,
+more accurate theory. Instead of “All birds can fly,” maybe it’s “All birds have
+wings.” And then, they’ll be looking everywhere for a bird with no wings to try
+and then falsify that statement. In this way, falsifiability is a big deal for
+Popper. It’s even what he calls the criterion of demarcation: the simple fact
+that distinguishes science from nonscience. A statement is only scientifically
+valid, he says, if it can potentially be falsified. Otherwise, you’re not
+dealing with science at all, but rather with something much vaguer: metaphysics.
