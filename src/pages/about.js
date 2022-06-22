@@ -23,7 +23,7 @@ const About = () => (
         fight against "the tragedy of commons".
       </p>
       <p>
-        Some of us identify ourselves as cypherpunks, others as libertarians. We
+        We identify ourselves as cypherpunks and libertarians. We
         are activists, but we don't segregate ourselves from the realities of
         everyday life. We welcome donations, but we don't resort to them.
         Instead, we turn public good projects into business ideas to build
