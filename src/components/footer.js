@@ -3,6 +3,7 @@ import * as styles from "./footer.module.scss";
 import Github from "../images/github.svg";
 import Twitter from "../images/twitter.svg";
 import LinkedIn from "../images/linkedin.svg";
+import PressKit from "../images/pressKit.svg";
 
 const Footer = () => (
   <footer>
@@ -12,6 +13,7 @@ const Footer = () => (
           href="https://github.com/proveuswrong"
           target="_blank"
           rel="noopener noreferrer"
+          title='GitHub Organization'
         >
           <span style={{ display: "none" }}>Link to GitHub profile</span>
           <Github aria-hidden="true" id="github" />
@@ -20,6 +22,7 @@ const Footer = () => (
           href="https://www.linkedin.com/company/prove-us-wrong/"
           target="_blank"
           rel="noopener noreferrer"
+          title='LinkedIn Company Page'
         >
           <span style={{ display: "none" }}>Link to LinkedIn profile</span>
           <LinkedIn aria-hidden="true" id="linkedin" />
@@ -28,11 +31,22 @@ const Footer = () => (
           href="https://twitter.com/ProveUsWrongIO"
           target="_blank"
           rel="noopener noreferrer"
+          title='Twitter Page'
         >
           <span style={{ display: "none" }}>Link to Twitter profile</span>
           <Twitter aria-hidden="true" id="twitter" />
         </a>
+        <a
+          href="/pressKit.zip"
+          target="_blank"
+          rel="noopener noreferrer"
+          title='Press Kit'
+        >
+          <span style={{ display: "none" }}>Press Kit</span>
+          <PressKit aria-hidden="true" id="pressKit" />
+        </a>
       </div>
+
       <small>Copyright {new Date().getFullYear()} Prove Us Wrong</small>
     </div>
   </footer>
