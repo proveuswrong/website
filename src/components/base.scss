@@ -89,27 +89,36 @@ main {
   h5,
   h6,
   p {
-    a[href]:not(:where(
-  [href^="#"],
-  [href^="/"]:not([href^="//"])
-)) {
-      &:hover {
-        color: map-get($palette, red) !important;
+    a[href] {
+      &:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  ) {
+        text-decoration: underline;
       }
 
-      &::after,
-      &:hover::after {
-        display: inline-table;
-        vertical-align: text-bottom;
-        width: 0.7em;
-        height: auto;
-        margin-left: 0.4em;
-      }
-      &:after {
-        content: url(/link.svg);
-      }
-      &:hover::after {
-        content: url(/linkRed.svg);
+      &:not(:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  )) {
+        &:hover {
+          color: map-get($palette, red) !important;
+        }
+
+        &::after,
+        &:hover::after {
+          display: inline-table;
+          vertical-align: text-bottom;
+          width: 0.7em;
+          height: auto;
+          margin-left: 0.4em;
+        }
+        &:after {
+          content: url(/link.svg);
+        }
+        &:hover::after {
+          content: url(/linkRed.svg);
+        }
       }
     }
   }

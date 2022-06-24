@@ -6,6 +6,7 @@
   "author": "Ferit Tunçer <0xferittuncer@gmail.com>",
   "dependencies": {
     "gatsby": "^4.6.0",
+    "gatsby-plugin-catch-links": "^4.17.0",
     "gatsby-plugin-gatsby-cloud": "^4.6.0",
     "gatsby-plugin-image": "^2.6.0",
     "gatsby-plugin-manifest": "^4.6.0",

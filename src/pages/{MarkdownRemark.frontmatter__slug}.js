@@ -13,7 +13,6 @@ export default function MarkdownPage({ data }) {
       <Seo title="Readme" />
 
       <div className={styles.markdownPage}>
-        <h1>{frontmatter.title}</h1>
         {!frontmatter.draft === true ? (
           <div dangerouslySetInnerHTML={{ __html: html }} />
         ) : (
@@ -29,7 +28,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         slug
-        title
         draft
       }
     }
