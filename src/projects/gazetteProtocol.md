@@ -1,5 +1,5 @@
 ---
-slug: "/gazette-protocol"
+slug: "/projects/gazette-protocol"
 draft: false
 ---
 
@@ -7,7 +7,7 @@ draft: false
 
 ## What
 
-This application of [Prove Me Wrong](/prove-me-wrong) lets you make the rules, launch your gazette and let the community do the rest. The incentive mechanism will incentivize reporters to make news that resonates with communities' interests and is **fake-free**. Enjoy **credibly neutral fact-checking and curation** processes while you watch your gazette grow in content organically. Let people speculate on the future of your gazette and invest in it.
+This application of [Prove Me Wrong](/projects/prove-me-wrong) lets you make the rules, launch your gazette and let the community do the rest. The incentive mechanism will incentivize reporters to make news that resonates with communities' interests and is **fake-free**. Enjoy **credibly neutral fact-checking and curation** processes while you watch your gazette grow in content organically. Let people speculate on the future of your gazette and invest in it.
 
 ## Why
 

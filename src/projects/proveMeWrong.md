@@ -1,5 +1,5 @@
 ---
-slug: "/prove-me-wrong"
+slug: "/projects/prove-me-wrong"
 draft: false
 ---
 

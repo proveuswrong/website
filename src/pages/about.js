@@ -11,27 +11,18 @@ const About = () => (
     <div className={styles.about}>
       <h1> About Us </h1>
       <p>
-        We believe that this world would be better with more freedom, thus
-        justice, free speech, and privacy. We build to create more freedom.
+        We identify ourselves as cypherpunks and libertarians. We believe that
+        this world would be better with more freedom, thus justice, free speech,
+        and privacy. We build to create more freedom.
       </p>
       <p>
         We believe that coordinating for the public interest is the biggest
-        obstacle to a better world. Governing people to coordinate is hard and
-        historically inefficient to solve this problem, but creating clever
-        incentivization mechanisms for public interest can overcome this
-        obstacle with ease. We build software to incentivize public interest to
-        fight against "the tragedy of commons".
+        obstacle to a better world. We invent business models for sustainable
+        public good projects to incentivize contributions to the public
+        interest.
       </p>
       <p>
-        We identify ourselves as cypherpunks and libertarians. We
-        are activists, but we don't segregate ourselves from the realities of
-        everyday life. We welcome donations, but we don't resort to them.
-        Instead, we turn public good projects into business ideas to build
-        self-sustaining products.
-      </p>
-      <p>
-        We contribute to the public interest with what we do best: building
-        software. Contributing to the public interest is cool, and we build the
+        We are an organization that develops public good projects. We build the
         next cool thing. Prove us wrong.
       </p>
       <h2> Members </h2>
