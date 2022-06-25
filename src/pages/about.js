@@ -9,7 +9,9 @@ const About = () => (
   <Layout>
     <Seo title="About" />
     <div className={styles.about}>
-      <h1> About Us </h1>
+      <h1> Who We Are </h1>
+
+      <h2>Goals and Values</h2>
       <p>
         We identify ourselves as cypherpunks and libertarians. We believe that
         this world would be better with more freedom, thus justice, free speech,
@@ -22,7 +24,7 @@ const About = () => (
         interest.
       </p>
       <p>
-        We are an organization that develops public good projects. We build the
+        We are an organization that develops public good software. We build the
         next cool thing. Prove us wrong.
       </p>
       <h2> Members </h2>
