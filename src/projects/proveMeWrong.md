@@ -45,3 +45,30 @@ Using a token, they vote for statements to curate them for importance. What's im
 ### Readers
 
 Enjoying distilled (true and important) information for free.
+
+## Incentive Mechanisms and Token Economy
+
+Creating claims are incentivized by rewards, paid in Prove Me Wrong token (ticker PMW). Claimers will be mining rewards, and this mining amount is a function of curation score and emission rate. Emission rate will be auto-adjusted in each block according to total supply with the target of %10 less total supply compared to each year. This mechanism will make sure token is deflationary and incentivize holding it.
+
+<iframe width="827" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRoHcFQbJcZRx-a93JrpNrosNdckfBag1u520_8IK6DatKMLIVcOs28-js0dpsnFviB1cqF7pwMJqFb/pubchart?oid=1824803934&amp;format=interactive"></iframe>
+
+Withdrawing a claim, challenging a claim and debunking a claim going to have a tax, which will decrease token supply by buying and burning from market.
+
+### Claim (Statement) Lifecycle
+
+```mermaid
+
+stateDiagram-v2
+
+
+[*] --> Live: Create a new claim and put a bounty
+Live --> Live: Mint tokens by reward mining
+Live --> Challenged: Challenge - Burns tokens by challenge tax
+Live --> Withdrawn: Withdraw - Burns tokens by withdrawal tax
+Challenged --> Debunked: Arbitrator rules for debunk - Burns tokens by debunking tax
+Challenged --> Live
+
+Withdrawn --> [*]
+Debunked --> [*]
+
+```

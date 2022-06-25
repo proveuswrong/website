@@ -51,7 +51,28 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-mermaid",
+            options: {
+              language: "mermaid",
+              theme: "dark",
+              viewport: {
+                width: 200,
+                height: 200,
+              },
+              mermaidOptions: {
+                themeCSS:
+                  ".node rect { stroke: none; fill: #ff355e; }; .edgeLabel {background-color: #171717; color: #ececec !important;}",
+              },
+            },
+          },
+        ],
+      },
+    },
     `gatsby-plugin-catch-links`,
   ],
 };
