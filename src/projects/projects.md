@@ -1,6 +1,6 @@
 ---
 slug: "/projects"
-draft: false
+draft: true
 ---
 
 # Projects
