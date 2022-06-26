@@ -1,6 +1,6 @@
 ---
 slug: "/projects/gazette-protocol"
-draft: false
+draft: true
 ---
 
 # Gazette Protocol: Launch Your Own Decentralized Gazette

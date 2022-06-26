@@ -1,6 +1,6 @@
 ---
 slug: "/projects/prove-me-wrong"
-draft: false
+draft: true
 ---
 
 # <a name="PMW"></a> Prove Me Wrong: Curating Falsifiable Statements
