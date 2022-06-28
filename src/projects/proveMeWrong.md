@@ -66,9 +66,17 @@ Enjoying distilled (true and important) information for free.
 
 ## Incentive Mechanisms and Token Economy
 
-TODO
+TODO.
 
-### Claim (Statement) Lifecycle
+Claimers have external incentives, such as spreading the word or gaining trust. For example, a bug bounty program would benefit spreading the word and bragging about no one is able to win the bounty, which indicates claim was highly likely true. Or, in a political campaign, claiming a politician is not corrupt would let the politician in question gain trust of public, provided high enough *trust score*.
+
+Curators are incentivized by getting good claims rewarded, so that people see good work gets paid and keep doing good work.
+
+Consumers are incentivized to keep using the platform because of the distilled information they get as an end product.
+
+
+
+### Claim (Statement) Lifecycle in State Diagram
 
 ```mermaid
 
