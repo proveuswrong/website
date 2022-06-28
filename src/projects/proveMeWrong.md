@@ -3,7 +3,7 @@ slug: "/projects/prove-me-wrong"
 draft: true
 ---
 
-# <a name="PMW"></a> Prove Me Wrong: Curating Falsifiable Statements
+# <a name="PMW"></a> Prove Me Wrong: Curating Important Truth
 
 In economics, a public good is a good that is both non-excludable and non-rivalrous. For such goods, users cannot be barred from accessing or using them for failing to pay for them. Also, use by one person neither prevents access of other people nor does it reduce availability to others. Information satisfies these properties. It's non-rivalrous: someone's consumption of a fact doesn't prevent others from consuming it. And it's non-excludable: one can consume a fact even if they haven't paid for it. But, it's not a good by default until it has two more properties: **trueness** and **importance**.
 
@@ -28,7 +28,25 @@ Some usecases:
 - Advertisements: you can have advertisements with true information
 - Political Campaigns: gain public trust with ease
 
-## Users Roles
+## Actions
+
+### To create
+
+To make a falsifiable statement, by offering a security deposit determined by *claimer* of the statement.
+
+### To challenge
+
+To challenge a claim, in pursuit of debunking it and winning the bounty. 
+
+### To curate
+
+To categorize statements according to their importance, subjectively.
+
+### To consume
+
+To read statements which are distilled by curation and probabilistic truth filters.
+
+## Actors
 
 ### Claimers
 
@@ -48,11 +66,7 @@ Enjoying distilled (true and important) information for free.
 
 ## Incentive Mechanisms and Token Economy
 
-Creating claims are incentivized by rewards, paid in Prove Me Wrong token (ticker PMW). Claimers will be mining rewards, and this mining amount is a function of curation score and emission rate. Emission rate will be auto-adjusted in each block according to total supply with the target of %10 less total supply compared to each year. This mechanism will make sure token is deflationary and incentivize holding it.
-
-<iframe width="827" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRoHcFQbJcZRx-a93JrpNrosNdckfBag1u520_8IK6DatKMLIVcOs28-js0dpsnFviB1cqF7pwMJqFb/pubchart?oid=1824803934&amp;format=interactive"></iframe>
-
-Withdrawing a claim, challenging a claim and debunking a claim going to have a tax, which will decrease token supply by buying and burning from market.
+TODO
 
 ### Claim (Statement) Lifecycle
 
