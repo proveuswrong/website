@@ -1,6 +1,6 @@
 ---
 slug: "/projects/the-truth-post"
-draft: true
+draft: false
 ---
 
 # The Truth Post: True and Important News
@@ -8,8 +8,7 @@ draft: true
 ## What
 
 The first decentralized newsletter with trustlessly curated content, powered by [Prove Me Wrong](/projects/prove-me-wrong).
-The incentive mechanism will incentivize reporters to make news that resonates with communities' interests and is **fake-free**.
-All happening in a **credibly neutral** decentralized process thanks to decentralized dispute resolution and game theory.
+The incentive mechanism will incentivize reporters to make news that resonates with communities' interests and is **fake-free** and curators are incentivized to curate important content honestly. All happening in a **credibly neutral** decentralized process thanks to decentralized dispute resolution and game theory. What's left for consumers is to enjoy consuming distilled information.
 
 ## Why
 
