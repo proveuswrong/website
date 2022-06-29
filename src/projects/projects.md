@@ -5,10 +5,10 @@ draft: false
 
 # Projects
 
-## Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
+##  <a name="PMW"></a> Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
 Using decentralized dispute resolution and cryptoeconomic incentives, distilling raw information with respect to truth and importance. 
 Read more [here](/projects/prove-me-wrong).
 
 ## The Truth Post
 
-An application of [Prove Me Wrong](/projects/prove-me-wrong) on news use case. Invented to produce curated and fake-free news, in a credible neutral fashion. Read more [here](/projects/the-truth-post).
+An application of [Prove Me Wrong](#PMW) on news use case. Invented to produce curated and fake-free news, in a credible neutral fashion. Read more [here](/projects/the-truth-post).
