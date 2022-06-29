@@ -1,14 +1,14 @@
 ---
 slug: "/projects"
-draft: true
+draft: false
 ---
 
 # Projects
 
-## Prove Me Wrong
+## Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
+Using decentralizd dispute resolution and cryptoeconomic incentives, distilling raw information with respect to truth and importance. 
+Read more [here](/projects/prove-me-wrong).
 
-Make a falsifiable claim. Put a bounty. Invite others to prove you wrong. Read more [here](/projects/prove-me-wrong).
+## The Truth Post
 
-## Gazette Protocol
-
-Create the rules and launch your decentralized gazette. Leave the rest to incentives and the community. Read more [here](/projects/gazette-protocol).
+An application of [Prove Me Wrong](/projects/prove-me-wrong) on news use case. Invented to produce curated and fake-free news, in a credible neutral fashion. Read more [here](/projects/the-truth-post).
