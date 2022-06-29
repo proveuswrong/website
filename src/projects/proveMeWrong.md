@@ -95,11 +95,8 @@ Challenged --> Live: DDR dismisses the challenger's attempt of proving wrong
 
 Withdrawn --> [*]
 Debunked --> [*]
-
+```
 
 ## Token Economy (a.k.a. Wen Token?)
 
 As mentioned earlier, to curate importance, PMW will use a cryptoeconomic game, played by curators, where the best strategy of the game is honestly classifying items according to their *importance*, with respect to specific curation pool policy. This will very likely require a token. The token will also help facilitate governance. More on this later.
-
-
-```
