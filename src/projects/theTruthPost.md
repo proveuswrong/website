@@ -5,6 +5,8 @@ draft: false
 
 # The Truth Post: True and Important News
 
+This project has not matured yet and it's rather in the prototyping stage. Expect frequent and big changes.
+
 ## What
 
 The first decentralized newsletter with trustlessly curated content, powered by [Prove Me Wrong](/projects/prove-me-wrong).
