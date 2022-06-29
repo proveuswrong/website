@@ -5,9 +5,11 @@ draft: false
 
 # Projects
 
-##  <a name="PMW"></a> Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
+<h2 id="PMW"> Prove Me Wrong: Curating Important Truth out of Falsifiable Claims </h2>
+
 Using decentralized dispute resolution and cryptoeconomic incentives, distilling raw information with respect to truth and importance. 
 Read more [here](/projects/prove-me-wrong).
+
 
 ## The Truth Post
 

@@ -163,3 +163,18 @@ footer {
     fill: map-get($palette, gray) !important;
   }
 }
+
+
+@keyframes glow {
+  from {
+   color: map-get($palette, red) ;
+  }
+
+  to {
+    color: map-get($palette, white) ;
+  }
+}
+ *:target{
+  animation-duration: 10s;
+  animation-name: glow;
+}
