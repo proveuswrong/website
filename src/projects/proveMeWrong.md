@@ -80,10 +80,11 @@ stateDiagram-v2
 
 [*] --> Live
 Live --> Live
-Live --> Challenged
-Live --> Withdrawn
-Challenged --> Debunked
-Challenged --> Live
+Live --> Challenged: challenge (by anyone, incurs a tax)
+Live --> AwaitingWithdrawal: initiate withdrawal (by claimer) 
+AwaitingWithdrawal --> Withdrawn: wait for timelock and then execute withdrawal (by claimer, incurs no tax)
+Challenged --> Debunked: proven wrong by the challenger, DDR approves (incurs a tax)
+Challenged --> Live: DDR dismisses the challenger's attempt of proving wrong
 
 Withdrawn --> [*]
 Debunked --> [*]
