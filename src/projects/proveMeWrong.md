@@ -17,7 +17,6 @@ Even if information is a public good, thus it's free to use, we still pay with t
 
 But curation has its own problems too. Consumer needs to trust the curator that curation was done as promised and there are no conflicts of interest. For example, in a curated list of restaurants, the consumer has to trust that the curator did not get bribed by a restaurant and that assessments are done fairly.
 
-To remove the trust requirement from curation, PMW utilizes decentralized dispute resolution via [Kleros](https://kleros.io) and creates a **decentralized curation** for publicizing important information.
 
 ## What Is This Good For?
 
@@ -66,15 +65,11 @@ Enjoying distilled (true and important) information for free.
 
 ## Incentive Mechanisms and Token Economy
 
-TODO.
+To curate trueness, PMW uses a probabilistic trueness scoring: items accumulate trueness score, which is lineary correlated with bounty amount and elapsed time, and in turn lets measuring the probability of trueness. In any time, an item can be challenged by anyone to test it's trueness before a decentralized court (powered by Kleros). 
 
-Claimers have external incentives, such as spreading the word or gaining trust. For example, a bug bounty program would benefit spreading the word and bragging about no one is able to win the bounty, which indicates claim was highly likely true. Or, in a political campaign, claiming a politician is not corrupt would let the politician in question gain trust of public, provided high enough *trust score*.
+To curate importance, PMW will use a cryptoeconomic game, played by curators, where the best strategy of the game is honestly classifying items according to their *importance*, respect to specific curation pool policy. 
 
-Curators are incentivized by getting good claims rewarded, so that people see good work gets paid and keep doing good work.
-
-Consumers are incentivized to keep using the platform because of the distilled information they get as an end product.
-
-
+More on this later.
 
 ### Claim (Statement) Lifecycle in State Diagram
 
@@ -83,11 +78,11 @@ Consumers are incentivized to keep using the platform because of the distilled i
 stateDiagram-v2
 
 
-[*] --> Live: Create a new claim and put a bounty
-Live --> Live: Mint tokens by reward mining
-Live --> Challenged: Challenge - Burns tokens by challenge tax
-Live --> Withdrawn: Withdraw - Burns tokens by withdrawal tax
-Challenged --> Debunked: Arbitrator rules for debunk - Burns tokens by debunking tax
+[*] --> Live
+Live --> Live
+Live --> Challenged
+Live --> Withdrawn
+Challenged --> Debunked
 Challenged --> Live
 
 Withdrawn --> [*]
