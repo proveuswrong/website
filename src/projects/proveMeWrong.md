@@ -4,6 +4,10 @@ draft: false
 ---
 
 # <a name="PMW"></a> Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
+
+This project has not matured yet and it's rather in the prototyping stage. Expect frequent and big changes.
+
+
 ## Motivation 
 
 In economics, a public good is a good that is both non-excludable and non-rivalrous. For such goods, users cannot be barred from accessing or using them for failing to pay for them. Also, use by one person neither prevents access of other people nor does it reduce availability to others. Information satisfies these properties. It's non-rivalrous: someone's consumption of a fact doesn't prevent others from consuming it. And it's non-excludable: one can consume a fact even if they haven't paid for it. But, it's not a good by default until it has two more properties: **trueness** and **importance**.
