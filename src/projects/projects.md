@@ -6,7 +6,7 @@ draft: false
 # Projects
 
 ## Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
-Using decentralizd dispute resolution and cryptoeconomic incentives, distilling raw information with respect to truth and importance. 
+Using decentralized dispute resolution and cryptoeconomic incentives, distilling raw information with respect to truth and importance. 
 Read more [here](/projects/prove-me-wrong).
 
 ## The Truth Post
