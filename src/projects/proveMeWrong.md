@@ -4,7 +4,6 @@ draft: false
 ---
 
 # <a name="PMW"></a> Prove Me Wrong: Curating Important Truth out of Falsifiable Claims
-
 ## Motivation 
 
 In economics, a public good is a good that is both non-excludable and non-rivalrous. For such goods, users cannot be barred from accessing or using them for failing to pay for them. Also, use by one person neither prevents access of other people nor does it reduce availability to others. Information satisfies these properties. It's non-rivalrous: someone's consumption of a fact doesn't prevent others from consuming it. And it's non-excludable: one can consume a fact even if they haven't paid for it. But, it's not a good by default until it has two more properties: **trueness** and **importance**.
@@ -74,10 +73,6 @@ Using a token, they vote for statements to curate them for importance. What's im
 
 Enjoying distilled (true and important) information for free.
 
-## Token Economy (a.k.a. Wen Token?)
-
-As mentioned earlier, to curate importance, PMW will use a cryptoeconomic game, played by curators, where the best strategy of the game is honestly classifying items according to their *importance*, with respect to specific curation pool policy. This will very likely require a token. The token will also help facilitate governance. More on this later.
-
 ### Claim (Statement) Lifecycle in State Diagram
 
 
@@ -96,5 +91,11 @@ Challenged --> Live: DDR dismisses the challenger's attempt of proving wrong
 
 Withdrawn --> [*]
 Debunked --> [*]
+
+
+## Token Economy (a.k.a. Wen Token?)
+
+As mentioned earlier, to curate importance, PMW will use a cryptoeconomic game, played by curators, where the best strategy of the game is honestly classifying items according to their *importance*, with respect to specific curation pool policy. This will very likely require a token. The token will also help facilitate governance. More on this later.
+
 
 ```
