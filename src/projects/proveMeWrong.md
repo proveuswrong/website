@@ -49,7 +49,13 @@ To make a falsifiable claim, by offering a security deposit determined by *creat
 
 ### To challenge
 
+<<<<<<< Updated upstream
 To challenge a claim, in pursuit of debunking it and winning the bounty. 
+=======
+Anyone can come up with a different usecase, so we don't intend to limit for these usecases.
+
+## Users Roles
+>>>>>>> Stashed changes
 
 ### To curate
 
@@ -63,7 +69,7 @@ To read statements which are distilled by curation and probabilistic truth filte
 
 ### Creators
 
-They make statements (claims) and put a bounty on them for anyone who can prove them wrong. They earn a share from reward pool depending on curation score.
+They make statements (claims) and put a bounty on them for anyone who can prove them wrong. They earn a share from reward pool depending on importance score.
 
 ### Inspectors
 
@@ -71,27 +77,45 @@ They look for counter-evidence and if they find challenge statements to win thei
 
 ### Curators
 
-Using a token, they vote for statements to curate them for importance. What's important depends on the usecase and the community.
+Using platform tokens, they signal their will to curate items for importance. What's important depends on the policy and community of each curation pool.
 
 ### Readers
 
 Enjoying distilled (true and important) information for free.
 
+<<<<<<< Updated upstream
 ### Claim (Statement) Lifecycle in State Diagram
 
 
 Except *Withdrawn* and *Debunked*, in all states, claims accumulate rewards, distribution is weighted according to importance criteria, curated by crowd, using a cryptoeconomic game, as mentioned above. 
+=======
+## Incentive Mechanisms and Token Economy
+
+TODO.
+
+### Claim (Statement) Lifecycle
+>>>>>>> Stashed changes
 
 ```mermaid
 
 stateDiagram-v2
 
+<<<<<<< Updated upstream
 [*] --> Live
 Live --> Challenged: challenge (by anyone, incurs a tax)
 Live --> AwaitingWithdrawal: initiate withdrawal (by claimer) 
 AwaitingWithdrawal --> Withdrawn: wait for timelock and then execute withdrawal (by claimer, incurs no tax)
 Challenged --> Debunked: proven wrong by the challenger, DDR approves (incurs a tax)
 Challenged --> Live: DDR dismisses the challenger's attempt of proving wrong
+=======
+
+[*] --> Live: Create a new claim and put a bounty
+Live --> Live: Earns rewards
+Live --> Challenged: Challenge - Burns tokens by challenge tax
+Live --> Withdrawn: Withdraw - Burns tokens by withdrawal tax
+Challenged --> Debunked: Arbitrator rules for debunk - Burns tokens by debunking tax
+Challenged --> Live
+>>>>>>> Stashed changes
 
 Withdrawn --> [*]
 Debunked --> [*]

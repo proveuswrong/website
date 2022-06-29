@@ -13,7 +13,7 @@ export default function MarkdownPage({ data }) {
       <Seo title="Readme" />
 
       <div className={styles.markdownPage}>
-        {!frontmatter.draft === true ? (
+        {!frontmatter.draft === true || process.env.ENV === "DEV" ? (
           <div dangerouslySetInnerHTML={{ __html: html }} />
         ) : (
           <p>This document is not ready yet. Come back later.</p>

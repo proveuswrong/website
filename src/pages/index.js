@@ -23,6 +23,7 @@ const IndexPage = () => {
   );
 
   console.debug(`Build time: ${site.buildTime}`);
+  console.debug(`Environment: ${process.env.ENV}`);
 
   return (
     <Layout>
