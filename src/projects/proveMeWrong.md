@@ -50,8 +50,6 @@ To make a falsifiable claim, by offering a security deposit determined by _creat
 
 To challenge a claim, in pursuit of debunking it and winning the bounty.
 
-## Users Roles
-
 ### To curate
 
 To categorize claims according to their importance, subjectively.
@@ -78,15 +76,9 @@ Using platform tokens, they signal their will to curate items for importance. Wh
 
 Enjoying distilled (true and important) information for free.
 
-### Claim (Statement) Lifecycle in State Diagram
+## Claim (Statement) Lifecycle in State Diagram
 
 Except _Withdrawn_ and _Debunked_, in all states, claims accumulate rewards, distribution is weighted according to importance criteria, curated by crowd, using a cryptoeconomic game, as mentioned above.
-
-## Incentive Mechanisms and Token Economy
-
-TODO.
-
-### Claim (Statement) Lifecycle
 
 ```mermaid
 
