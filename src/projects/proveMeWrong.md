@@ -7,8 +7,7 @@ draft: false
 
 This project has not matured yet and it's rather in the prototyping stage. Expect frequent and big changes.
 
-
-## Motivation 
+## Motivation
 
 In economics, a public good is a good that is both non-excludable and non-rivalrous. For such goods, users cannot be barred from accessing or using them for failing to pay for them. Also, use by one person neither prevents access of other people nor does it reduce availability to others. Information satisfies these properties. It's non-rivalrous: someone's consumption of a fact doesn't prevent others from consuming it. And it's non-excludable: one can consume a fact even if they haven't paid for it. But, it's not a good by default until it has two more properties: **trueness** and **importance**.
 
@@ -24,13 +23,13 @@ But curation has its own problems too. Consumer needs to trust the curator that 
 
 ## Enter Prove Me Wrong
 
-PMW is a solution to curate info for trueness and importance, trustlessly. 
+PMW is a solution to curate info for trueness and importance, trustlessly.
 
 Let's go back to the claim of "All swans are white". We said that it's more practical to look for a refutation instead of verifying. Can we know if a black swan (refutation) will be observed eventually or how long will it take? We can't unless we see all swans. However, we don't have to find a black swan to become confident about the trueness of this claim. We still can be confident about the claim, provided there is adequate incentive to look for a refutation and it's been quite some time and no one was able to find it. And this is what PMW does: estimating the probability of trueness of falsifiable claims (statements). Claims are published with a bounty and they accumulate a trueness score, which is a function of bounty amount and elapsed time. In any time, an item can be challenged by anyone to test it's trueness before a decentralized court (powered by [Kleros](https://kleros.io)). The likelihood of observing a refutation is inversely correlated with the trueness score, in other words, more trueness score means less likelihood of a refutation existing. And this actually, is not a novel approach. In bug bounties, if no one was able to discover a bug, after a relatively long time with a relatively big bounty, then we say that the software is practically bug-free. PMW borrows and generalizes this approach to solve curation for trueness.
 
 PMW also uses a cryptoeconomic game played between curators, to achieve trustless curation for importance. This is a game where actors rewarded or punished economically and in which the best strategy is honestly classifying claims according to their importance, with respect to given curation pool policy. This way, curators are incentivized to contribute to public good.
 
-And finally, creators are incentivized by rewards, distributed with respect to importance scores of items'. 
+And finally, creators are incentivized by rewards, distributed with respect to importance scores of items'.
 
 ## What Is This Good For?
 
@@ -39,23 +38,19 @@ Some usecases:
 - News: consume only true and important news
 - Bug Bounties: only if you can address the requirement of private disclosure
 - Advertisements: you can have advertisements with credibly true information
-- Political Campaigns: get your facts checked trustlessly, gain the trust of public with ease 
+- Political Campaigns: get your facts checked trustlessly, gain the trust of public with ease
 
 ## Actions
 
 ### To create
 
-To make a falsifiable claim, by offering a security deposit determined by *creator* of the claim.
+To make a falsifiable claim, by offering a security deposit determined by _creator_ of the claim.
 
 ### To challenge
 
-<<<<<<< Updated upstream
-To challenge a claim, in pursuit of debunking it and winning the bounty. 
-=======
-Anyone can come up with a different usecase, so we don't intend to limit for these usecases.
+To challenge a claim, in pursuit of debunking it and winning the bounty.
 
 ## Users Roles
->>>>>>> Stashed changes
 
 ### To curate
 
@@ -83,39 +78,27 @@ Using platform tokens, they signal their will to curate items for importance. Wh
 
 Enjoying distilled (true and important) information for free.
 
-<<<<<<< Updated upstream
 ### Claim (Statement) Lifecycle in State Diagram
 
+Except _Withdrawn_ and _Debunked_, in all states, claims accumulate rewards, distribution is weighted according to importance criteria, curated by crowd, using a cryptoeconomic game, as mentioned above.
 
-Except *Withdrawn* and *Debunked*, in all states, claims accumulate rewards, distribution is weighted according to importance criteria, curated by crowd, using a cryptoeconomic game, as mentioned above. 
-=======
 ## Incentive Mechanisms and Token Economy
 
 TODO.
 
 ### Claim (Statement) Lifecycle
->>>>>>> Stashed changes
 
 ```mermaid
 
 stateDiagram-v2
 
-<<<<<<< Updated upstream
 [*] --> Live
 Live --> Challenged: challenge (by anyone, incurs a tax)
-Live --> AwaitingWithdrawal: initiate withdrawal (by claimer) 
+Live --> AwaitingWithdrawal: initiate withdrawal (by claimer)
 AwaitingWithdrawal --> Withdrawn: wait for timelock and then execute withdrawal (by claimer, incurs no tax)
 Challenged --> Debunked: proven wrong by the challenger, DDR approves (incurs a tax)
 Challenged --> Live: DDR dismisses the challenger's attempt of proving wrong
-=======
 
-[*] --> Live: Create a new claim and put a bounty
-Live --> Live: Earns rewards
-Live --> Challenged: Challenge - Burns tokens by challenge tax
-Live --> Withdrawn: Withdraw - Burns tokens by withdrawal tax
-Challenged --> Debunked: Arbitrator rules for debunk - Burns tokens by debunking tax
-Challenged --> Live
->>>>>>> Stashed changes
 
 Withdrawn --> [*]
 Debunked --> [*]
@@ -123,4 +106,4 @@ Debunked --> [*]
 
 ## Token Economy (a.k.a. Wen Token?)
 
-As mentioned earlier, to curate importance, PMW will use a cryptoeconomic game, played by curators, where the best strategy of the game is honestly classifying items according to their *importance*, with respect to specific curation pool policy. This will very likely require a token. The token will also help facilitate governance. More on this later.
+As mentioned earlier, to curate importance, PMW will use a cryptoeconomic game, played by curators, where the best strategy of the game is honestly classifying items according to their _importance_, with respect to specific curation pool policy. This will very likely require a token. The token will also help facilitate governance. More on this later.
