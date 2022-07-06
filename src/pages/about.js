@@ -31,7 +31,7 @@ const About = () => (
       <div className={styles.portraits}>
         <div>
           <StaticImage
-            src="../images/ferit.png"
+            src="../images/ferit_wc1.png"
             objectFit="contain"
             minwidth={50}
             width={170}
@@ -53,7 +53,7 @@ const About = () => (
         </div>
         <div>
           <StaticImage
-            src="../images/munevver.png"
+            src="../images/munevver_wc1.png"
             minwidth={50}
             width={170}
             objectFit="contain"
