@@ -41,8 +41,9 @@ html {
   outline: none;
 }
 
-.grayed-out {
-  text-decoration: underline;
+.navActive > a {
+  text-decoration: underline !important;
+  // text-underline-offset: 1px !important;
   pointer-events: none;
 }
 
@@ -55,8 +56,9 @@ body {
 }
 
 * {
-  transition-property: color background-color opacity;
-  transition-duration: 0.1s;
+  transition: color 0.1s ease !important;
+  transition: background-color 0.1s ease !important;
+  transition: opacity 0.1s ease !important;
 }
 
 main h1,
@@ -164,17 +166,16 @@ footer {
   }
 }
 
-
 @keyframes glow {
   from {
-   color: map-get($palette, red) ;
+    color: map-get($palette, red);
   }
 
   to {
-    color: map-get($palette, white) ;
+    color: map-get($palette, white);
   }
 }
- *:target{
+*:target {
   animation-duration: 10s;
   animation-name: glow;
 }

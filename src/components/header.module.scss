@@ -31,9 +31,12 @@ $breakpoint-tablet: 768px;
 
       a {
         color: map-get(base.$palette, white);
-        text-decoration: none;
+        text-decoration: underline;
+        text-decoration-color: transparent;
         &:hover {
           text-decoration: underline;
+          text-decoration-color: map-get(base.$palette, white);
+          transition: text-decoration-color 0.6s ease !important;
         }
       }
     }
@@ -103,7 +106,7 @@ $breakpoint-tablet: 768px;
             position: relative;
             text-decoration: none;
             overflow: hidden;
-            &:hover{
+            &:hover {
               //color: map-get(base.$palette, black);
               text-decoration: underline;
             }

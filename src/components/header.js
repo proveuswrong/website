@@ -18,11 +18,11 @@ const Header = ({ siteTitle }) => {
   const about = useRef(null);
 
   useEffect(() => {
-    window.location.pathname == "/" && home.current.classList.add("grayed-out");
+    window.location.pathname == "/" && home.current.classList.add("navActive");
     window.location.pathname == "/projects/" &&
-      projects.current.classList.add("grayed-out");
+      projects.current.classList.add("navActive");
     window.location.pathname == "/about/" &&
-      about.current.classList.add("grayed-out");
+      about.current.classList.add("navActive");
   }, []);
 
   const isNarrow = useMediaQuery(`(max-width: ${breakpointTablet}px)`);
