@@ -3,7 +3,7 @@ slug: "/projects/the-truth-post"
 draft: false
 ---
 
-# The Truth Post: True and Important News
+# The Truth Post: Accurate and Relevant News
 
 This project has not matured yet and it's rather in the prototyping stage. Expect frequent and big changes.
 
