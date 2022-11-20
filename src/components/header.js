@@ -15,12 +15,17 @@ const breakpointTablet = 768;
 const Header = ({ siteTitle }) => {
   const home = useRef(null);
   const projects = useRef(null);
+  const faq = useRef(null);
   const about = useRef(null);
+
+
 
   useEffect(() => {
     window.location.pathname == "/" && home.current.classList.add("navActive");
     window.location.pathname == "/projects/" &&
       projects.current.classList.add("navActive");
+    window.location.pathname == "/faq/" &&
+    faq.current.classList.add("navActive");
     window.location.pathname == "/about/" &&
       about.current.classList.add("navActive");
   }, []);
@@ -47,6 +52,9 @@ const Header = ({ siteTitle }) => {
 
                 <li ref={projects}>
                   <Link to="/projects/">PROJECTS</Link>
+                </li>
+                <li ref={faq}>
+                  <Link to="/faq/">F.A.Q.</Link>
                 </li>
 
                 <li ref={about}>

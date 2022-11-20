@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/projects`,
+        path: `${__dirname}/src/pages`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -74,6 +74,7 @@ module.exports = {
               },
             },
           },
+          `gatsby-remark-autolink-headers`,
         ],
       },
     },
