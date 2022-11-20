@@ -1,4 +1,5 @@
 @use "colors";
+@use "typo";
 
 @mixin generate($prefix, $property) {
   // List of sizes to generate for each
@@ -20,7 +21,10 @@
 
 html {
   @include generate(mt, margin-top);
+  @include typo.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font);
+
 }
+
 
 .t-center {
   text-align: center;

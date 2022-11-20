@@ -37,9 +37,7 @@ $max_width: 1200px;
 $min_font: 15px;
 $max_font: 18px;
 
-html {
-  @include fluid-type($min_width, $max_width, $min_font, $max_font);
-}
+
 
 $h1: 1rem * math.pow($ratio, math.div(3, 3));
 $h2: 1rem * math.pow($ratio, math.div(2, 3));
