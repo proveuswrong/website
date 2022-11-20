@@ -180,6 +180,7 @@ footer {
   }
 }
 *:target {
-  animation-duration: 7s;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
   animation-name: glow;
 }
