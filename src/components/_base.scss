@@ -1,9 +1,4 @@
-$palette: (
-  black: #171717,
-  red: #ff355e,
-  white: #ececec,
-  gray: #727272,
-);
+@use "colors";
 
 @mixin generate($prefix, $property) {
   // List of sizes to generate for each
@@ -33,7 +28,7 @@ html {
 
 /* Focusing with a keyboard.*/
 *:focus-visible {
-  outline: 2px dashed map-get($palette, white);
+  outline: 2px dashed map-get(colors.$palette, white);
 }
 
 /* Focusing the button with a mouse, touch, or stylus.*/
@@ -71,19 +66,31 @@ a {
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: map-get($palette, red);
+    color: map-get(colors.$palette, red);
   }
 
   &:hover svg {
     path,
     circle,
     rect {
-      fill: map-get($palette, red) !important;
+      fill: map-get(colors.$palette, red) !important;
     }
   }
 }
 
 main {
+  p {
+    a[href] {
+      &:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  ) {
+        text-decoration: underline;
+      }
+    }
+  }
+
+
   h1,
   h2,
   h3,
@@ -95,16 +102,13 @@ main {
       &:where(
     [href^="#"],
     [href^="/"]:not([href^="//"])
-  ) {
-        text-decoration: underline;
-      }
-
+  )
       &:not(:where(
     [href^="#"],
     [href^="/"]:not([href^="//"])
   )) {
         &:hover {
-          color: map-get($palette, red) !important;
+          color: map-get(colors.$palette, red) !important;
         }
 
         &::after,
@@ -133,7 +137,7 @@ a.hero {
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem !important;
-  border: 2px solid map-get($palette, white);
+  border: 2px solid map-get(colors.$palette, white);
   border-radius: 4px;
 
   padding: 0.6em 2.2em;
@@ -152,30 +156,30 @@ a.hero {
     left: 0;
     width: 100%;
     height: 100%;
-    background: map-get($palette, black);
+    background: map-get(colors.$palette, black);
     z-index: -1;
   }
 }
 
 footer {
   small {
-    color: map-get($palette, gray) !important;
+    color: map-get(colors.$palette, gray) !important;
   }
   svg path {
-    fill: map-get($palette, gray) !important;
+    fill: map-get(colors.$palette, gray) !important;
   }
 }
 
 @keyframes glow {
   from {
-    color: map-get($palette, red);
+    color: map-get(colors.$palette, red);
   }
 
   to {
-    color: map-get($palette, white);
+    color: map-get(colors.$palette, white);
   }
 }
 *:target {
-  animation-duration: 10s;
+  animation-duration: 7s;
   animation-name: glow;
 }

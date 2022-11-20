@@ -1,6 +1,8 @@
+@use "colors";
 @use "base";
 @use "sass:math";
 @use "theme";
+
 
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
@@ -58,7 +60,7 @@ $font-size-base: 14px; // Golden ditonic scale with base font sizes of 12px, 14p
 
 body {
   margin: 0;
-  background-color: map-get(base.$palette, black);
+  background-color: map-get(colors.$palette, black);
   height: 100vh;
   height: -webkit-fill-available;
   height: 100%;
@@ -80,7 +82,7 @@ body {
   button,
   a {
     font-family: "Space Mono", monospace;
-    color: map-get(base.$palette, white);
+    color: map-get(colors.$palette, white);
   }
 
   h2,

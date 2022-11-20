@@ -1,4 +1,4 @@
-@use "base";
+@use "colors";
 
 $button-height: 27px;
 $button-width: 35px;
@@ -25,21 +25,21 @@ $height: 3 * $thickness + 2 * $gap;
   &.active {
     .top {
       transform: translateY($thickness + $gap) translateX(0) rotate(45deg);
-      background: map-get(base.$palette, white);
+      background: map-get(colors.$palette, white);
     }
     .middle {
       opacity: 0;
-      background: map-get(base.$palette, white);
+      background: map-get(colors.$palette, white);
     }
 
     .bottom {
       transform: translateY(-$thickness - $gap) translateX(0) rotate(-45deg);
-      background: map-get(base.$palette, white);
+      background: map-get(colors.$palette, white);
     }
   }
 
   span {
-    background: map-get(base.$palette, gray);
+    background: map-get(colors.$palette, gray);
     border: none;
     height: $thickness;
     width: 100%;
