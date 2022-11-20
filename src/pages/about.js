@@ -70,7 +70,7 @@ const About = () => (
               Münevver
             </a>
           </h3>
-          <p className="m-0">Product Designer</p>
+          <p className="m-0">Product and Graphics Designer</p>
         </div>
       </div>
     </div>
