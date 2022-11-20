@@ -69,6 +69,7 @@ a {
 a {
   text-decoration: none;
   color: inherit;
+
   &:hover {
     color: map-get(colors.$palette, red);
   }
@@ -83,12 +84,43 @@ a {
 }
 
 main {
+  h1, h2, h3, p {
+
+    // For external links
+    a[href] {
+      &:not(:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  )) {
+        &::after,
+        &:hover::after {
+          display: inline-table;
+          vertical-align: text-bottom;
+          width: 0.7em;
+          height: auto;
+          margin-left: 0.4em;
+        }
+
+        &:after {
+          content: url(/link.svg);
+        }
+
+        &:hover::after {
+          content: url(/linkRed.svg);
+        }
+      }
+    }
+
+
+  }
+
+  // For internal links
   p {
     a[href] {
       &:where(
-    [href^="#"],
-    [href^="/"]:not([href^="//"])
-  ) {
+      [href^="#"],
+      [href^="/"]:not([href^="//"])
+    ) {
         text-decoration: underline;
       }
     }
@@ -115,20 +147,7 @@ main {
           color: map-get(colors.$palette, red) !important;
         }
 
-        &::after,
-        &:hover::after {
-          display: inline-table;
-          vertical-align: text-bottom;
-          width: 0.7em;
-          height: auto;
-          margin-left: 0.4em;
-        }
-        &:after {
-          content: url(/link.svg);
-        }
-        &:hover::after {
-          content: url(/linkRed.svg);
-        }
+
       }
     }
   }
@@ -169,6 +188,7 @@ footer {
   small {
     color: map-get(colors.$palette, gray) !important;
   }
+
   svg path {
     fill: map-get(colors.$palette, gray) !important;
   }
@@ -183,6 +203,7 @@ footer {
     color: map-get(colors.$palette, white);
   }
 }
+
 *:target {
   animation-duration: 3s;
   animation-timing-function: ease-in;

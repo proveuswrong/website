@@ -36,7 +36,7 @@ const About = () => (
             width={170}
             quality={100}
             formats={["auto", "webp", "avif"]}
-            alt="A Gatsby astronaut"
+            alt="Ferit's photo"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <h3 className="m-0">
@@ -58,7 +58,7 @@ const About = () => (
             objectFit="contain"
             quality={100}
             formats={["auto", "webp", "avif"]}
-            alt="A Gatsby astronaut"
+            alt="Münevver's photo"
             style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <h3 className="m-0">
