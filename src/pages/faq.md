@@ -21,10 +21,8 @@ in your mind? Feel free to email us.
 
 ## Prove Us Wrong? Prove Me Wrong? I'm confused.
 
-Well, the initial project we were working on was Prove *Me* Wrong. Then we formed an organization and we choose an organization name, 
-inspired by the name of the project plus a wordplay: Prove *Us* Wrong. So, one of them is the name of the organization the other one is 
-the name of one of our projects.
+Well, the initial project we were working on was Prove Me Wrong. Then we formed an organization, and we chose an organization name, inspired by the name of the project plus a wordplay: Prove Us Wrong. So, one of them is the name of the organization the other one is the name of one of our projects.
 
 ## I have a question that is not answered here.
 
-We can gladly answer if you contact us. You can find our contact details in footer.
+We can gladly answer if you contact us. You can find our contact details in the footer.
