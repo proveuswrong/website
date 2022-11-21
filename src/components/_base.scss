@@ -55,9 +55,7 @@ body {
 }
 
 * {
-  transition: color 0.1s ease !important;
-  transition: background-color 0.1s ease !important;
-  transition: opacity 0.1s ease !important;
+  transition: color 0.1s ease, background-color 0.1s ease, opacity 0.1s ease;
 }
 
 main h1,
@@ -115,7 +113,7 @@ main {
   }
 
   // For internal links
-  p {
+  p, li {
     a[href] {
       &:where(
       [href^="#"],
