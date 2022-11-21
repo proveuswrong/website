@@ -27,4 +27,4 @@ the name of one of our projects.
 
 ## I have a question that is not answered here.
 
-We would be happy to answer if you contact us. You can find our contact details in footer.
+We can gladly answer if you contact us. You can find our contact details in footer.
