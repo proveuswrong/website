@@ -72,6 +72,28 @@ const About = () => (
           </h3>
           <p className="m-0">Product Designer</p>
         </div>
+        <div>
+          <StaticImage
+            src="../images/ifeoluwa_bgBlack.png"
+            minwidth={50}
+            width={170}
+            objectFit="contain"
+            quality={100}
+            formats={["auto", "webp", "avif"]}
+            alt="Ifeoluwa's photo"
+            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
+          />
+          <h3 className="m-0">
+            <a
+              href="https://www.linkedin.com/in/iamifeolushola/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ifeoluwa
+            </a>
+          </h3>
+          <p className="m-0">Community Manager and Marketer</p>
+        </div>
       </div>
     </div>
   </Layout>
