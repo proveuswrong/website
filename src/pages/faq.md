@@ -43,7 +43,7 @@ Yes, we do. Please email us and let's talk.
 
 ## How much you have raised so far?
 
-We have raised €50000 so far as an initial seed investment by participating in the incubator program of Coopérative Kleros.
+We have raised €50000 so far as an initial seed investment by participating in the [incubator program of Coopérative Kleros](https://kleros.io/incubator).
 
 ## Are you incorporated?
 
