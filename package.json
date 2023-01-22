@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Ferit Tunçer <0xferittuncer@gmail.com>",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "gatsby": "^4.6.0",
     "gatsby-plugin-catch-links": "^4.17.0",
     "gatsby-plugin-gatsby-cloud": "^4.6.0",
@@ -23,7 +24,7 @@
     "gatsby-transformer-remark": "^5.17.0",
     "gatsby-transformer-sharp": "^4.6.0",
     "prop-types": "^15.8.0",
-    "puppeteer": "^15.1.1",
+    "puppeteer": "^19.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",

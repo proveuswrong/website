@@ -1,17 +1,10 @@
 ---
 slug: "/faq"
 draft: false
+toc: true
 ---
 
 # F.A.Q.
-
-- [How can I contact you?](#how-can-i-contact-you)
-- [Can I work with you?](#can-i-work-with-you)
-- [Prove Us Wrong? Prove Me Wrong? I'm confused.](#prove-us-wrong-prove-me-wrong-im-confused)
-- [I want to invest. Are you raising funds?](#i-want-to-invest-are-you-raising-funds)
-- [How much you have raised so far?](#how-much-you-have-raised-so-far)
-- [Are you incorporated?](#are-you-incorporated)
-- [I have a question that is not answered here.](#i-have-a-question-that-is-not-answered-here)
 
 ## How can I contact you?
 
@@ -26,7 +19,23 @@ in your mind? Feel free to email us.
 
 Well, the initial project we were working on was Prove Me Wrong. Then we formed an organization, and we chose an organization name, inspired by the name of the project plus a wordplay: Prove Us Wrong. So, one of them is the name of the organization the other one is the name of one of our projects.
 
+## What is decentralized curation?
 
+Decentralized curation refers to the process of content moderation and organization in which a community of users, rather than a central authority, is responsible for determining which content is featured or promoted. This can help to create a more diverse set of voices and perspectives, as well as reduce the risk of censorship or bias. However, it can also make it more difficult to ensure that content is accurate, appropriate, and legal, and that there is a consistent standard for what is allowed.
+
+## What good decentralized curation does?
+
+Decentralized curation has the potential to be useful in a variety of different contexts, depending on the specific goals and constraints of a particular application. Some potential benefits of decentralized curation include:
+
+Resilience against censorship: Since there is no central point of control, it can be more difficult for authorities to censor or shut down a decentralized curation system.
+Increased diversity of voices: By allowing multiple users to participate in curation, a decentralized system can help to promote a greater range of perspectives and ideas.
+Reduced risk of bias: Without a central authority controlling the content, there is less risk of bias or manipulation in the curation process.
+Examples of application would be:
+
+News and journalism: By allowing a community of readers to curate articles and sources, a decentralized news platform could help to promote a more diverse set of voices and perspectives.
+Social media: A decentralized social media platform could allow users to curate content and build their own communities, reducing the risk of censorship and bias.
+Online marketplaces: Decentralized marketplaces can be curated by its own user-base, which helps to ensure that the products and services are relevant, trustworthy, and high-quality.
+However, it is important to note that decentralized curation also comes with some potential drawbacks, such as the difficulty of enforcing consistent standards for content, and it require more advanced technology and governance structure.
 
 ## I want to invest. Are you raising funds?
 

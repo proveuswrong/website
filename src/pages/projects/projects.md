@@ -1,6 +1,7 @@
 ---
 slug: "/projects"
 draft: false
+toc: false
 ---
 
 # Projects

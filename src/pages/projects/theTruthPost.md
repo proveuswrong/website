@@ -1,6 +1,7 @@
 ---
 slug: "/projects/the-truth-post"
 draft: false
+toc: false
 ---
 
 # The Truth Post: Accurate and Relevant News
