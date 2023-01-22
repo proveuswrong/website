@@ -30,8 +30,14 @@ const IndexPage = () => {
       <Seo title="Home" />
       <div className={styles.container}>
         <h1 id="slogan" className={`hero ` + styles.h1}>
-          We build the next cool thing
+          In Decentralized Curation, We Trust
         </h1>
+
+        <p>
+          Decentralized curation allows for a more open and democratic system of content creation and distribution. It eliminates the need for centralized gatekeepers and allows for a wider range of voices and perspectives to be heard. Additionally, it can also help to mitigate issues such as censorship, bias, and manipulation that can arise in centralized systems. This can ultimately lead to a more diverse, equitable and robust ecosystem for content creation and distribution. That's why at Prove Us Wrong we are working on building solutions to decentrally curate information.
+        </p>
+
+        <p>The next cool thing is decentralized curation and we build the next cool thing.</p>
 
         <Link to="/projects/" className="hero mt-3">
           Show Me
