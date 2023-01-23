@@ -30,7 +30,7 @@ const IndexPage = () => {
       <Seo title="Home" />
       <div className={styles.container}>
         <h1 id="slogan" className={`hero ` + styles.h1}>
-          In Decentralized Curation, We Trust
+          In Decentralized Curation We Trust
         </h1>
 
         <p>
