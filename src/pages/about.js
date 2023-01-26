@@ -48,7 +48,7 @@ const About = () => (
               Ferit
             </a>
           </h3>
-          <p className="m-0">Founder - Software Engineer</p>
+          <p className="m-0">Founder — Software Engineer</p>
         </div>
         <div>
           <StaticImage
