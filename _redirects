@@ -1,0 +1,4 @@
+# http and https need separate rules if you don’t force_ssl!
+http://discord.proveuswrong.io/* https://discord.gg/FvDrdDtYAV/:splat 301!
+https://discord.proveuswrong.io/* https://discord.gg/FvDrdDtYAV/:splat 301!
+
