@@ -6,6 +6,10 @@
 
 .social {
   margin-bottom: 8px;
+
+  & svg {
+    margin-bottom: 16px;
+  }
 }
 
 :global(#twitter) {
