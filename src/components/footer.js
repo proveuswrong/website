@@ -4,6 +4,7 @@ import Github from "../images/github.svg";
 import Twitter from "../images/twitter.svg";
 import Email from "../images/email.svg";
 import Angel from "../images/angel.svg";
+import Discord from "../images/discord.svg";
 import LinkedIn from "../images/linkedin.svg";
 import PressKit from "../images/pressKit.svg";
 
@@ -21,13 +22,13 @@ const Footer = () => (
           <LinkedIn aria-hidden="true" id="linkedin" />
         </a>
         <a
-          href="https://github.com/proveuswrong"
+          href="https://angel.co/company/prove-us-wrong"
           target="_blank"
           rel="noopener noreferrer"
-          title='GitHub Organization'
+          title='AngelList Page'
         >
-          <span style={{ display: "none" }}>Link to GitHub profile</span>
-          <Github aria-hidden="true" id="github" />
+          <span style={{ display: "none" }}>Link to AngelList profile</span>
+          <Angel aria-hidden="true" id="angel" />
         </a>
 
         <a
@@ -40,15 +41,26 @@ const Footer = () => (
           <Twitter aria-hidden="true" id="twitter" />
         </a>
 
+
         <a
-          href="https://angel.co/company/prove-us-wrong"
+          href="https://discord.gg/FvDrdDtYAV"
           target="_blank"
           rel="noopener noreferrer"
-          title='AngelList Page'
+          title='Discord Community'
         >
-          <span style={{ display: "none" }}>Link to AngelList profile</span>
-          <Angel aria-hidden="true" id="angel" />
+          <span style={{ display: "none" }}>Link to Discord community</span>
+          <Discord aria-hidden="true" id="discord" />
         </a>
+        <a
+          href="https://github.com/proveuswrong"
+          target="_blank"
+          rel="noopener noreferrer"
+          title='GitHub Organization'
+        >
+          <span style={{ display: "none" }}>Link to GitHub profile</span>
+          <Github aria-hidden="true" id="github" />
+        </a>
+
         <a
           href="mailto:inbox@proveuswrong.io"
           target="_blank"
