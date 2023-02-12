@@ -95,6 +95,33 @@ const About = () => (
           <p className="m-0">Community Manager and Marketer</p>
         </div>
       </div>
+
+      <h2>Contributors</h2>
+      <div className={styles.portraits}>
+        <div>
+          <StaticImage
+            src="../images/stanislav_bgBlack.jpg"
+            objectFit="contain"
+            minwidth={50}
+            width={170}
+            quality={100}
+            formats={["auto", "webp", "avif"]}
+            alt="Stanislav's photo"
+            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
+          />
+          <h3 className="m-0">
+            <a
+              href="https://github.com/gratestas"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stanislav
+            </a>
+          </h3>
+          <p className="m-0">Software Engineer</p>
+        </div>
+      </div>
+
     </div>
   </Layout>
 );
