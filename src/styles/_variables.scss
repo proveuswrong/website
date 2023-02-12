@@ -1,0 +1,13 @@
+@use "src/styles/functions";
+
+$colors: (
+        black: #171717,
+        red: #ff355e,
+        white: #ececec,
+        gray: #727272,
+);
+
+$spacingInterval: 0.25rem;
+$spacingCount: 20;
+$spacings: functions.generateSpacings($spacingCount, $spacingInterval);
+

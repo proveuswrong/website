@@ -1,4 +1,4 @@
-@use "colors";
+@use "src/styles/variables";
 
 $breakpoint-tablet: 768px;
 
@@ -11,7 +11,7 @@ $breakpoint-tablet: 768px;
   margin: 0;
   text-transform: lowercase;
 
-  color: map-get(colors.$palette, red);
+  color: map-get(variables.$colors, red);
 
   @media (pointer: fine) {
     /* Rules for devices with mouse here */
@@ -30,12 +30,12 @@ $breakpoint-tablet: 768px;
       list-style: none;
 
       a {
-        color: map-get(colors.$palette, white);
+        color: map-get(variables.$colors, white);
         text-decoration: underline;
         text-decoration-color: transparent;
         &:hover {
           text-decoration: underline;
-          text-decoration-color: map-get(colors.$palette, white);
+          text-decoration-color: map-get(variables.$colors, white);
           transition: text-decoration-color 0.6s ease !important;
         }
       }

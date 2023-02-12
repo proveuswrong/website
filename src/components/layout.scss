@@ -1,8 +1,8 @@
-@use "colors";
-@use "base";
-@use "typo";
+@use "src/styles/variables";
+@use "src/styles/base";
+@use "src/styles/typo";
 @use "sass:math";
-@use "theme";
+@use "src/styles/theme";
 
 
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
@@ -11,7 +11,7 @@ $brandFontSize: 21px;
 
 body {
   margin: 0;
-  background-color: map-get(colors.$palette, black);
+  background-color: map-get(variables.$colors, black);
   height: 100vh;
   height: -webkit-fill-available;
   height: 100%;
@@ -33,7 +33,7 @@ body {
   button,
   a {
     font-family: "Space Mono", monospace;
-    color: map-get(colors.$palette, white);
+    color: map-get(variables.$colors, white);
   }
 
   h2,

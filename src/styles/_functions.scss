@@ -1,0 +1,9 @@
+@function generateSpacings($spacingCount, $spacingInterval) {
+  $spacings: ();
+
+  @for $i from 1 through $spacingCount {
+    $spacings: map-merge($spacings, ($i: $i * $spacingInterval));
+  }
+
+  @return $spacings;
+}

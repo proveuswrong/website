@@ -1,26 +1,10 @@
-@use "colors";
-@use "typo";
+@use "src/styles/variables";
+@use "src/styles/typo";
+@use "src/styles/mixins";
 
-@mixin generate($prefix, $property) {
-  // List of sizes to generate for each
-  $sizes: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5];
-  // Spacing to multiply the sizes by
-  $spacing: 1rem;
-
-  // Loop through all of the sizes(we use @for rather than @each, as we want access to the index)
-  @for $i from 1 through length($sizes) {
-    // Get the size for the current index
-    $size: nth($sizes, $i);
-
-    // Create the rule
-    .#{$prefix}-#{$i - 1} {
-      #{$property}: $spacing * $size;
-    }
-  }
-}
 
 html {
-  @include generate(mt, margin-top);
+  @include mixins.generate(mt, margin-top);
   @include typo.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font);
 
 }
@@ -32,7 +16,7 @@ html {
 
 /* Focusing with a keyboard.*/
 *:focus-visible {
-  outline: 2px dashed map-get(colors.$palette, white);
+  outline: 2px dashed map-get(variables.$colors, white);
 }
 
 /* Focusing the button with a mouse, touch, or stylus.*/
@@ -69,14 +53,14 @@ a {
   color: inherit;
 
   &:hover {
-    color: map-get(colors.$palette, red);
+    color: map-get(variables.$colors, red);
   }
 
   &:hover svg {
     path,
     circle,
     rect {
-      fill: map-get(colors.$palette, red) !important;
+      fill: map-get(variables.$colors, red) !important;
     }
   }
 }
@@ -142,7 +126,7 @@ main {
     [href^="/"]:not([href^="//"])
   )) {
         &:hover {
-          color: map-get(colors.$palette, red) !important;
+          color: map-get(variables.$colors, red) !important;
         }
 
 
@@ -158,7 +142,7 @@ a.hero {
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem !important;
-  border: 2px solid map-get(colors.$palette, white);
+  border: 2px solid map-get(variables.$colors, white);
   border-radius: 4px;
 
   padding: 0.6em 2.2em;
@@ -177,28 +161,28 @@ a.hero {
     left: 0;
     width: 100%;
     height: 100%;
-    background: map-get(colors.$palette, black);
+    background: map-get(variables.$colors, black);
     z-index: -1;
   }
 }
 
 footer {
   small {
-    color: map-get(colors.$palette, gray) !important;
+    color: map-get(variables.$colors, gray) !important;
   }
 
   svg path {
-    fill: map-get(colors.$palette, gray) !important;
+    fill: map-get(variables.$colors, gray) !important;
   }
 }
 
 @keyframes glow {
   from {
-    color: map-get(colors.$palette, red);
+    color: map-get(variables.$colors, red);
   }
 
   to {
-    color: map-get(colors.$palette, white);
+    color: map-get(variables.$colors, white);
   }
 }
 
