@@ -1,3 +1,5 @@
+@use "src/styles/functions";
+
 @mixin generate($prefix, $property) {
   // List of sizes to generate for each
   $sizes: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5];
@@ -12,6 +14,28 @@
     // Create the rule
     .#{$prefix}-#{$i - 1} {
       #{$property}: $spacing * $size;
+    }
+  }
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+                #{$min-font-size} + #{functions.strip-unit($max-font-size - $min-font-size)} *
+                ((100vw - #{$min-vw}) / #{functions.strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
     }
   }
 }

@@ -2,45 +2,19 @@
 @use "src/styles/typo";
 @use "src/styles/mixins";
 
-
 html {
-  @include mixins.generate(mt, margin-top);
-  @include typo.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font);
-
-}
-
-
-.t-center {
-  text-align: center;
-}
-
-/* Focusing with a keyboard.*/
-*:focus-visible {
-  outline: 2px dashed map-get(variables.$colors, white);
-}
-
-/* Focusing the button with a mouse, touch, or stylus.*/
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.navActive > a {
-  text-decoration: underline !important;
-  // text-underline-offset: 1px !important;
-  pointer-events: none;
-}
-
-body {
-  caret-color: transparent;
-}
-
-.m-0 {
-  margin: 0;
+  @include mixins.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font); // Apply fluid typography
 }
 
 * {
   transition: color 0.1s ease, background-color 0.1s ease, opacity 0.1s ease;
 }
+
+
+body {
+  caret-color: transparent;
+}
+
 
 main h1,
 h2,
@@ -51,18 +25,6 @@ a {
 a {
   text-decoration: none;
   color: inherit;
-
-  &:hover {
-    color: map-get(variables.$colors, red);
-  }
-
-  &:hover svg {
-    path,
-    circle,
-    rect {
-      fill: map-get(variables.$colors, red) !important;
-    }
-  }
 }
 
 main {
@@ -176,18 +138,4 @@ footer {
   }
 }
 
-@keyframes glow {
-  from {
-    color: map-get(variables.$colors, red);
-  }
 
-  to {
-    color: map-get(variables.$colors, white);
-  }
-}
-
-*:target {
-  animation-duration: 3s;
-  animation-timing-function: ease-in;
-  animation-name: glow;
-}

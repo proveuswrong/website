@@ -1,3 +1,6 @@
+@use "sass:math";
+
+
 @function generateSpacings($spacingCount, $spacingInterval) {
   $spacings: ();
 
@@ -6,4 +9,8 @@
   }
 
   @return $spacings;
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
 }

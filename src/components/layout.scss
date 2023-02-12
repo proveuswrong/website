@@ -1,13 +1,18 @@
 @use "src/styles/variables";
+@use "src/styles/generic";
 @use "src/styles/base";
 @use "src/styles/typo";
-@use "sass:math";
 @use "src/styles/theme";
-
+@use "src/styles/state";
+@use "sass:math";
 
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 $brandFontSize: 21px;
+
+$breakpoint-large: 1200px;
+$breakpoint-tablet: 768px;
+$breakpoint-small: 480px;
 
 body {
   margin: 0;
@@ -173,7 +178,7 @@ nav {
   margin-top: 0.4 * $brandFontSize;
 }
 
-@media (min-width: typo.$breakpoint-tablet) {
+@media (min-width: $breakpoint-tablet) {
   $brandFontSize: 30px;
   header,
   main,

@@ -1,0 +1,14 @@
+@use "src/styles/mixins";
+
+
+html {
+  @include mixins.generate(mt, margin-top);
+}
+
+.t-center {
+  text-align: center;
+}
+
+.m-0 {
+  margin: 0;
+}
