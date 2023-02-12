@@ -122,6 +122,7 @@ const About = () => (
         </div>
       </div>
 
+
     </div>
   </Layout>
 );
