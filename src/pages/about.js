@@ -37,7 +37,6 @@ const About = () => (
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="Ferit's photo"
-            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <h3 className="m-0">
             <a
@@ -59,7 +58,6 @@ const About = () => (
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="Münevver's photo"
-            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <h3 className="m-0">
             <a
@@ -81,7 +79,6 @@ const About = () => (
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="Ifeoluwa's photo"
-            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
           />
           <h3 className="m-0">
             <a
@@ -103,7 +100,7 @@ const About = () => (
             quality={100}
             formats={["auto", "webp", "avif"]}
             alt="Stanislav's photo"
-            style={{ marginBottom: `0.45rem`, marginTop: `1rem` }}
+
           />
           <h3 className="m-0">
             <a
