@@ -94,10 +94,6 @@ const About = () => (
           </h3>
           <p className="m-0">Community Manager and Marketer</p>
         </div>
-      </div>
-
-      <h2>Contributors</h2>
-      <div className={styles.portraits}>
         <div>
           <StaticImage
             src="../images/stanislav_bgBlack.jpg"
@@ -121,7 +117,6 @@ const About = () => (
           <p className="m-0">Software Engineer</p>
         </div>
       </div>
-
 
     </div>
   </Layout>
