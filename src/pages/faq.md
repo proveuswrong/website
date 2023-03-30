@@ -19,6 +19,10 @@ in your mind? Feel free to email us.
 
 Well, the initial project we were working on was Prove Me Wrong. Then we formed an organization, and we chose an organization name, inspired by the name of the project plus a wordplay: Prove Us Wrong. So, one of them is the name of the organization the other one is the name of one of our projects.
 
+It was taking a lot of time of ours to fight with this confusion so as of March 30, we deleted references to PMW. We will keep this 
+FAQ answer for a while 
+for historical reasons.
+
 ## What is decentralized curation?
 
 Decentralized curation refers to the process of content moderation and organization in which a community of users, rather than a central authority, is responsible for determining which content is featured or promoted. This can help to create a more diverse set of voices and perspectives, as well as reduce the risk of censorship or bias. However, it can also make it more difficult to ensure that content is accurate, appropriate, and legal, and that there is a consistent standard for what is allowed.

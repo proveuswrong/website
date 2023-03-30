@@ -6,11 +6,11 @@ toc: false
 
 # The Truth Post: Accurate and Relevant News
 
-This project has not matured yet and it's rather in the prototyping stage. Expect frequent and big changes.
+
 
 ## What
 
-The first decentralized newsletter with trustlessly curated content, powered by [Prove Me Wrong](/projects/prove-me-wrong).
+The first decentralized newsletter with trustlessly curated content, powered by Ethereum and [Kleros](https://kleros.io).
 The incentive mechanism will incentivize reporters to make news that resonates with communities' interests and is **fake-free** and curators are incentivized to curate important content honestly. All happening in a **credibly neutral** decentralized process thanks to decentralized dispute resolution and game theory. What's left for consumers is to enjoy consuming distilled information.
 
 ## Why
@@ -26,3 +26,7 @@ The incentive mechanism will incentivize reporters to make news that resonates w
 2. Incentivized: reporters are incentivized to report news that resonate with the communities' interests.
 3. Credibly-neutral: fact-checking and curation is decentralized, eliminating trust requirement.
 4. Direct: reporters deliver directly to reader, no intermediaries to feed.
+
+## Status
+
+We are building an MVP and it's live at https://truthpost.news. 
