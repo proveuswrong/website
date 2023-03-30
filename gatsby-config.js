@@ -2,15 +2,24 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const SITE_URL = "https://proveuswrong.io/"
+
 module.exports = {
   siteMetadata: {
     title: `Prove Us Wrong`,
     description: `We are an organization that develops decentralized curation solutions as public goods. We build the next cool thing. Prove us wrong.`,
     author: `@0xferit`,
-    siteUrl: `https://proveuswrong.io/`,
+    siteUrl: SITE_URL,
   },
   plugins: [
-    "gatsby-plugin-robots-txt",
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: SITE_URL,
+        sitemap: SITE_URL+"/sitemap.xml",
+        policy: [{userAgent: '*', allow: '/'}]
+      }
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
