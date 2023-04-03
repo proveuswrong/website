@@ -82,6 +82,8 @@ const Footer = () => (
       </div>
 
       <small>Copyright {new Date().getFullYear()} Prove Us Wrong</small>
+      <small>This site is powered by <a href="https://netlify.com">Netlify</a></small>
+
     </div>
   </footer>
 );
