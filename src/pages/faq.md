@@ -53,6 +53,10 @@ We have raised €50000 so far as an initial seed investment by participating in
 
 Yes. We established a limited liability company in Turkey.
 
+## Are you developing open source?
+
+Yes. All software we build is MIT licensed.
+
 ## I have a question that is not answered here.
 
 We can gladly answer if you contact us. You can find our contact details in the footer.
