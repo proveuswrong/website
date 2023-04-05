@@ -34,10 +34,11 @@ const IndexPage = () => {
         </h1>
 
         <p>
-          Decentralized curation allows for a more open and democratic system of content creation and distribution. It eliminates the need for centralized gatekeepers and allows for a wider range of voices and perspectives to be heard. Additionally, it can also help to mitigate issues such as censorship, bias, and manipulation that can arise in centralized systems. This can ultimately lead to a more diverse, equitable and robust ecosystem for content creation and distribution. That's why at Prove Us Wrong we are working on building solutions to decentrally curate information.
+          Curation is a productivity multiplier which enables us to make informed choices without classifying and verifying every bit information by ourselves.
+          The big problem with it is that we need to assume curator is honest and competent.
         </p>
 
-        <p>The next cool thing is decentralized curation and we build the next cool thing.</p>
+        <p>We are an open-source organization working on curation solutions in which there is no honesty or competency assumption, utilizing state-of-the-art crypto-economic techniques. The next cool thing is decentralized curation, and we are building the next cool thing; prove us wrong.</p>
 
         <Link to="/projects/" className="hero mt-3">
           Show Me
