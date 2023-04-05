@@ -7,26 +7,43 @@ toc: false
 # The Truth Post: Accurate and Relevant News
 
 
-
 ## What
 
-The first decentralized newsletter with trustlessly curated content, powered by Ethereum and [Kleros](https://kleros.io).
-The incentive mechanism will incentivize reporters to make news that resonates with communities' interests and is **fake-free** and curators are incentivized to curate important content honestly. All happening in a **credibly neutral** decentralized process thanks to decentralized dispute resolution and game theory. What's left for consumers is to enjoy consuming distilled information.
+The first decentralized newspaper with trustlessly curated articles, powered by Ethereum, [Kleros](https://kleros.io) and crypto-economic 
+techniques.
+The incentive mechanism will incentivize authors to publish articles that are accurate and relevant to communities' interests. 
+Curators will be incentivized to curate articles according to accuracy and relevance, honestly, entirely in a transparent 
+decentralized process. What's left for reader is to enjoy distilled information.
 
 ## Why
 
-1. The right to access information and freedom of speech is not honored enough by the news we have now.
-2. To incentivize news that is aligned with readers' interests.
-3. Fake news is a problem and centralized fact-checking is another problem.
-4. Intermediaries are taking lion's share of news reporting revenues.
+1. News we have now is [suffering](https://www.coindesk.com/consensus-magazine/2023/03/24/decentralized-media-web3-news-reporting/) 
+   because of fake-news.
+2. Lack of incentivization to make news in the public interest.
+3. Centralized fact-checking is only sweeping the fake-news problem under the rug.
+4. Intermediaries are taking lion's share of news reporting revenues, which is another disincentive for publishing quality news 
+   articles.
 
 ## How
 
-1. Anonymized: reporters can remain anonymous to exercise freedom of speech without endangering themselves.
-2. Incentivized: reporters are incentivized to report news that resonate with the communities' interests.
-3. Credibly-neutral: fact-checking and curation is decentralized, eliminating trust requirement.
-4. Direct: reporters deliver directly to reader, no intermediaries to feed.
+1. Pseudonymized: authors can remain pseudonymous to exercise freedom of speech while accumulating reputation.
+2. Incentivized: authors are incentivized to publish accurate and relevant articles according to the curation policy that is defined by 
+   communities.
+3. Credibly-neutral: completely transparent fact-checking and curation, eliminating trust requirement. 
+4. Decentralized: fully crowd-sourcing publishing and curating, without any trust assumptions. 
+5. Direct: authors to readers directly, no intermediaries to feed.
+
+Features:
+- Curation pools: similar to subreddits, users can define their own curation pools, essentially to define what's relevant to them.
+- Curation weighted rewards: curators score articles according to their relevance. Authors earn rewards with respect to relevancy scores.
+- Trust scores: similar to bug-bounty programs, articles will be published with a collateral, and accumulate trust scores with respect
+  to collateral size. In case the article gets debunked (proved inaccurate), collateral will be awarded to debunker.
+- Pseudonymous reputations: authors will be accumulating reputations pseudonymously.
+- Statistical analysis: correleation of trust scores and debunk rate will reveal likelihood of an article getting debunked, statistically.
 
 ## Status
 
-We are building an MVP and it's live at https://truthpost.news. 
+The project is evolving fast. We are building an MVP and it's live at https://truthpost.news. In this version, the smart contract is only 
+supporting accuracy 
+curation,
+so we are working on the next version to support relevancy curation as well.
