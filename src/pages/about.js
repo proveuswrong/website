@@ -20,11 +20,11 @@ const About = () => (
       <p>
         We believe that coordinating for the public interest is the biggest obstacle to a better world.
         And since curation is the key element in every decision-making process, we especially have faith in decentralized curation as a solution to many problems in today's world.
-        For this reason, we strive to build sustainable and censorship-resistant decentralized curation projects to make accurate and valuable information available to the public.
+        For this reason, we strive to build sustainable and censorship-resistant decentralized curation projects to make accurate and relevant information easy-to-access.
       </p>
       <p>
         We are an organization that develops decentralized curation solutions as public goods.
-        We build the next cool thing. Prove us wrong.
+        We are building the next cool thing. Prove us wrong.
       </p>
       <h2> Members </h2>
       <div className={styles.portraits}>
