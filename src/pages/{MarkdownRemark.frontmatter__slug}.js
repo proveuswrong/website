@@ -32,7 +32,7 @@ export default function MarkdownPage({ data }) {
     <Layout>
       <Seo title={h1.text()} />
 
-        {!frontmatter.draft === true || process.env.ENV === "DEV" ? (
+        {!frontmatter.draft === true || process.env.ENV === "dev" ? (
           <div className={styles.markdownPage} dangerouslySetInnerHTML={{ __html: manipulatedHTML }} />
         ) : (
           <p>This document is not ready yet. Come back later.</p>
