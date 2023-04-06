@@ -25,7 +25,7 @@ for historical reasons.
 
 ## What is decentralized curation?
 
-Decentralized curation refers to the process of content moderation and organization in which a community of users, rather than a central authority, is responsible for determining which content is featured or promoted. This can help to create a more diverse set of voices and perspectives, as well as reduce the risk of censorship or bias. However, it can also make it more difficult to ensure that content is accurate, appropriate, and legal, and that there is a consistent standard for what is allowed.
+Decentralized curation refers to the process of organizing, evaluating, and distributing content on a digital platform through a distributed network of users or nodes, rather than relying on a central authority or algorithm. This approach aims to increase transparency, reduce the potential for manipulation or bias, and enable a more democratic and inclusive content selection process.
 
 ## What good decentralized curation does?
 
