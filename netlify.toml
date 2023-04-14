@@ -1,0 +1,9 @@
+
+[context.branch-deploy.environment]
+  NODE_ENV = "dev"
+
+[context."production".environment]
+  NODE_ENV = "prod"
+
+[context."release".environment]
+  NODE_ENV = "prod"
