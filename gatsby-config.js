@@ -6,8 +6,8 @@ const SITE_URL = "https://proveuswrong.io/"
 
 module.exports = {
   siteMetadata: {
-    pullRequest2: process.env.PULL_REQUEST,
-    head2: process.env.HEAD,
+    pullRequest: process.env.PULL_REQUEST,
+    head: process.env.HEAD,
     title: `Prove Us Wrong`,
     description: `We are an organization that develops decentralized curation solutions as public goods. We build the next cool thing. Prove us wrong.`,
     author: `@0xferit`,
