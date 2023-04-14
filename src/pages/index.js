@@ -12,9 +12,7 @@ const IndexPage = () => {
         site {
           buildTime
           siteMetadata {
-              pullRequest
               pullRequest2
-              head
               head2
               title
             description
