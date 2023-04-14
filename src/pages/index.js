@@ -12,7 +12,11 @@ const IndexPage = () => {
         site {
           buildTime
           siteMetadata {
-            title
+              pullRequest
+              pullRequest2
+              head
+              head2
+              title
             description
             author
             siteUrl
@@ -24,8 +28,15 @@ const IndexPage = () => {
 
   console.debug(`Build time: ${site.buildTime}`);
   console.debug(`Environment: ${process.env.ENV}`);
+  console.debug(site.siteMetadata.pullRequest)
+  console.debug(site.siteMetadata.pullRequest2)
+  console.debug(site.siteMetadata.head)
+  console.debug(site.siteMetadata.head2)
+
   console.debug(`Deploy Preview: ${process.env.PULL_REQUEST}`)
   console.debug(process.env)
+
+
 
   return (
     <Layout>
