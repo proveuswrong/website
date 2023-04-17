@@ -6,32 +6,39 @@ import Seo from "../components/seo";
 import * as styles from "./index.module.scss";
 
 const IndexPage = () => {
+  const isNetlify = Boolean(process.env.NETLIFY);
   const { site } = useStaticQuery(
     graphql`
-      query {
-        site {
-          buildTime
-          siteMetadata {
-              pullRequest
-              head
-              title
-            description
-            author
-            siteUrl
-          }
+        query   {
+            site {
+                buildTime
+                siteMetadata {
+                    title
+                    description
+                    author
+                    siteUrl
+                    ...buildMetadata
+                }
+            }
         }
-      }
+
+        fragment buildMetadata on SiteSiteMetadata{
+            pullRequest
+            head
+            branch
+            commitRef
+            reviewID
+        }
     `
   );
 
+
   console.debug(`Build time: ${site.buildTime}`);
   console.debug(`Environment: ${process.env.ENV}`);
-  console.debug(`Pull Request: ${site.siteMetadata.pullRequest}`)
-  console.debug(`Head: ${site.siteMetadata.head}`)
-
-  console.debug(`Deploy Preview: ${process.env.PULL_REQUEST}`)
-  console.debug(process.env)
-
+  console.debug(`Pull Request: ${site.siteMetadata.pullRequest}`);
+  console.debug(`Head: ${site.siteMetadata.head}`);
+  console.debug(`Branch: ${site.siteMetadata.branch}`);
+  console.debug(site.siteMetadata);
 
 
   return (
@@ -43,11 +50,14 @@ const IndexPage = () => {
         </h1>
 
         <p>
-          Curation is a productivity multiplier which enables us to make informed choices without classifying and verifying every bit information by ourselves.
+          Curation is a productivity multiplier which enables us to make informed choices without classifying and verifying every bit
+          information by ourselves.
           The big problem with it is that we need to assume curator is honest and competent.
         </p>
 
-        <p>We are an open-source organization working on curation solutions in which there is no honesty or competency assumption, utilizing state-of-the-art crypto-economic techniques. The next cool thing is decentralized curation, and we are building the next cool thing; prove us wrong.</p>
+        <p>We are an open-source organization working on curation solutions in which there is no honesty or competency assumption, utilizing
+          state-of-the-art crypto-economic techniques. The next cool thing is decentralized curation, and we are building the next cool
+          thing; prove us wrong.</p>
 
         <Link to="/projects/" className="hero mt-3">
           Show Me

@@ -12,3 +12,19 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     })
   }
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  const typeDefs = `
+    type SiteSiteMetadata {
+      pullRequest: String
+      head: String
+      branch: String
+      commitRef: String
+      reviewID: String
+    }
+  `;
+
+  createTypes(typeDefs);
+};
