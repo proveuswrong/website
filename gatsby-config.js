@@ -5,7 +5,6 @@ require("dotenv").config({
   path: `${isProd(process.env.HEAD) ? ".env.production" : ".env.development"}`,
 });
 
-
 const SITE_URL = "https://proveuswrong.io/"
 
 module.exports = {
