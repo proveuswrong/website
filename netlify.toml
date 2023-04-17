@@ -1,9 +1,0 @@
-
-[context.branch-deploy.environment]
-  ENV = "dev"
-
-[context.production.environment]
-  ENV = "prod"
-
-[context.release.environment]
-  ENV = "prod"
