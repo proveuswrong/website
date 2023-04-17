@@ -1,6 +1,10 @@
+const isProd = (branchName) =>
+  branchName === 'main' || branchName === 'release' || branchName?.startsWith('release/')
+
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `${isProd(process.env.BRANCH) ? ".env.production" : ".env.development"}`,
 });
+
 
 const SITE_URL = "https://proveuswrong.io/"
 
