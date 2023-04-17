@@ -1,10 +1,9 @@
 const isProd = (branchName, nodeEnv) => {
   if (nodeEnv !== 'production') return false;
 
-  return branchName === 'main' ||
-    branchName === 'release' ||
-    (branchName && branchName.startsWith('release/'));
+  return branchName === 'main' || branchName.startsWith('release/') || (branchName === 'develop' && process.env.PULL_REQUEST);
 };
+
 
 require("dotenv").config({
   path: `${isProd(process.env.HEAD, process.env.NODE_ENV) ? ".env.production" : ".env.development"}`,
