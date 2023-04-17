@@ -1,6 +1,4 @@
 const isProd = (branchName, nodeEnv) => {
-  // if (nodeEnv !== 'production') return false;
-  console.log(nodeEnv)
   console.log(`TEST 000000000 ${branchName === 'develop' && process.env.PULL_REQUEST}`);
   return branchName === 'main' || branchName.startsWith('release/') || (branchName === 'develop' && process.env.PULL_REQUEST);
 };
