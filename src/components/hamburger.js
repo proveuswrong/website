@@ -9,6 +9,7 @@ const handleHamburgerClick = (e) => {
 };
 
 const Hamburger = ({ children }) => {
+  console.log({ children })
   return (
     <div
       className={styles.button_container}
