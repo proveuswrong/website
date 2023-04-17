@@ -76,21 +76,6 @@ module.exports = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          {
-            resolve: "gatsby-remark-mermaid",
-            options: {
-              language: "mermaid",
-              theme: "dark",
-              viewport: {
-                width: 200,
-                height: 200,
-              },
-              mermaidOptions: {
-                themeCSS:
-                  ".node rect { stroke: none; fill: #ff355e; }; .edgeLabel {background-color: #171717; color: #ececec !important;}",
-              },
-            },
-          },
           `gatsby-remark-autolink-headers`,
           {
             resolve: "gatsby-remark-external-links",
