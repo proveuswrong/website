@@ -34,7 +34,7 @@ const IndexPage = () => {
 
 
   console.debug(`Build time: ${site.buildTime}`);
-  console.debug(`Environment: ${process.env.ENV}`);
+  console.debug(`Environment: ${process.env.GATSBY_ENV}`);
   console.debug(`Pull Request: ${site.siteMetadata.pullRequest}`);
   console.debug(`Head: ${site.siteMetadata.head}`);
   console.debug(`Branch: ${site.siteMetadata.branch}`);
