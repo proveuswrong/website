@@ -38,7 +38,8 @@ const IndexPage = () => {
   console.debug(`Pull Request: ${site.siteMetadata.pullRequest}`);
   console.debug(`Head: ${site.siteMetadata.head}`);
   console.debug(`Branch: ${site.siteMetadata.branch}`);
-  console.debug(site.siteMetadata);
+  console.debug(`Commit Ref: ${site.siteMetadata.commitRef}`);
+  console.debug(`Review ID: ${site.siteMetadata.reviewID}`);
 
 
   return (
