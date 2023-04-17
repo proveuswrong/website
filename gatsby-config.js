@@ -2,7 +2,7 @@ const isProd = (branchName) =>
   branchName === 'main' || branchName === 'release' || branchName?.startsWith('release/')
 
 require("dotenv").config({
-  path: `${isProd(process.env.BRANCH) ? ".env.production" : ".env.development"}`,
+  path: `${isProd(process.env.HEAD) ? ".env.production" : ".env.development"}`,
 });
 
 
