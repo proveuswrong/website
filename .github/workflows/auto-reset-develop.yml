@@ -15,11 +15,12 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
+          token: ${{ secrets.REPO_ACCESS }}
 
       - name: Configure Git user
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "0xferit"
+          git config --global user.email "ferit@proveuswrong.io"
 
       - name: Reset develop to main
         run: |
