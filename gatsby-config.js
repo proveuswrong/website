@@ -1,7 +1,8 @@
 const isProd = (branchName, isPullRequest) => {
-  console.log(`TEST 000000000 ${branchName === 'develop' && isPullRequest === 'true'}`);
-
-  return branchName === 'main' || branchName.startsWith('hotfix/') || branchName.startsWith('release/') || (branchName === 'develop' && process.env.PULL_REQUEST);
+  return branchName === 'main' 
+  || branchName.startsWith('hotfix/') 
+  || branchName.startsWith('release/') 
+  || (branchName === 'develop' && isPullRequest === 'true');
 };
 
 
