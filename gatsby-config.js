@@ -1,12 +1,11 @@
-const isProd = (branchName, nodeEnv) => {
-  console.log(`TEST 000000000 ${branchName === 'develop' && process.env.PULL_REQUEST}`);
-
+const isProd = (branchName) => {
+  if(!branchName) return false;
   return branchName === 'main' || branchName.startsWith('hotfix/') || branchName.startsWith('release/') || (branchName === 'develop' && process.env.PULL_REQUEST);
 };
 
 
 require("dotenv").config({
-  path: `${isProd(process.env.HEAD, process.env.NODE_ENV) ? ".env.production" : ".env.development"}`,
+  path: `${isProd(process.env.HEAD) ? ".env.production" : ".env.development"}`,
 });
 
 const SITE_URL = "https://proveuswrong.io/"
