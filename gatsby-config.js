@@ -1,4 +1,5 @@
 const isProd = (branchName, isPullRequest) => {
+  if(!branchName) return false;
   return branchName === 'main' 
   || branchName.startsWith('hotfix/') 
   || branchName.startsWith('release/') 

@@ -58,7 +58,6 @@ const Header = ({ siteTitle }) => {
                 </li>
                 <li>
                   <a href="https://blog.proveuswrong.io" target="_blank" rel="noopener noreferrer">BLOG</a>
-
                 </li>
                 <li ref={about}>
                   <Link to="/about/">ABOUT</Link>
