@@ -51,14 +51,11 @@ const IndexPage = () => {
         </h1>
 
         <p>
-          Curation is a productivity multiplier which enables us to make informed choices without classifying and verifying every bit
-          information by ourselves.
-          The big problem with it is that we need to assume curator is honest and competent.
+          Information is only valuable when it's carefully curated for qualities like accuracy, relevance, completeness, timeliness, and objectivity. In today’s vast cosmos of information, we rely on effective curation to guide us. Being well-informed is essential for making decisions every day. While we seek to benefit from curated information, we often face the challenge of placing trust in curators. The constant threat of misinformation and disinformation misleads us, wasting our resources and pushing us toward poor decisions. It’s time for smarter, more reliable curation to help us navigate this complex landscape.
         </p>
 
-        <p>We are an open-source organization working on curation solutions in which there is no honesty or competency assumption, utilizing
-          state-of-the-art crypto-economic techniques. The next cool thing is decentralized curation, and we are building the next cool
-          thing; prove us wrong.</p>
+        <p>
+          We are an open-source organization dedicated to developing public good solutions that harness the power of curation while eliminating the need for blind trust. By utilizing Web3, decentralized systems and cutting-edge crypto-economic techniques, we can remove the reliance on traditional curators. The future lies in decentralized curation, and we’re building it. Think it’s impossible? Prove us wrong.</p>
 
         <Link to="/projects/" className="hero mt-3">
           Show Me
