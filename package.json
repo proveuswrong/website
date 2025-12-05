@@ -6,29 +6,32 @@
   "author": "Ferit Tunçer <0xferittuncer@gmail.com>",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "gatsby": "^4.6.0",
-    "gatsby-plugin-catch-links": "^4.17.0",
-    "gatsby-plugin-gatsby-cloud": "^4.6.0",
-    "gatsby-plugin-image": "^2.6.0",
-    "gatsby-plugin-manifest": "^4.6.0",
-    "gatsby-plugin-offline": "^5.6.0",
-    "gatsby-plugin-react-helmet": "^5.6.0",
-    "gatsby-plugin-react-svg": "^3.1.0",
-    "gatsby-plugin-robots-txt": "^1.7.0",
-    "gatsby-plugin-sass": "^5.6.0",
-    "gatsby-plugin-sharp": "^4.6.0",
-    "gatsby-remark-autolink-headers": "^5.24.0",
+    "gatsby": "^5.15.0",
+    "gatsby-plugin-catch-links": "^5.15.0",
+    "gatsby-plugin-image": "^3.15.0",
+    "gatsby-plugin-manifest": "^5.15.0",
+    "gatsby-plugin-offline": "^6.15.0",
+    "gatsby-plugin-react-helmet": "^6.15.0",
+    "gatsby-plugin-react-svg": "^3.3.0",
+    "gatsby-plugin-robots-txt": "^1.8.0",
+    "gatsby-plugin-sass": "^6.15.0",
+    "gatsby-plugin-sharp": "^5.15.0",
+    "gatsby-remark-autolink-headers": "^6.15.0",
     "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-source-filesystem": "^4.16.0",
-    "gatsby-transformer-remark": "^5.17.0",
-    "gatsby-transformer-sharp": "^4.6.0",
+    "gatsby-source-filesystem": "^5.15.0",
+    "gatsby-transformer-remark": "^6.15.0",
+    "gatsby-transformer-sharp": "^5.15.0",
     "prop-types": "^15.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "sass": "^1.49.4"
+    "sass": "^1.94.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "prettier": "^2.5.1"
   },
   "keywords": [
@@ -43,11 +46,18 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
+  "resolutions": {
+    "msgpackr": "^1.10.1",
+    "lmdb": "^2.8.5"
+  },
   "prettier": {
     "tabWidth": 2
   },
+  "browserslist": [
+    "defaults"
+  ],
   "volta": {
-    "node": "16.13.2",
-    "yarn": "1.22.17"
+    "node": "24.2.0",
+    "yarn": "4.10.3"
   }
 }
