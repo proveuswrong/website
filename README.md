@@ -7,7 +7,8 @@
   Prove Us Wrong
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a791a4e1-44b5-4ba5-8703-ce89505a170f/deploy-status)](https://app.netlify.com/sites/proveuswrong/deploys) 
+[![Production](https://img.shields.io/website?label=production&url=https%3A%2F%2Fproveuswrong.io&logo=cloudflare&logoColor=white)](https://proveuswrong.io)
+[![Develop](https://img.shields.io/website?label=develop&url=https%3A%2F%2Fdevelop.proveuswrong.io&logo=cloudflare&logoColor=white)](https://develop.proveuswrong.io)
 
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=proveuswrong_website&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=proveuswrong_website)

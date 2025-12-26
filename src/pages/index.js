@@ -6,7 +6,6 @@ import Seo from "../components/seo";
 import * as styles from "./index.module.scss";
 
 const IndexPage = () => {
-  const isNetlify = Boolean(process.env.NETLIFY);
   const { site } = useStaticQuery(
     graphql`
         query   {
