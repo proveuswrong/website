@@ -2,12 +2,26 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import { useEffect, useState } from "react";
 
-const constructUrl = (baseUrl, path) =>
-  !baseUrl || !path ? null : `${baseUrl}${path}`;
+const joinUrl = (baseUrl, path) => {
+  if (!baseUrl) return null;
+  if (!path) return baseUrl;
+  const normalizedBase = baseUrl.endsWith("/")
+    ? baseUrl.slice(0, -1)
+    : baseUrl;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${normalizedBase}${normalizedPath}`;
+};
 
-function Seo({ description, lang, meta, title, customImageUrl, imageAlt }) {
+function Seo({
+  description,
+  lang,
+  meta,
+  title,
+  customImageUrl,
+  imageAlt,
+  pathname,
+}) {
   const { ogImageDefault, site } = useStaticQuery(
     graphql`
       query {
@@ -30,14 +44,10 @@ function Seo({ description, lang, meta, title, customImageUrl, imageAlt }) {
     `
   );
 
-  const [actualURL, setActualURL] = useState();
-
-  useEffect(() => {
-    setActualURL(window.location.href);
-  }, []); // Not working
-
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
+  const siteUrl = site.siteMetadata?.siteUrl;
+  const pageUrl = pathname ? joinUrl(siteUrl, pathname) : siteUrl;
 
   return (
     <Helmet
@@ -53,7 +63,7 @@ function Seo({ description, lang, meta, title, customImageUrl, imageAlt }) {
         },
         {
           property: `og:title`,
-          content: defaultTitle,
+          content: title || defaultTitle,
         },
         {
           property: `og:description`,
@@ -65,16 +75,13 @@ function Seo({ description, lang, meta, title, customImageUrl, imageAlt }) {
         },
         {
           property: `og:url`,
-          content: actualURL || site.siteMetadata.siteUrl,
+          content: pageUrl || siteUrl,
         },
         {
           name: `og:image`,
           content:
             customImageUrl ||
-            constructUrl(
-              actualURL || site.siteMetadata.siteUrl,
-              ogImageDefault?.childImageSharp?.fixed?.src
-            ),
+            joinUrl(siteUrl, ogImageDefault?.childImageSharp?.fixed?.src),
         },
         {
           name: `twitter:creator`,
@@ -108,6 +115,7 @@ Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
+  pathname: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
