@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import * as styles from "./index.module.scss";
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   const { site } = useStaticQuery(
     graphql`
         query   {
@@ -43,7 +43,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title="Home" pathname={location?.pathname} />
       <div className={styles.container}>
         <h1 id="slogan" className={`hero ` + styles.h1}>
           In Decentralized Curation We Trust

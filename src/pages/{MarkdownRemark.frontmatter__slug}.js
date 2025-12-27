@@ -5,7 +5,7 @@ import Seo from "../components/seo";
 import * as styles from "./markdownPage.module.scss";
 import * as cheerio from 'cheerio';
 
-export default function MarkdownPage({ data }) {
+export default function MarkdownPage({ data, location }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
 
@@ -30,7 +30,7 @@ export default function MarkdownPage({ data }) {
 
   return (
     <Layout>
-      <Seo title={h1.text()} />
+      <Seo title={h1.text()} pathname={location?.pathname} />
 
         {!frontmatter.draft === true || process.env.ENV === "dev" ? (
           <div className={styles.markdownPage} dangerouslySetInnerHTML={{ __html: manipulatedHTML }} />

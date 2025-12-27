@@ -5,9 +5,9 @@ import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import * as styles from "./about.module.scss";
 
-const About = () => (
+const About = ({ location }) => (
   <Layout>
-    <Seo title="About" />
+    <Seo title="About" pathname={location?.pathname} />
     <div className={styles.about}>
       <h1> Who We Are </h1>
 

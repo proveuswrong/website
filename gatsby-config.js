@@ -1,17 +1,44 @@
-const isProd = (branchName, isPullRequest) => {
-  if(!branchName) return false;
-  return branchName === 'main' 
-  || branchName.startsWith('hotfix/') 
-  || branchName.startsWith('release/') 
-  || (branchName === 'develop' && isPullRequest === 'true');
+const isProductionEnv = () => {
+  if (process.env.CF_PAGES_ENVIRONMENT) {
+    return process.env.CF_PAGES_ENVIRONMENT === "production";
+  }
+
+  const branchName =
+    process.env.CF_PAGES_BRANCH || process.env.BRANCH || process.env.HEAD;
+  if (!branchName) {
+    return process.env.NODE_ENV === "production";
+  }
+
+  return (
+    branchName === "main" ||
+    branchName.startsWith("hotfix/") ||
+    branchName.startsWith("release/") ||
+    (branchName === "develop" && process.env.PULL_REQUEST === "true")
+  );
 };
 
+const isProd = isProductionEnv();
 
 require("dotenv").config({
-  path: `${isProd(process.env.HEAD, process.env.PULL_REQUEST) ? ".env.production" : ".env.development"}`,
+  path: isProd ? ".env.production" : ".env.development",
 });
 
-const SITE_URL = "https://proveuswrong.io/"
+const PROD_SITE_URL = "https://proveuswrong.io/";
+const PREVIEW_SITE_URL = "https://develop.proveuswrong.io/";
+const SITE_URL = isProd ? PROD_SITE_URL : PREVIEW_SITE_URL;
+
+const branchName =
+  process.env.CF_PAGES_BRANCH || process.env.BRANCH || process.env.HEAD;
+const commitRef = process.env.CF_PAGES_COMMIT_SHA || process.env.COMMIT_REF;
+const pullRequest =
+  process.env.PULL_REQUEST ||
+  (process.env.CF_PAGES_ENVIRONMENT
+    ? process.env.CF_PAGES_ENVIRONMENT === "production"
+      ? "false"
+      : "true"
+    : undefined);
+const reviewID = process.env.CF_PAGES_DEPLOYMENT_ID || process.env.REVIEW_ID;
+const headRef = process.env.HEAD || branchName;
 
 module.exports = {
   siteMetadata: {
@@ -19,11 +46,11 @@ module.exports = {
     description: `We are an organization that develops decentralized curation solutions as public goods. We build the next cool thing. Prove us wrong.`,
     author: `@0xferit`,
     siteUrl: SITE_URL,
-    head: process.env.HEAD,
-    pullRequest: process.env.PULL_REQUEST,
-    branch: process.env.BRANCH,
-    commitRef: process.env.COMMIT_REF,
-    reviewID: process.env.REVIEW_ID,
+    head: headRef,
+    pullRequest,
+    branch: branchName,
+    commitRef,
+    reviewID,
   },
   plugins: [
     {
