@@ -23,8 +23,15 @@ require("dotenv").config({
   path: isProd ? ".env.production" : ".env.development",
 });
 
-const PROD_SITE_URL = "https://proveuswrong.io/";
-const PREVIEW_SITE_URL = "https://develop.proveuswrong.io/";
+const withTrailingSlash = (url) => {
+  if (!url) return url;
+  return url.endsWith("/") ? url : `${url}/`;
+};
+
+const PROD_SITE_URL = withTrailingSlash("https://proveuswrong.io");
+const PREVIEW_SITE_URL = withTrailingSlash(
+  process.env.CF_PAGES_URL || "http://localhost:8000"
+);
 const SITE_URL = isProd ? PROD_SITE_URL : PREVIEW_SITE_URL;
 
 const branchName =
