@@ -1,0 +1,32 @@
+.about {
+  display: flex;
+  align-items: center;
+
+  & :global(h2),
+  & :global(h3) {
+    text-align: center;
+  }
+}
+
+.portraits {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+  max-width: 1300px;
+  margin-bottom: 3rem;
+
+  div {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    p {
+      min-width: 330px;
+    }
+
+  }
+}

@@ -1,0 +1,141 @@
+@use "./variables";
+@use "./typo";
+@use "./mixins";
+@use "sass:map";
+
+html {
+  @include mixins.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font); // Apply fluid typography
+}
+
+* {
+  transition: color 0.1s ease, background-color 0.1s ease, opacity 0.1s ease;
+}
+
+
+body {
+  caret-color: transparent;
+}
+
+
+main h1,
+h2,
+a {
+  transition-duration: 0.05s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  h1, h2, h3, p {
+
+    // For external links
+    a[href] {
+      &:not(:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  )) {
+        &::after,
+        &:hover::after {
+          display: inline-table;
+          vertical-align: text-bottom;
+          width: 0.7em;
+          height: auto;
+          margin-left: 0.4em;
+        }
+
+        &:after {
+          content: url(/link.svg);
+        }
+
+        &:hover::after {
+          content: url(/linkRed.svg);
+        }
+      }
+    }
+
+
+  }
+
+  // For internal links
+  p, li {
+    a[href] {
+      &:where(
+      [href^="#"],
+      [href^="/"]:not([href^="//"])
+    ) {
+        text-decoration: underline;
+      }
+    }
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    a[href] {
+      &:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  )
+      &:not(:where(
+    [href^="#"],
+    [href^="/"]:not([href^="//"])
+  )) {
+          &:hover {
+          color: map.get(variables.$colors, red) !important;
+        }
+
+
+      }
+    }
+  }
+}
+
+a.hero {
+  width: min-content;
+  white-space: nowrap;
+  align-self: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem !important;
+  border: 2px solid map.get(variables.$colors, white);
+  border-radius: 4px;
+
+  padding: 0.6em 2.2em;
+
+  background-image: linear-gradient(90deg, #ff355e, #ff355e, #827bd3, #90eed0);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: map.get(variables.$colors, black);
+    z-index: -1;
+  }
+}
+
+footer {
+  small {
+    color: map.get(variables.$colors, gray) !important;
+  }
+
+  svg path {
+    fill: map.get(variables.$colors, gray) !important;
+  }
+}
+

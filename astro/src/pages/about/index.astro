@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import styles from "../_about.module.scss";
+---
+
+<BaseLayout title="About">
+  <div class={styles.about}>
+    <h1>Who We Are</h1>
+
+    <h2>Goals and Values</h2>
+    <p>
+      We identify ourselves as cypherpunks and libertarians. We believe that
+      this world would be better with more freedom, thus justice, free speech,
+      and privacy. We build to create more freedom.
+    </p>
+    <p>
+      We believe that coordinating for the public interest is the biggest
+      obstacle to a better world. And since curation is the key element in every
+      decision-making process, we especially have faith in decentralized
+      curation as a solution to many problems in today's world. For this reason,
+      we strive to build sustainable and censorship-resistant decentralized
+      curation projects to make accurate and relevant information easy-to-access.
+    </p>
+    <p>
+      We are an organization that develops decentralized curation solutions as
+      public goods. We are building the next cool thing. Prove us wrong.
+    </p>
+
+    <h2>Members</h2>
+    <div class={styles.portraits}>
+      <div>
+        <img
+          src="/images/ferit_bgBlack.png"
+          width="170"
+          height="170"
+          style="object-fit: contain;"
+          alt="Ferit's photo"
+        />
+        <h3 class="m-0">
+          <a
+            href="https://github.com/0xferit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ferit
+          </a>
+        </h3>
+        <p class="m-0">Founder — Software Engineer</p>
+      </div>
+      <div>
+        <img
+          src="/images/munevver_bgBlack.png"
+          width="170"
+          height="170"
+          style="object-fit: contain;"
+          alt="Munevver's photo"
+        />
+        <h3 class="m-0">
+          <a
+            href="https://dribbble.com/munevver/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Munevver
+          </a>
+        </h3>
+        <p class="m-0">Product Designer</p>
+      </div>
+      <div>
+        <img
+          src="/images/ifeoluwa_bgBlack.png"
+          width="170"
+          height="170"
+          style="object-fit: contain;"
+          alt="Ifeoluwa's photo"
+        />
+        <h3 class="m-0">
+          <a
+            href="https://www.linkedin.com/in/iamifeolushola/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ifeoluwa
+          </a>
+        </h3>
+        <p class="m-0">Community Manager and Marketer</p>
+      </div>
+      <div>
+        <img
+          src="/images/stanislav_bgBlack.jpg"
+          width="170"
+          height="170"
+          style="object-fit: contain;"
+          alt="Stanislav's photo"
+        />
+        <h3 class="m-0">
+          <a
+            href="https://github.com/gratestas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Stanislav
+          </a>
+        </h3>
+        <p class="m-0">Software Engineer</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
