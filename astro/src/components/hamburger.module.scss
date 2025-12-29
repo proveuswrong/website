@@ -1,0 +1,61 @@
+@use "../styles/variables";
+@use "sass:map";
+
+$button-height: 27px;
+$button-width: 35px;
+
+$thickness: 3px;
+$gap: 6px;
+
+$height: 3 * $thickness + 2 * $gap;
+
+.button_container {
+  position: absolute;
+  top: 28px; // Because of padding and line-heign of brands
+  right: 20px; // Because of padding of header
+  height: $height;
+  width: 1.61 * $height;
+  cursor: pointer;
+  z-index: 12;
+  transition: opacity 0.25s ease ;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &.active {
+    .top {
+      transform: translateY($thickness + $gap) translateX(0) rotate(45deg);
+      background: map.get(variables.$colors, white);
+    }
+    .middle {
+      opacity: 0;
+      background: map.get(variables.$colors, white);
+    }
+
+    .bottom {
+      transform: translateY(-$thickness - $gap) translateX(0) rotate(-45deg);
+      background: map.get(variables.$colors, white);
+    }
+  }
+
+  span {
+    background: map.get(variables.$colors, gray);
+    border: none;
+    height: $thickness;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.35s ease;
+    cursor: pointer;
+
+    &:nth-of-type(2) {
+      top: $thickness + $gap;
+    }
+
+    &:nth-of-type(3) {
+      top: 2 * ($thickness + $gap);
+    }
+  }
+}

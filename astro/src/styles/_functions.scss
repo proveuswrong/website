@@ -1,0 +1,16 @@
+@use "sass:math";
+@use "sass:map";
+
+@function generateSpacings($spacingCount, $spacingInterval) {
+  $spacings: ();
+
+  @for $i from 1 through $spacingCount {
+    $spacings: map.merge($spacings, ($i: $i * $spacingInterval));
+  }
+
+  @return $spacings;
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}

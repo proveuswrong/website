@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import styles from "./_markdownPage.module.scss";
+
+export async function getStaticPaths() {
+  const showDrafts = import.meta.env.DEV;
+  const entries = await getCollection("pages");
+  const filtered = entries.filter(
+    (entry) => showDrafts || entry.data.draft !== true
+  );
+
+  return filtered.map((entry) => {
+    const normalized = entry.slug.replace(/^\/|\/$/g, "");
+    return {
+      params: {
+        slug: normalized || undefined,
+      },
+      props: { entry },
+    };
+  });
+}
+
+const showDrafts = import.meta.env.DEV;
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+const pageTitle = headings.find((heading) => heading.depth === 1)?.text;
+const isDraft = entry.data.draft === true;
+const showContent = showDrafts || !isDraft;
+---
+
+<BaseLayout title={pageTitle ?? "Prove Us Wrong"}>
+  {showContent ? (
+    <div class={styles.markdownPage}>
+      <Content />
+    </div>
+  ) : (
+    <p>This document is not ready yet. Come back later.</p>
+  )}
+</BaseLayout>

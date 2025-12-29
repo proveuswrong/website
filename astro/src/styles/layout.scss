@@ -1,0 +1,210 @@
+@use "./variables";
+@use "./generic";
+@use "./base";
+@use "./typo";
+@use "./theme";
+@use "./state";
+@use "sass:map";
+@use "sass:math";
+
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+$brandFontSize: 21px;
+
+$breakpoint-large: 1200px;
+$breakpoint-tablet: 768px;
+$breakpoint-small: 480px;
+
+body {
+  margin: 0;
+  background-color: map.get(variables.$colors, black);
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100%;
+
+  & > div:first-child {
+    height: inherit;
+  }
+
+  nav,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  small,
+  button,
+  a {
+    font-family: "Space Mono", monospace;
+    color: map.get(variables.$colors, white);
+  }
+
+  h2,
+  h3,
+  h4,
+  h4,
+  h6 {
+  }
+
+  h1 > p {
+    font-size: typo.$p * 1.2;
+  }
+}
+
+ul {
+  padding: 0;
+  margin-top: 0;
+}
+
+header a {
+  text-decoration: none;
+}
+
+svg {
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+header,
+main,
+footer {
+  padding: 20px;
+}
+
+footer {
+  > div:first-child {
+    height: 100%;
+    min-width: auto;
+    max-width: 1200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+main {
+  flex: auto;
+  padding-bottom: 0;
+  > div:first-child {
+    max-width: 1200px;
+    margin-top: calc(1vw);
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+  }
+}
+
+footer {
+  margin-top: auto;
+  min-height: 180px; // To match header height
+  align-self: center;
+  width: -webkit-fill-available;
+  width: -moz-available;
+
+  svg {
+    max-width: 35px;
+    height: 1.3rem;
+    margin: 0 0.6rem;
+  }
+}
+
+#gatsby-focus-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+h1.hero,
+h2.hero {
+  font-size: typo.$h1;
+}
+
+#brand {
+  font-weight: normal;
+  font-family: "Monoton", cursive;
+  font-size: $brandFontSize;
+}
+
+h1 {
+  font-size: typo.$h1;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: typo.$h2;
+
+  font-weight: normal;
+}
+
+h3 {
+  font-size: typo.$h3;
+
+  font-weight: normal;
+}
+
+// h4 {
+//   font-size: $h4;
+//   margin-block-end: 1em;
+//   margin-block-end: 1em;
+//
+//   font-weight: normal;
+// }
+
+p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  font-size: typo.$p;
+
+  font-weight: 100;
+}
+
+small {
+  font-size: typo.$small;
+}
+
+header nav * {
+  font-size: typo.$h3;
+}
+
+nav {
+  margin-top: 0.4 * $brandFontSize;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  $brandFontSize: 30px;
+  header,
+  main,
+  footer {
+    padding: 20px 32px;
+
+    > div:first-child {
+      min-width: auto;
+      margin-bottom: 0px;
+    }
+  }
+
+  main {
+    padding-bottom: 0; // Footer has excess space on top anyway.
+  }
+
+  header * {
+    font-size: 28px;
+  }
+
+  nav * {
+    font-size: 21px;
+  }
+
+  #brand {
+    font-size: $brandFontSize;
+  }
+}

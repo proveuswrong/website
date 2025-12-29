@@ -1,0 +1,33 @@
+---
+import "../styles/layout.scss";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
+import Seo from "../components/Seo.astro";
+
+const { title = "Prove Us Wrong", description, image, imageAlt } = Astro.props;
+const pathname = Astro.url?.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <Seo
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      pathname={pathname}
+    />
+  </head>
+  <body>
+    <div id="gatsby-focus-wrapper">
+      <Header client:load />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
