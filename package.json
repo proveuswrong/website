@@ -49,6 +49,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "reference": "node test/write-reference.js",
     "test": "yarn build:preview && yarn check:preview && yarn build:production && yarn check:production"
   },
   "resolutions": {
