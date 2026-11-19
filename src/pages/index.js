@@ -57,7 +57,7 @@ const IndexPage = ({ location }) => {
           <div>
             <dt>The framework</dt>
             <dd>
-              <Link to="/projects/decentralized-curation/">Decentralized Curation</Link>, by our founder Ferit Tunçer, is a general framework for curating information, designed for any domain where its quality matters.
+              <Link to="/projects/decentralized-curation/">Decentralized Curation</Link>, by our founder Ferit Tunçer, is a general framework for curating information in any domain.
             </dd>
           </div>
 

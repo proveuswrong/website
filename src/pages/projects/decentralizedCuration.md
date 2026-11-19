@@ -6,7 +6,7 @@ toc: false
 
 # Decentralized Curation
 
-A general framework for curating information, designed for any domain where its quality matters. It is the research of our founder, Ferit Tunçer, and it investigates one thesis: that decentralized curation games can make people's pursuit of private gain produce public benefit.
+A general framework for curating information in any domain. It is the research of our founder, Ferit Tunçer, and it investigates one thesis: that decentralized curation games can make people's pursuit of private gain produce public benefit.
 
 ## The Idea
 
