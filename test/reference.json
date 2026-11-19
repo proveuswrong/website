@@ -1766,7 +1766,7 @@
         "2021: Prove Me Wrong",
         "Our work began in late 2021 with a project called Prove Me Wrong. The idea: publish a claim with a bounty on it, and let anyone who can prove it false before a Kleros court take the bounty.",
         "The reasoning starts from a classic example. Proving that all swans are white would mean observing every swan. Proving it false takes one black swan. Where refuting a claim is feasible and cheaper than verifying it, open challenges can do the checking. Our framework still builds on that asymmetry.",
-        "We named the organization after the project, with a twist: Prove Us Wrong. [[CONFIRM: Prove Us Wrong, the organization, dates from January 2022.]]",
+        "We named the organization after the project, with a twist: Prove Us Wrong. The organization dates from January 2022.",
         "2022: The Kleros Incubator",
         "In April 2022 Cooperative Kleros started the second cohort of its incubator, with Prove Me Wrong and Yubiai (Kleros, July 2022). The cohort's demo day was in August 2022. The incubator funded our early work.",
         "The same year we turned the mechanism to one information domain, news, and started building The Truth Post.",
@@ -1785,7 +1785,7 @@
         "What We Have Not Shown",
         "No live deployment has validated the complete design. The 2023 Truth Post was a partial predecessor, and it saw little use. The papers' analysis does not establish that honest answers are each participant's best response, or that the outcomes benefit the public. Arrow assumes its jurors are honest and competent and do not collude, so it does not validate the full permissionless design either. These questions are open.",
         "That is the point of the name. Prove us wrong.",
-        "Last updated [[CONFIRM: month and year of publishing]]."
+        "Last updated November 2026."
       ],
       "images": [],
       "links": [

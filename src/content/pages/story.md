@@ -14,7 +14,7 @@ Our work began in late 2021 with a project called Prove Me Wrong. The idea: publ
 
 The reasoning starts from a classic example. Proving that all swans are white would mean observing every swan. Proving it false takes one black swan. Where refuting a claim is feasible and cheaper than verifying it, open challenges can do the checking. Our framework still builds on that asymmetry.
 
-We named the organization after the project, with a twist: Prove Us Wrong. [[CONFIRM: Prove Us Wrong, the organization, dates from January 2022.]]
+We named the organization after the project, with a twist: Prove Us Wrong. The organization dates from January 2022.
 
 ## 2022: The Kleros Incubator
 
@@ -52,4 +52,4 @@ No live deployment has validated the complete design. The 2023 Truth Post was a 
 
 That is the point of the name. Prove us wrong.
 
-*Last updated [[CONFIRM: month and year of publishing]].*
+*Last updated November 2026.*
