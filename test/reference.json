@@ -1,0 +1,2010 @@
+{
+  "pages": {
+    "/": {
+      "language": "en",
+      "title": "Home | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "Home",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": true
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": false
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "slogan",
+          "text": "In Decentralized Curation We Trust"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "In Decentralized Curation We Trust",
+        "We are Prove Us Wrong. Since late 2021 we have worked on curating information without a trusted curator: first with Prove Me Wrong, a bounty on falsifiable claims, then with The Truth Post, a news application on Ethereum.",
+        "The framework",
+        "Decentralized Curation, by our founder Ferit Tunçer, is a general framework for curation in any information domain: open rules designed to reward people for producing, assessing and correcting information.",
+        "Applications",
+        "Two are worked out so far: news, with The Truth Post, a partial version of which went live on Ethereum mainnet in June 2023; and public goods funding, a proposed design. The framework paper also sketches advertising.",
+        "Experiment",
+        "Arrow, a planned curation experiment at Octant, tests one part of the design.",
+        "Cooperative Kleros incubated our first project in 2022. Golem Foundation incubates our work. None of this is proven yet; the framework paper and the public goods paper say so themselves. Think it can't work? Prove us wrong.",
+        "Read Our Story"
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "Decentralized Curation"
+        },
+        {
+          "href": "/projects/the-truth-post/",
+          "text": "The Truth Post"
+        },
+        {
+          "href": "/projects/public-goods/",
+          "text": "public goods funding"
+        },
+        {
+          "href": "/projects/arrow/",
+          "text": "Arrow"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.20543760",
+          "text": "framework paper",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.23354211",
+          "text": "public goods paper",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "/story/",
+          "text": "Read Our Story"
+        }
+      ]
+    },
+    "/about/": {
+      "language": "en",
+      "title": "About | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "About",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/about/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": false
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": true
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Who We Are"
+        },
+        {
+          "level": 2,
+          "text": "What We Believe"
+        },
+        {
+          "level": 2,
+          "text": "Support"
+        },
+        {
+          "level": 2,
+          "text": "Disclosure"
+        },
+        {
+          "level": 2,
+          "text": "Founder"
+        },
+        {
+          "level": 3,
+          "text": "Ferit"
+        },
+        {
+          "level": 2,
+          "text": "Past Contributors"
+        },
+        {
+          "level": 3,
+          "text": "Münevver"
+        },
+        {
+          "level": 3,
+          "text": "Ifeoluwa"
+        },
+        {
+          "level": 3,
+          "text": "Stanislav"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "Who We Are",
+        "Prove Us Wrong has worked on decentralized curation since late 2021. We built The Truth Post, a news application on Ethereum, and our founder, Ferit, wrote the two Decentralized Curation papers. Our story, year by year, is here.",
+        "What We Believe",
+        "We identify ourselves as cypherpunks and libertarians. We believe that this world would be better with more freedom, thus justice, free speech, and privacy. We build to create more freedom.",
+        "We believe that coordinating for the public interest is the biggest obstacle to a better world, and that curation is a major source of that difficulty. The second part is a hypothesis, and Ferit's framework paper states it as one. That is why we work on decentralized curation, and why we publish what we build as public goods.",
+        "Support",
+        "Cooperative Kleros. Our first project, Prove Me Wrong, was in the second cohort of the Kleros incubator in 2022. The incubator funded our early work.",
+        "Golem Foundation incubates our work.",
+        "Octant sponsored Ferit's workshop materials on the public goods application.",
+        "Disclosure",
+        "Ferit has multi-year engineering experience with Kleros, which The Truth Post uses to settle disputes. He holds no Pinakion tokens and has no ongoing financial relationship with Kleros.",
+        "Founder",
+        "Ferit founded Prove Us Wrong, built it and runs it today.",
+        "Ferit",
+        "Engineering and research",
+        "Past Contributors",
+        "They worked with Ferit on Prove Us Wrong and have since moved on.",
+        "Münevver",
+        "Product design",
+        "Ifeoluwa",
+        "Community and writing, 2023",
+        "Stanislav",
+        "Engineering on The Truth Post"
+      ],
+      "images": [
+        "Ferit's photo",
+        "Münevver's photo",
+        "Ifeoluwa's photo",
+        "Stanislav's photo"
+      ],
+      "links": [
+        {
+          "href": "/story/",
+          "text": "here"
+        },
+        {
+          "href": "https://blog.kleros.io/kleros-community-update-june-2022/",
+          "text": "Kleros incubator",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://decentralized-curation.0xferit.workers.dev/",
+          "text": "workshop materials",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://github.com/0xferit",
+          "text": "Ferit",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://dribbble.com/munevver/",
+          "text": "Münevver",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://www.linkedin.com/in/iamifeolushola/",
+          "text": "Ifeoluwa",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://github.com/gratestas",
+          "text": "Stanislav",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ]
+    },
+    "/faq/": {
+      "language": "en",
+      "title": "F.A.Q. | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "F.A.Q.",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/faq/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": false
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": true
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "faq",
+          "text": "F.A.Q."
+        },
+        {
+          "level": 2,
+          "id": "how-can-i-contact-you",
+          "text": "How can I contact you?"
+        },
+        {
+          "level": 2,
+          "id": "which-name-is-which",
+          "text": "Which name is which?"
+        },
+        {
+          "level": 2,
+          "id": "what-is-decentralized-curation",
+          "text": "What is decentralized curation?"
+        },
+        {
+          "level": 2,
+          "id": "is-it-trustless",
+          "text": "Is it trustless?"
+        },
+        {
+          "level": 2,
+          "id": "does-it-guarantee-accuracy",
+          "text": "Does it guarantee accuracy?"
+        },
+        {
+          "level": 2,
+          "id": "is-any-of-this-proven",
+          "text": "Is any of this proven?"
+        },
+        {
+          "level": 2,
+          "id": "is-the-truth-post-still-running",
+          "text": "Is The Truth Post still running?"
+        },
+        {
+          "level": 2,
+          "id": "who-has-supported-your-work",
+          "text": "Who has supported your work?"
+        },
+        {
+          "level": 2,
+          "id": "is-your-work-open-source",
+          "text": "Is your work open source?"
+        },
+        {
+          "level": 2,
+          "id": "can-i-support-this-work",
+          "text": "Can I support this work?"
+        },
+        {
+          "level": 2,
+          "id": "how-can-i-take-part",
+          "text": "How can I take part?"
+        },
+        {
+          "level": 2,
+          "id": "where-can-i-read-more",
+          "text": "Where can I read more?"
+        }
+      ],
+      "contents": [
+        {
+          "href": "#how-can-i-contact-you",
+          "text": "How can I contact you?"
+        },
+        {
+          "href": "#which-name-is-which",
+          "text": "Which name is which?"
+        },
+        {
+          "href": "#what-is-decentralized-curation",
+          "text": "What is decentralized curation?"
+        },
+        {
+          "href": "#is-it-trustless",
+          "text": "Is it trustless?"
+        },
+        {
+          "href": "#does-it-guarantee-accuracy",
+          "text": "Does it guarantee accuracy?"
+        },
+        {
+          "href": "#is-any-of-this-proven",
+          "text": "Is any of this proven?"
+        },
+        {
+          "href": "#is-the-truth-post-still-running",
+          "text": "Is The Truth Post still running?"
+        },
+        {
+          "href": "#who-has-supported-your-work",
+          "text": "Who has supported your work?"
+        },
+        {
+          "href": "#is-your-work-open-source",
+          "text": "Is your work open source?"
+        },
+        {
+          "href": "#can-i-support-this-work",
+          "text": "Can I support this work?"
+        },
+        {
+          "href": "#how-can-i-take-part",
+          "text": "How can I take part?"
+        },
+        {
+          "href": "#where-can-i-read-more",
+          "text": "Where can I read more?"
+        }
+      ],
+      "text": [
+        "F.A.Q.",
+        "How can I contact you?",
+        "Which name is which?",
+        "What is decentralized curation?",
+        "Is it trustless?",
+        "Does it guarantee accuracy?",
+        "Is any of this proven?",
+        "Is The Truth Post still running?",
+        "Who has supported your work?",
+        "Is your work open source?",
+        "Can I support this work?",
+        "How can I take part?",
+        "Where can I read more?",
+        "How can I contact you?",
+        "Email inbox@proveuswrong.io. Our other channels are in the footer.",
+        "Which name is which?",
+        "Prove Us Wrong is us, the organization.",
+        "Prove Me Wrong was our first project: a bounty on falsifiable claims, with Kleros as the court. We named the organization after it and dropped the project name in 2023.",
+        "Decentralized Curation is the framework, the general design, by our founder Ferit Tunçer.",
+        "The Truth Post is its news application. Public goods funding is its second worked-out application.",
+        "Arrow is a planned experiment at Octant that tests one part of the design. It is not the name of our work.",
+        "In the framework paper, \"Arrow\" is Arrow's impossibility theorem. The story has the order of events.",
+        "What is decentralized curation?",
+        "Curation decides what is accurate, what matters, and what gets attention or money. Decentralized curation aims to do it with open rules instead of a trusted curator, rewarding people for producing, assessing and correcting information, so that no single actor has to be trusted. Ferit Tunçer's framework of that name is here.",
+        "Is it trustless?",
+        "Only in the papers' narrow sense, and as a design aim: no single actor is trusted. The design can still rely on an honest majority of jurors or of curator stake, or on at least one honest challenger. No blockchain application is fully trustless.",
+        "Does it guarantee accuracy?",
+        "No. Juries can be wrong.",
+        "Is any of this proven?",
+        "No. The papers say so themselves: the analysis does not establish that honest answers are each participant's best response, or that the outcomes benefit the public. If you can show where it breaks, we want to hear it.",
+        "Is The Truth Post still running?",
+        "The contract is on Ethereum mainnet, and the 2023 app loads at truthpost.news. Nothing has been published on it since November 2023. Details here.",
+        "Who has supported your work?",
+        "Cooperative Kleros took our first project, Prove Me Wrong, into the second cohort of its incubator in 2022, and the incubator funded our early work. Golem Foundation incubates our work. Octant sponsored Ferit's workshop materials on the public goods application.",
+        "Is your work open source?",
+        "The code of the deployed Truth Post and of this website is public on GitHub under the MIT licence. The papers are CC BY 4.0.",
+        "Can I support this work?",
+        "Write to inbox@proveuswrong.io.",
+        "How can I take part?",
+        "Read the papers and try to break them. Counterexamples and better designs are welcome at the same address.",
+        "Where can I read more?",
+        "The framework: Decentralized Curation, preprint by Ferit Tunçer",
+        "The public goods application: Decentralized Curation for Public Goods, preprint by Ferit Tunçer",
+        "Our blog",
+        "Our code: github.com/proveuswrong"
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "#how-can-i-contact-you",
+          "text": "How can I contact you?"
+        },
+        {
+          "href": "#which-name-is-which",
+          "text": "Which name is which?"
+        },
+        {
+          "href": "#what-is-decentralized-curation",
+          "text": "What is decentralized curation?"
+        },
+        {
+          "href": "#is-it-trustless",
+          "text": "Is it trustless?"
+        },
+        {
+          "href": "#does-it-guarantee-accuracy",
+          "text": "Does it guarantee accuracy?"
+        },
+        {
+          "href": "#is-any-of-this-proven",
+          "text": "Is any of this proven?"
+        },
+        {
+          "href": "#is-the-truth-post-still-running",
+          "text": "Is The Truth Post still running?"
+        },
+        {
+          "href": "#who-has-supported-your-work",
+          "text": "Who has supported your work?"
+        },
+        {
+          "href": "#is-your-work-open-source",
+          "text": "Is your work open source?"
+        },
+        {
+          "href": "#can-i-support-this-work",
+          "text": "Can I support this work?"
+        },
+        {
+          "href": "#how-can-i-take-part",
+          "text": "How can I take part?"
+        },
+        {
+          "href": "#where-can-i-read-more",
+          "text": "Where can I read more?"
+        },
+        {
+          "href": "mailto:inbox@proveuswrong.io",
+          "text": "inbox@proveuswrong.io",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "framework"
+        },
+        {
+          "href": "/projects/the-truth-post/",
+          "text": "news application"
+        },
+        {
+          "href": "/projects/public-goods/",
+          "text": "second worked-out application"
+        },
+        {
+          "href": "/projects/arrow/",
+          "text": "experiment"
+        },
+        {
+          "href": "/story/",
+          "text": "story"
+        },
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "here"
+        },
+        {
+          "href": "https://truthpost.news",
+          "text": "truthpost.news",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "/projects/the-truth-post/",
+          "text": "here"
+        },
+        {
+          "href": "https://blog.kleros.io/kleros-community-update-june-2022/",
+          "text": "its incubator",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://decentralized-curation.0xferit.workers.dev/",
+          "text": "workshop materials",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://github.com/proveuswrong",
+          "text": "GitHub",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "mailto:inbox@proveuswrong.io",
+          "text": "inbox@proveuswrong.io",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.20543760",
+          "text": "Decentralized Curation",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.23354211",
+          "text": "Decentralized Curation for Public Goods",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://blog.proveuswrong.io",
+          "text": "blog",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://github.com/proveuswrong",
+          "text": "github.com/proveuswrong",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ]
+    },
+    "/projects/": {
+      "language": "en",
+      "title": "Projects | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "Projects",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/projects/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": true
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "projects",
+          "text": "Projects"
+        },
+        {
+          "level": 2,
+          "id": "the-framework",
+          "text": "The Framework"
+        },
+        {
+          "level": 3,
+          "id": "decentralized-curation",
+          "text": "Decentralized Curation"
+        },
+        {
+          "level": 2,
+          "id": "applications",
+          "text": "Applications"
+        },
+        {
+          "level": 3,
+          "id": "news-the-truth-post",
+          "text": "News: The Truth Post"
+        },
+        {
+          "level": 3,
+          "id": "public-goods-funding",
+          "text": "Public Goods Funding"
+        },
+        {
+          "level": 2,
+          "id": "experiments",
+          "text": "Experiments"
+        },
+        {
+          "level": 3,
+          "id": "arrow",
+          "text": "Arrow"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "Projects",
+        "The Decentralized Curation framework, its applications, and an experiment at Octant that tests one part of it.",
+        "The Framework",
+        "Decentralized Curation",
+        "A general framework for curating information, by our founder Ferit Tunçer. It proposes open rules designed to reward people for producing, assessing and correcting information, so that no single actor has to be trusted. Preprint, 2026.",
+        "Applications",
+        "An application takes the framework into one information domain and sets its rules there. The framework paper also sketches advertising.",
+        "News: The Truth Post",
+        "The news application, and the one information domain the framework paper works out in full. A partial version, the accuracy layer only, went live on Ethereum mainnet in June 2023.",
+        "Public Goods Funding",
+        "Assessing public goods work in the open, and funding it by the assessment. A proposed design in its own preprint, October 2026; not a validated deployment.",
+        "Experiments",
+        "An experiment tests one part of a design under controlled conditions. It does not realize the full design.",
+        "Arrow",
+        "A planned curation experiment at Octant. It is set for early 2027. Invited experts score real work against a published policy. Arrow is listed here because it tests one part of the Decentralized Curation design; it is an experiment, not a product."
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "Decentralized Curation"
+        },
+        {
+          "href": "/projects/the-truth-post/",
+          "text": "News: The Truth Post"
+        },
+        {
+          "href": "/projects/public-goods/",
+          "text": "Public Goods Funding"
+        },
+        {
+          "href": "/projects/arrow/",
+          "text": "Arrow"
+        }
+      ]
+    },
+    "/projects/arrow/": {
+      "language": "en",
+      "title": "Arrow | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "Arrow",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/projects/arrow/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": true
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "arrow",
+          "text": "Arrow"
+        },
+        {
+          "level": 2,
+          "id": "what-it-tests",
+          "text": "What It Tests"
+        },
+        {
+          "level": 2,
+          "id": "what-it-leaves-out",
+          "text": "What It Leaves Out"
+        },
+        {
+          "level": 2,
+          "id": "read-more",
+          "text": "Read More"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "Arrow",
+        "A planned curation experiment at Octant. It is set for early 2027. Arrow tests one part of the Decentralized Curation design. It does not realize the full design, and it is not the name of our work.",
+        "What It Tests",
+        "Invited experts score real work against a published policy. In the framework, scoring against a published policy, rather than ruling a claim true or false, is how relevance is assessed.",
+        "What It Leaves Out",
+        "In the full design, curators stake to take part and are drawn by lottery. Arrow's jurors are invited experts instead. Arrow assumes they are honest and competent and do not collude, so it cannot show what happens when they are not, and it does not validate the full permissionless design.",
+        "Read More",
+        "The framework: Decentralized Curation",
+        "The framework's public goods application: Public Goods Funding",
+        "How we got here: Our Story"
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "Decentralized Curation"
+        },
+        {
+          "href": "/projects/public-goods/",
+          "text": "Public Goods Funding"
+        },
+        {
+          "href": "/story/",
+          "text": "Our Story"
+        }
+      ]
+    },
+    "/projects/decentralized-curation/": {
+      "language": "en",
+      "title": "Decentralized Curation | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "Decentralized Curation",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/projects/decentralized-curation/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": true
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "decentralized-curation",
+          "text": "Decentralized Curation"
+        },
+        {
+          "level": 2,
+          "id": "the-idea",
+          "text": "The Idea"
+        },
+        {
+          "level": 2,
+          "id": "how-it-works",
+          "text": "How It Works"
+        },
+        {
+          "level": 2,
+          "id": "where-it-applies",
+          "text": "Where It Applies"
+        },
+        {
+          "level": 2,
+          "id": "limits",
+          "text": "Limits"
+        },
+        {
+          "level": 2,
+          "id": "read-it",
+          "text": "Read It"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "Decentralized Curation",
+        "A general framework for curation in any information domain. It is the research of our founder, Ferit Tunçer, and it investigates one thesis: that decentralized curation games can make people's pursuit of private gain produce public benefit.",
+        "The Idea",
+        "Curation decides what we read, trust and fund. Usually someone trusted does it. The framework proposes to replace the trusted curator with open rules designed to reward people for producing, assessing and correcting information.",
+        "In the paper, trustless means one thing: no single actor is trusted. The design may still rely on an honest majority of jurors or of curator stake, or on at least one honest challenger. No blockchain application is fully trustless.",
+        "How It Works",
+        "The framework is a method in four steps:",
+        "Define the curation problem.",
+        "Identify the quality dimensions that matter for it.",
+        "Where proving a claim false is feasible and cheaper than checking everything, use challenges.",
+        "Design one mechanism per dimension.",
+        "In the news design, two dimensions do most of the work:",
+        "Accuracy is about facts, within a claim's stated scope and time. An author posts a claim with a bond, and a challenger may contest it with counter-evidence. An external dispute resolution system decides; for news, that is Kleros. A successful challenger takes the author's bond.",
+        "Relevance is about what matters to a community. It is not true or false. Curators score items from 0 to 1 against the pool's published policy, and are rewarded for scores that cohere with the rest.",
+        "Accuracy alone is not enough. \"One equals one\" is accurate. It is not news.",
+        "Three commitments shape the architecture. Anyone can create a pool. Contracts are immutable: they change by migrating to a new deployment, not by upgrading in place. Governance is kept to a minimum.",
+        "Where It Applies",
+        "The paper works out one information domain in full: news, as The Truth Post. It sketches a second: advertising. A separate paper applies the framework to public goods funding. Generality is a design goal; showing it takes more applications.",
+        "Limits",
+        "The analysis does not establish that honest reporting is each participant's best response, or that the outcomes benefit the public. Adjudication can be wrong, and scoring faithfully under a policy does not show the policy is good. No live deployment has validated the complete design; the 2023 Truth Post was a partial predecessor. More in our story.",
+        "Read It",
+        "Ferit Tunçer. Decentralized Curation: Trustless Transformation of Information into Knowledge. Preprint, 2026. CC BY 4.0. doi.org/10.5281/zenodo.20543760. This link always opens the latest version.",
+        "Background, in plain words: Curation: The Bottleneck of the Information Age, December 2025."
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "/projects/the-truth-post/",
+          "text": "The Truth Post"
+        },
+        {
+          "href": "/projects/public-goods/",
+          "text": "public goods funding"
+        },
+        {
+          "href": "/story/#what-we-have-not-shown",
+          "text": "our story"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.20543760",
+          "text": "doi.org/10.5281/zenodo.20543760",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://medium.com/prove-us-wrong/curation-the-bottleneck-of-the-information-age-194a92df0080",
+          "text": "Curation: The Bottleneck of the Information Age",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ]
+    },
+    "/projects/public-goods/": {
+      "language": "en",
+      "title": "Public Goods Funding | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "Public Goods Funding",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/projects/public-goods/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": true
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "public-goods-funding",
+          "text": "Public Goods Funding"
+        },
+        {
+          "level": 2,
+          "id": "the-problem",
+          "text": "The Problem"
+        },
+        {
+          "level": 2,
+          "id": "how-it-would-work",
+          "text": "How It Would Work"
+        },
+        {
+          "level": 2,
+          "id": "limits",
+          "text": "Limits"
+        },
+        {
+          "level": 2,
+          "id": "read-it",
+          "text": "Read It"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "Public Goods Funding",
+        "An application of Decentralized Curation: assessing public goods work in the open, and funding it by the assessment. It is a proposed design, set out in its own preprint.",
+        "The Problem",
+        "Funding public goods means someone has to judge which work matters, and how much. This application would make that judgment contestable and revisable. Its reference question is narrow: keeping a credible, revisable assessment of work that is done and maintained. Whether another grant would do the most good is a different question, and needs its own policy and evidence.",
+        "How It Would Work",
+        "In the proposed design, three operations stay separate:",
+        "Contest factual claims. Nominators would publish nominations of completed work, each with a deposit. Challengers would earn rewards for showing that a claim is false or breaks another stated rule. An external arbitrator would decide.",
+        "Assess relevance. Paid jurors would score each nomination against a public goal and rubric. The jury would not decide whether a factual claim is false.",
+        "Use the assessment. A stated rule would turn the scores into funding shares when a budget exists. Scores could exist before any budget does, and future shares could change without rewriting what was already earned.",
+        "Limits",
+        "It is a proposed design and an evaluation agenda, not a completed experiment or a validated deployment, and it reports no study results. Whether honest answers are participants' best responses, whether competent jurors can be selected reliably, whether correction is affordable and whether public outcomes improve are open questions. A score is a policy choice: twice the weight does not mean twice the good.",
+        "Read It",
+        "Ferit Tunçer. Decentralized Curation for Public Goods: A blueprint for contestable assessment and funding. Preprint, 2026. CC BY 4.0. doi.org/10.5281/zenodo.23354211"
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "Decentralized Curation"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.23354211",
+          "text": "doi.org/10.5281/zenodo.23354211",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ]
+    },
+    "/projects/the-truth-post/": {
+      "language": "en",
+      "title": "The Truth Post | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "The Truth Post",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/projects/the-truth-post/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": true
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "the-truth-post",
+          "text": "The Truth Post"
+        },
+        {
+          "level": 2,
+          "id": "what-it-is",
+          "text": "What It Is"
+        },
+        {
+          "level": 2,
+          "id": "what-shipped-in-june-2023",
+          "text": "What Shipped in June 2023"
+        },
+        {
+          "level": 2,
+          "id": "what-happened",
+          "text": "What Happened"
+        },
+        {
+          "level": 2,
+          "id": "where-it-stands",
+          "text": "Where It Stands"
+        },
+        {
+          "level": 2,
+          "id": "limits",
+          "text": "Limits"
+        },
+        {
+          "level": 2,
+          "id": "links",
+          "text": "Links"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "The Truth Post",
+        "The news application of Decentralized Curation. A partial version, the accuracy layer only, went live on Ethereum mainnet in June 2023.",
+        "What It Is",
+        "A news protocol, not a single website. The full design, specified in the framework paper, has authors post articles with a bond, challengers contest inaccurate ones before an external court, and curators in each pool score relevance against that pool's published policy.",
+        "What Shipped in June 2023",
+        "The accuracy layer:",
+        "An author publishes an article with a bond in ether.",
+        "Anyone can challenge it by paying a fee.",
+        "A Kleros jury decides whether the article is accurate according to its curation pool's policy. If it is ruled inaccurate, it is marked debunked and the challenger takes the bond.",
+        "Each article has a trust score: its bond, weighted by how long it has stood.",
+        "The launch post counted the curation pools, each with its own policy, as partial relevancy curation. Relevance scoring by curators did not ship, and neither did rewards for authors or the removal of the admin rights the contract kept. The launch post said so.",
+        "What Happened",
+        "Five items were published on the contract between June and November 2023: a description of the news pool, the launch announcement and three other articles. Two were later withdrawn. As of April 2026 the contract had recorded 16 external transactions and no visible challenge, so the deployment does not show that the dispute path works end to end. The framework paper reads this as unsuccessful bootstrapping.",
+        "Where It Stands",
+        "The contract is still on Ethereum mainnet. The app at truthpost.news is the 2023 version and loads its articles from the contract. In September 2026 we repaired the app's indexer, which had stopped showing them. Since 2024 it has had only maintenance.",
+        "Limits",
+        "The 2023 deployment is a partial predecessor of the full design. The framework paper, not the deployed contract, is the reference for The Truth Post, and no live deployment validates the complete design.",
+        "Links",
+        "App, 2023 version: truthpost.news",
+        "Contract: 0x87aa…b454 on Etherscan",
+        "Code: github.com/proveuswrong",
+        "Launch post, June 2023: The Truth Post Launches on Ethereum Mainnet"
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "Decentralized Curation"
+        },
+        {
+          "href": "https://doi.org/10.5281/zenodo.20543760",
+          "text": "framework paper",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://kleros.io",
+          "text": "Kleros",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://truthpost.news",
+          "text": "truthpost.news",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://truthpost.news",
+          "text": "truthpost.news",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://etherscan.io/address/0x87aade1067ed0276ec9bef6db8e17abe27a6b454",
+          "text": "0x87aa…b454 on Etherscan",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://github.com/proveuswrong",
+          "text": "github.com/proveuswrong",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://medium.com/prove-us-wrong/the-revolution-in-news-curation-the-truth-post-launches-on-ethereum-mainnet-89304f3728d9",
+          "text": "The Truth Post Launches on Ethereum Mainnet",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ]
+    },
+    "/story/": {
+      "language": "en",
+      "title": "Our Story | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "Our Story",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "og:url": "/story/",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": false
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "id": "our-story",
+          "text": "Our Story"
+        },
+        {
+          "level": 2,
+          "id": "2021-prove-me-wrong",
+          "text": "2021: Prove Me Wrong"
+        },
+        {
+          "level": 2,
+          "id": "2022-the-kleros-incubator",
+          "text": "2022: The Kleros Incubator"
+        },
+        {
+          "level": 2,
+          "id": "2023-the-truth-post-goes-live",
+          "text": "2023: The Truth Post Goes Live"
+        },
+        {
+          "level": 2,
+          "id": "2024-and-2025-quiet-then-a-thesis",
+          "text": "2024 and 2025: Quiet, Then a Thesis"
+        },
+        {
+          "level": 2,
+          "id": "2026-a-framework-and-an-application",
+          "text": "2026: A Framework and an Application"
+        },
+        {
+          "level": 2,
+          "id": "what-we-have-not-shown",
+          "text": "What We Have Not Shown"
+        }
+      ],
+      "contents": [
+        {
+          "href": "#2021-prove-me-wrong",
+          "text": "2021: Prove Me Wrong"
+        },
+        {
+          "href": "#2022-the-kleros-incubator",
+          "text": "2022: The Kleros Incubator"
+        },
+        {
+          "href": "#2023-the-truth-post-goes-live",
+          "text": "2023: The Truth Post Goes Live"
+        },
+        {
+          "href": "#2024-and-2025-quiet-then-a-thesis",
+          "text": "2024 and 2025: Quiet, Then a Thesis"
+        },
+        {
+          "href": "#2026-a-framework-and-an-application",
+          "text": "2026: A Framework and an Application"
+        },
+        {
+          "href": "#what-we-have-not-shown",
+          "text": "What We Have Not Shown"
+        }
+      ],
+      "text": [
+        "Our Story",
+        "2021: Prove Me Wrong",
+        "2022: The Kleros Incubator",
+        "2023: The Truth Post Goes Live",
+        "2024 and 2025: Quiet, Then a Thesis",
+        "2026: A Framework and an Application",
+        "What We Have Not Shown",
+        "Five years, in order, including the parts that did not work.",
+        "2021: Prove Me Wrong",
+        "Our work began in late 2021 with a project called Prove Me Wrong. The idea: publish a claim with a bounty on it, and let anyone who can prove it false before a Kleros court take the bounty.",
+        "The reasoning starts from a classic example. Proving that all swans are white would mean observing every swan. Proving it false takes one black swan. Where refuting a claim is feasible and cheaper than verifying it, open challenges can do the checking. Our framework still builds on that asymmetry.",
+        "We named the organization after the project, with a twist: Prove Us Wrong. [[CONFIRM: Prove Us Wrong, the organization, dates from January 2022.]]",
+        "2022: The Kleros Incubator",
+        "In April 2022 Cooperative Kleros started the second cohort of its incubator, with Prove Me Wrong and Yubiai (Kleros, July 2022). The cohort's demo day was in August 2022. The incubator funded our early work.",
+        "The same year we turned the mechanism to one information domain, news, and started building The Truth Post.",
+        "2023: The Truth Post Goes Live",
+        "In March 2023 we dropped the Prove Me Wrong name, and the April 2023 Kleros Incubator demo day listed us as Prove Us Wrong. On 6 June 2023 we deployed The Truth Post's contract to Ethereum mainnet, and on 14 June we announced the launch.",
+        "What shipped was the accuracy part of the design. An author publishes an article with a bond. Anyone can challenge it. A Kleros jury decides whether the article is accurate according to its curation pool's policy; if the challenge succeeds, the article is marked debunked and the challenger takes the bond. The launch post counted these pools, each with its own policy, as partial relevancy curation.",
+        "What did not ship: relevance scoring by curators, rewards for authors, and the removal of the admin rights the contract kept. The launch post said so.",
+        "Then the part that did not work. Five items were published on the contract between June and November 2023: a description of the news pool, the launch announcement and three other articles. Two were later withdrawn. As of April 2026 the contract had recorded 16 external transactions and no visible challenge, so the deployment does not show that the dispute path works end to end. The framework paper reads this as unsuccessful bootstrapping and draws design requirements from it.",
+        "2024 and 2025: Quiet, Then a Thesis",
+        "We built no new features in 2024 or 2025; the work was maintenance.",
+        "In December 2025 we published Curation: The Bottleneck of the Information Age. Its argument: access to information is no longer the bottleneck; curation is. Information quality has many dimensions, and they need different mechanisms. Some, like accuracy, can be checked. Others, like relevance, need a consensus. News is the first information domain, not the only one.",
+        "2026: A Framework and an Application",
+        "In 2026 Ferit, our founder, published Decentralized Curation as a preprint. It investigates the thesis that decentralized curation games can make the pursuit of private gain produce public benefit, and turns it into a general method: define the curation problem, find the quality dimensions that matter, use challenges wherever proving a claim false is feasible and cheaper than checking everything, and design one mechanism per dimension. The Truth Post is its worked example for news.",
+        "In October 2026 his second preprint, Decentralized Curation for Public Goods, applied the framework to assessing and funding public goods. It is an application of the framework, not the framework.",
+        "Arrow, a planned curation experiment at Octant, tests one part of the design: invited experts score real work against a published policy.",
+        "What We Have Not Shown",
+        "No live deployment has validated the complete design. The 2023 Truth Post was a partial predecessor, and it saw little use. The papers' analysis does not establish that honest answers are each participant's best response, or that the outcomes benefit the public. Arrow assumes its jurors are honest and competent and do not collude, so it does not validate the full permissionless design either. These questions are open.",
+        "That is the point of the name. Prove us wrong.",
+        "Last updated [[CONFIRM: month and year of publishing]]."
+      ],
+      "images": [],
+      "links": [
+        {
+          "href": "#2021-prove-me-wrong",
+          "text": "2021: Prove Me Wrong"
+        },
+        {
+          "href": "#2022-the-kleros-incubator",
+          "text": "2022: The Kleros Incubator"
+        },
+        {
+          "href": "#2023-the-truth-post-goes-live",
+          "text": "2023: The Truth Post Goes Live"
+        },
+        {
+          "href": "#2024-and-2025-quiet-then-a-thesis",
+          "text": "2024 and 2025: Quiet, Then a Thesis"
+        },
+        {
+          "href": "#2026-a-framework-and-an-application",
+          "text": "2026: A Framework and an Application"
+        },
+        {
+          "href": "#what-we-have-not-shown",
+          "text": "What We Have Not Shown"
+        },
+        {
+          "href": "https://kleros.io",
+          "text": "Kleros",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://blog.kleros.io/kleros-community-update-june-2022/",
+          "text": "Kleros, July 2022",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://medium.com/prove-us-wrong/the-revolution-in-news-curation-the-truth-post-launches-on-ethereum-mainnet-89304f3728d9",
+          "text": "announced the launch",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://medium.com/prove-us-wrong/curation-the-bottleneck-of-the-information-age-194a92df0080",
+          "text": "Curation: The Bottleneck of the Information Age",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "/projects/decentralized-curation/",
+          "text": "Decentralized Curation"
+        },
+        {
+          "href": "/projects/public-goods/",
+          "text": "Decentralized Curation for Public Goods"
+        },
+        {
+          "href": "/projects/arrow/",
+          "text": "Arrow"
+        }
+      ]
+    },
+    "/404.html": {
+      "language": "en",
+      "title": "404: Not found | Prove Us Wrong",
+      "meta": {
+        "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:title": "404: Not found",
+        "og:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "og:type": "website",
+        "twitter:creator": "@0xferit",
+        "twitter:description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+        "twitter:card": "summary",
+        "twitter:image:alt": "Prove Us Wrong",
+        "theme-color": "#171717"
+      },
+      "icons": [
+        {
+          "rel": "icon",
+          "href": "/favicon-32x32.png"
+        },
+        {
+          "rel": "manifest",
+          "href": "/manifest.webmanifest"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "48x48",
+          "href": "/icons/icon-48x48.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "72x72",
+          "href": "/icons/icon-72x72.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "96x96",
+          "href": "/icons/icon-96x96.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "144x144",
+          "href": "/icons/icon-144x144.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "192x192",
+          "href": "/icons/icon-192x192.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "256x256",
+          "href": "/icons/icon-256x256.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "384x384",
+          "href": "/icons/icon-384x384.png"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "sizes": "512x512",
+          "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "sections": [
+        {
+          "text": "HOME",
+          "href": "/",
+          "current": false
+        },
+        {
+          "text": "PROJECTS",
+          "href": "/projects/",
+          "current": false
+        },
+        {
+          "text": "F.A.Q.",
+          "href": "/faq/",
+          "current": false
+        },
+        {
+          "text": "BLOG",
+          "href": "https://blog.proveuswrong.io",
+          "current": false
+        },
+        {
+          "text": "ABOUT",
+          "href": "/about/",
+          "current": false
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "404: Not Found"
+        }
+      ],
+      "contents": null,
+      "text": [
+        "404: Not Found",
+        "You just hit a route that doesn't exist... the sadness."
+      ],
+      "images": [],
+      "links": []
+    }
+  },
+  "manifest": {
+    "name": "Prove Us Wrong",
+    "short_name": "PUW",
+    "start_url": "/",
+    "background_color": "#171717",
+    "theme_color": "#171717",
+    "display": "minimal-ui",
+    "icons": [
+      {
+        "src": "icons/icon-48x48.png",
+        "sizes": "48x48",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-72x72.png",
+        "sizes": "72x72",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-96x96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-256x256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+}
