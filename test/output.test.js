@@ -22,7 +22,7 @@ const {
 } = require("./built-site");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
-const GATSBY_COPY_OF_THE_ERROR_PAGE = "/404/";
+const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
@@ -72,12 +72,28 @@ test("every address of the contract is a built page", () => {
 });
 
 test("no page is built beyond the contract", () => {
-  assert.deepEqual(
-    builtPageAddresses().filter(
-      (address) => address !== GATSBY_COPY_OF_THE_ERROR_PAGE
-    ),
-    [...PAGE_ADDRESSES].sort()
-  );
+  assert.deepEqual(builtPageAddresses(), [...PAGE_ADDRESSES].sort());
+});
+
+test("a page loads one script, and it is the menu", () => {
+  for (const address of EVERY_PAGE) {
+    const { scripts } = describeBuiltPage(address);
+
+    assert.equal(
+      scripts.length,
+      1,
+      `${address} loads ${scripts.length} scripts`
+    );
+
+    const [{ src, code }] = scripts;
+    const menuScript = src
+      ? readBuiltText(new URL(src, siteUrl()).pathname)
+      : code;
+    assert.ok(
+      menuScript.includes(STATE_THE_MENU_SCRIPT_KEEPS),
+      `the script of ${address} never touches ${STATE_THE_MENU_SCRIPT_KEEPS}`
+    );
+  }
 });
 
 test("every file in static/ is served from the root unchanged", () => {

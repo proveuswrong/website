@@ -1,0 +1,80 @@
+@use "src/styles/variables";
+@use "src/styles/typo";
+
+$more-rows-than-any-page: 200;
+$anchor-gap: 4px;
+
+.markdownPage {
+  :is(h1, h2, h3, h4, h5, h6) {
+    position: relative;
+  }
+
+  :global(.anchor) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    padding-right: $anchor-gap;
+
+    svg {
+      visibility: hidden;
+    }
+
+    &:focus svg {
+      visibility: visible;
+    }
+  }
+
+  :is(h1, h2, h3, h4, h5, h6):hover :global(.anchor) svg {
+    visibility: visible;
+  }
+
+  :global(.toc) {
+    margin-bottom: 2.5rem;
+    padding-left: 1.25rem;
+    border-left: 1px solid variables.$color-rule;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+      font-size: typo.$small;
+      line-height: 1.4;
+    }
+
+    a[href] {
+      color: variables.$color-gray;
+      text-decoration: none;
+
+      &:hover {
+        color: variables.$color-red;
+      }
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-rail) {
+  .withContents {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, variables.$measure) minmax(0, 1fr);
+    column-gap: 4rem;
+
+    > * {
+      grid-column: 2;
+      margin-inline: 0;
+    }
+
+    > :global(.toc) {
+      grid-column: 3;
+      grid-row: 1 / span $more-rows-than-any-page;
+      align-self: start;
+      position: sticky;
+      top: 2rem;
+      margin: 0.75rem 0 0;
+    }
+  }
+}

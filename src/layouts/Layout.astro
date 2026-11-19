@@ -1,0 +1,46 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../components/layout.scss";
+import { author, description, isProduction, title as siteTitle } from "../site.mjs";
+import manifestSource from "../../static/manifest.webmanifest?raw";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const manifest = JSON.parse(manifestSource);
+const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | {siteTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:image" content={new URL(OPEN_GRAPH_IMAGE_PATH, Astro.site)} />
+    <meta name="twitter:creator" content={author} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image:alt" content={siteTitle} />
+    <meta name="theme-color" content={manifest.theme_color} />
+    {!isProduction && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    {manifest.icons.map(({ src, sizes }) => (
+      <link rel="apple-touch-icon" sizes={sizes} href={new URL(src, Astro.site).pathname} />
+    ))}
+  </head>
+  <body>
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>

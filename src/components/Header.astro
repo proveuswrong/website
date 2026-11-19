@@ -1,0 +1,83 @@
+---
+import styles from "./header.module.scss";
+import { title } from "../site.mjs";
+
+const NAVIGATION_ID = "site-navigation";
+const sections = [
+  { label: "HOME", href: "/" },
+  { label: "PROJECTS", href: "/projects/", includesSubpages: true },
+  { label: "F.A.Q.", href: "/faq/" },
+  { label: "BLOG", href: "https://blog.proveuswrong.io", external: true },
+  { label: "ABOUT", href: "/about/" },
+];
+const pathname = Astro.url.pathname;
+---
+
+<header>
+  <div class={styles.container}>
+    <a href="/" aria-label={`${title}, home`}>
+      <span id="brand" class={styles.brand}>
+        {title.split(" ").map((word, index) => <>{index > 0 && <br />}{word}</>)}
+      </span>
+    </a>
+    <button
+      type="button"
+      class={styles.menuButton}
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls={NAVIGATION_ID}
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id={NAVIGATION_ID} class={styles.nav} aria-label="Main">
+      <ul>
+        {sections.map(({ label, href, includesSubpages, external }) => {
+          const isThisPage = pathname === href;
+          const isAbove = includesSubpages && pathname.startsWith(href);
+          return (
+            <li>
+              <a
+                href={href}
+                class:list={[(isThisPage || isAbove) && styles.active]}
+                aria-current={isThisPage ? "page" : undefined}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>("header button[aria-controls]");
+  const navigationId = button?.getAttribute("aria-controls");
+  const navigation = navigationId && document.getElementById(navigationId);
+
+  if (button && navigation) {
+    const setMenuOpen = (open: boolean) => {
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+
+    button.addEventListener("click", () => {
+      setMenuOpen(button.getAttribute("aria-expanded") !== "true");
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("a[href]")) {
+        setMenuOpen(false);
+      }
+    });
+  }
+</script>
