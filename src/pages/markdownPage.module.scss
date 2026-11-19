@@ -1,3 +1,53 @@
+@use "src/styles/variables";
+@use "src/styles/typo";
+
 .markdownPage {
-  list-style-position: inside;
+  :global(.toc) {
+    margin-bottom: 2.5rem;
+    padding-left: 1.25rem;
+    border-left: 1px solid map-get(variables.$colors, rule);
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+      font-size: typo.$small;
+      line-height: 1.4;
+    }
+
+    a[href] {
+      color: map-get(variables.$colors, gray);
+      text-decoration: none;
+
+      &:hover {
+        color: map-get(variables.$colors, red);
+      }
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-rail) {
+  .withContents {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, variables.$measure) minmax(0, 1fr);
+    column-gap: 4rem;
+
+    > * {
+      grid-column: 2;
+      margin-inline: 0;
+    }
+
+    > :global(.toc) {
+      grid-column: 3;
+      grid-row: 1 / span 200;
+      align-self: start;
+      position: sticky;
+      top: 2rem;
+      margin: 0.75rem 0 0;
+    }
+  }
 }

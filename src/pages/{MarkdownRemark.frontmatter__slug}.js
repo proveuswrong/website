@@ -16,24 +16,24 @@ export default function MarkdownPage({ data, location }) {
 
   if(frontmatter.toc)
   {
-    const h2Elements = $('h2');
-    const ulElements = cheerio.load('<ul></ul>')('ul')
+    const contents = cheerio.load('<nav class="toc" aria-label="On this page"><ul></ul></nav>')('nav')
 
-    h2Elements.each(function(index) {
-      ulElements.append(`<li key=${index}><a href=#${this.attribs.id}>${$(this).text()}</a></li>`)
+    $('h2').each(function() {
+      contents.find('ul').append(`<li><a href="#${this.attribs.id}">${$(this).text()}</a></li>`)
     });
 
-    $('h1').after(ulElements)
-    manipulatedHTML = $.html()
+    $('h1').after(contents)
+    manipulatedHTML = $('body').html()
   }
 
+  const pageClassName = frontmatter.toc ? `${styles.markdownPage} ${styles.withContents}` : styles.markdownPage;
 
   return (
     <Layout>
       <Seo title={h1.text()} pathname={location?.pathname} />
 
         {!frontmatter.draft === true || process.env.ENV === "dev" ? (
-          <div className={styles.markdownPage} dangerouslySetInnerHTML={{ __html: manipulatedHTML }} />
+          <div className={pageClassName} dangerouslySetInnerHTML={{ __html: manipulatedHTML }} />
         ) : (
           <p>This document is not ready yet. Come back later.</p>
         )}
