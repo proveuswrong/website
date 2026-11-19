@@ -79,7 +79,7 @@ const IndexPage = ({ location }) => {
         </dl>
 
         <p className={styles.statement}>
-          Cooperative Kleros incubated our first project in 2022. [[CONFIRM: Golem Foundation incubates our work.]] None of this is proven yet; the{" "}
+          Cooperative Kleros incubated our first project in 2022. Golem Foundation incubates our work. None of this is proven yet; the{" "}
           <a href="https://doi.org/10.5281/zenodo.20543760" target="_blank" rel="noopener noreferrer">framework paper</a> and the{" "}
           <a href="https://doi.org/10.5281/zenodo.23354211" target="_blank" rel="noopener noreferrer">public goods paper</a> say so themselves. Think it can't work? Prove us wrong.
         </p>

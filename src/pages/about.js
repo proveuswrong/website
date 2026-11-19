@@ -46,7 +46,7 @@ const About = ({ location }) => (
         in 2022. The incubator funded our early work.
       </p>
       <p>
-        [[CONFIRM: <strong>Golem Foundation</strong> incubates our work.]]
+        <strong>Golem Foundation</strong> incubates our work.
       </p>
       <p>
         <strong>Octant</strong> sponsored Ferit's{" "}
