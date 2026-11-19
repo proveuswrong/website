@@ -18,6 +18,7 @@ body {
   color: variables.$color-white;
   font-family: "Space Mono", monospace;
   line-height: typo.$leading-text;
+  overflow-wrap: break-word;
 }
 
 header,
@@ -62,7 +63,6 @@ h2,
 h3 {
   font-weight: normal;
   line-height: typo.$leading-heading;
-  overflow-wrap: break-word;
   text-wrap: balance;
 }
 
