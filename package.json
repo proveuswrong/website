@@ -40,12 +40,16 @@
   ],
   "scripts": {
     "build": "gatsby build",
+    "build:preview": "CF_PAGES_ENVIRONMENT=preview CF_PAGES_BRANCH=develop yarn build",
+    "build:production": "CF_PAGES_ENVIRONMENT=production CF_PAGES_BRANCH=main yarn build",
+    "check:preview": "EXPECTED_BUILD=preview node --test test/*.test.js",
+    "check:production": "EXPECTED_BUILD=production node --test test/*.test.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "yarn build:preview && yarn check:preview && yarn build:production && yarn check:production"
   },
   "resolutions": {
     "msgpackr": "^1.10.1",
