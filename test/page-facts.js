@@ -235,4 +235,4 @@ const describePage = (html, siteUrl) => {
   });
 };
 
-module.exports = { describePage };
+module.exports = { describePage, withoutQuery };

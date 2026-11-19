@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const { describePage } = require("./page-facts");
+const { describePage, withoutQuery } = require("./page-facts");
 
 const REPOSITORY = path.join(__dirname, "..");
 const OUTPUT_DIRECTORY =
@@ -110,8 +110,6 @@ const describeBuiltPage = (address) => {
   }
   return describedPages.get(address);
 };
-
-const withoutQuery = (address) => address.split("?")[0];
 
 const manifestOfBuild = () => {
   const manifest = JSON.parse(readBuiltText("/manifest.webmanifest"));
