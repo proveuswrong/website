@@ -24,3 +24,9 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=proveuswrong_website&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=proveuswrong_website)
 
 Website of the organization built with Gatsby.
+
+## Checking a build
+
+`yarn test` builds the site twice, as a preview build and as a production build, and checks each against the contract in [#69](https://github.com/proveuswrong/website/issues/69): the addresses, the rules for crawlers, the links, and how every page renders compared with `test/reference.json`.
+
+When a change is meant to alter a page, the comparison fails and shows what differs. Run `yarn reference` after `yarn test` and commit the new `test/reference.json` with the change.
