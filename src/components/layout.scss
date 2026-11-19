@@ -12,8 +12,8 @@ html {
 body {
   margin: 0;
   height: 100%;
-  background-color: map-get(variables.$colors, black);
-  color: map-get(variables.$colors, white);
+  background-color: variables.$color-black;
+  color: variables.$color-white;
   font-family: "Space Mono", monospace;
   line-height: typo.$leading-text;
 
@@ -108,7 +108,7 @@ li {
   margin-bottom: 0.35rem;
 
   &::marker {
-    color: map-get(variables.$colors, gray);
+    color: variables.$color-gray;
   }
 }
 

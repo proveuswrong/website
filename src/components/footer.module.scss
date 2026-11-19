@@ -8,20 +8,20 @@ $icon-size: 1.4rem;
   align-items: center;
   margin-top: 5rem;
   padding-block: 2.5rem 2rem;
-  border-top: 1px solid map-get(variables.$colors, rule);
+  border-top: 1px solid variables.$color-rule;
   text-align: center;
 
   small {
-    color: map-get(variables.$colors, gray);
+    color: variables.$color-gray;
 
     a {
-      color: map-get(variables.$colors, white);
+      color: variables.$color-white;
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 0.22em;
 
       &:hover {
-        color: map-get(variables.$colors, red);
+        color: variables.$color-red;
       }
     }
   }
@@ -43,7 +43,7 @@ $icon-size: 1.4rem;
     height: 100%;
 
     path {
-      fill: map-get(variables.$colors, gray) !important;
+      fill: variables.$color-gray !important;
     }
   }
 }

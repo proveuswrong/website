@@ -20,7 +20,7 @@
   p {
     margin: 0;
     font-size: typo.$small;
-    color: map-get(variables.$colors, gray);
+    color: variables.$color-gray;
   }
 }
 

@@ -1,7 +1,7 @@
 @use "src/styles/variables";
 
 *:focus-visible {
-  outline: 2px dashed map-get(variables.$colors, white);
+  outline: 2px dashed variables.$color-white;
   outline-offset: 3px;
 }
 
@@ -10,31 +10,31 @@
 }
 
 ::selection {
-  background: map-get(variables.$colors, red);
-  color: map-get(variables.$colors, black);
+  background: variables.$color-red;
+  color: variables.$color-black;
 }
 
 a {
   &:hover {
-    color: map-get(variables.$colors, red);
+    color: variables.$color-red;
   }
 
   &:hover svg {
     path,
     circle,
     rect {
-      fill: map-get(variables.$colors, red) !important;
+      fill: variables.$color-red !important;
     }
   }
 }
 
 @keyframes glow {
   from {
-    color: map-get(variables.$colors, red);
+    color: variables.$color-red;
   }
 
   to {
-    color: map-get(variables.$colors, white);
+    color: variables.$color-white;
   }
 }
 

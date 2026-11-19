@@ -5,7 +5,7 @@
   :global(.toc) {
     margin-bottom: 2.5rem;
     padding-left: 1.25rem;
-    border-left: 1px solid map-get(variables.$colors, rule);
+    border-left: 1px solid variables.$color-rule;
 
     ul {
       margin: 0;
@@ -20,11 +20,11 @@
     }
 
     a[href] {
-      color: map-get(variables.$colors, gray);
+      color: variables.$color-gray;
       text-decoration: none;
 
       &:hover {
-        color: map-get(variables.$colors, red);
+        color: variables.$color-red;
       }
     }
   }

@@ -23,8 +23,8 @@ $touch-margin: 0.75rem;
   font-size: $brand-size;
   line-height: $brand-leading;
   text-transform: lowercase;
-  color: map-get(variables.$colors, red);
-  text-shadow: 0 0 0.7em rgba(map-get(variables.$colors, red), 0.3);
+  color: variables.$color-red;
+  text-shadow: 0 0 0.7em rgba(variables.$color-red, 0.3);
 }
 
 .menuButton {
@@ -49,7 +49,7 @@ $touch-margin: 0.75rem;
     left: 0;
     width: 100%;
     height: $bar-thickness;
-    background: map-get(variables.$colors, white);
+    background: variables.$color-white;
     transition: transform 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
 
     &:nth-of-type(1) {
@@ -66,7 +66,7 @@ $touch-margin: 0.75rem;
   }
 
   &.open span {
-    background: map-get(variables.$colors, black);
+    background: variables.$color-black;
 
     &:nth-of-type(1) {
       transform: translateY($bar-thickness + $bar-gap) rotate(45deg);
@@ -89,7 +89,7 @@ $touch-margin: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: map-get(variables.$colors, red);
+  background: variables.$color-red;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s, visibility 0.35s;
@@ -115,7 +115,7 @@ $touch-margin: 0.75rem;
 
   a {
     font-size: typo.$h2;
-    color: map-get(variables.$colors, black);
+    color: variables.$color-black;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 0.3em;
@@ -124,8 +124,8 @@ $touch-margin: 0.75rem;
 
     &:hover,
     &.active {
-      color: map-get(variables.$colors, black);
-      text-decoration-color: map-get(variables.$colors, black);
+      color: variables.$color-black;
+      text-decoration-color: variables.$color-black;
     }
   }
 }
@@ -155,12 +155,12 @@ $touch-margin: 0.75rem;
       display: block;
       font-size: 1.15rem;
       line-height: $brand-size-tablet * $brand-leading;
-      color: map-get(variables.$colors, white);
+      color: variables.$color-white;
 
       &:hover,
       &.active {
-        color: map-get(variables.$colors, white);
-        text-decoration-color: map-get(variables.$colors, white);
+        color: variables.$color-white;
+        text-decoration-color: variables.$color-white;
       }
     }
   }

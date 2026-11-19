@@ -1,12 +1,10 @@
-$colors: (
-        black: #171717,
-        red: #ff355e,
-        white: #ececec,
-        gray: #9a9a9a,
-        rule: #343434,
-);
+$color-black: #171717;
+$color-red: #ff355e;
+$color-white: #ececec;
+$color-gray: #9a9a9a;
+$color-rule: #343434;
 
-$gradient: linear-gradient(90deg, #ff355e, #ff355e, #827bd3, #90eed0);
+$gradient: linear-gradient(90deg, $color-red, $color-red, #827bd3, #90eed0);
 
 $breakpoint-tablet: 768px;
 $breakpoint-rail: 1280px;
