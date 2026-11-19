@@ -28,6 +28,8 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 
 Cloudflare Pages runs `yarn build` and publishes `public/`: `main` as production at https://proveuswrong.io, `develop` as a preview at https://develop.proveuswrong.io. The build writes to `public/` and reads static files from `static/`, the reverse of Astro's defaults, because `public/` is the directory the Pages project publishes.
 
+A push to `main` fast-forwards `develop` to it (`.github/workflows/fastForwardDevelop.yml`), so after a release the two branches are the same commit. The push is never forced: if `develop` holds commits that `main` lacks, the workflow fails and leaves both branches as they are.
+
 ## Why it is built this way
 
 - **No client framework.** The pages are documents; the menu is their only behaviour.
