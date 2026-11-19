@@ -1,4 +1,5 @@
 @use "src/styles/variables";
+@use "src/styles/functions";
 @use "src/styles/typo";
 @use "src/styles/mixins";
 
@@ -42,9 +43,11 @@ $no-break-space: "\00a0";
 // Two no-break spaces carry the mark, so it never wraps away from the link's last word.
 main a[href^="http"]:not(.hero)::after {
   content: $no-break-space + $no-break-space;
-  background-color: currentColor;
-  -webkit-mask: url(/link.svg) right center / $external-mark-size no-repeat;
-  mask: url(/link.svg) right center / $external-mark-size no-repeat;
+  background: functions.external-mark-image(map-get(variables.$colors, white)) right center / $external-mark-size no-repeat;
+}
+
+main a[href^="http"]:not(.hero):hover::after {
+  background-image: functions.external-mark-image(map-get(variables.$colors, red));
 }
 
 main a.anchor svg {
