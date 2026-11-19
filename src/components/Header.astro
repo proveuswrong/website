@@ -76,9 +76,11 @@ const pathname = Astro.url.pathname;
       setMenuOpen(!isMenuOpen());
     });
 
-    new ResizeObserver(() => {
-      if (!isButtonShown()) setMenuOpen(false);
-    }).observe(button);
+    document.addEventListener("focusin", (event) => {
+      if (isMenuOpen() && event.target instanceof Element && !isInMenu(event.target)) {
+        setMenuOpen(false);
+      }
+    });
 
     window.addEventListener("keydown", (event) => {
       if (!isMenuOpen()) return;
