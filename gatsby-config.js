@@ -53,6 +53,7 @@ module.exports = {
     description: `We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.`,
     author: `@0xferit`,
     siteUrl: SITE_URL,
+    isProduction: isProd,
     head: headRef,
     pullRequest,
     branch: branchName,
