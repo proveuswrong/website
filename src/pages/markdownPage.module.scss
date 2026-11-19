@@ -1,11 +1,13 @@
 @use "src/styles/variables";
 @use "src/styles/typo";
 
+$more-rows-than-any-page: 200;
+
 .markdownPage {
   :global(.toc) {
     margin-bottom: 2.5rem;
     padding-left: 1.25rem;
-    border-left: 1px solid map-get(variables.$colors, rule);
+    border-left: 1px solid variables.$color-rule;
 
     ul {
       margin: 0;
@@ -20,11 +22,11 @@
     }
 
     a[href] {
-      color: map-get(variables.$colors, gray);
+      color: variables.$color-gray;
       text-decoration: none;
 
       &:hover {
-        color: map-get(variables.$colors, red);
+        color: variables.$color-red;
       }
     }
   }
@@ -43,7 +45,7 @@
 
     > :global(.toc) {
       grid-column: 3;
-      grid-row: 1 / span 200;
+      grid-row: 1 / span $more-rows-than-any-page;
       align-self: start;
       position: sticky;
       top: 2rem;

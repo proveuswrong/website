@@ -30,12 +30,12 @@ $label-column: 9.5rem;
   width: 100%;
   max-width: variables.$measure + $label-column;
   margin: 0 0 3rem;
-  border-top: 1px solid map-get(variables.$colors, rule);
+  border-top: 1px solid variables.$color-rule;
   text-align: left;
 
   > div {
     padding-block: 1.25rem;
-    border-bottom: 1px solid map-get(variables.$colors, rule);
+    border-bottom: 1px solid variables.$color-rule;
   }
 
   dt {

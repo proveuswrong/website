@@ -29,11 +29,11 @@ main a[href]:not(.hero) {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.22em;
-  text-decoration-color: map-get(variables.$colors, gray);
+  text-decoration-color: variables.$color-gray;
 
   &:hover {
-    color: map-get(variables.$colors, red);
-    text-decoration-color: map-get(variables.$colors, red);
+    color: variables.$color-red;
+    text-decoration-color: variables.$color-red;
   }
 }
 
@@ -43,15 +43,15 @@ $no-break-space: "\00a0";
 // Two no-break spaces carry the mark, so it never wraps away from the link's last word.
 main a[href^="http"]:not(.hero)::after {
   content: $no-break-space + $no-break-space;
-  background: functions.external-mark-image(map-get(variables.$colors, white)) right center / $external-mark-size no-repeat;
+  background: functions.external-mark-image(variables.$color-white) right center / $external-mark-size no-repeat;
 }
 
 main a[href^="http"]:not(.hero):hover::after {
-  background-image: functions.external-mark-image(map-get(variables.$colors, red));
+  background-image: functions.external-mark-image(variables.$color-red);
 }
 
 main a.anchor svg {
-  fill: map-get(variables.$colors, gray);
+  fill: variables.$color-gray;
 }
 
 a.hero {
@@ -61,7 +61,7 @@ a.hero {
   font-size: 1.2rem;
   line-height: typo.$leading-heading;
   padding: 0.7em 2.2em;
-  border: 2px solid map-get(variables.$colors, white);
+  border: 2px solid variables.$color-white;
   border-radius: 4px;
 
   background-image: variables.$gradient;
@@ -74,7 +74,7 @@ a.hero {
   &:focus-visible {
     -webkit-background-clip: border-box;
     background-clip: border-box;
-    -webkit-text-fill-color: map-get(variables.$colors, black);
+    -webkit-text-fill-color: variables.$color-black;
     border-color: transparent;
   }
 }
