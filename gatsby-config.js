@@ -50,7 +50,7 @@ const headRef = process.env.HEAD || branchName;
 module.exports = {
   siteMetadata: {
     title: `Prove Us Wrong`,
-    description: `We are an organization that develops decentralized curation solutions as public goods. We build the next cool thing. Prove us wrong.`,
+    description: `We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.`,
     author: `@0xferit`,
     siteUrl: SITE_URL,
     head: headRef,
