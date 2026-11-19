@@ -16,11 +16,11 @@ A general framework for curating information, by our founder Ferit Tunçer. It p
 
 ## Applications
 
-An application takes the framework into one domain and sets its rules there. The framework paper also sketches advertising.
+An application takes the framework into one information domain and sets its rules there. The framework paper also sketches advertising.
 
 ### [News: The Truth Post](/projects/the-truth-post/)
 
-The news application, and the one domain the framework paper works out in full. A partial version, the accuracy layer only, went live on Ethereum mainnet in June 2023.
+The news application, and the one information domain the framework paper works out in full. A partial version, the accuracy layer only, went live on Ethereum mainnet in June 2023.
 
 ### [Public Goods Funding](/projects/public-goods/)
 

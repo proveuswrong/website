@@ -20,7 +20,7 @@ We named the organization after the project, with a twist: Prove Us Wrong. [[CON
 
 In April 2022 Cooperative Kleros started the second cohort of its incubator, with Prove Me Wrong and Yubiai ([Kleros, July 2022](https://blog.kleros.io/kleros-community-update-june-2022/)). The cohort's demo day was in August 2022. The incubator funded our early work.
 
-The same year we turned the mechanism to one domain, news, and started building The Truth Post.
+The same year we turned the mechanism to one information domain, news, and started building The Truth Post.
 
 ## 2023: The Truth Post Goes Live
 
@@ -36,7 +36,7 @@ Then the part that did not work. Five items were published on the contract betwe
 
 We built no new features in 2024 or 2025; the work was maintenance.
 
-In December 2025 we published [Curation: The Bottleneck of the Information Age](https://medium.com/prove-us-wrong/curation-the-bottleneck-of-the-information-age-194a92df0080). Its argument: access to information is no longer the bottleneck; curation is. Information quality has many dimensions, and they need different mechanisms. Some, like accuracy, can be checked. Others, like relevance, need a consensus. News is the first domain, not the only one.
+In December 2025 we published [Curation: The Bottleneck of the Information Age](https://medium.com/prove-us-wrong/curation-the-bottleneck-of-the-information-age-194a92df0080). Its argument: access to information is no longer the bottleneck; curation is. Information quality has many dimensions, and they need different mechanisms. Some, like accuracy, can be checked. Others, like relevance, need a consensus. News is the first information domain, not the only one.
 
 ## 2026: A Framework and an Application
 
