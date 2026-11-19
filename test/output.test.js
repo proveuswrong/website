@@ -26,6 +26,7 @@ const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
+const MARK_OF_AN_UNCONFIRMED_SENTENCE = "[[CONFIRM";
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
 // https://www.w3.org/TR/png-3/#11IHDR
@@ -145,6 +146,17 @@ if (expectedBuild() === "production") {
     );
     assert.deepEqual(
       linesOfBuilt("/_headers").filter((line) => /x-robots-tag/i.test(line)),
+      []
+    );
+  });
+
+  test("a production build shows no sentence that still awaits confirmation", () => {
+    assert.deepEqual(
+      EVERY_PAGE.filter((address) =>
+        describeBuiltPage(address).rendering.text.some((line) =>
+          line.includes(MARK_OF_AN_UNCONFIRMED_SENTENCE)
+        )
+      ),
       []
     );
   });
