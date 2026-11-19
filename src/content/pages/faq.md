@@ -59,6 +59,6 @@ Read the papers and try to break them. Counterexamples and better designs are we
 ## Where can I read more?
 
 - The framework: [Decentralized Curation](https://doi.org/10.5281/zenodo.20543760), preprint by Ferit Tunçer
-- The public goods application: [Decentralized Curation for Public Goods](https://doi.org/10.5281/zenodo.23354211), preprint by Ferit Tunçer
+- The public goods application: [Decentralized Curation for Retroactive Public Goods Funding](https://doi.org/10.5281/zenodo.23354211), preprint by Ferit Tunçer
 - Our [blog](https://blog.proveuswrong.io)
 - Our code: [github.com/proveuswrong](https://github.com/proveuswrong)
