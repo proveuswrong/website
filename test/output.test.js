@@ -26,6 +26,7 @@ const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
+const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
 // https://www.w3.org/TR/png-3/#11IHDR
@@ -197,6 +198,16 @@ test("every page offers the 256 pixel icon as its Open Graph image", () => {
       address
     );
   }
+});
+
+test("no page shows an editor's note", () => {
+  const shown = EVERY_PAGE.flatMap((address) =>
+    describeBuiltPage(address)
+      .rendering.text.filter((line) => EDITORS_NOTE.test(line))
+      .map((line) => `${address}: ${line}`)
+  );
+
+  assert.deepEqual(shown, []);
 });
 
 test("every internal link leads to something the build contains", () => {
