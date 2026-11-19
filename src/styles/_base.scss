@@ -3,23 +3,15 @@
 @use "src/styles/mixins";
 
 html {
-  @include mixins.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font); // Apply fluid typography
+  @include mixins.fluid-type(typo.$min_width, typo.$max_width, typo.$min_font, typo.$max_font);
 }
 
 * {
   transition: color 0.1s ease, background-color 0.1s ease, opacity 0.1s ease;
 }
 
-
 body {
   caret-color: transparent;
-}
-
-
-main h1,
-h2,
-a {
-  transition-duration: 0.05s;
 }
 
 a {
@@ -27,115 +19,59 @@ a {
   color: inherit;
 }
 
-main {
-  h1, h2, h3, p {
+button {
+  font: inherit;
+  color: inherit;
+}
 
-    // For external links
-    a[href] {
-      &:not(:where(
-    [href^="#"],
-    [href^="/"]:not([href^="//"])
-  )) {
-        &::after,
-        &:hover::after {
-          display: inline-table;
-          vertical-align: text-bottom;
-          width: 0.7em;
-          height: auto;
-          margin-left: 0.4em;
-        }
+main a[href]:not(.hero) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: map-get(variables.$colors, gray);
 
-        &:after {
-          content: url(/link.svg);
-        }
-
-        &:hover::after {
-          content: url(/linkRed.svg);
-        }
-      }
-    }
-
-
+  &:hover {
+    color: map-get(variables.$colors, red);
+    text-decoration-color: map-get(variables.$colors, red);
   }
+}
 
-  // For internal links
-  p, li {
-    a[href] {
-      &:where(
-      [href^="#"],
-      [href^="/"]:not([href^="//"])
-    ) {
-        text-decoration: underline;
-      }
-    }
-  }
+$external-mark-size: 0.62em;
+$no-break-space: "\00a0";
 
+// Two no-break spaces carry the mark, so it never wraps away from the link's last word.
+main a[href^="http"]:not(.hero)::after {
+  content: $no-break-space + $no-break-space;
+  background-color: currentColor;
+  -webkit-mask: url(/link.svg) right center / $external-mark-size no-repeat;
+  mask: url(/link.svg) right center / $external-mark-size no-repeat;
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    a[href] {
-      &:where(
-    [href^="#"],
-    [href^="/"]:not([href^="//"])
-  )
-      &:not(:where(
-    [href^="#"],
-    [href^="/"]:not([href^="//"])
-  )) {
-        &:hover {
-          color: map-get(variables.$colors, red) !important;
-        }
-
-
-      }
-    }
-  }
+main a.anchor svg {
+  fill: map-get(variables.$colors, gray);
 }
 
 a.hero {
-  width: min-content;
+  display: inline-block;
   white-space: nowrap;
-  align-self: center;
-  text-align: center;
   font-weight: bold;
-  font-size: 1.2rem !important;
+  font-size: 1.2rem;
+  line-height: typo.$leading-heading;
+  padding: 0.7em 2.2em;
   border: 2px solid map-get(variables.$colors, white);
   border-radius: 4px;
 
-  padding: 0.6em 2.2em;
-
-  background-image: linear-gradient(90deg, #ff355e, #ff355e, #827bd3, #90eed0);
-
+  background-image: variables.$gradient;
+  background-origin: border-box;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  position: relative;
-
-  &:after {
-    position: absolute;
-    content: " ";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: map-get(variables.$colors, black);
-    z-index: -1;
+  &:hover,
+  &:focus-visible {
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: map-get(variables.$colors, black);
+    border-color: transparent;
   }
 }
-
-footer {
-  small {
-    color: map-get(variables.$colors, gray) !important;
-  }
-
-  svg path {
-    fill: map-get(variables.$colors, gray) !important;
-  }
-}
-
-

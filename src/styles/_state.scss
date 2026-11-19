@@ -1,24 +1,17 @@
 @use "src/styles/variables";
 
-.navActive > a {
-  text-decoration: underline !important;
-  // text-underline-offset: 1px !important;
-  pointer-events: none;
-
-}
-
-
-
-/* Focusing with a keyboard.*/
 *:focus-visible {
   outline: 2px dashed map-get(variables.$colors, white);
+  outline-offset: 3px;
 }
 
-
-
-/* Focusing the button with a mouse, touch, or stylus.*/
 *:focus:not(:focus-visible) {
   outline: none;
+}
+
+::selection {
+  background: map-get(variables.$colors, red);
+  color: map-get(variables.$colors, black);
 }
 
 a {
@@ -46,7 +39,15 @@ a {
 }
 
 *:target {
+  scroll-margin-top: 2rem;
   animation-duration: 3s;
   animation-timing-function: ease-in;
   animation-name: glow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
