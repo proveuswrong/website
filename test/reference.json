@@ -109,7 +109,7 @@
         "Two are worked out so far: news, with The Truth Post, a partial version of which went live on Ethereum mainnet in June 2023; and public goods funding, a proposed design. The framework paper also sketches advertising.",
         "Experiment",
         "Arrow, a planned curation experiment at Octant, tests one part of the design.",
-        "Cooperative Kleros incubated our first project in 2022. Golem Foundation incubates our work. None of this is proven yet; the framework paper and the public goods paper say so themselves. Think it can't work? Prove us wrong.",
+        "Cooperative Kleros incubated our first project in 2022. Golem Foundation incubates Prove Us Wrong. None of this is proven yet; the framework paper and the public goods paper say so themselves. Think it can't work? Prove us wrong.",
         "Read Our Story"
       ],
       "images": [],
@@ -291,7 +291,7 @@
         "We believe that coordinating for the public interest is the biggest obstacle to a better world, and that curation is a major source of that difficulty. The second part is a hypothesis, and Ferit's framework paper states it as one. That is why we work on decentralized curation, and why we publish what we build as public goods.",
         "Support",
         "Cooperative Kleros. Our first project, Prove Me Wrong, was in the second cohort of the Kleros incubator in 2022. The incubator funded our early work.",
-        "Golem Foundation incubates our work.",
+        "Golem Foundation incubates Prove Us Wrong.",
         "Octant sponsored Ferit's workshop materials on the public goods application.",
         "Disclosure",
         "Ferit has multi-year engineering experience with Kleros, which The Truth Post uses to settle disputes. He holds no Pinakion tokens and has no ongoing financial relationship with Kleros.",
@@ -600,7 +600,7 @@
         "Is The Truth Post still running?",
         "The contract is on Ethereum mainnet, and the 2023 app loads at truthpost.news. Nothing has been published on it since November 2023. Details here.",
         "Who has supported your work?",
-        "Cooperative Kleros took our first project, Prove Me Wrong, into the second cohort of its incubator in 2022, and the incubator funded our early work. Golem Foundation incubates our work. Octant sponsored Ferit's workshop materials on the public goods application.",
+        "Cooperative Kleros took our first project, Prove Me Wrong, into the second cohort of its incubator in 2022, and the incubator funded our early work. Golem Foundation incubates Prove Us Wrong. Octant sponsored Ferit's workshop materials on the public goods application.",
         "Is your work open source?",
         "The code of the deployed Truth Post and of this website is public on GitHub under the MIT licence. The papers are CC BY 4.0.",
         "Can I support this work?",
@@ -1766,7 +1766,7 @@
         "2021: Prove Me Wrong",
         "Our work began in late 2021 with a project called Prove Me Wrong. The idea: publish a claim with a bounty on it, and let anyone who can prove it false before a Kleros court take the bounty.",
         "The reasoning starts from a classic example. Proving that all swans are white would mean observing every swan. Proving it false takes one black swan. Where refuting a claim is feasible and cheaper than verifying it, open challenges can do the checking. Our framework still builds on that asymmetry.",
-        "We named the organization after the project, with a twist: Prove Us Wrong. [[CONFIRM: Prove Us Wrong, the organization, dates from January 2022.]]",
+        "We named the organization after the project, with a twist: Prove Us Wrong. The organization dates from January 2022.",
         "2022: The Kleros Incubator",
         "In April 2022 Cooperative Kleros started the second cohort of its incubator, with Prove Me Wrong and Yubiai (Kleros, July 2022). The cohort's demo day was in August 2022. The incubator funded our early work.",
         "The same year we turned the mechanism to one information domain, news, and started building The Truth Post.",
@@ -1785,7 +1785,7 @@
         "What We Have Not Shown",
         "No live deployment has validated the complete design. The 2023 Truth Post was a partial predecessor, and it saw little use. The papers' analysis does not establish that honest answers are each participant's best response, or that the outcomes benefit the public. Arrow assumes its jurors are honest and competent and do not collude, so it does not validate the full permissionless design either. These questions are open.",
         "That is the point of the name. Prove us wrong.",
-        "Last updated [[CONFIRM: month and year of publishing]]."
+        "Last updated November 2026."
       ],
       "images": [],
       "links": [
