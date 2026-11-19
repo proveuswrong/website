@@ -13,6 +13,8 @@ const joinUrl = (baseUrl, path) => {
   return `${normalizedBase}${normalizedPath}`;
 };
 
+const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
+
 function Seo({
   description,
   lang,
@@ -22,7 +24,7 @@ function Seo({
   imageAlt,
   pathname,
 }) {
-  const { ogImageDefault, site } = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -32,13 +34,6 @@ function Seo({
             author
             siteUrl
             isProduction
-          }
-        }
-        ogImageDefault: file(relativePath: { eq: "icon.png" }) {
-          childImageSharp {
-            fixed(height: 260, width: 260) {
-              src
-            }
           }
         }
       }
@@ -82,10 +77,8 @@ function Seo({
           content: pageUrl || siteUrl,
         },
         {
-          name: `og:image`,
-          content:
-            customImageUrl ||
-            joinUrl(siteUrl, ogImageDefault?.childImageSharp?.fixed?.src),
+          property: `og:image`,
+          content: customImageUrl || joinUrl(siteUrl, OPEN_GRAPH_IMAGE_PATH),
         },
         {
           name: `twitter:creator`,
