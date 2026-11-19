@@ -9,7 +9,7 @@ import * as styles from "./about.module.scss";
 const About = ({ location }) => (
   <Layout>
     <Seo title="About" pathname={location?.pathname} />
-    <div className={styles.about}>
+    <div>
       <h1> Who We Are </h1>
       <p>
         Prove Us Wrong has worked on decentralized curation since late 2021. We
@@ -73,8 +73,8 @@ const About = ({ location }) => (
         him.]]
       </p>
       <p>These people have built Prove Us Wrong.</p>
-      <div className={styles.portraits}>
-        <div>
+      <ul className={styles.people}>
+        <li>
           <StaticImage
             src="../images/ferit_bgBlack.png"
             objectFit="contain"
@@ -84,7 +84,7 @@ const About = ({ location }) => (
             formats={["auto", "webp", "avif"]}
             alt="Ferit's photo"
           />
-          <h3 className="m-0">
+          <h3>
             <a
               href="https://github.com/0xferit"
               target="_blank"
@@ -93,9 +93,9 @@ const About = ({ location }) => (
               Ferit
             </a>
           </h3>
-          <p className="m-0">Founder, engineering</p>
-        </div>
-        <div>
+          <p>Founder, engineering</p>
+        </li>
+        <li>
           <StaticImage
             src="../images/munevver_bgBlack.png"
             minwidth={50}
@@ -105,7 +105,7 @@ const About = ({ location }) => (
             formats={["auto", "webp", "avif"]}
             alt="Münevver's photo"
           />
-          <h3 className="m-0">
+          <h3>
             <a
               href="https://dribbble.com/munevver/"
               target="_blank"
@@ -114,9 +114,9 @@ const About = ({ location }) => (
               Münevver
             </a>
           </h3>
-          <p className="m-0">Product design</p>
-        </div>
-        <div>
+          <p>Product design</p>
+        </li>
+        <li>
           <StaticImage
             src="../images/ifeoluwa_bgBlack.png"
             minwidth={50}
@@ -126,7 +126,7 @@ const About = ({ location }) => (
             formats={["auto", "webp", "avif"]}
             alt="Ifeoluwa's photo"
           />
-          <h3 className="m-0">
+          <h3>
             <a
               href="https://www.linkedin.com/in/iamifeolushola/"
               target="_blank"
@@ -135,9 +135,9 @@ const About = ({ location }) => (
               Ifeoluwa
             </a>
           </h3>
-          <p className="m-0">Community and writing, 2023</p>
-        </div>
-        <div>
+          <p>Community and writing, 2023</p>
+        </li>
+        <li>
           <StaticImage
             src="../images/stanislav_bgBlack.jpg"
             objectFit="contain"
@@ -148,7 +148,7 @@ const About = ({ location }) => (
             alt="Stanislav's photo"
 
           />
-          <h3 className="m-0">
+          <h3>
             <a
               href="https://github.com/gratestas"
               target="_blank"
@@ -157,9 +157,9 @@ const About = ({ location }) => (
               Stanislav
             </a>
           </h3>
-          <p className="m-0">Engineering on The Truth Post</p>
-        </div>
-      </div>
+          <p>Engineering on The Truth Post</p>
+        </li>
+      </ul>
 
     </div>
   </Layout>
