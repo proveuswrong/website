@@ -1,6 +1,8 @@
 @use "src/styles/variables";
 @use "src/styles/typo";
 
+$more-rows-than-any-page: 200;
+
 .markdownPage {
   :global(.toc) {
     margin-bottom: 2.5rem;
@@ -43,7 +45,7 @@
 
     > :global(.toc) {
       grid-column: 3;
-      grid-row: 1 / span 200;
+      grid-row: 1 / span $more-rows-than-any-page;
       align-self: start;
       position: sticky;
       top: 2rem;
