@@ -76,6 +76,10 @@ const pathname = Astro.url.pathname;
       setMenuOpen(!isMenuOpen());
     });
 
+    new ResizeObserver(() => {
+      if (!isButtonShown()) setMenuOpen(false);
+    }).observe(button);
+
     window.addEventListener("keydown", (event) => {
       if (!isMenuOpen()) return;
       if (event.key === "Escape") {
