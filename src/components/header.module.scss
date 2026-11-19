@@ -65,7 +65,7 @@ $touch-margin: 0.75rem;
     }
   }
 
-  &.open span {
+  &[aria-expanded="true"] span {
     background: variables.$color-black;
 
     &:nth-of-type(1) {
@@ -94,7 +94,7 @@ $touch-margin: 0.75rem;
   visibility: hidden;
   transition: opacity 0.35s, visibility 0.35s;
 
-  &.open {
+  .menuButton[aria-expanded="true"] + & {
     opacity: 1;
     visibility: visible;
   }

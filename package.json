@@ -4,66 +4,38 @@
   "description": "The website of the organization.",
   "version": "1.0.0",
   "author": "Ferit Tunçer <0xferittuncer@gmail.com>",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.12",
-    "gatsby": "^5.15.0",
-    "gatsby-plugin-catch-links": "^5.15.0",
-    "gatsby-plugin-image": "^3.15.0",
-    "gatsby-plugin-manifest": "^5.15.0",
-    "gatsby-plugin-offline": "^6.15.0",
-    "gatsby-plugin-react-helmet": "^6.15.0",
-    "gatsby-plugin-react-svg": "^3.3.0",
-    "gatsby-plugin-robots-txt": "^1.8.0",
-    "gatsby-plugin-sass": "^6.15.0",
-    "gatsby-plugin-sharp": "^5.15.0",
-    "gatsby-remark-autolink-headers": "^6.15.0",
-    "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-source-filesystem": "^5.15.0",
-    "gatsby-transformer-remark": "^6.15.0",
-    "gatsby-transformer-sharp": "^5.15.0",
-    "prop-types": "^15.8.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "sass": "^1.94.2"
-  },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-private-methods": "^7.18.6",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "parse5": "7.1.2",
-    "prettier": "^2.5.1"
+    "prettier": "2.8.7"
   },
   "keywords": [
     "ethereum"
   ],
   "scripts": {
-    "build": "gatsby build",
-    "build:preview": "CF_PAGES_ENVIRONMENT=preview CF_PAGES_BRANCH=develop yarn build",
-    "build:production": "CF_PAGES_ENVIRONMENT=production CF_PAGES_BRANCH=main yarn build",
+    "build": "yarn clean && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:preview": "CF_PAGES_BRANCH=develop yarn build",
+    "build:production": "CF_PAGES_BRANCH=main yarn build",
     "check:preview": "EXPECTED_BUILD=preview node --test test/*.test.js",
     "check:production": "EXPECTED_BUILD=production node --test test/*.test.js",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "clean": "rm -rf public .astro node_modules/.astro",
+    "develop": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "format": "prettier --write \"**/*.{js,mjs,json,md}\"",
     "reference": "node test/write-reference.js",
+    "serve": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "start": "yarn develop",
     "test": "yarn build:preview && yarn check:preview && yarn build:production && yarn check:production"
-  },
-  "resolutions": {
-    "msgpackr": "^1.10.1",
-    "lmdb": "^2.8.5"
   },
   "prettier": {
     "tabWidth": 2
   },
-  "browserslist": [
-    "defaults"
-  ],
   "volta": {
-    "node": "24.2.0",
+    "node": "24.22.2",
     "yarn": "4.10.3"
+  },
+  "packageManager": "yarn@4.10.3+sha512.c38cafb5c7bb273f3926d04e55e1d8c9dfa7d9c3ea1f36a4868fa028b9e5f72298f0b7f401ad5eb921749eb012eb1c3bb74bf7503df3ee43fd600d14a018266f",
+  "dependencies": {
+    "@astrojs/markdown-satteri": "0.4.6",
+    "astro": "7.4.5",
+    "sass": "1.107.1"
   }
 }

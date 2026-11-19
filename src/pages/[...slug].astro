@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from "astro:content";
+
+import Layout from "../layouts/Layout.astro";
+import styles from "../styles/markdownPage.module.scss";
+
+const TITLE_DEPTH = 1;
+const CONTENTS_DEPTH = 2;
+const END_OF_TITLE = "</h1>";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages", ({ data }) => !data.draft);
+
+  return pages.map((page) => ({
+    params: { slug: page.data.slug.replace(/^\//, "") },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { headings } = await render(page);
+const title = headings.find(({ depth }) => depth === TITLE_DEPTH).text;
+const contents = headings.filter(({ depth }) => depth === CONTENTS_DEPTH);
+const endOfTitle =
+  page.rendered.html.indexOf(END_OF_TITLE) + END_OF_TITLE.length;
+---
+
+<Layout title={title}>
+  <div class:list={[styles.markdownPage, page.data.toc && styles.withContents]}>
+    <Fragment set:html={page.rendered.html.slice(0, endOfTitle)} />
+    {
+      page.data.toc && (
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            {contents.map(({ slug, text }) => (
+              <li>
+                <a href={`#${slug}`}>{text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+    <Fragment set:html={page.rendered.html.slice(endOfTitle)} />
+  </div>
+</Layout>
