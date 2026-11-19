@@ -26,4 +26,4 @@ It is a proposed design and an evaluation agenda, not a completed experiment or 
 
 ## Read It
 
-Ferit Tunçer. *Decentralized Curation for Public Goods: A blueprint for contestable assessment and funding.* Preprint, 2026. CC BY 4.0. [doi.org/10.5281/zenodo.23354211](https://doi.org/10.5281/zenodo.23354211)
+Ferit Tunçer. *Decentralized Curation for Retroactive Public Goods Funding: A Blueprint for Credible Consensus.* Preprint, 2026. CC BY 4.0. [doi.org/10.5281/zenodo.23354211](https://doi.org/10.5281/zenodo.23354211)
