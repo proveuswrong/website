@@ -50,15 +50,32 @@ const IndexPage = ({ location }) => {
         </h1>
 
         <p>
-          Information is only valuable when it's carefully curated for qualities like accuracy, relevance, completeness, timeliness, and objectivity. In today’s vast cosmos of information, we rely on effective curation to guide us. Being well-informed is essential for making decisions every day. While we seek to benefit from curated information, we often face the challenge of placing trust in curators. The constant threat of misinformation and disinformation misleads us, wasting our resources and pushing us toward poor decisions. It’s time for smarter, more reliable curation to help us navigate this complex landscape.
+          We are Prove Us Wrong. Since late 2021 we have worked on curating information without a trusted curator: first with Prove Me Wrong, a bounty on falsifiable claims, then with The Truth Post, a news application on Ethereum.
         </p>
 
         <p>
-          We are an open-source organization dedicated to developing public good solutions that harness the power of curation while eliminating the need for blind trust. By utilizing Web3, decentralized systems and cutting-edge crypto-economic techniques, we can remove the reliance on traditional curators. The future lies in decentralized curation, and we’re building it. Think it’s impossible? Prove us wrong.</p>
+          <strong>The framework.</strong>{" "}
+          <Link to="/projects/decentralized-curation/">Decentralized Curation</Link>, by our founder Ferit Tunçer, is a general framework for curating information, designed for any domain where its quality matters.
+        </p>
 
-        <Link to="/projects/" className="hero mt-3">
-          Show Me
-        </Link>
+        <p>
+          <strong>Applications.</strong> Two are worked out so far: news, with{" "}
+          <Link to="/projects/the-truth-post/">The Truth Post</Link>, a partial version of which went live on Ethereum mainnet in June 2023; and{" "}
+          <Link to="/projects/public-goods/">public goods funding</Link>, a proposed design. The framework paper also sketches advertising.
+        </p>
+
+        <p>
+          <strong>Experiment.</strong>{" "}
+          <Link to="/projects/arrow/">Arrow</Link>, a planned curation experiment at Octant, tests one part of the design.
+        </p>
+
+        <p>
+          Cooperative Kleros incubated our first project in 2022. [[CONFIRM: Golem Foundation incubates our work.]] None of this is proven yet; the{" "}
+          <a href="https://doi.org/10.5281/zenodo.20543760" target="_blank" rel="noopener noreferrer">framework paper</a> and the{" "}
+          <a href="https://doi.org/10.5281/zenodo.23354211" target="_blank" rel="noopener noreferrer">public goods paper</a> say so themselves. Think it can't work? Prove us wrong.
+        </p>
+
+        <Link to="/story/" className="hero mt-3">Read Our Story</Link>
       </div>
     </Layout>
   );
