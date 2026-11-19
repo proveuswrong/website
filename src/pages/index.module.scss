@@ -1,23 +1,61 @@
+@use "src/styles/variables";
 @use "src/styles/typo";
-@use "sass:math";
 
-$breakpoint-tablet: 768px;
+$statementCharacters: 58;
+$statement: $statementCharacters * variables.$monoAdvance * 1rem;
 
-.container {
+$sloganCharacters: 20;
+$label-column: 9.5rem;
+
+.home {
   display: flex;
-  justify-content: center;
-  height: 100%;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding-top: clamp(0.5rem, 3vw, 2.5rem);
 }
 
-.h1 {
-  white-space: break-spaces;
-  font-size: math.div(typo.$h1, math.div(10, 9)) !important;
+.slogan {
+  max-width: #{$sloganCharacters}ch;
+  margin-bottom: 2rem;
+  font-size: clamp(1.9rem, 7.2vw, #{typo.$display});
 }
 
-@media (max-width: $breakpoint-tablet) {
-  .h1 {
-    width: min(100%, 340px);
-    align-self: center;
+.statement {
+  max-width: $statement;
+  margin-bottom: 3rem;
+}
+
+.levels {
+  width: 100%;
+  max-width: variables.$measure + $label-column;
+  margin: 0 0 3rem;
+  border-top: 1px solid map-get(variables.$colors, rule);
+  text-align: left;
+
+  > div {
+    padding-block: 1.25rem;
+    border-bottom: 1px solid map-get(variables.$colors, rule);
+  }
+
+  dt {
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+@media (min-width: variables.$breakpoint-tablet) {
+  .levels > div {
+    display: grid;
+    grid-template-columns: $label-column minmax(0, 1fr);
+    column-gap: 2rem;
+  }
+
+  .levels dt {
+    margin-bottom: 0;
   }
 }

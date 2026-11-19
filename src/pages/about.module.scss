@@ -1,32 +1,31 @@
-.about {
-  display: flex;
-  align-items: center;
+@use "src/styles/variables";
+@use "src/styles/typo";
 
-  & :global(h2),
-  & :global(h3) {
-    text-align: center;
+.people {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 1.5rem;
+  margin-block: 2.5rem 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  h3 {
+    margin: 1rem 0 0.15rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: typo.$small;
+    color: map-get(variables.$colors, gray);
   }
 }
 
-.portraits {
-  display: flex;
-  flex-direction: row !important;
-  flex-wrap: wrap;
-  text-align: center;
-  width: 100%;
-  justify-content: center;
-  max-width: 1300px;
-  margin-bottom: 3rem;
-
-  div {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-
-    p {
-      min-width: 330px;
-    }
-
+@media (min-width: variables.$breakpoint-tablet) {
+  .people {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

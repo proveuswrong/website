@@ -44,21 +44,47 @@ const IndexPage = ({ location }) => {
   return (
     <Layout>
       <Seo title="Home" pathname={location?.pathname} />
-      <div className={styles.container}>
-        <h1 id="slogan" className={`hero ` + styles.h1}>
+      <div className={styles.home}>
+        <h1 id="slogan" className={styles.slogan}>
           In Decentralized Curation We Trust
         </h1>
 
-        <p>
-          Information is only valuable when it's carefully curated for qualities like accuracy, relevance, completeness, timeliness, and objectivity. In today’s vast cosmos of information, we rely on effective curation to guide us. Being well-informed is essential for making decisions every day. While we seek to benefit from curated information, we often face the challenge of placing trust in curators. The constant threat of misinformation and disinformation misleads us, wasting our resources and pushing us toward poor decisions. It’s time for smarter, more reliable curation to help us navigate this complex landscape.
+        <p className={styles.statement}>
+          We are Prove Us Wrong. Since late 2021 we have worked on curating information without a trusted curator: first with Prove Me Wrong, a bounty on falsifiable claims, then with The Truth Post, a news application on Ethereum.
         </p>
 
-        <p>
-          We are an open-source organization dedicated to developing public good solutions that harness the power of curation while eliminating the need for blind trust. By utilizing Web3, decentralized systems and cutting-edge crypto-economic techniques, we can remove the reliance on traditional curators. The future lies in decentralized curation, and we’re building it. Think it’s impossible? Prove us wrong.</p>
+        <dl className={styles.levels}>
+          <div>
+            <dt>The framework</dt>
+            <dd>
+              <Link to="/projects/decentralized-curation/">Decentralized Curation</Link>, by our founder Ferit Tunçer, is a general framework for curation in any information domain: open rules designed to reward people for producing, assessing and correcting information.
+            </dd>
+          </div>
 
-        <Link to="/projects/" className="hero mt-3">
-          Show Me
-        </Link>
+          <div>
+            <dt>Applications</dt>
+            <dd>
+              Two are worked out so far: news, with{" "}
+              <Link to="/projects/the-truth-post/">The Truth Post</Link>, a partial version of which went live on Ethereum mainnet in June 2023; and{" "}
+              <Link to="/projects/public-goods/">public goods funding</Link>, a proposed design. The framework paper also sketches advertising.
+            </dd>
+          </div>
+
+          <div>
+            <dt>Experiment</dt>
+            <dd>
+              <Link to="/projects/arrow/">Arrow</Link>, a planned curation experiment at Octant, tests one part of the design.
+            </dd>
+          </div>
+        </dl>
+
+        <p className={styles.statement}>
+          Cooperative Kleros incubated our first project in 2022. Golem Foundation incubates our work. None of this is proven yet; the{" "}
+          <a href="https://doi.org/10.5281/zenodo.20543760" target="_blank" rel="noopener noreferrer">framework paper</a> and the{" "}
+          <a href="https://doi.org/10.5281/zenodo.23354211" target="_blank" rel="noopener noreferrer">public goods paper</a> say so themselves. Think it can't work? Prove us wrong.
+        </p>
+
+        <Link to="/story/" className="hero">Read Our Story</Link>
       </div>
     </Layout>
   );
