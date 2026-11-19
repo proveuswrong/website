@@ -15,58 +15,53 @@ const Footer = () => (
           href="https://www.linkedin.com/company/prove-us-wrong/"
           target="_blank"
           rel="noopener noreferrer"
-          title='LinkedIn Company Page'
+          aria-label="LinkedIn company page"
+          title="LinkedIn Company Page"
         >
-          <span style={{ display: "none" }}>Link to LinkedIn profile</span>
-          <LinkedIn aria-hidden="true" id="linkedin" />
+          <LinkedIn aria-hidden="true" />
         </a>
         <a
           href="https://twitter.com/ProveUsWrongIO"
           target="_blank"
           rel="noopener noreferrer"
-          title='Twitter Page'
+          aria-label="Twitter page"
+          title="Twitter Page"
         >
-          <span style={{ display: "none" }}>Link to Twitter profile</span>
-          <Twitter aria-hidden="true" id="twitter" />
+          <Twitter aria-hidden="true" />
         </a>
-
-
         <a
           href="https://discord.gg/FvDrdDtYAV"
           target="_blank"
           rel="noopener noreferrer"
-          title='Discord Community'
+          aria-label="Discord community"
+          title="Discord Community"
         >
-          <span style={{ display: "none" }}>Link to Discord community</span>
-          <Discord aria-hidden="true" id="discord" />
+          <Discord aria-hidden="true" />
         </a>
         <a
           href="https://github.com/proveuswrong"
           target="_blank"
           rel="noopener noreferrer"
-          title='GitHub Organization'
+          aria-label="GitHub organization"
+          title="GitHub Organization"
         >
-          <span style={{ display: "none" }}>Link to GitHub profile</span>
-          <Github aria-hidden="true" id="github" />
+          <Github aria-hidden="true" />
         </a>
-
         <a
           href="mailto:inbox@proveuswrong.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          title='E-mail Address'
+          aria-label="E-mail address"
+          title="E-mail Address"
         >
-          <span style={{ display: "none" }}>Link to e-mail address</span>
-          <Email aria-hidden="true" id="email" />
+          <Email aria-hidden="true" />
         </a>
         <a
           href="/pressKit.zip"
           target="_blank"
           rel="noopener noreferrer"
-          title='Press Kit'
+          aria-label="Press kit"
+          title="Press Kit"
         >
-          <span style={{ display: "none" }}>Press Kit</span>
-          <PressKit aria-hidden="true" id="pressKit" />
+          <PressKit aria-hidden="true" />
         </a>
       </div>
 

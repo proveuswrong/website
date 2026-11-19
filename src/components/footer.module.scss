@@ -1,17 +1,49 @@
+@use "src/styles/variables";
+
+$icon-size: 1.4rem;
+
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-}
+  align-items: center;
+  margin-top: 5rem;
+  padding-block: 2.5rem 2rem;
+  border-top: 1px solid map-get(variables.$colors, rule);
+  text-align: center;
 
-.social {
-  margin-bottom: 8px;
+  small {
+    color: map-get(variables.$colors, gray);
 
-  & svg {
-    margin-bottom: 16px;
+    a {
+      color: map-get(variables.$colors, white);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.22em;
+
+      &:hover {
+        color: map-get(variables.$colors, red);
+      }
+    }
   }
 }
 
-:global(#twitter) {
-  // transform: scale(0.88);
+.social {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  a {
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  svg {
+    display: block;
+    height: 100%;
+
+    path {
+      fill: map-get(variables.$colors, gray) !important;
+    }
+  }
 }
