@@ -67,12 +67,8 @@ const About = ({ location }) => (
         ongoing financial relationship with Kleros.
       </p>
 
-      <h2>People</h2>
-      <p>
-        [[CONFIRM: Today Prove Us Wrong is Ferit; the people below built it with
-        him.]]
-      </p>
-      <p>These people have built Prove Us Wrong.</p>
+      <h2>Founder</h2>
+      <p>Ferit founded Prove Us Wrong, built it and runs it today.</p>
       <ul className={styles.people}>
         <li>
           <StaticImage
@@ -93,8 +89,15 @@ const About = ({ location }) => (
               Ferit
             </a>
           </h3>
-          <p>Founder, engineering</p>
+          <p>Engineering and research</p>
         </li>
+      </ul>
+
+      <h2>Past Contributors</h2>
+      <p>
+        They worked with Ferit on Prove Us Wrong and have since moved on.
+      </p>
+      <ul className={styles.people}>
         <li>
           <StaticImage
             src="../images/munevver_bgBlack.png"
