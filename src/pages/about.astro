@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+import styles from "../styles/about.module.scss";
+import { Picture } from "astro:assets";
+import ferit from "../images/ferit_bgBlack.png";
+import munevver from "../images/munevver_bgBlack.png";
+import ifeoluwa from "../images/ifeoluwa_bgBlack.png";
+import stanislav from "../images/stanislav_bgBlack.jpg";
+
+const PORTRAIT_WIDTH = 170;
+const PORTRAIT_QUALITY = 100;
+const portraitAttributes = {
+  width: PORTRAIT_WIDTH,
+  quality: PORTRAIT_QUALITY,
+  formats: ["avif", "webp"],
+  densities: [1, 2],
+};
+---
+
+<Layout title="About">
+  <div>
+    <h1> Who We Are </h1>
+    <p>
+      Prove Us Wrong has worked on decentralized curation since late 2021. We
+      built The Truth Post, a news application on Ethereum, and our founder,
+      Ferit, wrote the two Decentralized Curation papers. Our story, year by
+      year, is <a href="/story/">here</a>.
+    </p>
+
+    <h2>What We Believe</h2>
+    <p>
+      We identify ourselves as cypherpunks and libertarians. We believe that
+      this world would be better with more freedom, thus justice, free speech,
+      and privacy. We build to create more freedom.
+    </p>
+    <p>
+      We believe that coordinating for the public interest is the biggest
+      obstacle to a better world, and that curation is a major source of that
+      difficulty. The second part is a hypothesis, and Ferit's framework paper
+      states it as one. That is why we work on decentralized curation, and why
+      we publish what we build as public goods.
+    </p>
+
+    <h2>Support</h2>
+    <p>
+      <strong>Cooperative Kleros.</strong> Our first project, Prove Me Wrong,
+      was in the second cohort of the{" "}
+      <a
+        href="https://blog.kleros.io/kleros-community-update-june-2022/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Kleros incubator
+      </a>{" "}
+      in 2022. The incubator funded our early work.
+    </p>
+    <p>
+      <strong>Golem Foundation</strong> incubates our work.
+    </p>
+    <p>
+      <strong>Octant</strong> sponsored Ferit's{" "}
+      <a
+        href="https://decentralized-curation.0xferit.workers.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        workshop materials
+      </a>{" "}
+      on the public goods application.
+    </p>
+
+    <h2>Disclosure</h2>
+    <p>
+      Ferit has multi-year engineering experience with Kleros, which The Truth
+      Post uses to settle disputes. He holds no Pinakion tokens and has no
+      ongoing financial relationship with Kleros.
+    </p>
+
+    <h2>Founder</h2>
+    <p>Ferit founded Prove Us Wrong, built it and runs it today.</p>
+    <ul class={styles.people}>
+      <li>
+        <Picture src={ferit} {...portraitAttributes} alt="Ferit's photo" />
+        <h3>
+          <a
+            href="https://github.com/0xferit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ferit
+          </a>
+        </h3>
+        <p>Engineering and research</p>
+      </li>
+    </ul>
+
+    <h2>Past Contributors</h2>
+    <p>
+      They worked with Ferit on Prove Us Wrong and have since moved on.
+    </p>
+    <ul class={styles.people}>
+      <li>
+        <Picture src={munevver} {...portraitAttributes} alt="Münevver's photo" />
+        <h3>
+          <a
+            href="https://dribbble.com/munevver/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Münevver
+          </a>
+        </h3>
+        <p>Product design</p>
+      </li>
+      <li>
+        <Picture src={ifeoluwa} {...portraitAttributes} alt="Ifeoluwa's photo" />
+        <h3>
+          <a
+            href="https://www.linkedin.com/in/iamifeolushola/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ifeoluwa
+          </a>
+        </h3>
+        <p>Community and writing, 2023</p>
+      </li>
+      <li>
+        <Picture src={stanislav} {...portraitAttributes} alt="Stanislav's photo" />
+        <h3>
+          <a
+            href="https://github.com/gratestas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Stanislav
+          </a>
+        </h3>
+        <p>Engineering on The Truth Post</p>
+      </li>
+    </ul>
+  </div>
+</Layout>

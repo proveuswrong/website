@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import styles from "../styles/index.module.scss";
+---
+
+<Layout title="Home">
+  <div class={styles.home}>
+    <h1 id="slogan" class={styles.slogan}>
+      In Decentralized Curation We Trust
+    </h1>
+
+    <p class={styles.statement}>
+      We are Prove Us Wrong. Since late 2021 we have worked on curating information without a trusted curator: first with Prove Me Wrong, a bounty on falsifiable claims, then with The Truth Post, a news application on Ethereum.
+    </p>
+
+    <dl class={styles.levels}>
+      <div>
+        <dt>The framework</dt>
+        <dd>
+          <a href="/projects/decentralized-curation/">Decentralized Curation</a>, by our founder Ferit Tunçer, is a general framework for curation in any information domain: open rules designed to reward people for producing, assessing and correcting information.
+        </dd>
+      </div>
+
+      <div>
+        <dt>Applications</dt>
+        <dd>
+          Two are worked out so far: news, with{" "}
+          <a href="/projects/the-truth-post/">The Truth Post</a>, a partial version of which went live on Ethereum mainnet in June 2023; and{" "}
+          <a href="/projects/public-goods/">public goods funding</a>, a proposed design. The framework paper also sketches advertising.
+        </dd>
+      </div>
+
+      <div>
+        <dt>Experiment</dt>
+        <dd>
+          <a href="/projects/arrow/">Arrow</a>, a planned curation experiment at Octant, tests one part of the design.
+        </dd>
+      </div>
+    </dl>
+
+    <p class={styles.statement}>
+      Cooperative Kleros incubated our first project in 2022. Golem Foundation incubates our work. None of this is proven yet; the{" "}
+      <a href="https://doi.org/10.5281/zenodo.20543760" target="_blank" rel="noopener noreferrer">framework paper</a> and the{" "}
+      <a href="https://doi.org/10.5281/zenodo.23354211" target="_blank" rel="noopener noreferrer">public goods paper</a> say so themselves. Think it can't work? Prove us wrong.
+    </p>
+
+    <a href="/story/" class="hero">Read Our Story</a>
+  </div>
+</Layout>

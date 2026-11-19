@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://avatars.githubusercontent.com/u/95221290?s=400&u=63ccfc89bdf4ea44f1542698cf5c322affa967f3&v=4" width="60" />
+  <a href="https://proveuswrong.io">
+    <img alt="Prove Us Wrong" src="https://avatars.githubusercontent.com/u/95221290?s=400&u=63ccfc89bdf4ea44f1542698cf5c322affa967f3&v=4" width="60" />
   </a>
 </p>
 <h1 align="center">
@@ -23,7 +23,20 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=proveuswrong_website&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=proveuswrong_website)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=proveuswrong_website&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=proveuswrong_website)
 
-Website of the organization built with Gatsby.
+The website of the organization: a static site built with [Astro](https://astro.build) and served by Cloudflare Pages. [ARCHITECTURE.md](ARCHITECTURE.md) says what lives where.
+
+## Working on it
+
+Node and Yarn are pinned in `package.json`. Install scripts are turned off in `.yarnrc.yml`; the build does not need them.
+
+| Command | What it does |
+|---|---|
+| `yarn install --immutable` | Installs exactly what `yarn.lock` pins |
+| `yarn develop` | Serves the site locally and rebuilds on change |
+| `yarn build` | Builds the site into `public/` |
+| `yarn test` | Builds a preview and a production build and checks each |
+
+The pages written in Markdown are in `src/content/pages/`. The address of each comes from its `slug`.
 
 ## Checking a build
 

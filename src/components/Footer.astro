@@ -1,0 +1,73 @@
+---
+import styles from "./footer.module.scss";
+import Github from "../images/github.svg";
+import Twitter from "../images/twitter.svg";
+import Email from "../images/email.svg";
+import Discord from "../images/discord.svg";
+import LinkedIn from "../images/linkedin.svg";
+import PressKit from "../images/pressKit.svg";
+
+import { title } from "../site.mjs";
+---
+
+<footer>
+  <div class={styles.container}>
+    <div class={styles.social}>
+      <a
+        href="https://www.linkedin.com/company/prove-us-wrong/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn company page"
+        title="LinkedIn Company Page"
+      >
+        <LinkedIn aria-hidden="true" />
+      </a>
+      <a
+        href="https://twitter.com/ProveUsWrongIO"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Twitter page"
+        title="Twitter Page"
+      >
+        <Twitter aria-hidden="true" />
+      </a>
+      <a
+        href="https://discord.gg/FvDrdDtYAV"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Discord community"
+        title="Discord Community"
+      >
+        <Discord aria-hidden="true" />
+      </a>
+      <a
+        href="https://github.com/proveuswrong"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub organization"
+        title="GitHub Organization"
+      >
+        <Github aria-hidden="true" />
+      </a>
+      <a
+        href="mailto:inbox@proveuswrong.io"
+        aria-label="E-mail address"
+        title="E-mail Address"
+      >
+        <Email aria-hidden="true" />
+      </a>
+      <a
+        href="/pressKit.zip"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Press kit"
+        title="Press Kit"
+      >
+        <PressKit aria-hidden="true" />
+      </a>
+    </div>
+
+    <small>Copyright {new Date().getFullYear()} {title}</small>
+    <small>This site is powered by <a target="_blank" rel="noopener noreferrer" href="https://pages.cloudflare.com/">Cloudflare Pages</a></small>
+  </div>
+</footer>
