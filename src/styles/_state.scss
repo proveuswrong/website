@@ -1,52 +1,53 @@
 @use "src/styles/variables";
 
-.navActive > a {
-  text-decoration: underline !important;
-  // text-underline-offset: 1px !important;
-  pointer-events: none;
-
-}
-
-
-
-/* Focusing with a keyboard.*/
 *:focus-visible {
-  outline: 2px dashed map-get(variables.$colors, white);
+  outline: 2px dashed variables.$color-white;
+  outline-offset: 3px;
 }
 
-
-
-/* Focusing the button with a mouse, touch, or stylus.*/
 *:focus:not(:focus-visible) {
   outline: none;
 }
 
+::selection {
+  background: variables.$color-red;
+  color: variables.$color-black;
+}
+
 a {
   &:hover {
-    color: map-get(variables.$colors, red);
+    color: variables.$color-red;
   }
 
   &:hover svg {
     path,
     circle,
     rect {
-      fill: map-get(variables.$colors, red) !important;
+      fill: variables.$color-red !important;
     }
   }
 }
 
 @keyframes glow {
   from {
-    color: map-get(variables.$colors, red);
+    color: variables.$color-red;
   }
 
   to {
-    color: map-get(variables.$colors, white);
+    color: variables.$color-white;
   }
 }
 
 *:target {
+  scroll-margin-top: 2rem;
   animation-duration: 3s;
   animation-timing-function: ease-in;
   animation-name: glow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

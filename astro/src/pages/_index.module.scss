@@ -1,0 +1,23 @@
+@use "../styles/typo";
+@use "sass:math";
+
+$breakpoint-tablet: 768px;
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.h1 {
+  white-space: break-spaces;
+  font-size: math.div(typo.$h1, math.div(10, 9)) !important;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .h1 {
+    width: min(100%, 340px);
+    align-self: center;
+  }
+}

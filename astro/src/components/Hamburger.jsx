@@ -8,7 +8,7 @@ const handleHamburgerClick = (e) => {
   document.getElementById("overlay").classList.toggle("open");
 };
 
-const Hamburger = ({ children }) => {
+const Hamburger = () => {
   return (
     <div
       className={styles.button_container}

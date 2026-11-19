@@ -1,13 +1,19 @@
-@use "src/styles/functions";
+$color-black: #171717;
+$color-red: #ff355e;
+$color-white: #ececec;
+$color-gray: #9a9a9a;
+$color-rule: #343434;
 
-$colors: (
-        black: #171717,
-        red: #ff355e,
-        white: #ececec,
-        gray: #727272,
-);
+$gradient: linear-gradient(90deg, $color-red, $color-red, #827bd3, #90eed0);
 
-$spacingInterval: 0.25rem;
-$spacingCount: 20;
-$spacings: functions.generateSpacings($spacingCount, $spacingInterval);
+$breakpoint-tablet: 768px;
+$breakpoint-rail: 1280px;
 
+$frame: 75rem;
+$gutter: 1.25rem;
+$gutter-tablet: 2rem;
+
+// Space Mono advances 0.6em per character, so a measure in rem is an exact character count.
+$monoAdvance: 0.6;
+$measureCharacters: 68;
+$measure: $measureCharacters * $monoAdvance * 1rem;

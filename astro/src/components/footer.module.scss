@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.social {
+  margin-bottom: 8px;
+
+  & svg {
+    margin-bottom: 16px;
+  }
+}
+
+:global(#twitter) {
+  // transform: scale(0.88);
+}

@@ -31,6 +31,7 @@ function Seo({
             description
             author
             siteUrl
+            isProduction
           }
         }
         ogImageDefault: file(relativePath: { eq: "icon.png" }) {
@@ -48,6 +49,9 @@ function Seo({
   const defaultTitle = site.siteMetadata?.title;
   const siteUrl = site.siteMetadata?.siteUrl;
   const pageUrl = pathname ? joinUrl(siteUrl, pathname) : siteUrl;
+  const searchEngineDirectives = site.siteMetadata?.isProduction
+    ? []
+    : [{ name: `robots`, content: `noindex` }];
 
   return (
     <Helmet
@@ -100,7 +104,7 @@ function Seo({
           name: `twitter:image:alt`,
           content: imageAlt || defaultTitle,
         },
-      ].concat(meta)}
+      ].concat(searchEngineDirectives, meta)}
     />
   );
 }

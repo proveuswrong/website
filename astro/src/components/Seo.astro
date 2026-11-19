@@ -1,0 +1,33 @@
+---
+import { siteMeta } from "../data/site.js";
+
+const {
+  title,
+  description = siteMeta.description,
+  pathname = Astro.url?.pathname ?? "/",
+  image,
+  imageAlt,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() || "https://proveuswrong.io";
+const pageUrl = new URL(pathname, siteUrl).toString();
+const ogImage = image
+  ? new URL(image, siteUrl).toString()
+  : new URL(siteMeta.defaultImage, siteUrl).toString();
+
+const pageTitle = title ? `${title} | ${siteMeta.title}` : siteMeta.title;
+const ogTitle = title || siteMeta.title;
+const twitterCard = image ? "summary_large_image" : "summary";
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={pageUrl} />
+<meta name="og:image" content={ogImage} />
+<meta name="twitter:creator" content={siteMeta.author} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:image:alt" content={imageAlt || siteMeta.title} />
