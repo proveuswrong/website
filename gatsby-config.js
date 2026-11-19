@@ -33,6 +33,7 @@ const PREVIEW_SITE_URL = withTrailingSlash(
   process.env.CF_PAGES_URL || "http://localhost:8000"
 );
 const SITE_URL = isProd ? PROD_SITE_URL : PREVIEW_SITE_URL;
+const SITEMAP_URL = SITE_URL + "sitemap.xml";
 
 const branchName =
   process.env.CF_PAGES_BRANCH || process.env.BRANCH || process.env.HEAD;
@@ -53,6 +54,7 @@ module.exports = {
     description: `We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.`,
     author: `@0xferit`,
     siteUrl: SITE_URL,
+    sitemapUrl: SITEMAP_URL,
     isProduction: isProd,
     head: headRef,
     pullRequest,
@@ -65,7 +67,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: SITE_URL,
-        sitemap: SITE_URL + "sitemap.xml",
+        sitemap: SITEMAP_URL,
         policy: [{userAgent: '*', allow: '/'}]
       }
     },
