@@ -61,17 +61,34 @@ const pathname = Astro.url.pathname;
   const navigation = navigationId && document.getElementById(navigationId);
 
   if (button && navigation) {
+    const sections = navigation.querySelectorAll<HTMLAnchorElement>("a[href]");
+    const lastSection = sections[sections.length - 1];
+    const isMenuOpen = () => button.getAttribute("aria-expanded") === "true";
+    const isButtonShown = () => button.getClientRects().length > 0;
+    const isInMenu = (element: Element | null) => element === button || navigation.contains(element);
+
     const setMenuOpen = (open: boolean) => {
       button.setAttribute("aria-expanded", String(open));
       button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     };
 
     button.addEventListener("click", () => {
-      setMenuOpen(button.getAttribute("aria-expanded") !== "true");
+      setMenuOpen(!isMenuOpen());
     });
 
     window.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (!isMenuOpen()) return;
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        button.focus();
+      } else if (event.key === "Tab" && isButtonShown()) {
+        const [edge, wrapTo] = event.shiftKey ? [button, lastSection] : [lastSection, button];
+        const focused = document.activeElement;
+        if (focused === edge || !isInMenu(focused)) {
+          event.preventDefault();
+          wrapTo.focus();
+        }
+      }
     });
 
     navigation.addEventListener("click", (event) => {
