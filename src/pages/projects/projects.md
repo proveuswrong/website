@@ -32,4 +32,4 @@ An experiment tests one part of a design under controlled conditions. It does no
 
 ### [Arrow](/projects/arrow/)
 
-A planned curation experiment at Octant. [[CONFIRM: It is set for early 2027.]] Invited experts score real work against a published policy. Arrow is listed here because it tests one part of the Decentralized Curation design; it is an experiment, not a product.
+A planned curation experiment at Octant. It is set for early 2027. Invited experts score real work against a published policy. Arrow is listed here because it tests one part of the Decentralized Curation design; it is an experiment, not a product.

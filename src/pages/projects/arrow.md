@@ -6,7 +6,7 @@ toc: false
 
 # Arrow
 
-A planned curation experiment at Octant. [[CONFIRM: It is set for early 2027.]] Arrow tests one part of the Decentralized Curation design. It does not realize the full design, and it is not the name of our work.
+A planned curation experiment at Octant. It is set for early 2027. Arrow tests one part of the Decentralized Curation design. It does not realize the full design, and it is not the name of our work.
 
 ## What It Tests
 
