@@ -609,7 +609,7 @@
         "Read the papers and try to break them. Counterexamples and better designs are welcome at the same address.",
         "Where can I read more?",
         "The framework: Decentralized Curation, preprint by Ferit Tunçer",
-        "The public goods application: Decentralized Curation for Public Goods, preprint by Ferit Tunçer",
+        "The public goods application: Decentralized Curation for Retroactive Public Goods Funding, preprint by Ferit Tunçer",
         "Our blog",
         "Our code: github.com/proveuswrong"
       ],
@@ -735,7 +735,7 @@
         },
         {
           "href": "https://doi.org/10.5281/zenodo.23354211",
-          "text": "Decentralized Curation for Public Goods",
+          "text": "Decentralized Curation for Retroactive Public Goods Funding",
           "target": "_blank",
           "rel": "noopener noreferrer"
         },
@@ -1379,7 +1379,7 @@
         "Limits",
         "It is a proposed design and an evaluation agenda, not a completed experiment or a validated deployment, and it reports no study results. Whether honest answers are participants' best responses, whether competent jurors can be selected reliably, whether correction is affordable and whether public outcomes improve are open questions. A score is a policy choice: twice the weight does not mean twice the good.",
         "Read It",
-        "Ferit Tunçer. Decentralized Curation for Public Goods: A blueprint for contestable assessment and funding. Preprint, 2026. CC BY 4.0. doi.org/10.5281/zenodo.23354211"
+        "Ferit Tunçer. Decentralized Curation for Retroactive Public Goods Funding: A Blueprint for Credible Consensus. Preprint, 2026. CC BY 4.0. doi.org/10.5281/zenodo.23354211"
       ],
       "images": [],
       "links": [
@@ -1780,7 +1780,7 @@
         "In December 2025 we published Curation: The Bottleneck of the Information Age. Its argument: access to information is no longer the bottleneck; curation is. Information quality has many dimensions, and they need different mechanisms. Some, like accuracy, can be checked. Others, like relevance, need a consensus. News is the first information domain, not the only one.",
         "2026: A Framework and an Application",
         "In 2026 Ferit, our founder, published Decentralized Curation as a preprint. It investigates the thesis that decentralized curation games can make the pursuit of private gain produce public benefit, and turns it into a general method: define the curation problem, find the quality dimensions that matter, use challenges wherever proving a claim false is feasible and cheaper than checking everything, and design one mechanism per dimension. The Truth Post is its worked example for news.",
-        "In October 2026 his second preprint, Decentralized Curation for Public Goods, applied the framework to assessing and funding public goods. It is an application of the framework, not the framework.",
+        "In October 2026 his second preprint, Decentralized Curation for Retroactive Public Goods Funding, applied the framework to assessing and funding public goods. It is an application of the framework, not the framework.",
         "Arrow, a planned curation experiment at Octant, tests one part of the design: invited experts score real work against a published policy.",
         "What We Have Not Shown",
         "No live deployment has validated the complete design. The 2023 Truth Post was a partial predecessor, and it saw little use. The papers' analysis does not establish that honest answers are each participant's best response, or that the outcomes benefit the public. Arrow assumes its jurors are honest and competent and do not collude, so it does not validate the full permissionless design either. These questions are open.",
@@ -1843,7 +1843,7 @@
         },
         {
           "href": "/projects/public-goods/",
-          "text": "Decentralized Curation for Public Goods"
+          "text": "Decentralized Curation for Retroactive Public Goods Funding"
         },
         {
           "href": "/projects/arrow/",

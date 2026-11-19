@@ -42,7 +42,7 @@ In December 2025 we published [Curation: The Bottleneck of the Information Age](
 
 In 2026 Ferit, our founder, published [Decentralized Curation](/projects/decentralized-curation/) as a preprint. It investigates the thesis that decentralized curation games can make the pursuit of private gain produce public benefit, and turns it into a general method: define the curation problem, find the quality dimensions that matter, use challenges wherever proving a claim false is feasible and cheaper than checking everything, and design one mechanism per dimension. The Truth Post is its worked example for news.
 
-In October 2026 his second preprint, [Decentralized Curation for Public Goods](/projects/public-goods/), applied the framework to assessing and funding public goods. It is an application of the framework, not the framework.
+In October 2026 his second preprint, [Decentralized Curation for Retroactive Public Goods Funding](/projects/public-goods/), applied the framework to assessing and funding public goods. It is an application of the framework, not the framework.
 
 [Arrow](/projects/arrow/), a planned curation experiment at Octant, tests one part of the design: invited experts score real work against a published policy.
 
