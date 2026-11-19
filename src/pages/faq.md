@@ -8,55 +8,57 @@ toc: true
 
 ## How can I contact you?
 
-Have you seen the links in the footer?
+Email [inbox@proveuswrong.io](mailto:inbox@proveuswrong.io). Our other channels are in the footer.
 
-## Can I work with you?
+## Which name is which?
 
-You can check our job openings on [AngelList](https://angel.co/company/prove-us-wrong) and [LinkedIn](https://www.linkedin.com/company/prove-us-wrong/). Couldn't find the opening 
-in your mind? Feel free to email us.
+- **Prove Us Wrong** is us, the organization.
+- **Prove Me Wrong** was our first project: a bounty on falsifiable claims, with Kleros as the court. We named the organization after it and dropped the project name in 2023.
+- **Decentralized Curation** is the [framework](/projects/decentralized-curation/), the general design, by our founder Ferit Tunçer.
+- **The Truth Post** is its [news application](/projects/the-truth-post/). **Public goods funding** is its [second worked-out application](/projects/public-goods/).
+- **Arrow** is a planned [experiment](/projects/arrow/) at Octant that tests one part of the design. It is not the name of our work.
 
-## Prove Us Wrong? Prove Me Wrong? I'm confused.
-
-Well, the initial project we were working on was Prove Me Wrong. Then we formed an organization, and we chose an organization name, inspired by the name of the project plus a wordplay: Prove Us Wrong. So, one of them is the name of the organization the other one is the name of one of our projects.
-
-It was taking a lot of time of ours to fight with this confusion so as of March 30, we deleted references to PMW. We will keep this 
-FAQ answer for a while 
-for historical reasons.
+In the framework paper, "Arrow" is Arrow's impossibility theorem. The [story](/story/) has the order of events.
 
 ## What is decentralized curation?
 
-Decentralized curation refers to the process of organizing, evaluating, and distributing content on a digital platform through a distributed network of users or nodes, rather than relying on a central authority or algorithm. This approach aims to increase transparency, reduce the potential for manipulation or bias, and enable a more democratic and inclusive content selection process.
+Curation decides what is accurate, what matters, and what gets attention or money. Decentralized curation aims to do it with open rules instead of a trusted curator, rewarding people for producing, assessing and correcting information, so that no single actor has to be trusted. Ferit Tunçer's framework of that name is [here](/projects/decentralized-curation/).
 
-## What good decentralized curation does?
+## Is it trustless?
 
-Decentralized curation has the potential to be useful in a variety of different contexts, depending on the specific goals and constraints of a particular application. Some potential benefits of decentralized curation include:
+Only in the papers' narrow sense, and as a design aim: no single actor is trusted. The design can still rely on an honest majority of jurors or of curator stake, or on at least one honest challenger. No blockchain application is fully trustless.
 
-Resilience against censorship: Since there is no central point of control, it can be more difficult for authorities to censor or shut down a decentralized curation system.
-Increased diversity of voices: By allowing multiple users to participate in curation, a decentralized system can help to promote a greater range of perspectives and ideas.
-Reduced risk of bias: Without a central authority controlling the content, there is less risk of bias or manipulation in the curation process.
-Examples of application would be:
+## Does it guarantee accuracy?
 
-News and journalism: By allowing a community of readers to curate articles and sources, a decentralized news platform could help to promote a more diverse set of voices and perspectives.
-Social media: A decentralized social media platform could allow users to curate content and build their own communities, reducing the risk of censorship and bias.
-Online marketplaces: Decentralized marketplaces can be curated by its own user-base, which helps to ensure that the products and services are relevant, trustworthy, and high-quality.
-However, it is important to note that decentralized curation also comes with some potential drawbacks, such as the difficulty of enforcing consistent standards for content, and it require more advanced technology and governance structure.
+No. Juries can be wrong.
 
-## I want to invest. Are you raising funds?
+## Is any of this proven?
 
-Yes, we do. Please email us and let's talk.
+No. The papers say so themselves: the analysis does not establish that honest answers are each participant's best response, or that the outcomes benefit the public. If you can show where it breaks, we want to hear it.
 
-## How can I donate?
+## Is The Truth Post still running?
 
-You can donate [here](https://giveth.io/project/the-truth-post).
+The contract is on Ethereum mainnet, and the 2023 app loads at [truthpost.news](https://truthpost.news). Nothing has been published on it since November 2023. Details [here](/projects/the-truth-post/).
 
-## How much you have raised so far?
+## Who has supported your work?
 
-We have raised €50000 so far as an initial seed investment by participating in the [incubator program of Coopérative Kleros](https://kleros.io/incubator).
+Cooperative Kleros took our first project, Prove Me Wrong, into the second cohort of [its incubator](https://blog.kleros.io/kleros-community-update-june-2022/) in 2022, and the incubator funded our early work. [[CONFIRM: Golem Foundation incubates our work.]] Octant sponsored Ferit's [workshop materials](https://decentralized-curation.0xferit.workers.dev/) on the public goods application.
 
-## Are you developing open source?
+## Is your work open source?
 
-Yes. All software we build is MIT licensed.
+The code of the deployed Truth Post and of this website is public on [GitHub](https://github.com/proveuswrong) under the MIT licence. The papers are CC BY 4.0.
 
-## I have a question that is not answered here.
+## Can I support this work?
 
-We can gladly answer if you contact us. You can find our contact details in the footer.
+Write to [inbox@proveuswrong.io](mailto:inbox@proveuswrong.io).
+
+## How can I take part?
+
+Read the papers and try to break them. Counterexamples and better designs are welcome at the same address.
+
+## Where can I read more?
+
+- The framework: [Decentralized Curation](https://doi.org/10.5281/zenodo.20543760), preprint by Ferit Tunçer
+- The public goods application: [Decentralized Curation for Public Goods](https://doi.org/10.5281/zenodo.23354211), preprint by Ferit Tunçer
+- Our [blog](https://blog.proveuswrong.io)
+- Our code: [github.com/proveuswrong](https://github.com/proveuswrong)
