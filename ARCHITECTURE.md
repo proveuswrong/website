@@ -20,7 +20,8 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 ## Guarantees
 
 - **Production is decided once.** `isProduction` in `src/site.mjs` follows the branch Cloudflare Pages says it is building: `main` is production, every other branch is not. The head tags and the crawler files read it; nothing else decides.
-- **A build that is not production is not indexed.** Every page carries `noindex`, and `_headers` sends it with every response, because Cloudflare adds its own header only on `pages.dev` addresses. A production build has neither.
+- **A build that is not production is not indexed.** Every page carries `noindex`, and `_headers` sends it with every response, because Cloudflare adds its own header only on `pages.dev` addresses. A production build has neither, except the error page's `noindex`.
+- **A production page names its one address.** Every page of a production build carries a canonical link to its address on the production site. The error page carries `noindex` instead, because Cloudflare Pages also serves it with status 200 at `/404`.
 - **Addresses come from content.** A Markdown page lives where its `slug` says. The sitemap lists whatever was built, except the error page.
 - **The checks judge the output.** They are told which kind of build to expect and never infer it, so a production build that marks itself `noindex` fails.
 

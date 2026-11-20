@@ -16,9 +16,13 @@ interface Props {
   title?: string;
   /** What the page offers, in a sentence or two, for search results and link previews. Each page has its own. */
   description: string;
+  /** Whether search engines may index the page; the error page may not. A build that is not production is never indexed. */
+  indexed?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, indexed = true } = Astro.props;
+const isIndexed = isProduction && indexed;
+const pageAddress = new URL(Astro.url.pathname, Astro.site);
 const documentTitle = title === undefined ? siteTitle : `${title} | ${siteTitle}`;
 const manifest = JSON.parse(manifestSource);
 const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
@@ -61,14 +65,18 @@ const jsonSafeInScript = (value: unknown) =>
     <meta property="og:title" content={title ?? siteTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:url" content={pageAddress} />
     <meta property="og:image" content={new URL(OPEN_GRAPH_IMAGE_PATH, Astro.site)} />
     <meta name="twitter:creator" content={author} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image:alt" content={siteTitle} />
     <meta name="theme-color" content={manifest.theme_color} />
-    {!isProduction && <meta name="robots" content="noindex" />}
+    {isIndexed ? (
+      <link rel="canonical" href={pageAddress} />
+    ) : (
+      <meta name="robots" content="noindex" />
+    )}
     <script
       type="application/ld+json"
       is:inline

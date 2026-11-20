@@ -205,6 +205,13 @@ const menuOf = (header) => {
   };
 };
 
+const canonicalAddressOf = (head) => {
+  const link = elementsIn(head, "link").find(
+    (element) => attributeOf(element, "rel") === "canonical"
+  );
+  return link ? attributeOf(link, "href") : null;
+};
+
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
 
@@ -251,6 +258,7 @@ const describePage = (html, siteUrl) => {
       links: anchorsIn(main).filter(({ text }) => text !== ""),
     },
     robots: contentOfMeta(head, "robots") ?? null,
+    canonicalAddress: canonicalAddressOf(head),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),

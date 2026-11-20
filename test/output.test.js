@@ -141,9 +141,9 @@ if (expectedBuild() === "production") {
     assert.equal(siteUrl(), PRODUCTION_SITE_URL);
   });
 
-  test("a production build asks no crawler to stay away", () => {
+  test("a production build asks no crawler to stay away from a page of the contract", () => {
     assert.deepEqual(
-      EVERY_PAGE.filter(
+      PAGE_ADDRESSES.filter(
         (address) => describeBuiltPage(address).robots !== null
       ),
       []
@@ -151,6 +151,15 @@ if (expectedBuild() === "production") {
     assert.deepEqual(
       linesOfBuilt("/_headers").filter((line) => /x-robots-tag/i.test(line)),
       []
+    );
+  });
+
+  test("every page of the contract names its own address as canonical", () => {
+    assert.deepEqual(
+      PAGE_ADDRESSES.map(
+        (address) => describeBuiltPage(address).canonicalAddress
+      ),
+      PAGE_ADDRESSES.map(addressOnSite)
     );
   });
 } else {
@@ -166,7 +175,25 @@ if (expectedBuild() === "production") {
   test("a preview build sends a noindex header with every response", () => {
     assert.deepEqual(linesOfBuilt("/_headers"), NOINDEX_HEADER_RULE);
   });
+
+  test("a preview build names no canonical address", () => {
+    assert.deepEqual(
+      EVERY_PAGE.filter(
+        (address) => describeBuiltPage(address).canonicalAddress !== null
+      ),
+      []
+    );
+  });
 }
+
+test("the error page asks every crawler to stay away and names no canonical address", () => {
+  const { robots, canonicalAddress } = describeBuiltPage(ERROR_PAGE_ADDRESS);
+
+  assert.deepEqual({ robots, canonicalAddress }, {
+    robots: NOINDEX,
+    canonicalAddress: null,
+  });
+});
 
 test("the web app manifest names icons that exist in the size they declare", () => {
   const { icons } = manifestOfBuild();
