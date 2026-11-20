@@ -205,9 +205,14 @@ const menuOf = (header) => {
   };
 };
 
+// Link relations are space-separated, ASCII case-insensitive keywords:
+// https://html.spec.whatwg.org/multipage/links.html#linkTypes
+const relationsOf = (link) =>
+  (attributeOf(link, "rel") ?? "").toLowerCase().split(/\s+/).filter(Boolean);
+
 const canonicalAddressesOf = (head) =>
   elementsIn(head, "link")
-    .filter((link) => attributeOf(link, "rel") === "canonical")
+    .filter((link) => relationsOf(link).includes("canonical"))
     .map((link) => attributeOf(link, "href"));
 
 const openGraphImageOf = (head) => {
