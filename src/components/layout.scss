@@ -3,8 +3,6 @@
 @use "src/styles/typo";
 @use "src/styles/state";
 
-@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
 html {
   height: 100%;
 }
@@ -16,7 +14,7 @@ body {
   flex-direction: column;
   background-color: variables.$color-black;
   color: variables.$color-white;
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-space-mono);
   line-height: typo.$leading-text;
   overflow-wrap: break-word;
 }

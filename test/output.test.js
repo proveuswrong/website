@@ -20,7 +20,7 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
-const { STRUCTURED_DATA } = require("./page-facts");
+const { STRUCTURED_DATA, addressesInCss } = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
@@ -99,6 +99,27 @@ test("a page runs one script, and it is the menu", () => {
       `the script of ${address} never touches ${STATE_THE_MENU_SCRIPT_KEEPS}`
     );
   }
+});
+
+test("a page and its stylesheets contact no other site", () => {
+  const offSite = EVERY_PAGE.flatMap((address) => {
+    const contacted = describeBuiltPage(address).contactedAddresses.map(
+      (href) => targetOf(href, address)
+    );
+    const contactedByStylesheets = contacted
+      .filter((target) => isOnSite(target) && target.pathname.endsWith(".css"))
+      .flatMap((stylesheet) =>
+        addressesInCss(readBuiltText(stylesheet.pathname)).map(
+          (href) => new URL(href, stylesheet)
+        )
+      );
+
+    return [...contacted, ...contactedByStylesheets]
+      .filter((target) => isWebAddress(target) && !isOnSite(target))
+      .map((target) => `${address} -> ${target.href}`);
+  });
+
+  assert.deepEqual([...new Set(offSite)], []);
 });
 
 test("every file in static/ is served from the root unchanged", () => {

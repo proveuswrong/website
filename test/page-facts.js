@@ -61,6 +61,26 @@ const DESCRIBING_META = [
 ];
 const ICON_LINK_RELATIONS = ["icon", "manifest", "apple-touch-icon"];
 const STRUCTURED_DATA = "application/ld+json";
+const CONTACTING_LINK_RELATIONS = [
+  ...ICON_LINK_RELATIONS,
+  "stylesheet",
+  "preload",
+  "modulepreload",
+  "prefetch",
+  "preconnect",
+  "dns-prefetch",
+];
+const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
+  script: ["src"],
+  img: ["src", "srcset"],
+  source: ["src", "srcset"],
+  iframe: ["src"],
+  video: ["src", "poster"],
+  audio: ["src"],
+  track: ["src"],
+  embed: ["src"],
+  object: ["data"],
+};
 
 const attributeOf = (element, name) =>
   element.attrs.find((attribute) => attribute.name === name)?.value;
@@ -229,6 +249,49 @@ const canonicalLinksOf = (head) =>
     .filter((link) => relationsOf(link).includes("canonical"))
     .map(attributesOf);
 
+const CSS_REFERENCES = /url\(\s*(["']?)([^"')]+)\1\s*\)|@import\s+(["'])([^"']+)\3/g;
+
+const addressesInCss = (css) =>
+  [...css.matchAll(CSS_REFERENCES)].map(
+    ([, , address, , imported]) => address ?? imported
+  );
+
+const addressesInSrcset = (srcset) =>
+  srcset
+    .split(",")
+    .map((candidate) => candidate.trim().split(/\s+/)[0])
+    .filter(Boolean);
+
+const addressesInAttribute = (element, attribute) => {
+  const value = attributeOf(element, attribute);
+  if (value === undefined) return [];
+  return attribute === "srcset" ? addressesInSrcset(value) : [value];
+};
+
+const contactedAddressesOf = (document) => [
+  ...elementsIn(document, "link")
+    .filter((link) =>
+      relationsOf(link).some((relation) =>
+        CONTACTING_LINK_RELATIONS.includes(relation)
+      )
+    )
+    .flatMap((link) => addressesInAttribute(link, "href")),
+  ...Object.entries(ADDRESS_ATTRIBUTES_OF_ELEMENT).flatMap(
+    ([tagName, attributes]) =>
+      elementsIn(document, tagName).flatMap((element) =>
+        attributes.flatMap((attribute) =>
+          addressesInAttribute(element, attribute)
+        )
+      )
+  ),
+  ...elementsIn(document, "style").flatMap((style) =>
+    addressesInCss(codeOf(style))
+  ),
+  ...[...descendantsOf(document)]
+    .filter((node) => node.tagName && attributeOf(node, "style"))
+    .flatMap((element) => addressesInCss(attributeOf(element, "style"))),
+];
+
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
 
@@ -276,6 +339,7 @@ const describePage = (html, siteUrl) => {
     },
     robots: contentOfMeta(head, NAME, "robots") ?? null,
     canonicalLinks: canonicalLinksOf(head),
+    contactedAddresses: contactedAddressesOf(document),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),
@@ -291,4 +355,9 @@ const describePage = (html, siteUrl) => {
   });
 };
 
-module.exports = { STRUCTURED_DATA, describePage, withoutQuery };
+module.exports = {
+  STRUCTURED_DATA,
+  addressesInCss,
+  describePage,
+  withoutQuery,
+};
