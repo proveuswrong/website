@@ -20,7 +20,16 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
-const { STRUCTURED_DATA } = require("./page-facts");
+const {
+  STRUCTURED_DATA,
+  UPRIGHT,
+  WEIGHT_OF_KEYWORD,
+  addressesInCss,
+  fontFacesInCss,
+  fontFacesOfPage,
+  loadsOfPage,
+  resolvedAgainst,
+} = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
@@ -28,6 +37,7 @@ const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
 const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
+const REGULAR_WEIGHT = WEIGHT_OF_KEYWORD.normal;
 const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
@@ -52,6 +62,29 @@ const targetOf = (href, pageAddress) =>
 const isWebAddress = (target) => ["http:", "https:"].includes(target.protocol);
 
 const isOnSite = (target) => target.origin === new URL(siteUrl()).origin;
+
+const STYLESHEET_PATH = /\.css$/i;
+
+const isStylesheet = (target) => STYLESHEET_PATH.test(target.pathname);
+
+const loadsOfBuiltPage = (address) =>
+  loadsOfPage(readBuiltText(address), addressOnSite(address));
+
+const stylesheetsLoadedBy = (address) => {
+  const loaded = new Map();
+  const pending = loadsOfBuiltPage(address);
+  while (pending.length > 0) {
+    const target = pending.pop();
+    const isOwnStylesheet = isOnSite(target) && isStylesheet(target);
+    if (!isOwnStylesheet || loaded.has(target.pathname)) continue;
+
+    const css = readBuiltText(target.pathname);
+    const loads = resolvedAgainst(target, addressesInCss(css));
+    loaded.set(target.pathname, { css, loads });
+    pending.push(...loads);
+  }
+  return [...loaded.values()];
+};
 
 const anchorsOf = (pageAddress) =>
   describeBuiltPage(pageAddress).anchors.map((anchor) => ({
@@ -97,6 +130,41 @@ test("a page runs one script, and it is the menu", () => {
     assert.ok(
       menuScript.includes(STATE_THE_MENU_SCRIPT_KEEPS),
       `the script of ${address} never touches ${STATE_THE_MENU_SCRIPT_KEEPS}`
+    );
+  }
+});
+
+test("a page and the stylesheets it loads contact no other site", () => {
+  const offSite = EVERY_PAGE.flatMap((address) =>
+    [
+      ...loadsOfBuiltPage(address),
+      ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
+    ]
+      .filter((target) => isWebAddress(target) && !isOnSite(target))
+      .map((target) => `${address} -> ${target.href}`)
+  );
+
+  assert.deepEqual([...new Set(offSite)], []);
+});
+
+test("bold and italic text keeps its emphasis while the web fonts load", () => {
+  const isRegular = ({ weights, style }) =>
+    weights.every((weight) => weight === REGULAR_WEIGHT) && style === UPRIGHT;
+  const isSystemFont = ({ sources }) => !sources.includes("url");
+
+  for (const address of EVERY_PAGE) {
+    const fontFaces = [
+      ...fontFacesOfPage(readBuiltText(address)),
+      ...stylesheetsLoadedBy(address).flatMap(({ css }) => fontFacesInCss(css)),
+    ];
+    const emphasisFromRegularSystemFonts = fontFaces
+      .filter(isSystemFont)
+      .filter((face) => !isRegular(face));
+
+    assert.deepEqual(
+      emphasisFromRegularSystemFonts,
+      [],
+      `${address} declares bold or italic faces that local() fills with a single system font, which renders that text regular and upright`
     );
   }
 });

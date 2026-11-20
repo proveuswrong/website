@@ -1,3 +1,4 @@
+const { transform, transformStyleAttribute } = require("lightningcss");
 const { parse } = require("parse5");
 
 const BLOCK_ELEMENTS = new Set([
@@ -61,9 +62,54 @@ const DESCRIBING_META = [
 ];
 const ICON_LINK_RELATIONS = ["icon", "manifest", "apple-touch-icon"];
 const STRUCTURED_DATA = "application/ld+json";
+const CONTACTING_LINK_RELATIONS = [
+  ...ICON_LINK_RELATIONS,
+  "stylesheet",
+  "preload",
+  "modulepreload",
+  "prefetch",
+  "preconnect",
+  "dns-prefetch",
+  "prerender",
+];
+const LINK_ADDRESS_ATTRIBUTES = ["href", "imagesrcset"];
+const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
+  script: ["src"],
+  img: ["src", "srcset"],
+  source: ["src", "srcset"],
+  video: ["src", "poster"],
+  audio: ["src"],
+  track: ["src"],
+  embed: ["src"],
+  object: ["data"],
+  image: ["href"],
+  feImage: ["href"],
+  input: ["src"],
+  body: ["background"],
+  table: ["background"],
+  thead: ["background"],
+  tbody: ["background"],
+  tfoot: ["background"],
+  tr: ["background"],
+  td: ["background"],
+  th: ["background"],
+};
+const SRCSET_ATTRIBUTES = ["srcset", "imagesrcset"];
+const WEIGHT_OF_KEYWORD = { normal: 400, bold: 700 };
+const UPRIGHT = "normal";
+// With scripting off, the parser reads <noscript> content as markup, which is
+// what a visitor without JavaScript loads; with it on, as text:
+// https://html.spec.whatwg.org/multipage/parsing.html#scripting-flag
+const WITHOUT_SCRIPTING = { scriptingEnabled: false };
 
-const attributeOf = (element, name) =>
-  element.attrs.find((attribute) => attribute.name === name)?.value;
+// An attribute without a namespace wins over a namespaced one of the same
+// name, as SVG's href does over xlink:href:
+// https://svgwg.org/svg2-draft/linking.html#XLinkRefAttrs
+const attributeOf = (element, name) => {
+  const named = element.attrs.filter((attribute) => attribute.name === name);
+  return (named.find(({ namespace }) => namespace === undefined) ?? named[0])
+    ?.value;
+};
 
 function* descendantsOf(node) {
   for (const child of node.childNodes || []) {
@@ -229,6 +275,178 @@ const canonicalLinksOf = (head) =>
     .filter((link) => relationsOf(link).includes("canonical"))
     .map(attributesOf);
 
+const STYLESHEET = { filename: "style.css", errorRecovery: true };
+
+const addressesInCss = (css) =>
+  transform({
+    ...STYLESHEET,
+    code: Buffer.from(css),
+    analyzeDependencies: true,
+  }).dependencies.map(({ url }) => url);
+
+const addressesInStyleAttribute = (declarations) =>
+  transformStyleAttribute({
+    code: Buffer.from(declarations),
+    errorRecovery: true,
+    analyzeDependencies: true,
+  }).dependencies.map(({ url }) => url);
+
+// A descriptor declared twice takes its last value:
+// https://www.w3.org/TR/css-syntax-3/#consume-a-list-of-declarations
+const valueOfProperty = (properties, type) =>
+  properties.findLast((property) => property.type === type)?.value;
+
+const weightOf = ({ value }) =>
+  value.type === "weight" ? value.value : WEIGHT_OF_KEYWORD[value.type];
+
+const fontFaceOf = (properties) => ({
+  sources: (valueOfProperty(properties, "source") ?? []).map(
+    ({ type }) => type
+  ),
+  weights: (valueOfProperty(properties, "font-weight") ?? []).map(weightOf),
+  style: valueOfProperty(properties, "font-style")?.type ?? UPRIGHT,
+});
+
+const fontFacesInCss = (css) => {
+  const faces = [];
+  transform({
+    ...STYLESHEET,
+    code: Buffer.from(css),
+    visitor: {
+      Rule: {
+        "font-face": ({ value }) => {
+          faces.push(fontFaceOf(value.properties));
+        },
+      },
+    },
+  });
+  return faces;
+};
+
+const addressesInSrcset = (srcset) =>
+  srcset
+    .split(",")
+    .map((candidate) => candidate.trim().split(/\s+/)[0])
+    .filter(Boolean);
+
+const addressesInAttribute = (element, attribute) => {
+  const value = attributeOf(element, attribute);
+  if (value === undefined) return [];
+  return SRCSET_ATTRIBUTES.includes(attribute)
+    ? addressesInSrcset(value)
+    : [value];
+};
+
+const srcdocOf = (iframe) => attributeOf(iframe, "srcdoc");
+
+// A refresh's content is a delay, then optionally the address, with or
+// without "url=" and quotes:
+// https://html.spec.whatwg.org/multipage/semantics.html#shared-declarative-refresh-steps
+const REFRESH_CONTENT =
+  /^\s*[\d.]*\s*[;,]?\s*(?:url\s*=\s*)?(?:"([^"]*)"|'([^']*)'|(.*?))\s*$/i;
+
+const refreshAddressesOf = (document) =>
+  elementsIn(document, "meta")
+    .filter(
+      (meta) => attributeOf(meta, "http-equiv")?.toLowerCase() === "refresh"
+    )
+    .map((meta) => {
+      const [, doubleQuoted, singleQuoted, bare] =
+        (attributeOf(meta, "content") ?? "").match(REFRESH_CONTENT) ?? [];
+      return doubleQuoted ?? singleQuoted ?? bare;
+    })
+    .filter(Boolean);
+
+const contactedAddressesOf = (document) => [
+  ...elementsIn(document, "link")
+    .filter((link) =>
+      relationsOf(link).some((relation) =>
+        CONTACTING_LINK_RELATIONS.includes(relation)
+      )
+    )
+    .flatMap((link) =>
+      LINK_ADDRESS_ATTRIBUTES.flatMap((attribute) =>
+        addressesInAttribute(link, attribute)
+      )
+    ),
+  ...Object.entries(ADDRESS_ATTRIBUTES_OF_ELEMENT).flatMap(
+    ([tagName, attributes]) =>
+      elementsIn(document, tagName).flatMap((element) =>
+        attributes.flatMap((attribute) =>
+          addressesInAttribute(element, attribute)
+        )
+      )
+  ),
+  // An iframe with srcdoc shows that document and does not load its src:
+  // https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-srcdoc
+  ...elementsIn(document, "iframe")
+    .filter((iframe) => srcdocOf(iframe) === undefined)
+    .flatMap((iframe) => addressesInAttribute(iframe, "src")),
+  ...refreshAddressesOf(document),
+  ...elementsIn(document, "style").flatMap((style) =>
+    addressesInCss(codeOf(style))
+  ),
+  ...[...descendantsOf(document)]
+    .filter((node) => node.tagName && attributeOf(node, "style"))
+    .flatMap((element) =>
+      addressesInStyleAttribute(attributeOf(element, "style"))
+    ),
+];
+
+const resolvedAgainst = (base, hrefs) =>
+  hrefs
+    .filter((href) => URL.canParse(href, base))
+    .map((href) => new URL(href, base));
+
+// A document resolves addresses against its first <base href>, itself
+// resolved against the document's own address; an <iframe srcdoc> document
+// takes its parent's base as that address:
+// https://html.spec.whatwg.org/multipage/urls-and-fetching.html#document-base-url
+const loadsOfDocument = (document, documentAddress) => {
+  const baseHrefs = elementsIn(document, "base")
+    .map((base) => attributeOf(base, "href"))
+    .filter((href) => href !== undefined)
+    .slice(0, 1);
+  const [base = new URL(documentAddress)] = resolvedAgainst(
+    documentAddress,
+    baseHrefs
+  );
+
+  return [
+    ...resolvedAgainst(base, contactedAddressesOf(document)),
+    ...srcdocDocumentsIn(document).flatMap((srcdocDocument) =>
+      loadsOfDocument(srcdocDocument, base)
+    ),
+  ];
+};
+
+const srcdocDocumentsIn = (document) =>
+  elementsIn(document, "iframe")
+    .map(srcdocOf)
+    .filter((srcdoc) => srcdoc !== undefined)
+    .map((srcdoc) => parse(srcdoc, WITHOUT_SCRIPTING));
+
+const documentsWithin = (document) => [
+  document,
+  ...srcdocDocumentsIn(document).flatMap(documentsWithin),
+];
+
+/**
+ * Every address a page's markup and inline styles make the browser contact
+ * as it loads, resolved as the browser resolves it. Stylesheets the page
+ * loads are not read here; `addressesInCss` reads each one.
+ */
+const loadsOfPage = (html, pageAddress) =>
+  loadsOfDocument(parse(html, WITHOUT_SCRIPTING), pageAddress);
+
+/** The @font-face rules in a page's <style> elements, srcdoc documents included. */
+const fontFacesOfPage = (html) =>
+  documentsWithin(parse(html, WITHOUT_SCRIPTING)).flatMap((document) =>
+    elementsIn(document, "style").flatMap((style) =>
+      fontFacesInCss(codeOf(style))
+    )
+  );
+
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
 
@@ -291,4 +509,15 @@ const describePage = (html, siteUrl) => {
   });
 };
 
-module.exports = { STRUCTURED_DATA, describePage, withoutQuery };
+module.exports = {
+  STRUCTURED_DATA,
+  UPRIGHT,
+  WEIGHT_OF_KEYWORD,
+  addressesInCss,
+  describePage,
+  fontFacesInCss,
+  fontFacesOfPage,
+  loadsOfPage,
+  resolvedAgainst,
+  withoutQuery,
+};

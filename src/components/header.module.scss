@@ -19,7 +19,7 @@ $touch-margin: 0.75rem;
 
 .brand {
   display: block;
-  font-family: "Monoton", cursive;
+  font-family: var(--font-monoton);
   font-size: $brand-size;
   line-height: $brand-leading;
   text-transform: lowercase;

@@ -1937,7 +1937,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss@npm:^1.33.0":
+"lightningcss@npm:1.33.0, lightningcss@npm:^1.33.0":
   version: 1.33.0
   resolution: "lightningcss@npm:1.33.0"
   dependencies:
@@ -2348,6 +2348,7 @@ __metadata:
   dependencies:
     "@astrojs/markdown-satteri": "npm:0.4.7"
     astro: "npm:7.4.7"
+    lightningcss: "npm:1.33.0"
     parse5: "npm:7.1.2"
     prettier: "npm:2.8.7"
     sass: "npm:1.107.1"

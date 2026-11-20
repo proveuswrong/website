@@ -4,6 +4,7 @@ import { satteri, satteriHeadingIdsPlugin } from "@astrojs/markdown-satteri";
 import { defineConfig } from "astro/config";
 
 import { crawlerFiles } from "./src/crawler-files.mjs";
+import { fonts } from "./src/fonts.mjs";
 import { externalLinks, headingAnchors } from "./src/markdown-plugins.mjs";
 import { siteUrl } from "./src/site.mjs";
 
@@ -28,6 +29,7 @@ export default defineConfig({
     }),
   },
   integrations: [crawlerFiles()],
+  fonts,
   vite: {
     build: { cssTarget: OLDEST_BROWSERS_STYLED },
     css: {
