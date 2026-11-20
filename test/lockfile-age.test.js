@@ -140,7 +140,7 @@ test("an age gate that is not a number of minutes is refused", async () => {
 });
 
 test("a preapproval that is not one exact version is refused", async () => {
-  for (const preapproval of ["astro", "astro@^7.4.8"]) {
+  for (const preapproval of ["astro", "astro@^7.4.8", "*@7.4.8", "@*/telemetry@3.3.1"]) {
     await assert.rejects(
       judge({
         head: lockfile(yarnLockEntry("astro", "7.4.8")),

@@ -10,7 +10,7 @@ const DEFAULT_SCOPE_CONFIGURATIONS = new Map([
 ]);
 const TRAILING_SLASH = /\/$/;
 const EXACT_VERSION =
-  /^(?:@[^@/]+\/)?[^@]+@\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
+  /^(?:@[A-Za-z0-9._-]+\/)?[A-Za-z0-9._-]+@\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
 const MINUTE_IN_MILLISECONDS = 60 * 1000;
 const PRINTED_WITHOUT_VALUE = "undefined";
 const USAGE = "Usage: node test/lockfile-age.js <base revision>";
