@@ -1,9 +1,8 @@
 import { writeFileSync } from "node:fs";
 
-import { isProduction, siteUrl } from "./site.mjs";
+import { siteUrl } from "./site.mjs";
 
 const ERROR_PAGE = "404";
-const NOINDEX_ON_EVERY_RESPONSE = "/*\n  X-Robots-Tag: noindex\n";
 
 const XML_ENTITIES = {
   "&": "&amp;",
@@ -44,9 +43,8 @@ const sitemapOf = (pathnames) =>
 
 /**
  * Writes the files that speak to crawlers once the pages are built:
- * `robots.txt`, the sitemap it points at, which lists every page except the
- * error page, and, for a build that is not the production build, the
- * Cloudflare Pages `_headers` rule that marks every response `noindex`.
+ * `robots.txt` and the sitemap it points at, which lists every page except
+ * the error page.
  */
 export const crawlerFiles = () => ({
   name: "crawler-files",
@@ -60,7 +58,6 @@ export const crawlerFiles = () => ({
         new URL(sitemapUrl).pathname.slice(1),
         sitemapOf(pages.map(({ pathname }) => pathname))
       );
-      if (!isProduction) write("_headers", NOINDEX_ON_EVERY_RESPONSE);
     },
   },
 });

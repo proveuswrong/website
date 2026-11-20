@@ -65,6 +65,69 @@ const linesOfBuilt = (address) =>
         .filter(Boolean)
     : [];
 
+const HEADERS_FILE = "/_headers";
+const HEADER_LINE = /^\s+([^\s:!][^:]*):\s*(.*)$/;
+const INDENTED = /^\s/;
+const COMMENT = "#";
+const SPLAT = "*";
+const PLACEHOLDER = /:[A-Za-z]/;
+
+const escapedForPattern = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const MOST_SPLATS_IN_A_PATTERN = 1;
+
+const matcherOfPattern = (pattern) => {
+  const splats = pattern.split(SPLAT).length - 1;
+  if (!pattern.startsWith("/") || PLACEHOLDER.test(pattern)) {
+    throw new Error(`The checks read only path patterns with splats: ${pattern}`);
+  }
+  if (splats > MOST_SPLATS_IN_A_PATTERN) {
+    throw new Error(`Cloudflare Pages allows one splat in a pattern: ${pattern}`);
+  }
+  const expression = new RegExp(
+    `^${pattern.split(SPLAT).map(escapedForPattern).join(".*")}$`
+  );
+  return (pathname) => expression.test(pathname);
+};
+
+// Cloudflare Pages reads `_headers` as rules: an unindented line is a path
+// pattern, in which one splat matches any characters, and the indented
+// `Name: value` lines below it are headers for the responses it matches. A
+// header that several matching rules set gets their values joined by commas:
+// https://developers.cloudflare.com/pages/configuration/headers/
+const headerRulesOfBuild = () =>
+  readBuiltText(HEADERS_FILE)
+    .split("\n")
+    .filter((line) => line.trim() && !line.trim().startsWith(COMMENT))
+    .reduce((rules, line) => {
+      if (!INDENTED.test(line)) {
+        return [...rules, { matches: matcherOfPattern(line.trim()), headers: [] }];
+      }
+      const header = line.match(HEADER_LINE);
+      if (!header || rules.length === 0) {
+        throw new Error(`The checks cannot read this _headers line: ${line}`);
+      }
+      const [, name, value] = header;
+      rules.at(-1).headers.push([name.trim().toLowerCase(), value.trim()]);
+      return rules;
+    }, []);
+
+/**
+ * The headers that the built `_headers` adds to the response at a path, by
+ * lower-case name; none when the build has no `_headers`.
+ */
+const headersOfResponse = (pathname) =>
+  (isBuilt(HEADERS_FILE) ? headerRulesOfBuild() : [])
+    .filter(({ matches }) => matches(pathname))
+    .flatMap(({ headers }) => headers)
+    .reduce(
+      (headers, [name, value]) => ({
+        ...headers,
+        [name]: name in headers ? `${headers[name]}, ${value}` : value,
+      }),
+      {}
+    );
+
 const filesUnder = (directory, prefix = "") =>
   fs
     .readdirSync(directory, { withFileTypes: true })
@@ -193,6 +256,7 @@ module.exports = {
   describeBuiltPage,
   expectedBuild,
   filesUnder,
+  headersOfResponse,
   isBuilt,
   linesOfBuilt,
   manifestOfBuild,
