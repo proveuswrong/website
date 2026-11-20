@@ -36,7 +36,8 @@ const isTooYoung = ({ publishedAt }, ageGateInMinutes, now) =>
  * than `ageGateInMinutes` at `now` is too young unless `preapproved` names
  * it, and so is one whose publish time `publishTimeOf` cannot give.
  * Preapprovals must be exact `name@version` descriptors; anything broader is
- * refused rather than matched. Rejects when `publishTimeOf` does.
+ * refused rather than matched. Rejects when `publishTimeOf` does, and when
+ * `headLockfile` yields no npm version, which means a format it cannot read.
  *
  * @returns {Promise<{
  *   newlyLocked: string[],
@@ -52,9 +53,15 @@ const tooYoungNewlyLockedVersions = async ({
   now,
 }) => {
   const approved = new Set(preapproved.map(exactVersionOf));
+  const locked = lockedVersionsIn(headLockfile);
+  if (locked.size === 0) {
+    throw new Error(
+      "The lockfile age check found no npm versions in yarn.lock, so it cannot read its format"
+    );
+  }
   const alreadyLocked = lockedVersionsIn(baseLockfile);
-  const newlyLocked = [...lockedVersionsIn(headLockfile)]
-    .filter((locked) => !alreadyLocked.has(locked))
+  const newlyLocked = [...locked]
+    .filter((version) => !alreadyLocked.has(version))
     .sort();
   const judged = await Promise.all(
     newlyLocked

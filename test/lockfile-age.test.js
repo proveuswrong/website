@@ -92,6 +92,13 @@ test("a version the registry gives no publish time for counts as too young", asy
   );
 });
 
+test("a lockfile without a single npm version is refused rather than passed", async () => {
+  await assert.rejects(
+    judge({ head: lockfile(), publishedAt: {} }),
+    /no npm versions/
+  );
+});
+
 test("a preapproval that is not one exact version is refused", async () => {
   for (const preapproval of ["astro", "astro@^7.4.8"]) {
     await assert.rejects(
