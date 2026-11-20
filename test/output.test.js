@@ -93,27 +93,39 @@ const everythingLoadedBy = (address) => [
 ];
 
 const A_YEAR_IN_SECONDS = 365 * 24 * 60 * 60;
-const MAX_AGE = /^max-age=(\d+)$/i;
 const IMMUTABLE = "immutable";
+const MAX_AGE = "max-age";
+const DIRECTIVES_AGAINST_REUSE = ["no-store", "no-cache"];
+const CACHE_DIRECTIVE = /\s*([^\s=,]+)(?:\s*=\s*("(?:[^"\\]|\\.)*"|[^,]*))?\s*(?:,|$)/g;
+const QUOTED = /^"(.*)"$/s;
+const SECONDS = /^\d+$/;
 
 const cacheControlOf = (pathname) => headersOfResponse(pathname)["cache-control"];
+
+// Directive names are case-insensitive, and an argument may come as a token
+// or as a quoted string: https://www.rfc-editor.org/rfc/rfc9111#section-5.2
+const directivesOf = (cacheControl) =>
+  [...(cacheControl ?? "").matchAll(CACHE_DIRECTIVE)].map(
+    ([, name, argument = ""]) => ({
+      name: name.toLowerCase(),
+      argument: argument.trim().replace(QUOTED, "$1"),
+    })
+  );
 
 // A response whose Cache-Control repeats max-age is stale or ambiguous to a
 // cache, so only one max-age counts:
 // https://www.rfc-editor.org/rfc/rfc9111#section-4.2.1
 const isKeptAYearWithoutRevalidation = (pathname) => {
-  const directives = (cacheControlOf(pathname) ?? "")
-    .split(",")
-    .map((directive) => directive.trim().toLowerCase());
-  const maxAges = directives
-    .map((directive) => directive.match(MAX_AGE))
-    .filter(Boolean)
-    .map(([, seconds]) => Number(seconds));
+  const directives = directivesOf(cacheControlOf(pathname));
+  const names = directives.map(({ name }) => name);
+  const maxAges = directives.filter(({ name }) => name === MAX_AGE);
 
   return (
-    directives.includes(IMMUTABLE) &&
+    names.includes(IMMUTABLE) &&
+    !names.some((name) => DIRECTIVES_AGAINST_REUSE.includes(name)) &&
     maxAges.length === 1 &&
-    maxAges[0] >= A_YEAR_IN_SECONDS
+    SECONDS.test(maxAges[0].argument) &&
+    Number(maxAges[0].argument) >= A_YEAR_IN_SECONDS
   );
 };
 
