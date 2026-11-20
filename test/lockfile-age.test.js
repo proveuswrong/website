@@ -26,7 +26,7 @@ const judge = ({ base = lockfile(), head, publishedAt, preapproved = [] }) =>
     headLockfile: head,
     ageGateInMinutes: AGE_GATE_IN_MINUTES,
     preapproved,
-    publishTimeOf: async (locked) => publishedAt[locked],
+    publishTimesOf: async () => new Map(Object.entries(publishedAt)),
     now: NOW,
   });
 

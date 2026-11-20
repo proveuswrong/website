@@ -39,10 +39,11 @@ const isTooYoung = ({ publishedAt }, ageGateInMinutes, now) =>
  * Judges the npm versions `headLockfile` locks and `baseLockfile` does not,
  * as Yarn's `npmMinimalAgeGate` judges a version it resolves: one younger
  * than `ageGateInMinutes` at `now` is too young unless `preapproved` names
- * it, and so is one for which `publishTimeOf` lists no publish time, or lists
- * something other than a date string.
+ * it. `publishTimesOf(versions)` maps each version it is given to the publish
+ * time its registry lists, as a Map or a promise of one; a version listed
+ * without a date string counts as too young.
  * Preapprovals must be exact `name@version` descriptors; anything broader is
- * refused rather than matched. Rejects when `publishTimeOf` does, and when
+ * refused rather than matched. Rejects when `publishTimesOf` does, and when
  * `headLockfile` yields no npm version, which means a format it cannot read.
  *
  * @returns {Promise<{
@@ -55,7 +56,7 @@ const tooYoungNewlyLockedVersions = async ({
   headLockfile,
   ageGateInMinutes,
   preapproved,
-  publishTimeOf,
+  publishTimesOf,
   now,
 }) => {
   const approved = new Set(preapproved.map(exactVersionOf));
@@ -69,22 +70,26 @@ const tooYoungNewlyLockedVersions = async ({
   const newlyLocked = [...locked]
     .filter((version) => !alreadyLocked.has(version))
     .sort();
-  const judged = await Promise.all(
-    newlyLocked
-      .filter((locked) => !approved.has(locked))
-      .map(async (locked) => ({ locked, publishedAt: dateOf(await publishTimeOf(locked)) }))
-  );
+  const unapproved = newlyLocked.filter((version) => !approved.has(version));
+  const listedTimes = await publishTimesOf(unapproved);
 
   return {
     newlyLocked,
-    tooYoung: judged.filter((version) => isTooYoung(version, ageGateInMinutes, now)),
+    tooYoung: unapproved
+      .map((version) => ({ locked: version, publishedAt: dateOf(listedTimes.get(version)) }))
+      .filter((version) => isTooYoung(version, ageGateInMinutes, now)),
   };
 };
 
-const yarnSetting = (name) =>
-  JSON.parse(
-    execFileSync("yarn", ["config", "get", name, "--json"], { encoding: "utf8" })
-  );
+const yarnOutput = (...args) => {
+  try {
+    return execFileSync("yarn", args, { encoding: "utf8", maxBuffer: Infinity });
+  } catch (error) {
+    throw new Error(`${error.message}\n${error.stdout ?? ""}`);
+  }
+};
+
+const yarnSetting = (name) => JSON.parse(yarnOutput("config", "get", name, "--json"));
 
 const lockfileAt = (revision) =>
   execFileSync("git", ["show", `${revision}:${LOCKFILE}`], {
@@ -92,17 +97,30 @@ const lockfileAt = (revision) =>
     maxBuffer: Infinity,
   });
 
-const publishTimeInRegistry = (registry) => async (locked) => {
+const nameAndVersionOf = (locked) => {
   const at = locked.lastIndexOf("@");
-  const [name, version] = [locked.slice(0, at), locked.slice(at + 1)];
-  const packageUrl = `${registry.replace(/\/$/, "")}/${name.replace("/", "%2f")}`;
-  const response = await fetch(packageUrl);
+  return { locked, name: locked.slice(0, at), version: locked.slice(at + 1) };
+};
 
-  if (!response.ok) {
-    throw new Error(`The registry answered ${response.status} for ${name}`);
-  }
-  const { time = {} } = await response.json();
-  return time[version];
+const publishTimesFromYarn = (lockedVersions) => {
+  const versions = lockedVersions.map(nameAndVersionOf);
+  const packages = [...new Set(versions.map(({ name }) => name))];
+  const timesByPackage = new Map(
+    packages.length === 0
+      ? []
+      : yarnOutput("npm", "info", ...packages, "--fields", "name,time", "--json")
+          .split("\n")
+          .filter((line) => line !== "")
+          .map((line) => JSON.parse(line))
+          .map(({ name, time }) => [name, time])
+  );
+
+  return new Map(
+    versions.map(({ locked, name, version }) => [
+      locked,
+      timesByPackage.get(name)?.[version],
+    ])
+  );
 };
 
 const clearsTheGateAt = (publishedAt, ageGateInMinutes) =>
@@ -115,7 +133,7 @@ const checkAgainst = async (baseRevision) => {
     headLockfile: readFileSync(LOCKFILE, "utf8"),
     ageGateInMinutes,
     preapproved: yarnSetting("npmPreapprovedPackages"),
-    publishTimeOf: publishTimeInRegistry(yarnSetting("npmRegistryServer")),
+    publishTimesOf: publishTimesFromYarn,
     now: new Date(),
   });
 
