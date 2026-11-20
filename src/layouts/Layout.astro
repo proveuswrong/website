@@ -12,13 +12,14 @@ import {
 import manifestSource from "../../static/manifest.webmanifest?raw";
 
 interface Props {
-  /** The page's name, shown before the site's in the document title. */
-  title: string;
+  /** The page's name, shown before the site's in the document title. The front page has none and goes by the site's name alone. */
+  title?: string;
   /** What the page offers, in a sentence or two, for search results and link previews. Each page has its own. */
   description: string;
 }
 
 const { title, description } = Astro.props;
+const documentTitle = title === undefined ? siteTitle : `${title} | ${siteTitle}`;
 const manifest = JSON.parse(manifestSource);
 const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
 const LOGO_PATH = "/icons/icon-512x512.png";
@@ -55,9 +56,9 @@ const jsonSafeInScript = (value: unknown) =>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | {siteTitle}</title>
+    <title>{documentTitle}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={title ?? siteTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />

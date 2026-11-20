@@ -2,10 +2,10 @@
   "pages": {
     "/": {
       "language": "en",
-      "title": "Home | Prove Us Wrong",
+      "title": "Prove Us Wrong",
       "meta": {
         "description": "We work on decentralized curation, so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding.",
-        "og:title": "Home",
+        "og:title": "Prove Us Wrong",
         "og:description": "We work on decentralized curation, so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding.",
         "og:type": "website",
         "og:url": "/",
