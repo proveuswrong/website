@@ -20,7 +20,7 @@ export const siteUrl = isProduction
 
 export const title = "Prove Us Wrong";
 export const description =
-  "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.";
+  "We work on decentralized curation, so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding.";
 export const author = "@0xferit";
 
 /** The organization's own pages on other sites. */

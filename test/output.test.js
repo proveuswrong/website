@@ -27,6 +27,7 @@ const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
+const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
 const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
@@ -201,6 +202,29 @@ test("every page offers the 256 pixel icon as its Open Graph image", () => {
       address
     );
   }
+});
+
+test("every page has a description of its own that search results show whole", () => {
+  const descriptionOf = (address) =>
+    describeBuiltPage(address).rendering.meta.description ?? "";
+  const pagesSharingADescription = [
+    ...Map.groupBy(EVERY_PAGE, descriptionOf).values(),
+  ].filter((pages) => pages.length > 1);
+
+  assert.deepEqual(
+    EVERY_PAGE.filter((address) => descriptionOf(address) === ""),
+    [],
+    "pages without a description"
+  );
+  assert.deepEqual(pagesSharingADescription, [], "pages sharing a description");
+  assert.deepEqual(
+    EVERY_PAGE.filter(
+      (address) =>
+        [...descriptionOf(address)].length > CHARACTERS_SEARCH_RESULTS_SHOW
+    ),
+    [],
+    `pages whose description is longer than ${CHARACTERS_SEARCH_RESULTS_SHOW} characters`
+  );
 });
 
 test("no page shows an editor's note", () => {

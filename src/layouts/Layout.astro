@@ -4,7 +4,7 @@ import Footer from "../components/Footer.astro";
 import "../components/layout.scss";
 import {
   author,
-  description,
+  description as siteDescription,
   isProduction,
   profiles,
   title as siteTitle,
@@ -12,10 +12,13 @@ import {
 import manifestSource from "../../static/manifest.webmanifest?raw";
 
 interface Props {
+  /** The page's name, shown before the site's in the document title. */
   title: string;
+  /** What the page offers, in a sentence or two, for search results and link previews. Each page has its own. */
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 const manifest = JSON.parse(manifestSource);
 const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
 const LOGO_PATH = "/icons/icon-512x512.png";
@@ -31,7 +34,7 @@ const structuredData = {
       name: siteTitle,
       url: siteAddress,
       logo: new URL(LOGO_PATH, siteAddress).href,
-      description,
+      description: siteDescription,
       sameAs: Object.values(profiles),
     },
     {
@@ -70,7 +73,6 @@ const jsonSafeInScript = (value: unknown) =>
       is:inline
       set:html={jsonSafeInScript(structuredData)}
     />
-
     <link rel="icon" href="/favicon-32x32.png" type="image/png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     {manifest.icons.map(({ src, sizes }) => (

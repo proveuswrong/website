@@ -1,5 +1,6 @@
 ---
 slug: "/projects/arrow"
+description: "A planned experiment at Octant, early 2027: invited experts score real work against a published policy, testing one part of Decentralized Curation."
 draft: false
 toc: false
 ---

@@ -1,5 +1,6 @@
 ---
 slug: "/projects/public-goods"
+description: "An application of Decentralized Curation: assessing public goods work in the open and funding it by the assessment. A proposed design, not a deployment."
 draft: false
 toc: false
 ---

@@ -1,5 +1,6 @@
 ---
 slug: "/projects/decentralized-curation"
+description: "Ferit Tunçer's framework for curation in any domain: open rules designed to reward people for producing, assessing and correcting information."
 draft: false
 toc: false
 ---

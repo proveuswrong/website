@@ -25,7 +25,7 @@ const endOfTitle =
   page.rendered.html.indexOf(END_OF_TITLE) + END_OF_TITLE.length;
 ---
 
-<Layout title={title}>
+<Layout title={title} description={page.data.description}>
   <div class:list={[styles.markdownPage, page.data.toc && styles.withContents]}>
     <Fragment set:html={page.rendered.html.slice(0, endOfTitle)} />
     {

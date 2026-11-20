@@ -1,5 +1,6 @@
 ---
 slug: "/projects/the-truth-post"
+description: "The news application of Decentralized Curation. Its accuracy layer went live on Ethereum mainnet in June 2023: what shipped and what did not."
 draft: false
 toc: false
 ---
