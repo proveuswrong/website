@@ -89,9 +89,19 @@ const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
 const SRCSET_ATTRIBUTES = ["srcset", "imagesrcset"];
 const WEIGHT_OF_KEYWORD = { normal: 400, bold: 700 };
 const UPRIGHT = "normal";
+// With scripting off, the parser reads <noscript> content as markup, which is
+// what a visitor without JavaScript loads; with it on, as text:
+// https://html.spec.whatwg.org/multipage/parsing.html#scripting-flag
+const WITHOUT_SCRIPTING = { scriptingEnabled: false };
 
-const attributeOf = (element, name) =>
-  element.attrs.find((attribute) => attribute.name === name)?.value;
+// An attribute without a namespace wins over a namespaced one of the same
+// name, as SVG's href does over xlink:href:
+// https://svgwg.org/svg2-draft/linking.html#XLinkRefAttrs
+const attributeOf = (element, name) => {
+  const named = element.attrs.filter((attribute) => attribute.name === name);
+  return (named.find(({ namespace }) => namespace === undefined) ?? named[0])
+    ?.value;
+};
 
 function* descendantsOf(node) {
   for (const child of node.childNodes || []) {
@@ -406,7 +416,7 @@ const srcdocDocumentsIn = (document) =>
   elementsIn(document, "iframe")
     .map(srcdocOf)
     .filter((srcdoc) => srcdoc !== undefined)
-    .map((srcdoc) => parse(srcdoc));
+    .map((srcdoc) => parse(srcdoc, WITHOUT_SCRIPTING));
 
 const documentsWithin = (document) => [
   document,
@@ -419,11 +429,11 @@ const documentsWithin = (document) => [
  * loads are not read here; `addressesInCss` reads each one.
  */
 const loadsOfPage = (html, pageAddress) =>
-  loadsOfDocument(parse(html), pageAddress);
+  loadsOfDocument(parse(html, WITHOUT_SCRIPTING), pageAddress);
 
 /** The @font-face rules in a page's <style> elements, srcdoc documents included. */
 const fontFacesOfPage = (html) =>
-  documentsWithin(parse(html)).flatMap((document) =>
+  documentsWithin(parse(html, WITHOUT_SCRIPTING)).flatMap((document) =>
     elementsIn(document, "style").flatMap((style) =>
       fontFacesInCss(codeOf(style))
     )
