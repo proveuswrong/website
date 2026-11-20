@@ -65,6 +65,35 @@
           "href": "/icons/icon-512x512.png"
         }
       ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
+        }
+      ],
       "sections": [
         {
           "text": "HOME",
@@ -211,6 +240,35 @@
           "rel": "apple-touch-icon",
           "sizes": "512x512",
           "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
         }
       ],
       "sections": [
@@ -420,6 +478,35 @@
           "rel": "apple-touch-icon",
           "sizes": "512x512",
           "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
         }
       ],
       "sections": [
@@ -818,6 +905,35 @@
           "href": "/icons/icon-512x512.png"
         }
       ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
+        }
+      ],
       "sections": [
         {
           "text": "HOME",
@@ -990,6 +1106,35 @@
           "href": "/icons/icon-512x512.png"
         }
       ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
+        }
+      ],
       "sections": [
         {
           "text": "HOME",
@@ -1131,6 +1276,35 @@
           "rel": "apple-touch-icon",
           "sizes": "512x512",
           "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
         }
       ],
       "sections": [
@@ -1311,6 +1485,35 @@
           "href": "/icons/icon-512x512.png"
         }
       ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
+        }
+      ],
       "sections": [
         {
           "text": "HOME",
@@ -1458,6 +1661,35 @@
           "rel": "apple-touch-icon",
           "sizes": "512x512",
           "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
         }
       ],
       "sections": [
@@ -1662,6 +1894,35 @@
           "rel": "apple-touch-icon",
           "sizes": "512x512",
           "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
         }
       ],
       "sections": [
@@ -1913,6 +2174,35 @@
           "rel": "apple-touch-icon",
           "sizes": "512x512",
           "href": "/icons/icon-512x512.png"
+        }
+      ],
+      "structuredData": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "/#organization",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "logo": "/icons/icon-512x512.png",
+              "description": "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.",
+              "sameAs": [
+                "https://www.linkedin.com/company/prove-us-wrong/",
+                "https://twitter.com/ProveUsWrongIO",
+                "https://github.com/proveuswrong"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "/#website",
+              "name": "Prove Us Wrong",
+              "url": "/",
+              "publisher": {
+                "@id": "/#organization"
+              }
+            }
+          ]
         }
       ],
       "sections": [

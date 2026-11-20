@@ -56,6 +56,7 @@ const DESCRIBING_META = [
   "theme-color",
 ];
 const ICON_LINK_RELATIONS = ["icon", "manifest", "apple-touch-icon"];
+const STRUCTURED_DATA = "application/ld+json";
 
 const attributeOf = (element, name) =>
   element.attrs.find((attribute) => attribute.name === name)?.value;
@@ -96,6 +97,30 @@ const withoutSite = (address, siteUrl) =>
   address.startsWith(siteUrl) ? `/${address.slice(siteUrl.length)}` : address;
 
 const withoutQuery = (address) => address.split("?")[0];
+
+const withoutSiteThroughout = (value, siteUrl) => {
+  if (typeof value === "string") return withoutSite(value, siteUrl);
+  if (Array.isArray(value)) {
+    return value.map((item) => withoutSiteThroughout(item, siteUrl));
+  }
+  if (value !== null && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        withoutSiteThroughout(item, siteUrl),
+      ])
+    );
+  }
+  return value;
+};
+
+const codeOf = (script) =>
+  script.childNodes.map((node) => node.value ?? "").join("");
+
+const structuredDataOf = (document, siteUrl) =>
+  elementsIn(document, "script")
+    .filter((script) => attributeOf(script, "type") === STRUCTURED_DATA)
+    .map((script) => withoutSiteThroughout(JSON.parse(codeOf(script)), siteUrl));
 
 const metaNamed = (head, name) =>
   elementsIn(head, "meta").find((meta) =>
@@ -215,6 +240,7 @@ const describePage = (html, siteUrl) => {
       title: textOf(firstElementIn(head, "title")),
       meta: describingMetaOf(head, siteUrl),
       icons: iconLinksOf(head),
+      structuredData: structuredDataOf(document, siteUrl),
       sections: menu.sections,
       headings: headings.map(({ level, id, text }) => ({ level, id, text })),
       contents: contentsListOf(main),
@@ -229,7 +255,7 @@ const describePage = (html, siteUrl) => {
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),
       src: attributeOf(script, "src"),
-      code: script.childNodes.map((node) => node.value ?? "").join(""),
+      code: codeOf(script),
     })),
     menu,
     headings,
@@ -240,4 +266,4 @@ const describePage = (html, siteUrl) => {
   });
 };
 
-module.exports = { describePage, withoutQuery };
+module.exports = { STRUCTURED_DATA, describePage, withoutQuery };

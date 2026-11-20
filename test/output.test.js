@@ -20,10 +20,10 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
+const { STRUCTURED_DATA } = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
-const STRUCTURED_DATA = "application/ld+json";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";

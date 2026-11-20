@@ -2,7 +2,13 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../components/layout.scss";
-import { author, description, isProduction, title as siteTitle } from "../site.mjs";
+import {
+  author,
+  description,
+  isProduction,
+  profiles,
+  title as siteTitle,
+} from "../site.mjs";
 import manifestSource from "../../static/manifest.webmanifest?raw";
 
 interface Props {
@@ -12,6 +18,33 @@ interface Props {
 const { title } = Astro.props;
 const manifest = JSON.parse(manifestSource);
 const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
+const LOGO_PATH = "/icons/icon-512x512.png";
+
+const siteAddress = new URL("/", Astro.site).href;
+const organizationId = new URL("#organization", siteAddress).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: siteTitle,
+      url: siteAddress,
+      logo: new URL(LOGO_PATH, siteAddress).href,
+      description,
+      sameAs: Object.values(profiles),
+    },
+    {
+      "@type": "WebSite",
+      "@id": new URL("#website", siteAddress).href,
+      name: siteTitle,
+      url: siteAddress,
+      publisher: { "@id": organizationId },
+    },
+  ],
+};
+const jsonSafeInScript = (value: unknown) =>
+  JSON.stringify(value).replaceAll("<", "\\u003c");
 ---
 
 <!doctype html>
@@ -32,6 +65,12 @@ const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
     <meta name="twitter:image:alt" content={siteTitle} />
     <meta name="theme-color" content={manifest.theme_color} />
     {!isProduction && <meta name="robots" content="noindex" />}
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={jsonSafeInScript(structuredData)}
+    />
+
     <link rel="icon" href="/favicon-32x32.png" type="image/png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     {manifest.icons.map(({ src, sizes }) => (
