@@ -36,7 +36,7 @@ Node and Yarn are pinned in `package.json`. Install scripts are turned off in `.
 | `yarn build` | Builds the site into `public/` |
 | `yarn test` | Builds a preview and a production build and checks each |
 
-The pages written in Markdown are in `src/content/pages/`. The address of each comes from its `slug`.
+The pages written in Markdown are in `src/content/pages/`. The address of each comes from its `slug`, and what search results and link previews say about it from its `description`.
 
 ## Checking a build
 

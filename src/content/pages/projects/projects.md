@@ -1,5 +1,6 @@
 ---
 slug: "/projects"
+description: "The Decentralized Curation framework, its applications to news and public goods funding, and Arrow, an experiment at Octant that tests one part of it."
 draft: false
 toc: false
 ---

@@ -1,5 +1,6 @@
 ---
 slug: "/story"
+description: "Five years in order, including what did not work: Prove Me Wrong, the Kleros incubator, The Truth Post on Ethereum, and the 2026 papers."
 draft: false
 toc: true
 ---

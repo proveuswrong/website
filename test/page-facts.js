@@ -43,19 +43,24 @@ const ELEMENTS_WITHOUT_VISIBLE_TEXT = new Set([
 ]);
 const HEADING_ELEMENTS = ["h1", "h2", "h3", "h4", "h5", "h6"];
 const CONTENTS_LIST_LABEL = "On this page";
+const NAME = "name";
+const PROPERTY = "property";
+// HTML and Twitter Cards name a tag in `name`; the Open Graph protocol uses
+// `property` (https://ogp.me/#metadata). Crawlers read each only from its own.
 const DESCRIBING_META = [
-  "description",
-  "og:title",
-  "og:description",
-  "og:type",
-  "og:url",
-  "twitter:creator",
-  "twitter:description",
-  "twitter:card",
-  "twitter:image:alt",
-  "theme-color",
+  [NAME, "description"],
+  [PROPERTY, "og:title"],
+  [PROPERTY, "og:description"],
+  [PROPERTY, "og:type"],
+  [PROPERTY, "og:url"],
+  [NAME, "twitter:creator"],
+  [NAME, "twitter:description"],
+  [NAME, "twitter:card"],
+  [NAME, "twitter:image:alt"],
+  [NAME, "theme-color"],
 ];
 const ICON_LINK_RELATIONS = ["icon", "manifest", "apple-touch-icon"];
+const STRUCTURED_DATA = "application/ld+json";
 
 const attributeOf = (element, name) =>
   element.attrs.find((attribute) => attribute.name === name)?.value;
@@ -97,21 +102,52 @@ const withoutSite = (address, siteUrl) =>
 
 const withoutQuery = (address) => address.split("?")[0];
 
+const withoutSiteThroughout = (value, siteUrl) => {
+  if (typeof value === "string") return withoutSite(value, siteUrl);
+  if (Array.isArray(value)) {
+    return value.map((item) => withoutSiteThroughout(item, siteUrl));
+  }
+  if (value !== null && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        withoutSiteThroughout(item, siteUrl),
+      ])
+    );
+  }
+  return value;
+};
+
+const codeOf = (script) =>
+  script.childNodes.map((node) => node.value ?? "").join("");
+
+const structuredDataOf = (document, siteUrl) =>
+  elementsIn(document, "script")
+    .filter((script) => attributeOf(script, "type") === STRUCTURED_DATA)
+    .map((script) => withoutSiteThroughout(JSON.parse(codeOf(script)), siteUrl));
+
 const metaNamed = (head, name) =>
   elementsIn(head, "meta").find((meta) =>
     [attributeOf(meta, "name"), attributeOf(meta, "property")].includes(name)
   );
 
-const contentOfMeta = (head, name) => {
-  const meta = metaNamed(head, name);
+// Tags match case-insensitively, as HTML matches metadata names:
+// https://html.spec.whatwg.org/multipage/semantics.html#attr-meta-name
+const contentOfMeta = (head, attribute, tag) => {
+  const meta = elementsIn(head, "meta").find(
+    (element) => (attributeOf(element, attribute) ?? "").toLowerCase() === tag
+  );
   return meta && attributeOf(meta, "content");
 };
 
 const describingMetaOf = (head, siteUrl) =>
   Object.fromEntries(
-    DESCRIBING_META.map((name) => [name, contentOfMeta(head, name)])
+    DESCRIBING_META.map(([attribute, tag]) => [
+      tag,
+      contentOfMeta(head, attribute, tag),
+    ])
       .filter(([, content]) => content !== undefined)
-      .map(([name, content]) => [name, withoutSite(content, siteUrl)])
+      .map(([tag, content]) => [tag, withoutSite(content, siteUrl)])
   );
 
 const iconLinksOf = (head) =>
@@ -180,6 +216,19 @@ const menuOf = (header) => {
   };
 };
 
+// Link relations are space-separated, ASCII case-insensitive keywords:
+// https://html.spec.whatwg.org/multipage/links.html#linkTypes
+const relationsOf = (link) =>
+  (attributeOf(link, "rel") ?? "").toLowerCase().split(/\s+/).filter(Boolean);
+
+const attributesOf = (element) =>
+  Object.fromEntries(element.attrs.map(({ name, value }) => [name, value]));
+
+const canonicalLinksOf = (head) =>
+  elementsIn(head, "link")
+    .filter((link) => relationsOf(link).includes("canonical"))
+    .map(attributesOf);
+
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
 
@@ -215,6 +264,7 @@ const describePage = (html, siteUrl) => {
       title: textOf(firstElementIn(head, "title")),
       meta: describingMetaOf(head, siteUrl),
       icons: iconLinksOf(head),
+      structuredData: structuredDataOf(document, siteUrl),
       sections: menu.sections,
       headings: headings.map(({ level, id, text }) => ({ level, id, text })),
       contents: contentsListOf(main),
@@ -224,11 +274,13 @@ const describePage = (html, siteUrl) => {
         .filter(Boolean),
       links: anchorsIn(main).filter(({ text }) => text !== ""),
     },
-    robots: contentOfMeta(head, "robots") ?? null,
+    robots: contentOfMeta(head, NAME, "robots") ?? null,
+    canonicalLinks: canonicalLinksOf(head),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
+      type: attributeOf(script, "type"),
       src: attributeOf(script, "src"),
-      code: script.childNodes.map((node) => node.value ?? "").join(""),
+      code: codeOf(script),
     })),
     menu,
     headings,
@@ -239,4 +291,4 @@ const describePage = (html, siteUrl) => {
   });
 };
 
-module.exports = { describePage, withoutQuery };
+module.exports = { STRUCTURED_DATA, describePage, withoutQuery };

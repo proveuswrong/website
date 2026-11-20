@@ -20,12 +20,14 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
+const { STRUCTURED_DATA } = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
+const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
 const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
@@ -37,6 +39,8 @@ const sizeOfPng = (png) =>
   `${png.readUInt32BE(PNG_WIDTH_OFFSET)}x${png.readUInt32BE(
     PNG_HEIGHT_OFFSET
   )}`;
+
+const runs = ({ type }) => type !== STRUCTURED_DATA;
 
 const siteWithoutSlash = () => siteUrl().slice(0, -1);
 
@@ -76,14 +80,14 @@ test("no page is built beyond the contract", () => {
   assert.deepEqual(builtPageAddresses(), [...PAGE_ADDRESSES].sort());
 });
 
-test("a page loads one script, and it is the menu", () => {
+test("a page runs one script, and it is the menu", () => {
   for (const address of EVERY_PAGE) {
-    const { scripts } = describeBuiltPage(address);
+    const scripts = describeBuiltPage(address).scripts.filter(runs);
 
     assert.equal(
       scripts.length,
       1,
-      `${address} loads ${scripts.length} scripts`
+      `${address} runs ${scripts.length} scripts`
     );
 
     const [{ src, code }] = scripts;
@@ -137,9 +141,9 @@ if (expectedBuild() === "production") {
     assert.equal(siteUrl(), PRODUCTION_SITE_URL);
   });
 
-  test("a production build asks no crawler to stay away", () => {
+  test("a production build asks no crawler to stay away from a page of the contract", () => {
     assert.deepEqual(
-      EVERY_PAGE.filter(
+      PAGE_ADDRESSES.filter(
         (address) => describeBuiltPage(address).robots !== null
       ),
       []
@@ -147,6 +151,15 @@ if (expectedBuild() === "production") {
     assert.deepEqual(
       linesOfBuilt("/_headers").filter((line) => /x-robots-tag/i.test(line)),
       []
+    );
+  });
+
+  test("every page of the contract names its own address, and only it, in a plain canonical link", () => {
+    assert.deepEqual(
+      PAGE_ADDRESSES.map((address) => describeBuiltPage(address).canonicalLinks),
+      PAGE_ADDRESSES.map((address) => [
+        { rel: "canonical", href: addressOnSite(address) },
+      ])
     );
   });
 } else {
@@ -162,7 +175,25 @@ if (expectedBuild() === "production") {
   test("a preview build sends a noindex header with every response", () => {
     assert.deepEqual(linesOfBuilt("/_headers"), NOINDEX_HEADER_RULE);
   });
+
+  test("a preview build names no canonical address", () => {
+    assert.deepEqual(
+      EVERY_PAGE.filter(
+        (address) => describeBuiltPage(address).canonicalLinks.length > 0
+      ),
+      []
+    );
+  });
 }
+
+test("the error page asks every crawler to stay away and names no canonical address", () => {
+  const { robots, canonicalLinks } = describeBuiltPage(ERROR_PAGE_ADDRESS);
+
+  assert.deepEqual({ robots, canonicalLinks }, {
+    robots: NOINDEX,
+    canonicalLinks: [],
+  });
+});
 
 test("the web app manifest names icons that exist in the size they declare", () => {
   const { icons } = manifestOfBuild();
@@ -198,6 +229,29 @@ test("every page offers the 256 pixel icon as its Open Graph image", () => {
       address
     );
   }
+});
+
+test("every page has a description of its own that search results show whole", () => {
+  const descriptionOf = (address) =>
+    describeBuiltPage(address).rendering.meta.description ?? "";
+  const pagesSharingADescription = [
+    ...Map.groupBy(EVERY_PAGE, descriptionOf).values(),
+  ].filter((pages) => pages.length > 1);
+
+  assert.deepEqual(
+    EVERY_PAGE.filter((address) => descriptionOf(address) === ""),
+    [],
+    "pages without a description"
+  );
+  assert.deepEqual(pagesSharingADescription, [], "pages sharing a description");
+  assert.deepEqual(
+    EVERY_PAGE.filter(
+      (address) =>
+        [...descriptionOf(address)].length > CHARACTERS_SEARCH_RESULTS_SHOW
+    ),
+    [],
+    `pages whose description is longer than ${CHARACTERS_SEARCH_RESULTS_SHOW} characters`
+  );
 });
 
 test("no page shows an editor's note", () => {
