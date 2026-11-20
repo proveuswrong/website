@@ -92,11 +92,11 @@ $touch-margin: 0.75rem;
   background: variables.$color-red;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s, visibility 0.35s;
 
   .menuButton[aria-expanded="true"] + & {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.35s;
   }
 
   ul {
