@@ -5,6 +5,7 @@ const path = require("path");
 
 const {
   ERROR_PAGE_ADDRESS,
+  OUTPUT_DIRECTORY,
   PAGE_ADDRESSES,
   PRODUCTION_SITE_URL,
   STATIC_DIRECTORY,
@@ -12,6 +13,7 @@ const {
   describeBuiltPage,
   expectedBuild,
   filesUnder,
+  headersOfResponse,
   isBuilt,
   linesOfBuilt,
   manifestOfBuild,
@@ -34,7 +36,6 @@ const {
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
-const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
 const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
 const REGULAR_WEIGHT = WEIGHT_OF_KEYWORD.normal;
@@ -241,7 +242,17 @@ if (expectedBuild() === "production") {
   });
 
   test("a preview build sends a noindex header with every response", () => {
-    assert.deepEqual(linesOfBuilt("/_headers"), NOINDEX_HEADER_RULE);
+    const responses = [
+      ...EVERY_PAGE,
+      ...filesUnder(OUTPUT_DIRECTORY).map((file) => `/${file}`),
+    ];
+
+    assert.deepEqual(
+      responses.filter(
+        (pathname) => headersOfResponse(pathname)["x-robots-tag"] !== NOINDEX
+      ),
+      []
+    );
   });
 
   test("a preview build names no canonical address", () => {
