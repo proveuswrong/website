@@ -10,9 +10,9 @@ const NOW = new Date("2026-11-20T20:00:00Z");
 const minutesBeforeNow = (minutes) =>
   new Date(NOW.getTime() - minutes * MINUTE_IN_MILLISECONDS).toISOString();
 
-const yarnLockEntry = (name, version) => `"${name}@npm:^${version}":
+const yarnLockEntry = (name, version, reference = version) => `"${name}@npm:^${version}":
   version: ${version}
-  resolution: "${name}@npm:${version}"
+  resolution: "${name}@npm:${reference}"
   languageName: node
   linkType: hard
 `;
@@ -96,6 +96,22 @@ test("a version without a readable publish time counts as too young", async () =
       })
     ),
     ["kleur@4.1.5", "mri@1.2.0", "sade@1.8.1"]
+  );
+});
+
+test("a version whose resolution carries locator parameters is judged by its version", async () => {
+  assert.deepEqual(
+    await judge({
+      head: lockfile(
+        yarnLockEntry(
+          "fixture",
+          "1.0.0",
+          "1.0.0::__archiveUrl=https%3A%2F%2Fnpm.fixture.example%2Ffixture-1.0.0.tgz"
+        )
+      ),
+      publishedAt: { "fixture@1.0.0": minutesBeforeNow(AGE_GATE_IN_MINUTES) },
+    }),
+    { newlyLocked: ["fixture@1.0.0"], tooYoung: [] }
   );
 });
 

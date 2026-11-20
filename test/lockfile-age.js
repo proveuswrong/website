@@ -3,6 +3,7 @@ const { readFileSync } = require("node:fs");
 
 const LOCKFILE = "yarn.lock";
 const NPM_RESOLUTION = /^\s+resolution: "((?:@[^@/"]+\/)?[^@"]+)@npm:([^"]+)"$/gm;
+const LOCATOR_PARAMETERS = /::.*$/;
 const EXACT_VERSION =
   /^(?:@[^@/]+\/)?[^@]+@\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
 const MINUTE_IN_MILLISECONDS = 60 * 1000;
@@ -11,7 +12,7 @@ const USAGE = "Usage: node test/lockfile-age.js <base revision>";
 const lockedVersionsIn = (lockfile) =>
   new Set(
     [...lockfile.matchAll(NPM_RESOLUTION)].map(
-      ([, name, version]) => `${name}@${version}`
+      ([, name, reference]) => `${name}@${reference.replace(LOCATOR_PARAMETERS, "")}`
     )
   );
 
