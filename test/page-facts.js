@@ -84,6 +84,7 @@ const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
   embed: ["src"],
   object: ["data"],
   image: ["href"],
+  feImage: ["href"],
   input: ["src"],
 };
 const SRCSET_ATTRIBUTES = ["srcset", "imagesrcset"];
@@ -273,8 +274,10 @@ const addressesInStyleAttribute = (declarations) =>
     analyzeDependencies: true,
   }).dependencies.map(({ url }) => url);
 
+// A descriptor declared twice takes its last value:
+// https://www.w3.org/TR/css-syntax-3/#consume-a-list-of-declarations
 const valueOfProperty = (properties, type) =>
-  properties.find((property) => property.type === type)?.value;
+  properties.findLast((property) => property.type === type)?.value;
 
 const weightOf = ({ value }) =>
   value.type === "weight" ? value.value : WEIGHT_OF_KEYWORD[value.type];
@@ -337,10 +340,6 @@ const contactedAddressesOf = (document) => [
         )
       )
   ),
-  ...elementsIn(document, "iframe")
-    .map((iframe) => attributeOf(iframe, "srcdoc"))
-    .filter((srcdoc) => srcdoc !== undefined)
-    .flatMap((srcdoc) => contactedAddressesOf(parse(srcdoc))),
   ...elementsIn(document, "style").flatMap((style) =>
     addressesInCss(codeOf(style))
   ),
@@ -351,10 +350,41 @@ const contactedAddressesOf = (document) => [
     ),
 ];
 
-const baseAddressOf = (document) =>
-  elementsIn(document, "base")
+const resolvedAgainst = (base, hrefs) =>
+  hrefs
+    .filter((href) => URL.canParse(href, base))
+    .map((href) => new URL(href, base));
+
+// A document resolves addresses against its first <base href>, itself
+// resolved against the document's own address; an <iframe srcdoc> document
+// takes its parent's base as that address:
+// https://html.spec.whatwg.org/multipage/urls-and-fetching.html#document-base-url
+const loadsOfDocument = (document, documentAddress) => {
+  const baseHrefs = elementsIn(document, "base")
     .map((base) => attributeOf(base, "href"))
-    .find((href) => href !== undefined);
+    .filter((href) => href !== undefined)
+    .slice(0, 1);
+  const [base = new URL(documentAddress)] = resolvedAgainst(
+    documentAddress,
+    baseHrefs
+  );
+
+  return [
+    ...resolvedAgainst(base, contactedAddressesOf(document)),
+    ...elementsIn(document, "iframe")
+      .map((iframe) => attributeOf(iframe, "srcdoc"))
+      .filter((srcdoc) => srcdoc !== undefined)
+      .flatMap((srcdoc) => loadsOfDocument(parse(srcdoc), base)),
+  ];
+};
+
+/**
+ * Every address a page's markup and inline styles make the browser contact
+ * as it loads, resolved as the browser resolves it. Stylesheets the page
+ * loads are not read here; `addressesInCss` reads each one.
+ */
+const loadsOfPage = (html, pageAddress) =>
+  loadsOfDocument(parse(html), pageAddress);
 
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
@@ -403,8 +433,6 @@ const describePage = (html, siteUrl) => {
     },
     robots: contentOfMeta(head, NAME, "robots") ?? null,
     canonicalLinks: canonicalLinksOf(head),
-    baseAddress: baseAddressOf(document) ?? null,
-    contactedAddresses: contactedAddressesOf(document),
     fontFaces: elementsIn(document, "style").flatMap((style) =>
       fontFacesInCss(codeOf(style))
     ),
@@ -430,5 +458,7 @@ module.exports = {
   addressesInCss,
   describePage,
   fontFacesInCss,
+  loadsOfPage,
+  resolvedAgainst,
   withoutQuery,
 };

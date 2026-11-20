@@ -26,6 +26,8 @@ const {
   WEIGHT_OF_KEYWORD,
   addressesInCss,
   fontFacesInCss,
+  loadsOfPage,
+  resolvedAgainst,
 } = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
@@ -60,25 +62,14 @@ const isWebAddress = (target) => ["http:", "https:"].includes(target.protocol);
 
 const isOnSite = (target) => target.origin === new URL(siteUrl()).origin;
 
-const resolvedAgainst = (base, hrefs) =>
-  hrefs
-    .filter((href) => URL.canParse(href, base))
-    .map((href) => new URL(href, base));
-
 const isStylesheet = (target) => target.pathname.endsWith(".css");
 
-const loadsOfPage = (address) => {
-  const { baseAddress, contactedAddresses } = describeBuiltPage(address);
-  const pageAddress = addressOnSite(address);
-  return resolvedAgainst(
-    new URL(baseAddress ?? pageAddress, pageAddress),
-    contactedAddresses
-  );
-};
+const loadsOfBuiltPage = (address) =>
+  loadsOfPage(readBuiltText(address), addressOnSite(address));
 
 const stylesheetsLoadedBy = (address) => {
   const loaded = new Map();
-  const pending = loadsOfPage(address);
+  const pending = loadsOfBuiltPage(address);
   while (pending.length > 0) {
     const target = pending.pop();
     const isOwnStylesheet = isOnSite(target) && isStylesheet(target);
@@ -143,7 +134,7 @@ test("a page runs one script, and it is the menu", () => {
 test("a page and the stylesheets it loads contact no other site", () => {
   const offSite = EVERY_PAGE.flatMap((address) =>
     [
-      ...loadsOfPage(address),
+      ...loadsOfBuiltPage(address),
       ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
     ]
       .filter((target) => isWebAddress(target) && !isOnSite(target))
