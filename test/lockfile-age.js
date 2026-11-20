@@ -24,6 +24,11 @@ const exactVersionOf = (preapproval) => {
   return preapproval;
 };
 
+const dateOf = (listedTime) => {
+  const date = typeof listedTime === "string" ? new Date(listedTime) : undefined;
+  return date === undefined || Number.isNaN(date.getTime()) ? undefined : date;
+};
+
 const ageInMinutes = (publishedAt, now) =>
   (now.getTime() - publishedAt.getTime()) / MINUTE_IN_MILLISECONDS;
 
@@ -34,7 +39,8 @@ const isTooYoung = ({ publishedAt }, ageGateInMinutes, now) =>
  * Judges the npm versions `headLockfile` locks and `baseLockfile` does not,
  * as Yarn's `npmMinimalAgeGate` judges a version it resolves: one younger
  * than `ageGateInMinutes` at `now` is too young unless `preapproved` names
- * it, and so is one whose publish time `publishTimeOf` cannot give.
+ * it, and so is one for which `publishTimeOf` lists no publish time, or lists
+ * something other than a date string.
  * Preapprovals must be exact `name@version` descriptors; anything broader is
  * refused rather than matched. Rejects when `publishTimeOf` does, and when
  * `headLockfile` yields no npm version, which means a format it cannot read.
@@ -66,7 +72,7 @@ const tooYoungNewlyLockedVersions = async ({
   const judged = await Promise.all(
     newlyLocked
       .filter((locked) => !approved.has(locked))
-      .map(async (locked) => ({ locked, publishedAt: await publishTimeOf(locked) }))
+      .map(async (locked) => ({ locked, publishedAt: dateOf(await publishTimeOf(locked)) }))
   );
 
   return {
@@ -96,7 +102,7 @@ const publishTimeInRegistry = (registry) => async (locked) => {
     throw new Error(`The registry answered ${response.status} for ${name}`);
   }
   const { time = {} } = await response.json();
-  return time[version] === undefined ? undefined : new Date(time[version]);
+  return time[version];
 };
 
 const clearsTheGateAt = (publishedAt, ageGateInMinutes) =>
@@ -119,7 +125,7 @@ const checkAgainst = async (baseRevision) => {
   for (const { locked, publishedAt } of tooYoung) {
     console.error(
       publishedAt === undefined
-        ? `${locked} has no publish time in the registry`
+        ? `${locked} has no readable publish time in the registry`
         : `${locked} was published ${publishedAt.toISOString()} and clears the ${ageGateInMinutes}-minute age gate ${clearsTheGateAt(publishedAt, ageGateInMinutes).toISOString()}`
     );
   }

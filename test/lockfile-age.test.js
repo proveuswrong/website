@@ -8,7 +8,7 @@ const MINUTE_IN_MILLISECONDS = 60 * 1000;
 const NOW = new Date("2026-11-20T20:00:00Z");
 
 const minutesBeforeNow = (minutes) =>
-  new Date(NOW.getTime() - minutes * MINUTE_IN_MILLISECONDS);
+  new Date(NOW.getTime() - minutes * MINUTE_IN_MILLISECONDS).toISOString();
 
 const yarnLockEntry = (name, version) => `"${name}@npm:^${version}":
   version: ${version}
@@ -83,12 +83,19 @@ test("a preapproved version passes, and another version of that package does not
   );
 });
 
-test("a version the registry gives no publish time for counts as too young", async () => {
+test("a version without a readable publish time counts as too young", async () => {
   assert.deepEqual(
     await lockedIn(
-      judge({ head: lockfile(yarnLockEntry("mri", "1.2.0")), publishedAt: {} })
+      judge({
+        head: lockfile(
+          yarnLockEntry("mri", "1.2.0"),
+          yarnLockEntry("sade", "1.8.1"),
+          yarnLockEntry("kleur", "4.1.5")
+        ),
+        publishedAt: { "sade@1.8.1": "not-a-date", "kleur@4.1.5": null },
+      })
     ),
-    ["mri@1.2.0"]
+    ["kleur@4.1.5", "mri@1.2.0", "sade@1.8.1"]
   );
 });
 
