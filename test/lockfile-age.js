@@ -4,6 +4,11 @@ const { readFileSync } = require("node:fs");
 const LOCKFILE = "yarn.lock";
 const NPM_RESOLUTION = /^\s+resolution: "((?:@[^@/"]+\/)?[^@"]+)@npm:([^"]+)"$/gm;
 const LOCATOR_PARAMETERS = /::.*$/;
+const PACKAGE_NAME = /^(?:@([^@/]+)\/)?([^@/]+)$/;
+const DEFAULT_SCOPE_CONFIGURATIONS = new Map([
+  ["jsr", { npmRegistryServer: "https://npm.jsr.io/" }],
+]);
+const TRAILING_SLASH = /\/$/;
 const EXACT_VERSION =
   /^(?:@[^@/]+\/)?[^@]+@\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
 const MINUTE_IN_MILLISECONDS = 60 * 1000;
@@ -109,17 +114,60 @@ const nameAndVersionOf = (locked) => {
   return { locked, name: locked.slice(0, at), version: locked.slice(at + 1) };
 };
 
-const publishTimesFromYarn = (lockedVersions) => {
+/**
+ * The address Yarn 4.10.3 reads a package's metadata from, and with it the
+ * publish times its age gate judges. The registry is the one `npmScopes`
+ * gives the package's scope, else Yarn's default for that scope, else
+ * `npmRegistryServer`, as `getScopeRegistry` and `getScopeConfiguration`
+ * choose it
+ * (https://github.com/yarnpkg/berry/blob/%40yarnpkg/cli/4.10.3/packages/plugin-npm/sources/npmConfigUtils.ts#L33-L86);
+ * the path is the one `getIdentUrl` builds
+ * (https://github.com/yarnpkg/berry/blob/%40yarnpkg/cli/4.10.3/packages/plugin-npm/sources/npmHttpUtils.ts#L62-L68).
+ * Throws for a name that is neither `name` nor `@scope/name`.
+ *
+ * @param {string} packageName
+ * @param {{
+ *   npmRegistryServer: string,
+ *   npmScopes: Map<string, { npmRegistryServer: string | null }>
+ * }} registrySettings as `yarn config get` prints them, scopes without their `@`
+ * @returns {string}
+ */
+const metadataUrlOf = (packageName, { npmRegistryServer, npmScopes }) => {
+  const parts = PACKAGE_NAME.exec(packageName);
+  if (parts === null) {
+    throw new Error(`The lockfile age check cannot read the package name ${packageName}`);
+  }
+  const [, scope, name] = parts;
+  const scopeConfiguration =
+    npmScopes.get(scope) ?? DEFAULT_SCOPE_CONFIGURATIONS.get(scope);
+  const registry = (scopeConfiguration?.npmRegistryServer ?? npmRegistryServer).replace(
+    TRAILING_SLASH,
+    ""
+  );
+
+  return `${registry}/${scope === undefined ? name : `@${scope}%2f${name}`}`;
+};
+
+const listedTimesOf = async (packageName, registrySettings) => {
+  const url = metadataUrlOf(packageName, registrySettings);
+  const response = await fetch(url).catch((error) => {
+    throw new Error(`Could not read ${url}: ${error.cause?.message ?? error.message}`);
+  });
+
+  if (!response.ok) {
+    throw new Error(`The registry answered ${response.status} for ${url}`);
+  }
+  const { time } = await response.json();
+  return time;
+};
+
+const publishTimesInRegistries = (registrySettings) => async (lockedVersions) => {
   const versions = lockedVersions.map(nameAndVersionOf);
   const packages = [...new Set(versions.map(({ name }) => name))];
   const timesByPackage = new Map(
-    packages.length === 0
-      ? []
-      : yarnOutput("npm", "info", ...packages, "--fields", "name,time", "--json")
-          .split("\n")
-          .filter((line) => line !== "")
-          .map((line) => JSON.parse(line))
-          .map(({ name, time }) => [name, time])
+    await Promise.all(
+      packages.map(async (name) => [name, await listedTimesOf(name, registrySettings)])
+    )
   );
 
   return new Map(
@@ -140,7 +188,10 @@ const checkAgainst = async (baseRevision) => {
     headLockfile: readFileSync(LOCKFILE, "utf8"),
     ageGateInMinutes,
     preapproved: yarnSetting("npmPreapprovedPackages"),
-    publishTimesOf: publishTimesFromYarn,
+    publishTimesOf: publishTimesInRegistries({
+      npmRegistryServer: yarnSetting("npmRegistryServer"),
+      npmScopes: new Map(Object.entries(yarnSetting("npmScopes"))),
+    }),
     now: new Date(),
   });
 
@@ -176,4 +227,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { tooYoungNewlyLockedVersions };
+module.exports = { metadataUrlOf, tooYoungNewlyLockedVersions };

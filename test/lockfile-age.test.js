@@ -1,7 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { tooYoungNewlyLockedVersions } = require("./lockfile-age");
+const { metadataUrlOf, tooYoungNewlyLockedVersions } = require("./lockfile-age");
 
 const AGE_GATE_IN_MINUTES = 12 * 24 * 60;
 const MINUTE_IN_MILLISECONDS = 60 * 1000;
@@ -151,4 +151,23 @@ test("a preapproval that is not one exact version is refused", async () => {
       preapproval
     );
   }
+});
+
+test("a package's metadata is read where Yarn reads it", () => {
+  const registrySettings = {
+    npmRegistryServer: "https://registry.yarnpkg.com",
+    npmScopes: new Map([["fixture", { npmRegistryServer: "https://npm.fixture.example/" }]]),
+  };
+
+  assert.deepEqual(
+    ["astro", "@astrojs/telemetry", "@fixture/pkg", "@jsr/std__path"].map((name) =>
+      metadataUrlOf(name, registrySettings)
+    ),
+    [
+      "https://registry.yarnpkg.com/astro",
+      "https://registry.yarnpkg.com/@astrojs%2ftelemetry",
+      "https://npm.fixture.example/@fixture%2fpkg",
+      "https://npm.jsr.io/@jsr%2fstd__path",
+    ]
+  );
 });
