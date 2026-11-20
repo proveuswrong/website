@@ -268,6 +268,24 @@ const addressesInAttribute = (element, attribute) => {
   return attribute === "srcset" ? addressesInSrcset(value) : [value];
 };
 
+const FONT_FACE_RULES = /@font-face\s*\{([^}]*)\}/g;
+const DECLARATIONS = /([\w-]+)\s*:\s*([^;]+)/g;
+
+const declarationsIn = (block) =>
+  Object.fromEntries(
+    [...block.matchAll(DECLARATIONS)].map(([, property, value]) => [
+      property.toLowerCase(),
+      value.trim(),
+    ])
+  );
+
+const fontFacesOf = (document) =>
+  elementsIn(document, "style").flatMap((style) =>
+    [...codeOf(style).matchAll(FONT_FACE_RULES)].map(([, block]) =>
+      declarationsIn(block)
+    )
+  );
+
 const contactedAddressesOf = (document) => [
   ...elementsIn(document, "link")
     .filter((link) =>
@@ -340,6 +358,7 @@ const describePage = (html, siteUrl) => {
     robots: contentOfMeta(head, NAME, "robots") ?? null,
     canonicalLinks: canonicalLinksOf(head),
     contactedAddresses: contactedAddressesOf(document),
+    fontFaces: fontFacesOf(document),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),

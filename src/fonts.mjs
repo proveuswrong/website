@@ -74,6 +74,7 @@ export const fonts = [
     name: "Space Mono",
     cssVariable: "--font-space-mono",
     fallbacks: ["monospace"],
+    optimizedFallbacks: false,
     options: { variants: spaceMonoVariants },
   },
   {

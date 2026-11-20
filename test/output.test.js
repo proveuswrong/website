@@ -28,6 +28,8 @@ const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
 const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
+const REGULAR_WEIGHT = "400";
+const UPRIGHT = "normal";
 const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
@@ -120,6 +122,26 @@ test("a page and its stylesheets contact no other site", () => {
   });
 
   assert.deepEqual([...new Set(offSite)], []);
+});
+
+test("bold and italic text keeps its emphasis while the web fonts load", () => {
+  const isRegular = ({
+    "font-weight": weight = REGULAR_WEIGHT,
+    "font-style": style = UPRIGHT,
+  }) => [REGULAR_WEIGHT, "normal"].includes(weight) && style === UPRIGHT;
+  const isSystemFont = ({ src }) => !src.includes("url(");
+
+  for (const address of EVERY_PAGE) {
+    const emphasisFromRegularSystemFonts = describeBuiltPage(address)
+      .fontFaces.filter(isSystemFont)
+      .filter((face) => !isRegular(face));
+
+    assert.deepEqual(
+      emphasisFromRegularSystemFonts,
+      [],
+      `${address} declares bold or italic faces that local() fills with a single system font, which renders that text regular and upright`
+    );
+  }
 });
 
 test("every file in static/ is served from the root unchanged", () => {
