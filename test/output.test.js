@@ -20,7 +20,13 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
-const { STRUCTURED_DATA, candidateAddressesInCss } = require("./page-facts");
+const {
+  STRUCTURED_DATA,
+  UPRIGHT,
+  WEIGHT_OF_KEYWORD,
+  addressesInCss,
+  fontFacesInCss,
+} = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
@@ -28,8 +34,7 @@ const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
 const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
-const REGULAR_WEIGHT = "400";
-const UPRIGHT = "normal";
+const REGULAR_WEIGHT = WEIGHT_OF_KEYWORD.normal;
 const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
@@ -62,24 +67,29 @@ const resolvedAgainst = (base, hrefs) =>
 
 const isStylesheet = (target) => target.pathname.endsWith(".css");
 
-const contactedThroughStylesheets = (contacted) => {
-  const read = new Set();
-  const found = [];
-  const pending = [...contacted];
+const loadsOfPage = (address) => {
+  const { baseAddress, contactedAddresses } = describeBuiltPage(address);
+  const pageAddress = addressOnSite(address);
+  return resolvedAgainst(
+    new URL(baseAddress ?? pageAddress, pageAddress),
+    contactedAddresses
+  );
+};
+
+const stylesheetsLoadedBy = (address) => {
+  const loaded = new Map();
+  const pending = loadsOfPage(address);
   while (pending.length > 0) {
     const target = pending.pop();
-    if (!isOnSite(target) || !isStylesheet(target)) continue;
-    if (read.has(target.pathname)) continue;
-    read.add(target.pathname);
+    const isOwnStylesheet = isOnSite(target) && isStylesheet(target);
+    if (!isOwnStylesheet || loaded.has(target.pathname)) continue;
 
-    const fromStylesheet = resolvedAgainst(
-      target,
-      candidateAddressesInCss(readBuiltText(target.pathname))
-    );
-    found.push(...fromStylesheet);
-    pending.push(...fromStylesheet);
+    const css = readBuiltText(target.pathname);
+    const loads = resolvedAgainst(target, addressesInCss(css));
+    loaded.set(target.pathname, { css, loads });
+    pending.push(...loads);
   }
-  return found;
+  return [...loaded.values()];
 };
 
 const anchorsOf = (pageAddress) =>
@@ -131,30 +141,30 @@ test("a page runs one script, and it is the menu", () => {
 });
 
 test("a page and the stylesheets it loads contact no other site", () => {
-  const offSite = EVERY_PAGE.flatMap((address) => {
-    const contacted = resolvedAgainst(
-      addressOnSite(address),
-      describeBuiltPage(address).contactedAddresses
-    );
-
-    return [...contacted, ...contactedThroughStylesheets(contacted)]
+  const offSite = EVERY_PAGE.flatMap((address) =>
+    [
+      ...loadsOfPage(address),
+      ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
+    ]
       .filter((target) => isWebAddress(target) && !isOnSite(target))
-      .map((target) => `${address} -> ${target.href}`);
-  });
+      .map((target) => `${address} -> ${target.href}`)
+  );
 
   assert.deepEqual([...new Set(offSite)], []);
 });
 
 test("bold and italic text keeps its emphasis while the web fonts load", () => {
-  const isRegular = ({
-    "font-weight": weight = REGULAR_WEIGHT,
-    "font-style": style = UPRIGHT,
-  }) => [REGULAR_WEIGHT, "normal"].includes(weight) && style === UPRIGHT;
-  const isSystemFont = ({ src }) => !src.includes("url(");
+  const isRegular = ({ weights, style }) =>
+    weights.every((weight) => weight === REGULAR_WEIGHT) && style === UPRIGHT;
+  const isSystemFont = ({ sources }) => !sources.includes("url");
 
   for (const address of EVERY_PAGE) {
-    const emphasisFromRegularSystemFonts = describeBuiltPage(address)
-      .fontFaces.filter(isSystemFont)
+    const fontFaces = [
+      ...describeBuiltPage(address).fontFaces,
+      ...stylesheetsLoadedBy(address).flatMap(({ css }) => fontFacesInCss(css)),
+    ];
+    const emphasisFromRegularSystemFonts = fontFaces
+      .filter(isSystemFont)
       .filter((face) => !isRegular(face));
 
     assert.deepEqual(

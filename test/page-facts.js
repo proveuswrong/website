@@ -1,3 +1,4 @@
+const { transform, transformStyleAttribute } = require("lightningcss");
 const { parse } = require("parse5");
 
 const BLOCK_ELEMENTS = new Set([
@@ -69,6 +70,7 @@ const CONTACTING_LINK_RELATIONS = [
   "prefetch",
   "preconnect",
   "dns-prefetch",
+  "prerender",
 ];
 const LINK_ADDRESS_ATTRIBUTES = ["href", "imagesrcset"];
 const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
@@ -82,8 +84,11 @@ const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
   embed: ["src"],
   object: ["data"],
   image: ["href"],
+  input: ["src"],
 };
 const SRCSET_ATTRIBUTES = ["srcset", "imagesrcset"];
+const WEIGHT_OF_KEYWORD = { normal: 400, bold: 700 };
+const UPRIGHT = "normal";
 
 const attributeOf = (element, name) =>
   element.attrs.find((attribute) => attribute.name === name)?.value;
@@ -252,21 +257,51 @@ const canonicalLinksOf = (head) =>
     .filter((link) => relationsOf(link).includes("canonical"))
     .map(attributesOf);
 
-// CSS gives an address in url() or as a quoted string (@import, image-set()),
-// so every string and url() argument is a candidate. Comments, strings and
-// url() are consumed left to right, as CSS tokenizes them, so a quote inside
-// one string never opens another:
-// https://www.w3.org/TR/css-syntax-3/#consume-token
-const CSS_TOKENS =
-  /\/\*[\s\S]*?\*\/|"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|url\(\s*([^"'\s)][^\s)]*)\s*\)/g;
+const STYLESHEET = { filename: "style.css", errorRecovery: true };
 
-const candidateAddressesInCss = (css) =>
-  [...css.matchAll(CSS_TOKENS)]
-    .map(
-      ([, doubleQuoted, singleQuoted, unquoted]) =>
-        doubleQuoted ?? singleQuoted ?? unquoted
-    )
-    .filter((candidate) => candidate !== undefined);
+const addressesInCss = (css) =>
+  transform({
+    ...STYLESHEET,
+    code: Buffer.from(css),
+    analyzeDependencies: true,
+  }).dependencies.map(({ url }) => url);
+
+const addressesInStyleAttribute = (declarations) =>
+  transformStyleAttribute({
+    code: Buffer.from(declarations),
+    errorRecovery: true,
+    analyzeDependencies: true,
+  }).dependencies.map(({ url }) => url);
+
+const valueOfProperty = (properties, type) =>
+  properties.find((property) => property.type === type)?.value;
+
+const weightOf = ({ value }) =>
+  value.type === "weight" ? value.value : WEIGHT_OF_KEYWORD[value.type];
+
+const fontFaceOf = (properties) => ({
+  sources: (valueOfProperty(properties, "source") ?? []).map(
+    ({ type }) => type
+  ),
+  weights: (valueOfProperty(properties, "font-weight") ?? []).map(weightOf),
+  style: valueOfProperty(properties, "font-style")?.type ?? UPRIGHT,
+});
+
+const fontFacesInCss = (css) => {
+  const faces = [];
+  transform({
+    ...STYLESHEET,
+    code: Buffer.from(css),
+    visitor: {
+      Rule: {
+        "font-face": ({ value }) => {
+          faces.push(fontFaceOf(value.properties));
+        },
+      },
+    },
+  });
+  return faces;
+};
 
 const addressesInSrcset = (srcset) =>
   srcset
@@ -281,24 +316,6 @@ const addressesInAttribute = (element, attribute) => {
     ? addressesInSrcset(value)
     : [value];
 };
-
-const FONT_FACE_RULES = /@font-face\s*\{([^}]*)\}/g;
-const DECLARATIONS = /([\w-]+)\s*:\s*([^;]+)/g;
-
-const declarationsIn = (block) =>
-  Object.fromEntries(
-    [...block.matchAll(DECLARATIONS)].map(([, property, value]) => [
-      property.toLowerCase(),
-      value.trim(),
-    ])
-  );
-
-const fontFacesOf = (document) =>
-  elementsIn(document, "style").flatMap((style) =>
-    [...codeOf(style).matchAll(FONT_FACE_RULES)].map(([, block]) =>
-      declarationsIn(block)
-    )
-  );
 
 const contactedAddressesOf = (document) => [
   ...elementsIn(document, "link")
@@ -320,15 +337,24 @@ const contactedAddressesOf = (document) => [
         )
       )
   ),
+  ...elementsIn(document, "iframe")
+    .map((iframe) => attributeOf(iframe, "srcdoc"))
+    .filter((srcdoc) => srcdoc !== undefined)
+    .flatMap((srcdoc) => contactedAddressesOf(parse(srcdoc))),
   ...elementsIn(document, "style").flatMap((style) =>
-    candidateAddressesInCss(codeOf(style))
+    addressesInCss(codeOf(style))
   ),
   ...[...descendantsOf(document)]
     .filter((node) => node.tagName && attributeOf(node, "style"))
     .flatMap((element) =>
-      candidateAddressesInCss(attributeOf(element, "style"))
+      addressesInStyleAttribute(attributeOf(element, "style"))
     ),
 ];
+
+const baseAddressOf = (document) =>
+  elementsIn(document, "base")
+    .map((base) => attributeOf(base, "href"))
+    .find((href) => href !== undefined);
 
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
@@ -377,8 +403,11 @@ const describePage = (html, siteUrl) => {
     },
     robots: contentOfMeta(head, NAME, "robots") ?? null,
     canonicalLinks: canonicalLinksOf(head),
+    baseAddress: baseAddressOf(document) ?? null,
     contactedAddresses: contactedAddressesOf(document),
-    fontFaces: fontFacesOf(document),
+    fontFaces: elementsIn(document, "style").flatMap((style) =>
+      fontFacesInCss(codeOf(style))
+    ),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),
@@ -396,7 +425,10 @@ const describePage = (html, siteUrl) => {
 
 module.exports = {
   STRUCTURED_DATA,
-  candidateAddressesInCss,
+  UPRIGHT,
+  WEIGHT_OF_KEYWORD,
+  addressesInCss,
   describePage,
+  fontFacesInCss,
   withoutQuery,
 };
