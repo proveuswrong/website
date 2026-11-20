@@ -132,6 +132,16 @@ const contentOfMeta = (head, name) => {
   return meta && attributeOf(meta, "content");
 };
 
+// Crawlers read robots rules from <meta name>, compared case-insensitively,
+// and never from <meta property>:
+// https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag
+const robotsRulesOf = (head) => {
+  const meta = elementsIn(head, "meta").find(
+    (element) => (attributeOf(element, "name") ?? "").toLowerCase() === "robots"
+  );
+  return meta ? attributeOf(meta, "content") : null;
+};
+
 const describingMetaOf = (head, siteUrl) =>
   Object.fromEntries(
     DESCRIBING_META.map((name) => [name, contentOfMeta(head, name)])
@@ -210,10 +220,13 @@ const menuOf = (header) => {
 const relationsOf = (link) =>
   (attributeOf(link, "rel") ?? "").toLowerCase().split(/\s+/).filter(Boolean);
 
-const canonicalAddressesOf = (head) =>
+const attributesOf = (element) =>
+  Object.fromEntries(element.attrs.map(({ name, value }) => [name, value]));
+
+const canonicalLinksOf = (head) =>
   elementsIn(head, "link")
     .filter((link) => relationsOf(link).includes("canonical"))
-    .map((link) => attributeOf(link, "href"));
+    .map(attributesOf);
 
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
@@ -260,8 +273,8 @@ const describePage = (html, siteUrl) => {
         .filter(Boolean),
       links: anchorsIn(main).filter(({ text }) => text !== ""),
     },
-    robots: contentOfMeta(head, "robots") ?? null,
-    canonicalAddresses: canonicalAddressesOf(head),
+    robots: robotsRulesOf(head),
+    canonicalLinks: canonicalLinksOf(head),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),
