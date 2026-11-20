@@ -20,11 +20,17 @@ const yarnLockEntry = (name, version, reference = version) => `"${name}@npm:^${v
 const lockfile = (...entries) =>
   ['__metadata:\n  version: 8\n  cacheKey: 10c0\n', ...entries].join("\n");
 
-const judge = ({ base = lockfile(), head, publishedAt, preapproved = [] }) =>
+const judge = ({
+  base = lockfile(),
+  head,
+  publishedAt,
+  preapproved = [],
+  ageGateInMinutes = AGE_GATE_IN_MINUTES,
+}) =>
   tooYoungNewlyLockedVersions({
     baseLockfile: base,
     headLockfile: head,
-    ageGateInMinutes: AGE_GATE_IN_MINUTES,
+    ageGateInMinutes,
     preapproved,
     publishTimesOf: async () => new Map(Object.entries(publishedAt)),
     now: NOW,
@@ -119,6 +125,17 @@ test("a lockfile without a single npm version is refused rather than passed", as
   await assert.rejects(
     judge({ head: lockfile(), publishedAt: {} }),
     /no npm versions/
+  );
+});
+
+test("an age gate that is not a number of minutes is refused", async () => {
+  await assert.rejects(
+    judge({
+      head: lockfile(yarnLockEntry("astro", "7.4.8")),
+      publishedAt: { "astro@7.4.8": minutesBeforeNow(1) },
+      ageGateInMinutes: "12d",
+    }),
+    /number of minutes/
   );
 });
 

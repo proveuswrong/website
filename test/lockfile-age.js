@@ -44,8 +44,9 @@ const isTooYoung = ({ publishedAt }, ageGateInMinutes, now) =>
  * time its registry lists, as a Map or a promise of one; a version listed
  * without a date string counts as too young.
  * Preapprovals must be exact `name@version` descriptors; anything broader is
- * refused rather than matched. Rejects when `publishTimesOf` does, and when
- * `headLockfile` yields no npm version, which means a format it cannot read.
+ * refused rather than matched. Rejects when `ageGateInMinutes` is not a
+ * finite number, when `publishTimesOf` rejects, and when `headLockfile`
+ * yields no npm version, which means a format it cannot read.
  *
  * @returns {Promise<{
  *   newlyLocked: string[],
@@ -60,6 +61,11 @@ const tooYoungNewlyLockedVersions = async ({
   publishTimesOf,
   now,
 }) => {
+  if (!Number.isFinite(ageGateInMinutes)) {
+    throw new Error(
+      `The lockfile age check reads the age gate only as a number of minutes: ${JSON.stringify(ageGateInMinutes)}`
+    );
+  }
   const approved = new Set(preapproved.map(exactVersionOf));
   const locked = lockedVersionsIn(headLockfile);
   if (locked.size === 0) {
