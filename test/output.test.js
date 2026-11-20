@@ -23,6 +23,7 @@ const {
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
+const STRUCTURED_DATA = "application/ld+json";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
@@ -37,6 +38,8 @@ const sizeOfPng = (png) =>
   `${png.readUInt32BE(PNG_WIDTH_OFFSET)}x${png.readUInt32BE(
     PNG_HEIGHT_OFFSET
   )}`;
+
+const runs = ({ type }) => type !== STRUCTURED_DATA;
 
 const siteWithoutSlash = () => siteUrl().slice(0, -1);
 
@@ -76,14 +79,14 @@ test("no page is built beyond the contract", () => {
   assert.deepEqual(builtPageAddresses(), [...PAGE_ADDRESSES].sort());
 });
 
-test("a page loads one script, and it is the menu", () => {
+test("a page runs one script, and it is the menu", () => {
   for (const address of EVERY_PAGE) {
-    const { scripts } = describeBuiltPage(address);
+    const scripts = describeBuiltPage(address).scripts.filter(runs);
 
     assert.equal(
       scripts.length,
       1,
-      `${address} loads ${scripts.length} scripts`
+      `${address} runs ${scripts.length} scripts`
     );
 
     const [{ src, code }] = scripts;

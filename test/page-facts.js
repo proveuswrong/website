@@ -227,6 +227,7 @@ const describePage = (html, siteUrl) => {
     robots: contentOfMeta(head, "robots") ?? null,
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
+      type: attributeOf(script, "type"),
       src: attributeOf(script, "src"),
       code: script.childNodes.map((node) => node.value ?? "").join(""),
     })),
