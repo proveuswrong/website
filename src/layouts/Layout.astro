@@ -1,17 +1,59 @@
 ---
+import { Font } from "astro:assets";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../components/layout.scss";
-import { author, description, isProduction, title as siteTitle } from "../site.mjs";
+import {
+  author,
+  description as siteDescription,
+  isProduction,
+  profiles,
+  title as siteTitle,
+} from "../site.mjs";
 import manifestSource from "../../static/manifest.webmanifest?raw";
 
 interface Props {
-  title: string;
+  /** The page's name, shown before the site's in the document title. The front page has none and goes by the site's name alone. */
+  title?: string;
+  /** What the page offers, in a sentence or two, for search results and link previews. Each page has its own. */
+  description: string;
+  /** Whether search engines may index the page; the error page may not. A build that is not production is never indexed. */
+  indexed?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description, indexed = true } = Astro.props;
+const isIndexed = isProduction && indexed;
+const pageAddress = new URL(Astro.url.pathname, Astro.site);
+const documentTitle = title === undefined ? siteTitle : `${title} | ${siteTitle}`;
 const manifest = JSON.parse(manifestSource);
 const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
+const LOGO_PATH = "/icons/icon-512x512.png";
+
+const siteAddress = new URL("/", Astro.site).href;
+const organizationId = new URL("#organization", siteAddress).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: siteTitle,
+      url: siteAddress,
+      logo: new URL(LOGO_PATH, siteAddress).href,
+      description: siteDescription,
+      sameAs: Object.values(profiles),
+    },
+    {
+      "@type": "WebSite",
+      "@id": new URL("#website", siteAddress).href,
+      name: siteTitle,
+      url: siteAddress,
+      publisher: { "@id": organizationId },
+    },
+  ],
+};
+const jsonSafeInScript = (value: unknown) =>
+  JSON.stringify(value).replaceAll("<", "\\u003c");
 ---
 
 <!doctype html>
@@ -19,19 +61,30 @@ const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | {siteTitle}</title>
+    <Font cssVariable="--font-space-mono" />
+    <Font cssVariable="--font-monoton" />
+    <title>{documentTitle}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={title ?? siteTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:url" content={pageAddress} />
     <meta property="og:image" content={new URL(OPEN_GRAPH_IMAGE_PATH, Astro.site)} />
     <meta name="twitter:creator" content={author} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image:alt" content={siteTitle} />
     <meta name="theme-color" content={manifest.theme_color} />
-    {!isProduction && <meta name="robots" content="noindex" />}
+    {isIndexed ? (
+      <link rel="canonical" href={pageAddress} />
+    ) : (
+      <meta name="robots" content="noindex" />
+    )}
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={jsonSafeInScript(structuredData)}
+    />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     {manifest.icons.map(({ src, sizes }) => (

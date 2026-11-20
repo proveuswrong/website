@@ -1,5 +1,6 @@
 ---
 slug: "/faq"
+description: "How to reach us, which name is which, what decentralized curation is, whether it is trustless or proven, and how to support or take part."
 draft: false
 toc: true
 ---

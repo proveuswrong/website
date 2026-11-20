@@ -20,12 +20,24 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
+const {
+  STRUCTURED_DATA,
+  UPRIGHT,
+  WEIGHT_OF_KEYWORD,
+  addressesInCss,
+  fontFacesInCss,
+  fontFacesOfPage,
+  loadsOfPage,
+  resolvedAgainst,
+} = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
 const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
+const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
+const REGULAR_WEIGHT = WEIGHT_OF_KEYWORD.normal;
 const EDITORS_NOTE = /\[\[[^\]]*\]\]/;
 
 // Width and height of a PNG are the first two fields of its IHDR chunk:
@@ -38,6 +50,8 @@ const sizeOfPng = (png) =>
     PNG_HEIGHT_OFFSET
   )}`;
 
+const runs = ({ type }) => type !== STRUCTURED_DATA;
+
 const siteWithoutSlash = () => siteUrl().slice(0, -1);
 
 const addressOnSite = (address) => `${siteWithoutSlash()}${address}`;
@@ -48,6 +62,29 @@ const targetOf = (href, pageAddress) =>
 const isWebAddress = (target) => ["http:", "https:"].includes(target.protocol);
 
 const isOnSite = (target) => target.origin === new URL(siteUrl()).origin;
+
+const STYLESHEET_PATH = /\.css$/i;
+
+const isStylesheet = (target) => STYLESHEET_PATH.test(target.pathname);
+
+const loadsOfBuiltPage = (address) =>
+  loadsOfPage(readBuiltText(address), addressOnSite(address));
+
+const stylesheetsLoadedBy = (address) => {
+  const loaded = new Map();
+  const pending = loadsOfBuiltPage(address);
+  while (pending.length > 0) {
+    const target = pending.pop();
+    const isOwnStylesheet = isOnSite(target) && isStylesheet(target);
+    if (!isOwnStylesheet || loaded.has(target.pathname)) continue;
+
+    const css = readBuiltText(target.pathname);
+    const loads = resolvedAgainst(target, addressesInCss(css));
+    loaded.set(target.pathname, { css, loads });
+    pending.push(...loads);
+  }
+  return [...loaded.values()];
+};
 
 const anchorsOf = (pageAddress) =>
   describeBuiltPage(pageAddress).anchors.map((anchor) => ({
@@ -76,14 +113,14 @@ test("no page is built beyond the contract", () => {
   assert.deepEqual(builtPageAddresses(), [...PAGE_ADDRESSES].sort());
 });
 
-test("a page loads one script, and it is the menu", () => {
+test("a page runs one script, and it is the menu", () => {
   for (const address of EVERY_PAGE) {
-    const { scripts } = describeBuiltPage(address);
+    const scripts = describeBuiltPage(address).scripts.filter(runs);
 
     assert.equal(
       scripts.length,
       1,
-      `${address} loads ${scripts.length} scripts`
+      `${address} runs ${scripts.length} scripts`
     );
 
     const [{ src, code }] = scripts;
@@ -93,6 +130,41 @@ test("a page loads one script, and it is the menu", () => {
     assert.ok(
       menuScript.includes(STATE_THE_MENU_SCRIPT_KEEPS),
       `the script of ${address} never touches ${STATE_THE_MENU_SCRIPT_KEEPS}`
+    );
+  }
+});
+
+test("a page and the stylesheets it loads contact no other site", () => {
+  const offSite = EVERY_PAGE.flatMap((address) =>
+    [
+      ...loadsOfBuiltPage(address),
+      ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
+    ]
+      .filter((target) => isWebAddress(target) && !isOnSite(target))
+      .map((target) => `${address} -> ${target.href}`)
+  );
+
+  assert.deepEqual([...new Set(offSite)], []);
+});
+
+test("bold and italic text keeps its emphasis while the web fonts load", () => {
+  const isRegular = ({ weights, style }) =>
+    weights.every((weight) => weight === REGULAR_WEIGHT) && style === UPRIGHT;
+  const isSystemFont = ({ sources }) => !sources.includes("url");
+
+  for (const address of EVERY_PAGE) {
+    const fontFaces = [
+      ...fontFacesOfPage(readBuiltText(address)),
+      ...stylesheetsLoadedBy(address).flatMap(({ css }) => fontFacesInCss(css)),
+    ];
+    const emphasisFromRegularSystemFonts = fontFaces
+      .filter(isSystemFont)
+      .filter((face) => !isRegular(face));
+
+    assert.deepEqual(
+      emphasisFromRegularSystemFonts,
+      [],
+      `${address} declares bold or italic faces that local() fills with a single system font, which renders that text regular and upright`
     );
   }
 });
@@ -137,9 +209,9 @@ if (expectedBuild() === "production") {
     assert.equal(siteUrl(), PRODUCTION_SITE_URL);
   });
 
-  test("a production build asks no crawler to stay away", () => {
+  test("a production build asks no crawler to stay away from a page of the contract", () => {
     assert.deepEqual(
-      EVERY_PAGE.filter(
+      PAGE_ADDRESSES.filter(
         (address) => describeBuiltPage(address).robots !== null
       ),
       []
@@ -147,6 +219,15 @@ if (expectedBuild() === "production") {
     assert.deepEqual(
       linesOfBuilt("/_headers").filter((line) => /x-robots-tag/i.test(line)),
       []
+    );
+  });
+
+  test("every page of the contract names its own address, and only it, in a plain canonical link", () => {
+    assert.deepEqual(
+      PAGE_ADDRESSES.map((address) => describeBuiltPage(address).canonicalLinks),
+      PAGE_ADDRESSES.map((address) => [
+        { rel: "canonical", href: addressOnSite(address) },
+      ])
     );
   });
 } else {
@@ -162,7 +243,25 @@ if (expectedBuild() === "production") {
   test("a preview build sends a noindex header with every response", () => {
     assert.deepEqual(linesOfBuilt("/_headers"), NOINDEX_HEADER_RULE);
   });
+
+  test("a preview build names no canonical address", () => {
+    assert.deepEqual(
+      EVERY_PAGE.filter(
+        (address) => describeBuiltPage(address).canonicalLinks.length > 0
+      ),
+      []
+    );
+  });
 }
+
+test("the error page asks every crawler to stay away and names no canonical address", () => {
+  const { robots, canonicalLinks } = describeBuiltPage(ERROR_PAGE_ADDRESS);
+
+  assert.deepEqual({ robots, canonicalLinks }, {
+    robots: NOINDEX,
+    canonicalLinks: [],
+  });
+});
 
 test("the web app manifest names icons that exist in the size they declare", () => {
   const { icons } = manifestOfBuild();
@@ -198,6 +297,29 @@ test("every page offers the 256 pixel icon as its Open Graph image", () => {
       address
     );
   }
+});
+
+test("every page has a description of its own that search results show whole", () => {
+  const descriptionOf = (address) =>
+    describeBuiltPage(address).rendering.meta.description ?? "";
+  const pagesSharingADescription = [
+    ...Map.groupBy(EVERY_PAGE, descriptionOf).values(),
+  ].filter((pages) => pages.length > 1);
+
+  assert.deepEqual(
+    EVERY_PAGE.filter((address) => descriptionOf(address) === ""),
+    [],
+    "pages without a description"
+  );
+  assert.deepEqual(pagesSharingADescription, [], "pages sharing a description");
+  assert.deepEqual(
+    EVERY_PAGE.filter(
+      (address) =>
+        [...descriptionOf(address)].length > CHARACTERS_SEARCH_RESULTS_SHOW
+    ),
+    [],
+    `pages whose description is longer than ${CHARACTERS_SEARCH_RESULTS_SHOW} characters`
+  );
 });
 
 test("no page shows an editor's note", () => {

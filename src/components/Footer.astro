@@ -7,14 +7,14 @@ import Discord from "../images/discord.svg";
 import LinkedIn from "../images/linkedin.svg";
 import PressKit from "../images/pressKit.svg";
 
-import { title } from "../site.mjs";
+import { profiles, title } from "../site.mjs";
 ---
 
 <footer>
   <div class={styles.container}>
     <div class={styles.social}>
       <a
-        href="https://www.linkedin.com/company/prove-us-wrong/"
+        href={profiles.linkedIn}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn company page"
@@ -23,7 +23,7 @@ import { title } from "../site.mjs";
         <LinkedIn aria-hidden="true" />
       </a>
       <a
-        href="https://twitter.com/ProveUsWrongIO"
+        href={profiles.twitter}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Twitter page"
@@ -41,7 +41,7 @@ import { title } from "../site.mjs";
         <Discord aria-hidden="true" />
       </a>
       <a
-        href="https://github.com/proveuswrong"
+        href={profiles.gitHub}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub organization"

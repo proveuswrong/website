@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Ferit Tunçer <0xferittuncer@gmail.com>",
   "devDependencies": {
+    "lightningcss": "1.33.0",
     "parse5": "7.1.2",
     "prettier": "2.8.7"
   },
