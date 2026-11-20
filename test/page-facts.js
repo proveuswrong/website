@@ -70,6 +70,7 @@ const CONTACTING_LINK_RELATIONS = [
   "preconnect",
   "dns-prefetch",
 ];
+const LINK_ADDRESS_ATTRIBUTES = ["href", "imagesrcset"];
 const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
   script: ["src"],
   img: ["src", "srcset"],
@@ -80,7 +81,9 @@ const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
   track: ["src"],
   embed: ["src"],
   object: ["data"],
+  image: ["href"],
 };
+const SRCSET_ATTRIBUTES = ["srcset", "imagesrcset"];
 
 const attributeOf = (element, name) =>
   element.attrs.find((attribute) => attribute.name === name)?.value;
@@ -249,12 +252,21 @@ const canonicalLinksOf = (head) =>
     .filter((link) => relationsOf(link).includes("canonical"))
     .map(attributesOf);
 
-const CSS_REFERENCES = /url\(\s*(["']?)([^"')]+)\1\s*\)|@import\s+(["'])([^"']+)\3/g;
+// CSS gives an address in url() or as a quoted string (@import, image-set()),
+// so every string and url() argument is a candidate. Comments, strings and
+// url() are consumed left to right, as CSS tokenizes them, so a quote inside
+// one string never opens another:
+// https://www.w3.org/TR/css-syntax-3/#consume-token
+const CSS_TOKENS =
+  /\/\*[\s\S]*?\*\/|"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|url\(\s*([^"'\s)][^\s)]*)\s*\)/g;
 
-const addressesInCss = (css) =>
-  [...css.matchAll(CSS_REFERENCES)].map(
-    ([, , address, , imported]) => address ?? imported
-  );
+const candidateAddressesInCss = (css) =>
+  [...css.matchAll(CSS_TOKENS)]
+    .map(
+      ([, doubleQuoted, singleQuoted, unquoted]) =>
+        doubleQuoted ?? singleQuoted ?? unquoted
+    )
+    .filter((candidate) => candidate !== undefined);
 
 const addressesInSrcset = (srcset) =>
   srcset
@@ -265,7 +277,9 @@ const addressesInSrcset = (srcset) =>
 const addressesInAttribute = (element, attribute) => {
   const value = attributeOf(element, attribute);
   if (value === undefined) return [];
-  return attribute === "srcset" ? addressesInSrcset(value) : [value];
+  return SRCSET_ATTRIBUTES.includes(attribute)
+    ? addressesInSrcset(value)
+    : [value];
 };
 
 const FONT_FACE_RULES = /@font-face\s*\{([^}]*)\}/g;
@@ -293,7 +307,11 @@ const contactedAddressesOf = (document) => [
         CONTACTING_LINK_RELATIONS.includes(relation)
       )
     )
-    .flatMap((link) => addressesInAttribute(link, "href")),
+    .flatMap((link) =>
+      LINK_ADDRESS_ATTRIBUTES.flatMap((attribute) =>
+        addressesInAttribute(link, attribute)
+      )
+    ),
   ...Object.entries(ADDRESS_ATTRIBUTES_OF_ELEMENT).flatMap(
     ([tagName, attributes]) =>
       elementsIn(document, tagName).flatMap((element) =>
@@ -303,11 +321,13 @@ const contactedAddressesOf = (document) => [
       )
   ),
   ...elementsIn(document, "style").flatMap((style) =>
-    addressesInCss(codeOf(style))
+    candidateAddressesInCss(codeOf(style))
   ),
   ...[...descendantsOf(document)]
     .filter((node) => node.tagName && attributeOf(node, "style"))
-    .flatMap((element) => addressesInCss(attributeOf(element, "style"))),
+    .flatMap((element) =>
+      candidateAddressesInCss(attributeOf(element, "style"))
+    ),
 ];
 
 const openGraphImageOf = (head) => {
@@ -376,7 +396,7 @@ const describePage = (html, siteUrl) => {
 
 module.exports = {
   STRUCTURED_DATA,
-  addressesInCss,
+  candidateAddressesInCss,
   describePage,
   withoutQuery,
 };

@@ -20,7 +20,7 @@ const {
   readBuiltText,
   siteUrl,
 } = require("./built-site");
-const { STRUCTURED_DATA, addressesInCss } = require("./page-facts");
+const { STRUCTURED_DATA, candidateAddressesInCss } = require("./page-facts");
 
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
@@ -54,6 +54,33 @@ const targetOf = (href, pageAddress) =>
 const isWebAddress = (target) => ["http:", "https:"].includes(target.protocol);
 
 const isOnSite = (target) => target.origin === new URL(siteUrl()).origin;
+
+const resolvedAgainst = (base, hrefs) =>
+  hrefs
+    .filter((href) => URL.canParse(href, base))
+    .map((href) => new URL(href, base));
+
+const isStylesheet = (target) => target.pathname.endsWith(".css");
+
+const contactedThroughStylesheets = (contacted) => {
+  const read = new Set();
+  const found = [];
+  const pending = [...contacted];
+  while (pending.length > 0) {
+    const target = pending.pop();
+    if (!isOnSite(target) || !isStylesheet(target)) continue;
+    if (read.has(target.pathname)) continue;
+    read.add(target.pathname);
+
+    const fromStylesheet = resolvedAgainst(
+      target,
+      candidateAddressesInCss(readBuiltText(target.pathname))
+    );
+    found.push(...fromStylesheet);
+    pending.push(...fromStylesheet);
+  }
+  return found;
+};
 
 const anchorsOf = (pageAddress) =>
   describeBuiltPage(pageAddress).anchors.map((anchor) => ({
@@ -103,20 +130,14 @@ test("a page runs one script, and it is the menu", () => {
   }
 });
 
-test("a page and its stylesheets contact no other site", () => {
+test("a page and the stylesheets it loads contact no other site", () => {
   const offSite = EVERY_PAGE.flatMap((address) => {
-    const contacted = describeBuiltPage(address).contactedAddresses.map(
-      (href) => targetOf(href, address)
+    const contacted = resolvedAgainst(
+      addressOnSite(address),
+      describeBuiltPage(address).contactedAddresses
     );
-    const contactedByStylesheets = contacted
-      .filter((target) => isOnSite(target) && target.pathname.endsWith(".css"))
-      .flatMap((stylesheet) =>
-        addressesInCss(readBuiltText(stylesheet.pathname)).map(
-          (href) => new URL(href, stylesheet)
-        )
-      );
 
-    return [...contacted, ...contactedByStylesheets]
+    return [...contacted, ...contactedThroughStylesheets(contacted)]
       .filter((target) => isWebAddress(target) && !isOnSite(target))
       .map((target) => `${address} -> ${target.href}`);
   });
