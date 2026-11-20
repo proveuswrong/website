@@ -12,6 +12,7 @@ const TRAILING_SLASH = /\/$/;
 const EXACT_VERSION =
   /^(?:@[^@/]+\/)?[^@]+@\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
 const MINUTE_IN_MILLISECONDS = 60 * 1000;
+const PRINTED_WITHOUT_VALUE = "undefined";
 const USAGE = "Usage: node test/lockfile-age.js <base revision>";
 
 const lockedVersionsIn = (lockfile) =>
@@ -101,7 +102,10 @@ const yarnOutput = (...args) => {
   }
 };
 
-const yarnSetting = (name) => JSON.parse(yarnOutput("config", "get", name, "--json"));
+const yarnSetting = (name) => {
+  const printed = yarnOutput("config", "get", name, "--json").trim();
+  return printed === PRINTED_WITHOUT_VALUE ? undefined : JSON.parse(printed);
+};
 
 const lockfileAt = (revision) =>
   execFileSync("git", ["show", `${revision}:${LOCKFILE}`], {
@@ -190,7 +194,7 @@ const checkAgainst = async (baseRevision) => {
     preapproved: yarnSetting("npmPreapprovedPackages"),
     publishTimesOf: publishTimesInRegistries({
       npmRegistryServer: yarnSetting("npmRegistryServer"),
-      npmScopes: new Map(Object.entries(yarnSetting("npmScopes"))),
+      npmScopes: new Map(Object.entries(yarnSetting("npmScopes") ?? {})),
     }),
     now: new Date(),
   });
