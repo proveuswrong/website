@@ -26,6 +26,7 @@ const {
   WEIGHT_OF_KEYWORD,
   addressesInCss,
   fontFacesInCss,
+  fontFacesOfPage,
   loadsOfPage,
   resolvedAgainst,
 } = require("./page-facts");
@@ -62,7 +63,9 @@ const isWebAddress = (target) => ["http:", "https:"].includes(target.protocol);
 
 const isOnSite = (target) => target.origin === new URL(siteUrl()).origin;
 
-const isStylesheet = (target) => target.pathname.endsWith(".css");
+const STYLESHEET_PATH = /\.css$/i;
+
+const isStylesheet = (target) => STYLESHEET_PATH.test(target.pathname);
 
 const loadsOfBuiltPage = (address) =>
   loadsOfPage(readBuiltText(address), addressOnSite(address));
@@ -151,7 +154,7 @@ test("bold and italic text keeps its emphasis while the web fonts load", () => {
 
   for (const address of EVERY_PAGE) {
     const fontFaces = [
-      ...describeBuiltPage(address).fontFaces,
+      ...fontFacesOfPage(readBuiltText(address)),
       ...stylesheetsLoadedBy(address).flatMap(({ css }) => fontFacesInCss(css)),
     ];
     const emphasisFromRegularSystemFonts = fontFaces

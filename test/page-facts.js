@@ -77,7 +77,6 @@ const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
   script: ["src"],
   img: ["src", "srcset"],
   source: ["src", "srcset"],
-  iframe: ["src"],
   video: ["src", "poster"],
   audio: ["src"],
   track: ["src"],
@@ -320,6 +319,26 @@ const addressesInAttribute = (element, attribute) => {
     : [value];
 };
 
+const srcdocOf = (iframe) => attributeOf(iframe, "srcdoc");
+
+// A refresh's content is a delay, then optionally the address, with or
+// without "url=" and quotes:
+// https://html.spec.whatwg.org/multipage/semantics.html#shared-declarative-refresh-steps
+const REFRESH_CONTENT =
+  /^\s*[\d.]*\s*[;,]?\s*(?:url\s*=\s*)?(?:"([^"]*)"|'([^']*)'|(.*?))\s*$/i;
+
+const refreshAddressesOf = (document) =>
+  elementsIn(document, "meta")
+    .filter(
+      (meta) => attributeOf(meta, "http-equiv")?.toLowerCase() === "refresh"
+    )
+    .map((meta) => {
+      const [, doubleQuoted, singleQuoted, bare] =
+        (attributeOf(meta, "content") ?? "").match(REFRESH_CONTENT) ?? [];
+      return doubleQuoted ?? singleQuoted ?? bare;
+    })
+    .filter(Boolean);
+
 const contactedAddressesOf = (document) => [
   ...elementsIn(document, "link")
     .filter((link) =>
@@ -340,6 +359,12 @@ const contactedAddressesOf = (document) => [
         )
       )
   ),
+  // An iframe with srcdoc shows that document and does not load its src:
+  // https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-srcdoc
+  ...elementsIn(document, "iframe")
+    .filter((iframe) => srcdocOf(iframe) === undefined)
+    .flatMap((iframe) => addressesInAttribute(iframe, "src")),
+  ...refreshAddressesOf(document),
   ...elementsIn(document, "style").flatMap((style) =>
     addressesInCss(codeOf(style))
   ),
@@ -371,12 +396,22 @@ const loadsOfDocument = (document, documentAddress) => {
 
   return [
     ...resolvedAgainst(base, contactedAddressesOf(document)),
-    ...elementsIn(document, "iframe")
-      .map((iframe) => attributeOf(iframe, "srcdoc"))
-      .filter((srcdoc) => srcdoc !== undefined)
-      .flatMap((srcdoc) => loadsOfDocument(parse(srcdoc), base)),
+    ...srcdocDocumentsIn(document).flatMap((srcdocDocument) =>
+      loadsOfDocument(srcdocDocument, base)
+    ),
   ];
 };
+
+const srcdocDocumentsIn = (document) =>
+  elementsIn(document, "iframe")
+    .map(srcdocOf)
+    .filter((srcdoc) => srcdoc !== undefined)
+    .map((srcdoc) => parse(srcdoc));
+
+const documentsWithin = (document) => [
+  document,
+  ...srcdocDocumentsIn(document).flatMap(documentsWithin),
+];
 
 /**
  * Every address a page's markup and inline styles make the browser contact
@@ -385,6 +420,14 @@ const loadsOfDocument = (document, documentAddress) => {
  */
 const loadsOfPage = (html, pageAddress) =>
   loadsOfDocument(parse(html), pageAddress);
+
+/** The @font-face rules in a page's <style> elements, srcdoc documents included. */
+const fontFacesOfPage = (html) =>
+  documentsWithin(parse(html)).flatMap((document) =>
+    elementsIn(document, "style").flatMap((style) =>
+      fontFacesInCss(codeOf(style))
+    )
+  );
 
 const openGraphImageOf = (head) => {
   const meta = metaNamed(head, "og:image");
@@ -433,9 +476,6 @@ const describePage = (html, siteUrl) => {
     },
     robots: contentOfMeta(head, NAME, "robots") ?? null,
     canonicalLinks: canonicalLinksOf(head),
-    fontFaces: elementsIn(document, "style").flatMap((style) =>
-      fontFacesInCss(codeOf(style))
-    ),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
       type: attributeOf(script, "type"),
@@ -458,6 +498,7 @@ module.exports = {
   addressesInCss,
   describePage,
   fontFacesInCss,
+  fontFacesOfPage,
   loadsOfPage,
   resolvedAgainst,
   withoutQuery,
