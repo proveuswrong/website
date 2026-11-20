@@ -1,6 +1,6 @@
 # Architecture
 
-A static site. Astro turns the sources into files under `public/` and Cloudflare Pages serves them. Nothing runs on a server, and a page runs one script: the menu.
+A static site. Astro turns the sources into files under `public/` and Cloudflare Pages serves them. Nothing runs on a server, and the build gives a page one script: the menu.
 
 ## Parts
 
@@ -17,7 +17,7 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 | Styles | `src/styles/`, `*.module.scss` | Shared variables and partials; one CSS Module per component or page |
 | Fonts | `src/fonts.mjs`, `static/fonts/` | Space Mono for the text and Monoton for the name in the header. Each family's folder holds its files and licence; Astro's fonts feature writes their faces into every page, and styles reach them through `--font-space-mono` and `--font-monoton` |
 | Static files | `static/` | Served from the root unchanged: redirects, press kit, icons, web app manifest, the font families with their licences |
-| Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json` |
+| Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json`. Apart from them, `lockfile-age.js` judges each version `yarn.lock` newly locks against a base revision by Yarn's age gate, importing nothing installed |
 
 ## Guarantees
 
@@ -26,7 +26,7 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 - **A production page names its one address.** Every page of a production build carries a canonical link to its address on the production site. The error page carries `noindex` instead, because Cloudflare Pages also serves it with status 200 at `/404`.
 - **Addresses come from content.** A Markdown page lives where its `slug` says. The sitemap lists whatever was built, except the error page.
 - **Only files named after what they hold skip revalidation.** Astro names each file under `_astro/` after its content, an image after its source and its size, format and quality, so a changed file gets a new address and browsers keep these files a year without asking again. A change to the image service's settings alone renames no image, so returning visitors keep the earlier rendering. Pages and files from `static/` keep their addresses and Cloudflare's own cache headers, at most four hours in the browser; nothing from `static/` may land in `_astro/`.
-- **A page contacts no other site as it loads.** Its styles, fonts, scripts and images come from the site, so opening a page tells no third party about the visit.
+- **The build makes a page contact no other site.** Its styles, fonts, scripts and images come from the site. As served on the custom domains, every page also loads Cloudflare Web Analytics, which a setting of the zone adds at the edge, outside this repository: Cloudflare, already answering every request, is the one other party a visit reaches.
 - **The checks judge the output.** They are told which kind of build to expect and never infer it, so a production build that marks itself `noindex` fails.
 
 ## Deployment
@@ -40,6 +40,7 @@ A push to `main` fast-forwards `develop` to it (`.github/workflows/fastForwardDe
 - **No client framework.** The pages are documents; the menu is their only behaviour.
 - **Markdown plugins of our own.** Two short visitors do the work of two dependencies.
 - **Install scripts off.** No dependency needs one, so none may run.
+- **Lockfile ages checked before installing.** Yarn's age gate judges a version only while Yarn picks it, so one already in `yarn.lock` would install unchecked. CI runs `test/lockfile-age.js` against the commit a pull request merges into before installing anything, and lets a younger version through only while `npmPreapprovedPackages` in `.yarnrc.yml` names it exactly.
 - **Monoton unsubsetted.** Its licence reserves the name "Monoton" for unmodified versions, so the site serves the original file rather than Google Fonts' subsets; Cloudflare compresses it in transit.
 - **Plain fallbacks.** Until a web font arrives, or if it never does, text falls back to the system's `monospace` and `cursive`. Astro can generate a fallback sized like Space Mono, which avoids a small shift at the swap, but it fills the bold and italic faces with the regular system font and so drops emphasis.
 - **Font folders in `static/`.** Serving a font distributes it, and the SIL Open Font License must travel with every copy; Monoton's file carries no licence of its own, so each family is published whole, licence included.
