@@ -14,8 +14,8 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 | Markdown plugins | `src/markdown-plugins.mjs` | The anchor link in each heading; new-tab attributes on links that leave the site |
 | Crawler files | `src/crawler-files.mjs` | `robots.txt`, `sitemap.xml`, and the `_headers` rule of a build that is not production |
 | Styles | `src/styles/`, `*.module.scss` | Shared variables and partials; one CSS Module per component or page |
-| Fonts | `src/fonts.mjs`, `src/fonts/` | Space Mono for the text and Monoton for the name in the header, with each family's licence; Astro's fonts feature writes their faces into every page, with fallbacks sized to match, and styles reach them through `--font-space-mono` and `--font-monoton` |
-| Static files | `static/` | Served from the root unchanged: redirects, press kit, icons, web app manifest |
+| Fonts | `src/fonts.mjs`, `static/fonts/` | Space Mono for the text and Monoton for the name in the header. Each family's folder holds its files and licence; Astro's fonts feature writes their faces into every page, with fallbacks sized to match, and styles reach them through `--font-space-mono` and `--font-monoton` |
+| Static files | `static/` | Served from the root unchanged: redirects, press kit, icons, web app manifest, the font families with their licences |
 | Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json` |
 
 ## Guarantees
@@ -39,3 +39,4 @@ A push to `main` fast-forwards `develop` to it (`.github/workflows/fastForwardDe
 - **Markdown plugins of our own.** Two short visitors do the work of two dependencies.
 - **Install scripts off.** No dependency needs one, so none may run.
 - **Monoton unsubsetted.** Its licence reserves the name "Monoton" for unmodified versions, so the site serves the original file rather than Google Fonts' subsets; Cloudflare compresses it in transit.
+- **Font folders in `static/`.** Serving a font distributes it, and the SIL Open Font License must travel with every copy; Monoton's file carries no licence of its own, so each family is published whole, licence included.

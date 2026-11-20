@@ -1,7 +1,7 @@
 import { fontProviders } from "astro/config";
 
-const SPACE_MONO_DIRECTORY = "./src/fonts/space-mono";
-const MONOTON_DIRECTORY = "./src/fonts/monoton";
+const SPACE_MONO_DIRECTORY = "./static/fonts/space-mono";
+const MONOTON_DIRECTORY = "./static/fonts/monoton";
 const SPACE_MONO_WEIGHTS = [400, 700];
 const SPACE_MONO_STYLES = ["normal", "italic"];
 
@@ -65,7 +65,8 @@ const spaceMonoVariants = SPACE_MONO_WEIGHTS.flatMap((weight) =>
  * The site's typefaces, served from the site itself: Space Mono sets the
  * text and Monoton the name in the header. Pages reach them through the CSS
  * variables named here. Each family's files and its SIL Open Font License
- * are in `src/fonts/`.
+ * are in `static/fonts/`, which the site also publishes, so the licence is
+ * distributed with the fonts.
  */
 export const fonts = [
   {
