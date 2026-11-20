@@ -29,6 +29,8 @@ The website of the organization: a static site built with [Astro](https://astro.
 
 Node and Yarn are pinned in `package.json`. Install scripts are turned off in `.yarnrc.yml`; the build does not need them.
 
+`.yarnrc.yml` also keeps Yarn from picking a version younger than its age gate. A pull request whose `yarn.lock` newly locks one anyway fails CI before anything is installed, and `node test/lockfile-age.js origin/develop` runs the same check locally. To adopt a version early on purpose, list it as an exact `name@version` under `npmPreapprovedPackages` and remove it once it clears the gate.
+
 | Command | What it does |
 |---|---|
 | `yarn install --immutable` | Installs exactly what `yarn.lock` pins |

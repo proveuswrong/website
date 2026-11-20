@@ -17,7 +17,7 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 | Styles | `src/styles/`, `*.module.scss` | Shared variables and partials; one CSS Module per component or page |
 | Fonts | `src/fonts.mjs`, `static/fonts/` | Space Mono for the text and Monoton for the name in the header. Each family's folder holds its files and licence; Astro's fonts feature writes their faces into every page, and styles reach them through `--font-space-mono` and `--font-monoton` |
 | Static files | `static/` | Served from the root unchanged: redirects, press kit, icons, web app manifest, the font families with their licences |
-| Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json` |
+| Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json`. Apart from them, `lockfile-age.js` judges each version `yarn.lock` newly locks against a base revision by Yarn's age gate, importing nothing installed |
 
 ## Guarantees
 
@@ -40,6 +40,7 @@ A push to `main` fast-forwards `develop` to it (`.github/workflows/fastForwardDe
 - **No client framework.** The pages are documents; the menu is their only behaviour.
 - **Markdown plugins of our own.** Two short visitors do the work of two dependencies.
 - **Install scripts off.** No dependency needs one, so none may run.
+- **Lockfile ages checked before installing.** Yarn's age gate judges a version only while Yarn picks it, so one already in `yarn.lock` would install unchecked. CI runs `test/lockfile-age.js` against the commit a pull request merges into before installing anything, and lets a younger version through only while `npmPreapprovedPackages` in `.yarnrc.yml` names it exactly.
 - **Monoton unsubsetted.** Its licence reserves the name "Monoton" for unmodified versions, so the site serves the original file rather than Google Fonts' subsets; Cloudflare compresses it in transit.
 - **Plain fallbacks.** Until a web font arrives, or if it never does, text falls back to the system's `monospace` and `cursive`. Astro can generate a fallback sized like Space Mono, which avoids a small shift at the swap, but it fills the bold and italic faces with the regular system font and so drops emphasis.
 - **Font folders in `static/`.** Serving a font distributes it, and the SIL Open Font License must travel with every copy; Monoton's file carries no licence of its own, so each family is published whole, licence included.
