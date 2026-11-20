@@ -17,7 +17,7 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 | Styles | `src/styles/`, `*.module.scss` | Shared variables and partials; one CSS Module per component or page |
 | Fonts | `src/fonts.mjs`, `static/fonts/` | Space Mono for the text and Monoton for the name in the header. Each family's folder holds its files and licence; Astro's fonts feature writes their faces into every page, and styles reach them through `--font-space-mono` and `--font-monoton` |
 | Static files | `static/` | Served from the root unchanged: redirects, press kit, icons, web app manifest, the font families with their licences |
-| Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json` |
+| Checks | `test/` | Read a built `public/` and compare it with the contract and with `reference.json`. Apart from them, `lockfile-age.js` judges each version `yarn.lock` newly locks against a base revision by Yarn's age gate, importing nothing installed |
 
 ## Guarantees
 
