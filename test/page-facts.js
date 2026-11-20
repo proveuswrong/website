@@ -43,17 +43,21 @@ const ELEMENTS_WITHOUT_VISIBLE_TEXT = new Set([
 ]);
 const HEADING_ELEMENTS = ["h1", "h2", "h3", "h4", "h5", "h6"];
 const CONTENTS_LIST_LABEL = "On this page";
+const NAME = "name";
+const PROPERTY = "property";
+// HTML and Twitter Cards name a tag in `name`; the Open Graph protocol uses
+// `property` (https://ogp.me/#metadata). Crawlers read each only from its own.
 const DESCRIBING_META = [
-  "description",
-  "og:title",
-  "og:description",
-  "og:type",
-  "og:url",
-  "twitter:creator",
-  "twitter:description",
-  "twitter:card",
-  "twitter:image:alt",
-  "theme-color",
+  [NAME, "description"],
+  [PROPERTY, "og:title"],
+  [PROPERTY, "og:description"],
+  [PROPERTY, "og:type"],
+  [PROPERTY, "og:url"],
+  [NAME, "twitter:creator"],
+  [NAME, "twitter:description"],
+  [NAME, "twitter:card"],
+  [NAME, "twitter:image:alt"],
+  [NAME, "theme-color"],
 ];
 const ICON_LINK_RELATIONS = ["icon", "manifest", "apple-touch-icon"];
 const STRUCTURED_DATA = "application/ld+json";
@@ -127,26 +131,23 @@ const metaNamed = (head, name) =>
     [attributeOf(meta, "name"), attributeOf(meta, "property")].includes(name)
   );
 
-const contentOfMeta = (head, name) => {
-  const meta = metaNamed(head, name);
-  return meta && attributeOf(meta, "content");
-};
-
-// Crawlers read robots rules from <meta name>, compared case-insensitively,
-// and never from <meta property>:
-// https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag
-const robotsRulesOf = (head) => {
+// Tags match case-insensitively, as HTML matches metadata names:
+// https://html.spec.whatwg.org/multipage/semantics.html#attr-meta-name
+const contentOfMeta = (head, attribute, tag) => {
   const meta = elementsIn(head, "meta").find(
-    (element) => (attributeOf(element, "name") ?? "").toLowerCase() === "robots"
+    (element) => (attributeOf(element, attribute) ?? "").toLowerCase() === tag
   );
-  return meta ? attributeOf(meta, "content") : null;
+  return meta && attributeOf(meta, "content");
 };
 
 const describingMetaOf = (head, siteUrl) =>
   Object.fromEntries(
-    DESCRIBING_META.map((name) => [name, contentOfMeta(head, name)])
+    DESCRIBING_META.map(([attribute, tag]) => [
+      tag,
+      contentOfMeta(head, attribute, tag),
+    ])
       .filter(([, content]) => content !== undefined)
-      .map(([name, content]) => [name, withoutSite(content, siteUrl)])
+      .map(([tag, content]) => [tag, withoutSite(content, siteUrl)])
   );
 
 const iconLinksOf = (head) =>
@@ -273,7 +274,7 @@ const describePage = (html, siteUrl) => {
         .filter(Boolean),
       links: anchorsIn(main).filter(({ text }) => text !== ""),
     },
-    robots: robotsRulesOf(head),
+    robots: contentOfMeta(head, NAME, "robots") ?? null,
     canonicalLinks: canonicalLinksOf(head),
     openGraphImage: openGraphImageOf(head) ?? null,
     scripts: elementsIn(document, "script").map((script) => ({
