@@ -22,3 +22,10 @@ export const title = "Prove Us Wrong";
 export const description =
   "We work on decentralized curation, designed so no single curator has to be trusted: Ferit Tunçer's framework and its applications to news and public goods funding. Prove us wrong.";
 export const author = "@0xferit";
+
+/** The organization's own pages on other sites. */
+export const profiles = {
+  linkedIn: "https://www.linkedin.com/company/prove-us-wrong/",
+  twitter: "https://twitter.com/ProveUsWrongIO",
+  gitHub: "https://github.com/proveuswrong",
+};

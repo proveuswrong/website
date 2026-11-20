@@ -7,7 +7,7 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 | Part | Where | Owns |
 |---|---|---|
 | Build settings | `astro.config.mjs` | Output and static directories, the form of addresses, the Markdown processor and its plugins, the Sass load path, the oldest browsers the styles are written for |
-| Site facts | `src/site.mjs` | What a production build is, the address a build is for, the site's title, description and author |
+| Site facts | `src/site.mjs` | What a production build is, the address a build is for, the site's title, description and author, the organization's profiles on other sites |
 | Layout | `src/layouts/`, `src/components/` | The document: head tags, header with the menu, footer, global styles |
 | Pages | `src/pages/` | `/`, `/about/` and the error page by hand; `[...slug].astro` renders every Markdown page |
 | Content | `src/content/pages/` | The Markdown pages. In the frontmatter, `slug` sets the address, `toc` asks for a contents list and `draft` leaves the page out |
