@@ -154,12 +154,12 @@ if (expectedBuild() === "production") {
     );
   });
 
-  test("every page of the contract names its own address as canonical", () => {
+  test("every page of the contract names its own address, and only it, as canonical", () => {
     assert.deepEqual(
       PAGE_ADDRESSES.map(
-        (address) => describeBuiltPage(address).canonicalAddress
+        (address) => describeBuiltPage(address).canonicalAddresses
       ),
-      PAGE_ADDRESSES.map(addressOnSite)
+      PAGE_ADDRESSES.map((address) => [addressOnSite(address)])
     );
   });
 } else {
@@ -179,7 +179,7 @@ if (expectedBuild() === "production") {
   test("a preview build names no canonical address", () => {
     assert.deepEqual(
       EVERY_PAGE.filter(
-        (address) => describeBuiltPage(address).canonicalAddress !== null
+        (address) => describeBuiltPage(address).canonicalAddresses.length > 0
       ),
       []
     );
@@ -187,11 +187,11 @@ if (expectedBuild() === "production") {
 }
 
 test("the error page asks every crawler to stay away and names no canonical address", () => {
-  const { robots, canonicalAddress } = describeBuiltPage(ERROR_PAGE_ADDRESS);
+  const { robots, canonicalAddresses } = describeBuiltPage(ERROR_PAGE_ADDRESS);
 
-  assert.deepEqual({ robots, canonicalAddress }, {
+  assert.deepEqual({ robots, canonicalAddresses }, {
     robots: NOINDEX,
-    canonicalAddress: null,
+    canonicalAddresses: [],
   });
 });
 
