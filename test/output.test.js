@@ -87,6 +87,23 @@ const stylesheetsLoadedBy = (address) => {
   return [...loaded.values()];
 };
 
+const everythingLoadedBy = (address) => [
+  ...loadsOfBuiltPage(address),
+  ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
+];
+
+const CACHED_WITHOUT_REVALIDATION = /(?:^|,)\s*immutable\s*(?:,|$)/i;
+
+const isCachedWithoutRevalidation = (pathname) =>
+  CACHED_WITHOUT_REVALIDATION.test(
+    headersOfResponse(pathname)["cache-control"] ?? ""
+  );
+
+const isCopiedFromStatic = (pathname) => {
+  const file = path.join(STATIC_DIRECTORY, decodeURIComponent(pathname));
+  return fs.existsSync(file) && fs.statSync(file).isFile();
+};
+
 const anchorsOf = (pageAddress) =>
   describeBuiltPage(pageAddress).anchors.map((anchor) => ({
     ...anchor,
@@ -137,15 +154,44 @@ test("a page runs one script, and it is the menu", () => {
 
 test("a page and the stylesheets it loads contact no other site", () => {
   const offSite = EVERY_PAGE.flatMap((address) =>
-    [
-      ...loadsOfBuiltPage(address),
-      ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
-    ]
+    everythingLoadedBy(address)
       .filter((target) => isWebAddress(target) && !isOnSite(target))
       .map((target) => `${address} -> ${target.href}`)
   );
 
   assert.deepEqual([...new Set(offSite)], []);
+});
+
+test("the files pages load from the build are cached without revalidation", () => {
+  const pages = builtPageAddresses();
+  const loadedFromBuild = [
+    ...new Set(
+      EVERY_PAGE.flatMap((address) => everythingLoadedBy(address))
+        .filter(isOnSite)
+        .map(({ pathname }) => pathname)
+        .filter(
+          (pathname) => !pages.includes(pathname) && !isCopiedFromStatic(pathname)
+        )
+    ),
+  ];
+
+  assert.notDeepEqual(loadedFromBuild, []);
+  assert.deepEqual(
+    loadedFromBuild.filter((pathname) => !isCachedWithoutRevalidation(pathname)),
+    []
+  );
+});
+
+test("pages and the files copied from static/ are never cached without revalidation", () => {
+  const addressesKeptAcrossChanges = [
+    ...EVERY_PAGE,
+    ...filesUnder(STATIC_DIRECTORY).map((file) => `/${file}`),
+  ];
+
+  assert.deepEqual(
+    addressesKeptAcrossChanges.filter(isCachedWithoutRevalidation),
+    []
+  );
 });
 
 test("bold and italic text keeps its emphasis while the web fonts load", () => {
