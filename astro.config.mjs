@@ -6,6 +6,7 @@ import { defineConfig } from "astro/config";
 import { crawlerFiles } from "./src/crawler-files.mjs";
 import { fonts } from "./src/fonts.mjs";
 import { externalLinks, headingAnchors } from "./src/markdown-plugins.mjs";
+import { responseHeaders } from "./src/response-headers.mjs";
 import { siteUrl } from "./src/site.mjs";
 
 const REPOSITORY = fileURLToPath(new URL("./", import.meta.url));
@@ -28,7 +29,7 @@ export default defineConfig({
       hastPlugins: [satteriHeadingIdsPlugin(), headingAnchors, externalLinks],
     }),
   },
-  integrations: [crawlerFiles()],
+  integrations: [crawlerFiles(), responseHeaders()],
   fonts,
   vite: {
     build: { cssTarget: OLDEST_BROWSERS_STYLED },
