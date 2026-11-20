@@ -85,6 +85,14 @@ const ADDRESS_ATTRIBUTES_OF_ELEMENT = {
   image: ["href"],
   feImage: ["href"],
   input: ["src"],
+  body: ["background"],
+  table: ["background"],
+  thead: ["background"],
+  tbody: ["background"],
+  tfoot: ["background"],
+  tr: ["background"],
+  td: ["background"],
+  th: ["background"],
 };
 const SRCSET_ATTRIBUTES = ["srcset", "imagesrcset"];
 const WEIGHT_OF_KEYWORD = { normal: 400, bold: 700 };
