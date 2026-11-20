@@ -5,6 +5,7 @@ const path = require("path");
 
 const {
   ERROR_PAGE_ADDRESS,
+  OUTPUT_DIRECTORY,
   PAGE_ADDRESSES,
   PRODUCTION_SITE_URL,
   STATIC_DIRECTORY,
@@ -12,6 +13,7 @@ const {
   describeBuiltPage,
   expectedBuild,
   filesUnder,
+  headersOfResponse,
   isBuilt,
   linesOfBuilt,
   manifestOfBuild,
@@ -34,7 +36,6 @@ const {
 const EVERY_PAGE = [...PAGE_ADDRESSES, ERROR_PAGE_ADDRESS];
 const STATE_THE_MENU_SCRIPT_KEEPS = "aria-expanded";
 const NOINDEX = "noindex";
-const NOINDEX_HEADER_RULE = ["/*", `X-Robots-Tag: ${NOINDEX}`];
 const OPEN_GRAPH_IMAGE_ADDRESS = "/icons/icon-256x256.png";
 const CHARACTERS_SEARCH_RESULTS_SHOW = 160;
 const REGULAR_WEIGHT = WEIGHT_OF_KEYWORD.normal;
@@ -84,6 +85,53 @@ const stylesheetsLoadedBy = (address) => {
     pending.push(...loads);
   }
   return [...loaded.values()];
+};
+
+const everythingLoadedBy = (address) => [
+  ...loadsOfBuiltPage(address),
+  ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
+];
+
+const A_YEAR_IN_SECONDS = 365 * 24 * 60 * 60;
+const IMMUTABLE = "immutable";
+const MAX_AGE = "max-age";
+const DIRECTIVES_AGAINST_REUSE = ["no-store", "no-cache"];
+const CACHE_DIRECTIVE = /\s*([^\s=,]+)(?:\s*=\s*("(?:[^"\\]|\\.)*"|[^,]*))?\s*(?:,|$)/g;
+const QUOTED = /^"(.*)"$/s;
+const SECONDS = /^\d+$/;
+
+const cacheControlOf = (pathname) => headersOfResponse(pathname)["cache-control"];
+
+// Directive names are case-insensitive, and an argument may come as a token
+// or as a quoted string: https://www.rfc-editor.org/rfc/rfc9111#section-5.2
+const directivesOf = (cacheControl) =>
+  [...(cacheControl ?? "").matchAll(CACHE_DIRECTIVE)].map(
+    ([, name, argument = ""]) => ({
+      name: name.toLowerCase(),
+      argument: argument.trim().replace(QUOTED, "$1"),
+    })
+  );
+
+// A response whose Cache-Control repeats max-age is stale or ambiguous to a
+// cache, so only one max-age counts:
+// https://www.rfc-editor.org/rfc/rfc9111#section-4.2.1
+const isKeptAYearWithoutRevalidation = (pathname) => {
+  const directives = directivesOf(cacheControlOf(pathname));
+  const names = directives.map(({ name }) => name);
+  const maxAges = directives.filter(({ name }) => name === MAX_AGE);
+
+  return (
+    names.includes(IMMUTABLE) &&
+    !names.some((name) => DIRECTIVES_AGAINST_REUSE.includes(name)) &&
+    maxAges.length === 1 &&
+    SECONDS.test(maxAges[0].argument) &&
+    Number(maxAges[0].argument) >= A_YEAR_IN_SECONDS
+  );
+};
+
+const isCopiedFromStatic = (pathname) => {
+  const file = path.join(STATIC_DIRECTORY, decodeURIComponent(pathname));
+  return fs.existsSync(file) && fs.statSync(file).isFile();
 };
 
 const anchorsOf = (pageAddress) =>
@@ -136,15 +184,46 @@ test("a page runs one script, and it is the menu", () => {
 
 test("a page and the stylesheets it loads contact no other site", () => {
   const offSite = EVERY_PAGE.flatMap((address) =>
-    [
-      ...loadsOfBuiltPage(address),
-      ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
-    ]
+    everythingLoadedBy(address)
       .filter((target) => isWebAddress(target) && !isOnSite(target))
       .map((target) => `${address} -> ${target.href}`)
   );
 
   assert.deepEqual([...new Set(offSite)], []);
+});
+
+test("the files pages load from the build are kept a year without revalidation", () => {
+  const pages = builtPageAddresses();
+  const loadedFromBuild = [
+    ...new Set(
+      EVERY_PAGE.flatMap((address) => everythingLoadedBy(address))
+        .filter(isOnSite)
+        .map(({ pathname }) => pathname)
+        .filter(
+          (pathname) => !pages.includes(pathname) && !isCopiedFromStatic(pathname)
+        )
+    ),
+  ];
+
+  assert.notDeepEqual(loadedFromBuild, []);
+  assert.deepEqual(
+    loadedFromBuild.filter((pathname) => !isKeptAYearWithoutRevalidation(pathname)),
+    []
+  );
+});
+
+test("pages and the files copied from static/ keep Cloudflare's own cache headers", () => {
+  const addressesKeptAcrossChanges = [
+    ...EVERY_PAGE,
+    ...filesUnder(STATIC_DIRECTORY).map((file) => `/${file}`),
+  ];
+
+  assert.deepEqual(
+    addressesKeptAcrossChanges.filter(
+      (pathname) => cacheControlOf(pathname) !== undefined
+    ),
+    []
+  );
 });
 
 test("bold and italic text keeps its emphasis while the web fonts load", () => {
@@ -241,7 +320,17 @@ if (expectedBuild() === "production") {
   });
 
   test("a preview build sends a noindex header with every response", () => {
-    assert.deepEqual(linesOfBuilt("/_headers"), NOINDEX_HEADER_RULE);
+    const responses = [
+      ...EVERY_PAGE,
+      ...filesUnder(OUTPUT_DIRECTORY).map((file) => `/${file}`),
+    ];
+
+    assert.deepEqual(
+      responses.filter(
+        (pathname) => headersOfResponse(pathname)["x-robots-tag"] !== NOINDEX
+      ),
+      []
+    );
   });
 
   test("a preview build names no canonical address", () => {

@@ -12,7 +12,8 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 | Pages | `src/pages/` | `/`, `/about/` and the error page by hand; `[...slug].astro` renders every Markdown page |
 | Content | `src/content/pages/` | The Markdown pages. In the frontmatter, `slug` sets the address, `description` is what search results and link previews say about the page, `toc` asks for a contents list and `draft` leaves the page out |
 | Markdown plugins | `src/markdown-plugins.mjs` | The anchor link in each heading; new-tab attributes on links that leave the site |
-| Crawler files | `src/crawler-files.mjs` | `robots.txt`, `sitemap.xml`, and the `_headers` rule of a build that is not production |
+| Crawler files | `src/crawler-files.mjs` | `robots.txt` and `sitemap.xml` |
+| Response headers | `src/response-headers.mjs` | `_headers`, the rules Cloudflare Pages adds to responses: a year's caching without revalidation for the files Astro writes to `_astro/`, and `noindex` on every response of a build that is not production |
 | Styles | `src/styles/`, `*.module.scss` | Shared variables and partials; one CSS Module per component or page |
 | Fonts | `src/fonts.mjs`, `static/fonts/` | Space Mono for the text and Monoton for the name in the header. Each family's folder holds its files and licence; Astro's fonts feature writes their faces into every page, and styles reach them through `--font-space-mono` and `--font-monoton` |
 | Static files | `static/` | Served from the root unchanged: redirects, press kit, icons, web app manifest, the font families with their licences |
@@ -20,10 +21,11 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 
 ## Guarantees
 
-- **Production is decided once.** `isProduction` in `src/site.mjs` follows the branch Cloudflare Pages says it is building: `main` is production, every other branch is not. The head tags and the crawler files read it; nothing else decides.
+- **Production is decided once.** `isProduction` in `src/site.mjs` follows the branch Cloudflare Pages says it is building: `main` is production, every other branch is not. The head tags and the response headers read it; nothing else decides.
 - **A build that is not production is not indexed.** Every page carries `noindex`, and `_headers` sends it with every response, because Cloudflare adds its own header only on `pages.dev` addresses. A production build has neither, except the error page's `noindex`.
 - **A production page names its one address.** Every page of a production build carries a canonical link to its address on the production site. The error page carries `noindex` instead, because Cloudflare Pages also serves it with status 200 at `/404`.
 - **Addresses come from content.** A Markdown page lives where its `slug` says. The sitemap lists whatever was built, except the error page.
+- **Only files named after what they hold skip revalidation.** Astro names each file under `_astro/` after its content, an image after its source and its size, format and quality, so a changed file gets a new address and browsers keep these files a year without asking again. A change to the image service's settings alone renames no image, so returning visitors keep the earlier rendering. Pages and files from `static/` keep their addresses and Cloudflare's own cache headers, at most four hours in the browser; nothing from `static/` may land in `_astro/`.
 - **A page contacts no other site as it loads.** Its styles, fonts, scripts and images come from the site, so opening a page tells no third party about the visit.
 - **The checks judge the output.** They are told which kind of build to expect and never infer it, so a production build that marks itself `noindex` fails.
 
