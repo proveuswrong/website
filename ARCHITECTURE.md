@@ -1,6 +1,6 @@
 # Architecture
 
-A static site. Astro turns the sources into files under `public/` and Cloudflare Pages serves them. Nothing runs on a server, and a page runs one script: the menu.
+A static site. Astro turns the sources into files under `public/` and Cloudflare Pages serves them. Nothing runs on a server, and the build gives a page one script: the menu.
 
 ## Parts
 
@@ -26,7 +26,7 @@ A static site. Astro turns the sources into files under `public/` and Cloudflare
 - **A production page names its one address.** Every page of a production build carries a canonical link to its address on the production site. The error page carries `noindex` instead, because Cloudflare Pages also serves it with status 200 at `/404`.
 - **Addresses come from content.** A Markdown page lives where its `slug` says. The sitemap lists whatever was built, except the error page.
 - **Only files named after what they hold skip revalidation.** Astro names each file under `_astro/` after its content, an image after its source and its size, format and quality, so a changed file gets a new address and browsers keep these files a year without asking again. A change to the image service's settings alone renames no image, so returning visitors keep the earlier rendering. Pages and files from `static/` keep their addresses and Cloudflare's own cache headers, at most four hours in the browser; nothing from `static/` may land in `_astro/`.
-- **A page contacts no other site as it loads.** Its styles, fonts, scripts and images come from the site, so opening a page tells no third party about the visit.
+- **The build makes a page contact no other site.** Its styles, fonts, scripts and images come from the site. As served on the custom domains, every page also loads Cloudflare Web Analytics, which a setting of the zone adds at the edge, outside this repository: Cloudflare, already answering every request, is the one other party a visit reaches.
 - **The checks judge the output.** They are told which kind of build to expect and never infer it, so a production build that marks itself `noindex` fails.
 
 ## Deployment
