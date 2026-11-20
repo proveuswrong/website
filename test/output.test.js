@@ -92,12 +92,30 @@ const everythingLoadedBy = (address) => [
   ...stylesheetsLoadedBy(address).flatMap(({ loads }) => loads),
 ];
 
-const CACHED_WITHOUT_REVALIDATION = /(?:^|,)\s*immutable\s*(?:,|$)/i;
+const A_YEAR_IN_SECONDS = 365 * 24 * 60 * 60;
+const MAX_AGE = /^max-age=(\d+)$/i;
+const IMMUTABLE = "immutable";
 
-const isCachedWithoutRevalidation = (pathname) =>
-  CACHED_WITHOUT_REVALIDATION.test(
-    headersOfResponse(pathname)["cache-control"] ?? ""
+const cacheControlOf = (pathname) => headersOfResponse(pathname)["cache-control"];
+
+// A response whose Cache-Control repeats max-age is stale or ambiguous to a
+// cache, so only one max-age counts:
+// https://www.rfc-editor.org/rfc/rfc9111#section-4.2.1
+const isKeptAYearWithoutRevalidation = (pathname) => {
+  const directives = (cacheControlOf(pathname) ?? "")
+    .split(",")
+    .map((directive) => directive.trim().toLowerCase());
+  const maxAges = directives
+    .map((directive) => directive.match(MAX_AGE))
+    .filter(Boolean)
+    .map(([, seconds]) => Number(seconds));
+
+  return (
+    directives.includes(IMMUTABLE) &&
+    maxAges.length === 1 &&
+    maxAges[0] >= A_YEAR_IN_SECONDS
   );
+};
 
 const isCopiedFromStatic = (pathname) => {
   const file = path.join(STATIC_DIRECTORY, decodeURIComponent(pathname));
@@ -162,7 +180,7 @@ test("a page and the stylesheets it loads contact no other site", () => {
   assert.deepEqual([...new Set(offSite)], []);
 });
 
-test("the files pages load from the build are cached without revalidation", () => {
+test("the files pages load from the build are kept a year without revalidation", () => {
   const pages = builtPageAddresses();
   const loadedFromBuild = [
     ...new Set(
@@ -177,19 +195,21 @@ test("the files pages load from the build are cached without revalidation", () =
 
   assert.notDeepEqual(loadedFromBuild, []);
   assert.deepEqual(
-    loadedFromBuild.filter((pathname) => !isCachedWithoutRevalidation(pathname)),
+    loadedFromBuild.filter((pathname) => !isKeptAYearWithoutRevalidation(pathname)),
     []
   );
 });
 
-test("pages and the files copied from static/ are never cached without revalidation", () => {
+test("pages and the files copied from static/ keep Cloudflare's own cache headers", () => {
   const addressesKeptAcrossChanges = [
     ...EVERY_PAGE,
     ...filesUnder(STATIC_DIRECTORY).map((file) => `/${file}`),
   ];
 
   assert.deepEqual(
-    addressesKeptAcrossChanges.filter(isCachedWithoutRevalidation),
+    addressesKeptAcrossChanges.filter(
+      (pathname) => cacheControlOf(pathname) !== undefined
+    ),
     []
   );
 });

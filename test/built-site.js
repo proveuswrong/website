@@ -74,9 +74,15 @@ const PLACEHOLDER = /:[A-Za-z]/;
 
 const escapedForPattern = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+const MOST_SPLATS_IN_A_PATTERN = 1;
+
 const matcherOfPattern = (pattern) => {
+  const splats = pattern.split(SPLAT).length - 1;
   if (!pattern.startsWith("/") || PLACEHOLDER.test(pattern)) {
     throw new Error(`The checks read only path patterns with splats: ${pattern}`);
+  }
+  if (splats > MOST_SPLATS_IN_A_PATTERN) {
+    throw new Error(`Cloudflare Pages allows one splat in a pattern: ${pattern}`);
   }
   const expression = new RegExp(
     `^${pattern.split(SPLAT).map(escapedForPattern).join(".*")}$`
@@ -85,7 +91,7 @@ const matcherOfPattern = (pattern) => {
 };
 
 // Cloudflare Pages reads `_headers` as rules: an unindented line is a path
-// pattern, in which a splat matches any characters, and the indented
+// pattern, in which one splat matches any characters, and the indented
 // `Name: value` lines below it are headers for the responses it matches. A
 // header that several matching rules set gets their values joined by commas:
 // https://developers.cloudflare.com/pages/configuration/headers/
