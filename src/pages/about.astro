@@ -7,14 +7,44 @@ import munevver from "../images/munevver_bgBlack.png";
 import ifeoluwa from "../images/ifeoluwa_bgBlack.png";
 import stanislav from "../images/stanislav_bgBlack.jpg";
 
-const PORTRAIT_WIDTH = 170;
-const PORTRAIT_QUALITY = 100;
-const portraitAttributes = {
-  width: PORTRAIT_WIDTH,
-  quality: PORTRAIT_QUALITY,
-  formats: ["avif", "webp"],
-  densities: [1, 2],
-};
+const peopleSections = [
+  {
+    heading: "Founder",
+    introduction: "Ferit founded Prove Us Wrong, built it and runs it today.",
+    people: [
+      {
+        name: "Ferit",
+        portrait: ferit,
+        profile: "https://github.com/0xferit",
+        role: "Engineering and research",
+      },
+    ],
+  },
+  {
+    heading: "Past Contributors",
+    introduction: "They worked with Ferit on Prove Us Wrong and have since moved on.",
+    people: [
+      {
+        name: "Münevver",
+        portrait: munevver,
+        profile: "https://dribbble.com/munevver/",
+        role: "Product design",
+      },
+      {
+        name: "Ifeoluwa",
+        portrait: ifeoluwa,
+        profile: "https://www.linkedin.com/in/iamifeolushola/",
+        role: "Community and writing, 2023",
+      },
+      {
+        name: "Stanislav",
+        portrait: stanislav,
+        profile: "https://github.com/gratestas",
+        role: "Engineering on The Truth Post",
+      },
+    ],
+  },
+];
 ---
 
 <Layout
@@ -80,68 +110,27 @@ const portraitAttributes = {
       ongoing financial relationship with Kleros.
     </p>
 
-    <h2>Founder</h2>
-    <p>Ferit founded Prove Us Wrong, built it and runs it today.</p>
-    <ul class={styles.people}>
-      <li>
-        <Picture src={ferit} {...portraitAttributes} alt="Ferit's photo" />
-        <h3>
-          <a
-            href="https://github.com/0xferit"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ferit
-          </a>
-        </h3>
-        <p>Engineering and research</p>
-      </li>
-    </ul>
-
-    <h2>Past Contributors</h2>
-    <p>
-      They worked with Ferit on Prove Us Wrong and have since moved on.
-    </p>
-    <ul class={styles.people}>
-      <li>
-        <Picture src={munevver} {...portraitAttributes} alt="Münevver's photo" />
-        <h3>
-          <a
-            href="https://dribbble.com/munevver/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Münevver
-          </a>
-        </h3>
-        <p>Product design</p>
-      </li>
-      <li>
-        <Picture src={ifeoluwa} {...portraitAttributes} alt="Ifeoluwa's photo" />
-        <h3>
-          <a
-            href="https://www.linkedin.com/in/iamifeolushola/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ifeoluwa
-          </a>
-        </h3>
-        <p>Community and writing, 2023</p>
-      </li>
-      <li>
-        <Picture src={stanislav} {...portraitAttributes} alt="Stanislav's photo" />
-        <h3>
-          <a
-            href="https://github.com/gratestas"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Stanislav
-          </a>
-        </h3>
-        <p>Engineering on The Truth Post</p>
-      </li>
-    </ul>
+    {peopleSections.map(({ heading, introduction, people }) => (
+      <>
+        <h2>{heading}</h2>
+        <p>{introduction}</p>
+        <ul class={styles.people}>
+          {people.map(({ name, portrait, profile, role }) => (
+            <li>
+              <Picture
+                src={portrait}
+                alt={`${name}'s photo`}
+                width={170}
+                quality={100}
+                formats={["avif", "webp"]}
+                densities={[1, 2]}
+              />
+              <h3><a href={profile} target="_blank" rel="noopener noreferrer">{name}</a></h3>
+              <p>{role}</p>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
   </div>
 </Layout>
