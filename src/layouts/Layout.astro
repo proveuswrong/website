@@ -25,11 +25,19 @@ const { title, description, indexed = true } = Astro.props;
 const isIndexed = isProduction && indexed;
 const pageAddress = new URL(Astro.url.pathname, Astro.site);
 const documentTitle = title === undefined ? siteTitle : `${title} | ${siteTitle}`;
-const manifest = JSON.parse(manifestSource);
-const OPEN_GRAPH_IMAGE_PATH = "/icons/icon-256x256.png";
-const LOGO_PATH = "/icons/icon-512x512.png";
-
+const manifest: { theme_color: string; icons: { src: string; sizes: string }[] } =
+  JSON.parse(manifestSource);
 const siteAddress = new URL("/", Astro.site).href;
+const icons = manifest.icons.map(({ sizes, src }) => ({
+  sizes,
+  address: new URL(src, siteAddress),
+}));
+const iconAddressFor = (sizes: string) => {
+  const icon = icons.find((entry) => entry.sizes === sizes);
+  if (!icon) throw new Error(`Missing ${sizes} icon in the web manifest`);
+  return icon.address.href;
+};
+
 const organizationId = new URL("#organization", siteAddress).href;
 const structuredData = {
   "@context": "https://schema.org",
@@ -39,7 +47,7 @@ const structuredData = {
       "@id": organizationId,
       name: siteTitle,
       url: siteAddress,
-      logo: new URL(LOGO_PATH, siteAddress).href,
+      logo: iconAddressFor("512x512"),
       description: siteDescription,
       sameAs: Object.values(profiles),
     },
@@ -69,7 +77,7 @@ const jsonSafeInScript = (value: unknown) =>
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={pageAddress} />
-    <meta property="og:image" content={new URL(OPEN_GRAPH_IMAGE_PATH, Astro.site)} />
+    <meta property="og:image" content={iconAddressFor("256x256")} />
     <meta name="twitter:creator" content={author} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:card" content="summary" />
@@ -87,8 +95,8 @@ const jsonSafeInScript = (value: unknown) =>
     />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    {manifest.icons.map(({ src, sizes }) => (
-      <link rel="apple-touch-icon" sizes={sizes} href={new URL(src, Astro.site).pathname} />
+    {icons.map(({ address, sizes }) => (
+      <link rel="apple-touch-icon" sizes={sizes} href={address.pathname} />
     ))}
   </head>
   <body>
