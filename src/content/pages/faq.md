@@ -43,7 +43,7 @@ The contract is on Ethereum mainnet, and the 2023 app loads at [truthpost.news](
 
 ## Who has supported your work?
 
-Cooperative Kleros incubated us in 2022: we joined the second cohort of [its incubator](https://blog.kleros.io/kleros-community-update-june-2022/) with our first project, Prove Me Wrong, and the incubator funded our early work. Golem Foundation incubates us today. Octant sponsored Ferit's [workshop materials](https://decentralized-curation.0xferit.workers.dev/) on the public goods application.
+Cooperative Kleros incubated us in 2022: we joined the second cohort of [its incubator](https://blog.kleros.io/kleros-community-update-june-2022/) with our first project, Prove Me Wrong, and the incubator funded our early work. Golem Foundation funds our current work. Octant sponsored Ferit's [workshop materials](https://decentralized-curation.0xferit.workers.dev/) on the public goods application.
 
 ## Is your work open source?
 
